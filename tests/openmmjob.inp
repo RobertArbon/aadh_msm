@@ -1,0 +1,61 @@
+* Final heating
+*
+
+stream ../setup.inp
+
+prnlev 6
+
+faster on
+
+set molname ala3 
+read rtf card name ./common/top_all36_prot.rtf
+read param card flex name ./common/par_all36_prot.prm
+stream ./common/toppar_water_ions.str
+
+read psf card name ./common/@molname.psf
+read coord card name ./common/@molname.cor
+
+!set e1 bond
+!set e2 angl
+!set e3 urey
+!set e4 dihe
+!set e5 impr
+!set e6 cmap
+!set e1 vdw
+!set e2 elec
+
+energy 
+
+energy omm
+
+!set ctr 1
+!label loop1
+!	skip all excl @e@@ctr
+!	energy
+!	set che@ctr ?ener
+!    incr ctr by 1
+!if @ctr .le. 2 goto loop1
+!
+!set ctr 1
+!label loop2
+!    skip all excl @e@@ctr
+!    energy omm
+!    set mme@ctr ?ener
+!	incr ctr by 1
+!if @ctr .le. 2 goto loop2 
+!
+!set ctr 1 
+!label loop3
+!	calc diff ( @che@@ctr - @mme@@ctr ) / sqrt( @che@@ctr * @mme@@ctr ) 
+!	if @diff .le. 1e-2 then
+!		echo TEST @ctr PASSED
+!	endif
+!    if @diff .gt. 1e-2 then
+!		echo TEST @ctr FAILED
+!	endif
+!	incr ctr by 1
+!if @ctr .le. 2 goto loop3
+
+
+stop
+

@@ -1,0 +1,1589 @@
+1
+                 Chemistry at HARvard Macromolecular Mechanics
+           (CHARMM) - Developmental Version 41a2   February 15, 2016            
+                             Git commit ID f89d5df                              
+       Copyright(c) 1984-2014  President and Fellows of Harvard College
+                              All Rights Reserved
+     Current operating system: Linux-2.6.32-220.23.1.el6.x86_64(x86_64)@nod     
+                 Created on 11/9/16 at 11:41:32 by user: ra15808     
+
+            Maximum number of ATOMS:    360720, and RESidues:      120240
+ RDTITL> * FINAL HEATING USING SERIAL CODE
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    envi OPENMM_PLATFORM  "CUDA"   ! /CUDA/Reference   Use OpenMM platform based on
+  
+ CHARMM>    envi OPENMM_PRECISION "mixed"   ! /mixed/double    Do calculations in single
+  
+ CHARMM>     
+  
+ CHARMM>    stream /panfs/panasas01/chem/ra15808/aadh/setup.inp
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/aadh/setup.inp::
+ OPNLGU> Unit 99 opened for READONLY access to /panfs/panasas01/chem/ra15808/aadh/setup.inp
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * DIRECTORY DEFINITIONS
+ RDTITL> *
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>    set root /panfs/panasas01/chem/ra15808
+ Parameter: ROOT <- "/PANFS/PANASAS01/CHEM/RA15808"
+  
+ CHARMM>    set datadir @root/aadh/data
+ Parameter: ROOT -> "/PANFS/PANASAS01/CHEM/RA15808"
+ Parameter: DATADIR <- "/PANFS/PANASAS01/CHEM/RA15808/AADH/DATA"
+  
+ CHARMM>    set geomdir @root/aadh/data/kr/geoms
+ Parameter: ROOT -> "/PANFS/PANASAS01/CHEM/RA15808"
+ Parameter: GEOMDIR <- "/PANFS/PANASAS01/CHEM/RA15808/AADH/DATA/KR/GEOMS"
+  
+ CHARMM>    set evbgeoms @root/aadh/evb/kr_geoms
+ Parameter: ROOT -> "/PANFS/PANASAS01/CHEM/RA15808"
+ Parameter: EVBGEOMS <- "/PANFS/PANASAS01/CHEM/RA15808/AADH/EVB/KR_GEOMS"
+  
+ CHARMM>    set basedir @root/aadh
+ Parameter: ROOT -> "/PANFS/PANASAS01/CHEM/RA15808"
+ Parameter: BASEDIR <- "/PANFS/PANASAS01/CHEM/RA15808/AADH"
+  
+ CHARMM>    set charmmtop @root/c41a2/toppar
+ Parameter: ROOT -> "/PANFS/PANASAS01/CHEM/RA15808"
+ Parameter: CHARMMTOP <- "/PANFS/PANASAS01/CHEM/RA15808/C41A2/TOPPAR"
+  
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>     
+  
+ CHARMM>    prnlev 5
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    set buildcrystal ../common/build_crystal.str
+ Parameter: BUILDCRYSTAL <- "../COMMON/BUILD_CRYSTAL.STR"
+  
+ CHARMM>    set imaging ../common/set_images.str
+ Parameter: IMAGING <- "../COMMON/SET_IMAGES.STR"
+  
+ CHARMM>    set nonbondspec ../common/non_bond_spec.str
+ Parameter: NONBONDSPEC <- "../COMMON/NON_BOND_SPEC.STR"
+  
+ CHARMM>     
+  
+ CHARMM>    stream @charmmtop/toppar_water_ions_fixed.str
+ Parameter: CHARMMTOP -> "/PANFS/PANASAS01/CHEM/RA15808/C41A2/TOPPAR"
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/c41a2/toppar/toppar_water_ions_fixed.str::
+ OPNLGU> Unit 99 opened for READONLY access to /panfs/panasas01/chem/ra15808/c41a2/toppar/toppar_water_ions_fixed.str
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * TOPLOGY AND PARAMETER INFORMATION FOR WATER AND IONS.
+ RDTITL> *
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    !Testcase
+ CHARMM>    !test_water_ions.inp
+ CHARMM>     
+  
+ CHARMM>    ! IMPORTANT NOTE: this file contains NBFixes between carboxylates and sodium,
+ CHARMM>    ! which will only apply if the main files containing carboxylate atom types
+ CHARMM>    ! have been read in first!
+ CHARMM>     
+  
+ CHARMM>    !references
+ CHARMM>    !
+ CHARMM>    !TIP3P water model
+ CHARMM>    !
+ CHARMM>    !W.L. Jorgensen; J.Chandrasekhar; J.D. Madura; R.W. Impey;
+ CHARMM>    !M.L. Klein; "Comparison of simple potential functions for
+ CHARMM>    !simulating liquid water", J. Chem. Phys. 79 926-935 (1983).
+ CHARMM>    !
+ CHARMM>    !IONS
+ CHARMM>    !
+ CHARMM>    !Ions from Roux and coworkers
+ CHARMM>    !
+ CHARMM>    !Beglov, D. and Roux, B., Finite Representation of an Infinite
+ CHARMM>    !Bulk System: Solvent Boundary Potential for Computer Simulations,
+ CHARMM>    !Journal of Chemical Physics, 1994, 100: 9050-9063
+ CHARMM>    !
+ CHARMM>    !ZINC
+ CHARMM>    !
+ CHARMM>    !Stote, R.H. and Karplus, M. Zinc Binding in Proteins and
+ CHARMM>    !Solution: A Simple but Accurate Nonbonded Representation, PROTEINS:
+ CHARMM>    !Structure, Function, and Genetics 23:12-31 (1995)
+ CHARMM>     
+  
+ CHARMM>    !test "append" to determine if previous toppar files have been read and
+ CHARMM>    !add append to "read rtf card" if true
+ CHARMM>    set nat ?NATC
+ RDCMND: can not substitute energy "?NATC"
+ Parameter: NAT <- "?NATC"
+  
+ CHARMM>    set app
+ Parameter: APP <- "" <empty>
+  
+ CHARMM>    !We're exploiting what is arguably a bug in the parser. On the left hand side,
+ CHARMM>    !the quotes have priority, so NAT is correctly substituted. On the right hand
+ CHARMM>    !side, the ? has priority and NATC" (sic) is not a valid substitution...
+ CHARMM>    if "@NAT" ne "?NATC" if @nat ne 0 set app append
+ Parameter: NAT -> "?NATC"
+ Parameter: NAT -> "?NATC"
+ RDCMND: can not substitute energy "?NATC""
+ Comparing ""?NATC"" and ""?NATC"".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>     
+  
+ CHARMM>    read rtf card  !REA 26/07/2013 - deleted @app - always stream this first and everything else must be appended)
+ MAINIO> Residue topology file being read from unit  99.
+ RDTITL> * TOPOLOGY FOR WATER AND IONS
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    read para card flex  !REA - deleted @app
+
+          PARAMETER FILE BEING READ FROM UNIT 99
+ RDTITL> * PARAMETERS FOR WATER AND IONS
+ RDTITL> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>     
+  
+ CHARMM>    ! The following section contains NBFixes for sodium interacting with
+ CHARMM>    ! carboxylate oxygens of various CHARMM force fields. It will generate
+ CHARMM>    ! level -1 warnings whenever any of these force fields have not been
+ CHARMM>    ! read prior to the current stream file. Since we don't want to force
+ CHARMM>    ! the user to always read all the force fields, we're suppressing the
+ CHARMM>    ! warnings. The only side effect is that you will have "most severe
+ CHARMM>    ! warning was at level 0" at the end of your output. Also note that
+ CHARMM>    ! the user is responsible for reading the current file last if they
+ CHARMM>    ! want the NBFixes to apply. A more elegant solution would require new
+ CHARMM>    ! features to be added to CHARMM.
+ CHARMM>    ! parallel fix, to avoid duplicated messages in the log
+ CHARMM>    set para
+ Parameter: PARA <- "" <empty>
+  
+ CHARMM>    if ?NUMNODE gt 1 set para node 0
+ RDCMND substituted energy or value "?NUMNODE" to "1"
+ Comparing "1" and "1".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>     
+  
+ CHARMM>    set wrn ?WRNLEV
+ RDCMND substituted energy or value "?WRNLEV" to "5"
+ Parameter: WRN <- "5"
+  
+ CHARMM>    ! Some versions of CHARMM don't seem to initialize wrnlev...
+ CHARMM>    if "@WRN" eq "?WRNLEV" set wrn 5
+ Parameter: WRN -> "5"
+ RDCMND: can not substitute energy "?WRNLEV""
+ Comparing ""5"" and ""?WRNLEV"".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>    set bom ?bomlev
+ RDCMND substituted energy or value "?BOMLEV" to "0"
+ Parameter: BOM <- "0"
+  
+ CHARMM>    WRNLEV -1 @PARA
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    BOMLEV -1 @PARA
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    read para card flex append
+
+          PARAMETER FILE BEING READ FROM UNIT 99
+ RDTITL> * NBFIX BETWEEN CARBOXYLATE AND SODIUM
+ RDTITL> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>    BOMLEV @bom @PARA
+ Parameter: BOM -> "0"
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    WRNLEV @wrn @PARA
+ Parameter: WRN -> "5"
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    return
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>    read rtf card name @charmmtop/top_all36_prot.rtf append flex
+ Parameter: CHARMMTOP -> "/PANFS/PANASAS01/CHEM/RA15808/C41A2/TOPPAR"
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/c41a2/toppar/top_all36_prot.rtf::
+ MAINIO> Residue topology file being read from unit  90.
+ TITLE> *>>>>>>>>CHARMM36 ALL-HYDROGEN TOPOLOGY FILE FOR PROTEINS <<<<<<
+ TITLE> *>>>>> INCLUDES PHI, PSI CROSS TERM MAP (CMAP) CORRECTION <<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>>>>> MAY 2011 <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> * ALL COMMENTS TO THE CHARMM WEB SITE: WWW.CHARMM.ORG
+ TITLE> *             PARAMETER SET DISCUSSION FORUM
+ TITLE> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read rtf card name /panfs/panasas01/chem/ra15808/aadh/data/ra/aadh_topologies.rtf append flex
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/aadh/data/ra/aadh_topologies.rtf::
+ MAINIO> Residue topology file being read from unit  90.
+ TITLE> * RESIDUES AND PATCHES FOR CREATING AADH REACTANT AND PRODUCTS
+ TITLE> * ATOM DEFINITIONS IS TAKEN FROM TOP_ALL36_PROT.RTF
+ TITLE> * PREAMLE IS TAKEN FROM TOP_TTW.INP
+ TITLE> * >>>>>
+ TITLE> * RESI TTW - /DATA/KR/TOP_TTW.INP
+ TITLE> * RESI TTW2 - /DATA/KR/TOP_TTW.INP - I DON'T THINK THIS IS USED SO THIS WON'T BE ADJUSTED.
+ TITLE> * PRES TRPM - /DATA/NEW_MD/TRPM.RTF
+ TITLE> * PRES TTWP - /DATA/KR/TTW_PROD.RTF
+ TITLE> * PRES ASP1/2 - /DATA/KR/TTW_PROD.RTF
+ TITLE> * PRES TTQ_TRP - /DATA/NEW_MD/TTW_TOP.INP
+ TITLE> * THE ORIGINAL PATCHES AND RESIDUES WERE SPECIFIED IN THE CHARM22 FF
+ TITLE> * 23/07/2016 - THE PRODUCT PATCHES WILL HAVE TO CHANGE (TO GET RID OF DELE STATEMENT)
+ TITLE> *               AND TO PRESERVE THE ATOMS LABELLING CHANGES.
+ TITLE> *
+ WARNING from DECODI -- Zero length string being converted to 0
+ RTFRDR> WARNING: Version number is NOT specified.
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read para card name @charmmtop/par_all36_prot_mod.prm append flex
+ Parameter: CHARMMTOP -> "/PANFS/PANASAS01/CHEM/RA15808/C41A2/TOPPAR"
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/c41a2/toppar/par_all36_prot_mod.prm::
+
+          PARAMETER FILE BEING READ FROM UNIT 90
+ TITLE> *>>>> CHARMM36 ALL-HYDROGEN PARAMETER FILE FOR PROTEINS <<<<<<<<<<
+ TITLE> *>>>>> INCLUDES PHI, PSI CROSS TERM MAP (CMAP) CORRECTION <<<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>>>>> JAN. 2016 <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> * ALL COMMENTS TO THE CHARMM WEB SITE: WWW.CHARMM.ORG
+ TITLE> *             PARAMETER SET DISCUSSION FORUM
+ TITLE> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read para card name @datadir/ra/aadh_parameters.prm append flex
+ Parameter: DATADIR -> "/PANFS/PANASAS01/CHEM/RA15808/AADH/DATA"
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/aadh/data/ra/aadh_parameters.prm::
+
+          PARAMETER FILE BEING READ FROM UNIT 90
+ TITLE> * PARAMETERS SPECIFIC TO AADH.  TO BE USED IN CONJUNCTION WITH AADH_TOPOLOGIES.RTF
+ TITLE> * THESE WERE TAKEN FROM EACH SECTION IN /DATA/KR/PAR_TTW.INP
+ TITLE> *   AND ADDITIONALLY FROM /DATA/NEW_MD/PAR_TTW.INP
+ TITLE> * THERE'S NO ANGLE PARAMETERS FOR HA ONLY HA1/2/3 SO CHANGE THE HAS IN THE AADH_TOPOLOGIES
+ TITLE> * ADDED NBFIX
+ TITLE>  
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    read psf card name ../common/2agy_final_min.psf
+ VOPEN> Attempting to open::../common/2agy_final_min.psf::
+ MAINIO> Protein structure file being read from unit  90.
+ PSFRD2> Reading PSF in the expanded format.
+ TITLE>  * 2AGY_C36_STATE0_MIN_WB_MIN NEUTRALIZED WITH POTASSIUM CHLORIDE
+ TITLE>  *  DATE:     8/19/16     12: 6:55      CREATED BY USER: robert_arbon
+ TITLE>  *
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        8   Number of residues   =    33469
+         Number of atoms         =   111861   Number of groups     =    36819
+         Number of bonds         =   111996   Number of angles     =    58795
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    33897   Number of HB donors  =    66564
+         Number of NB exclusions =        0   Total charge =   -0.00000
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read coord card name ../common/2agy-310k.crd
+ VOPEN> Attempting to open::../common/2agy-310k.crd::
+          SPATIAL COORDINATES BEING READ FROM UNIT 90
+ TITLE> * 2AGY, MINIMIZED, NEUTRALIZED AND HEATED
+ TITLE> *  DATE:    10/27/16     17: 0:29      CREATED BY USER: RA15808
+ TITLE> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    ! constraints
+ CHARMM>    shake bonh param sele all end
+ SELRPN> 111861 atoms have been selected out of 111861
+ SHKCOM> SHAKE parameters: TOL =   0.1000D-09 MXITer =    500
+
+          104429 constraints will held by SHAKE.
+  
+ CHARMM>     
+  
+ CHARMM>    ! setup crystal
+ CHARMM>    stream @buildcrystal
+ Parameter: BUILDCRYSTAL -> "../COMMON/BUILD_CRYSTAL.STR"
+ VOPEN> Attempting to open::../common/build_crystal.str::
+ OPNLGU> Unit 99 opened for READONLY access to ../common/build_crystal.str
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * STREAM FILE FOR SETTING UP CUBIC CRYSTAL.
+ RDTITL> SET XDIM 124.181628
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     SET XDIM 124.181628
+ Parameter: XDIM <- "124.181628"
+  
+ CHARMM>     SET YDIM 101.902572
+ Parameter: YDIM <- "101.902572"
+  
+ CHARMM>     SET ZDIM 82.9517187
+ Parameter: ZDIM <- "82.9517187"
+  
+ CHARMM>     ! Added 23/08/2016
+  
+ CHARMM>     calc cutf 60/2
+Evaluating: 60/2
+ Parameter: CUTF <- "30"
+  
+ CHARMM>     
+  
+ CHARMM>     CRYSTAL DEFI ORTHS 124.181628 101.902572 82.9517187 90.0 90.0 90.0
+ Crystal Parameters : Crystal Type = ORTH
+           A     =  124.18163 B    =  101.90257 C     =   82.95172
+           Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+  
+ CHARMM>     CRYSTAL BUILD CUTOFF @CUTF NOPER 0
+ Parameter: CUTF -> "30"
+ XBUILD> Building all transformations with a minimum atom-atom
+         contact distance of less than   30.00 Angstroms.
+
+ Range of Grid Search for Transformation     1 :
+ Lattice Vector A    -2 TO     2
+ Lattice Vector B    -2 TO     2
+ Lattice Vector C    -2 TO     2
+
+
+ The number of transformations generated =    26
+
+
+ Number  Symop   A   B   C   Distance
+
+      1      1  -1  -1  -1     3.4231
+      2      1  -1   0  -1     2.1918
+      3      1  -1   1  -1     5.1108
+      4      1   0  -1  -1     1.7184
+      5      1   0   0  -1     3.0639
+      6      1   0   1  -1     3.5454
+      7      1  -1  -1   0     2.0445
+      8      1  -1   0   0     3.0441
+      9      1  -1   1   0     3.2304
+     10      1   0  -1   0     2.1070
+     11      1   0   1   0     2.1070
+     12      1  -1  -1   1     4.1388
+     13      1  -1   0   1     1.8486
+     14      1  -1   1   1     6.8919
+     15      1   0  -1   1     3.5454
+     16      1   0   0   1     3.0639
+     17      1   0   1   1     1.7184
+     18      1   1   1   1     3.4231
+     19      1   1   0   1     2.1918
+     20      1   1  -1   1     5.1108
+     21      1   1   1   0     2.0445
+     22      1   1   0   0     3.0441
+     23      1   1  -1   0     3.2304
+     24      1   1   1  -1     4.1388
+     25      1   1   0  -1     1.8486
+     26      1   1  -1  -1     6.8919
+                     THERE ARE NO ROTATIONS FOR THIS TRANSFORMATION SET
+    26 Transformations have been processed.
+
+  
+ CHARMM>     IMAGE BYRES SELE SEGID *WAT END
+ SELRPN>  97377 atoms have been selected out of 111861
+ IMAGE CENTERING ON FOR SOME ATOMS
+  
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>    stream @imaging
+ Parameter: IMAGING -> "../COMMON/SET_IMAGES.STR"
+ VOPEN> Attempting to open::../common/set_images.str::
+ OPNLGU> Unit 99 opened for READONLY access to ../common/set_images.str
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> *STREAM FILE FOR THE IMAGE CENTERING.  THIS ADDS TO THE BUILD_CRYSTAL.STR FILE.
+ RDTITL> IMAGE BYSEG SELE SEGID AL* .OR. SEGID BT* END
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>    image byseg sele segid AL* .or. segid BT* end ! protein
+ SELRPN>  14420 atoms have been selected out of 111861
+ IMAGE CENTERING ON FOR SOME ATOMS
+  
+ CHARMM>    image byres sele .not. (segid AL* .or. segid BT* .or. segid *WAT) end ! ions
+ SELRPN>     64 atoms have been selected out of 111861
+ IMAGE CENTERING ON FOR SOME ATOMS
+  
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>    stream @nonbondspec
+ Parameter: NONBONDSPEC -> "../COMMON/NON_BOND_SPEC.STR"
+ VOPEN> Attempting to open::../common/non_bond_spec.str::
+ OPNLGU> Unit 99 opened for READONLY access to ../common/non_bond_spec.str
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * STREAM FILE FOR NON BONDED SPECIFICATION.
+ RDTITL> SET FTX 128
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>    set ftx 128
+ Parameter: FTX <- "128"
+  
+ CHARMM>    set fty 108
+ Parameter: FTY <- "108"
+  
+ CHARMM>    set ftz 90
+ Parameter: FTZ <- "90"
+  
+ CHARMM>     
+  
+ CHARMM>    NBONDED inbfrq -1 imgfrq -1 nbxmod 5 -                                              ! C36 DEFAULTS
+ CHARMM>            atom cdiel fshift -                                                         ! use atom based electrostatics, C36 DEFAULTS
+ CHARMM>            vatom vdistance vfswitch -                                                  ! C36 DEFAULTS
+ CHARMM>            elec ewald pmew fftx @ftx ffty @fty fftz @ftz kappa .34 spline order 6 -    ! PME SUMMATION
+ CHARMM>            cutnb 14.0 ctofnb 12.0 ctonnb 10.0 -                                        ! C36 DEFAULTS
+ CHARMM>            cutim 14.0 -                                                                ! must be same as cutnb
+ CHARMM>            eps 1.0 e14fac 1.0 wmin 1.5                                                 ! C36 DEFAULTS
+ Parameter: FTX -> "128"
+ Parameter: FTY -> "108"
+ Parameter: FTZ -> "90"
+
+ SELECTED IMAGES ATOMS BEING CENTERED ABOUT  0.000000  0.000000  0.000000
+ RESIDUE 2987 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 3061 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE 3118 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE 3483 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE 5533 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE 5787 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 6813 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE 7240 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 7984 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE 8779 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE10343 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE10478 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE11020 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE11910 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE11947 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE13728 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE14237 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE14610 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE15100 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE17832 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE18182 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE18401 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE18968 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE20013 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE20603 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE24292 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE24762 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE25462 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE25976 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE27332 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE29720 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE30381 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE30471 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE30788 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE31522 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE32027 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE32310 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE33130 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE33222 OPERATED ON BY TRANSFORMATION C011
+
+ <MKIMAT2>: updating the image atom lists and remapping
+ Transformation   Atoms  Groups  Residues  Min-Distance
+    1  C001 has     114      38      38        0.02
+    2  C002 has    1614     540     540        0.00
+    3  C003 has     141      47      47        2.84
+    4  C004 has    1915     641     641        0.00
+    5  C005 has   19324    6446    6439        0.00
+    6  C006 has    2020     674     674        0.00
+    7  C007 has    1252     418     418        0.00
+    8  C008 has   12808    4271    4265        0.00
+    9  C009 has    1347     449     449        0.00
+   10  C010 has   15676    5228    5225        0.00
+   12  C012 has     141      47      47        2.42
+   13  C013 has    1628     546     546        0.00
+   14  C014 has     117      39      39        1.14
+ Total of    169958 atoms and     56203 groups and     52837 residues were included
+
+ <PME> Total heap storage needed =     7080793
+ Fill Ewald table: Number of points=     10000 EWXmax=    4.250000
+ fill erfc table: linear inter has rms error = 0.979220D-08 maximum error = 0.218740D-07
+ fill erfc table: cubic spline has rms error = 0.360331D-11 maximum error = 0.108438D-10
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VFSWIt  
+     BYGRoup  NOEXtnd  EWALd   
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 10.000 CTOFNB = 12.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ PME EWALD OPTIONS: KAPPA  =  0.340  QCOR =  0.000  Bspline order = 6
+ FFTX= 128  FFTY= 108  FFTZ=  90
+                Using Pub FFT
+                Real-to-Complex FFT
+ There are        0 atom  pairs and        0 atom  exclusions.
+ There are        0 group pairs and        0 group exclusions.
+ <MAKINB> with mode   5 found 138336 exclusions and  37937 interactions(1-4)
+ <MAKGRP> found  12527 group exclusions.
+ <MAKGRP> found      0 image group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR 32143445 ATOM PAIRS AND        0 GROUP PAIRS
+ == PRIMARY == SPACE FOR 48215188 ATOM PAIRS AND        0 GROUP PAIRS
+ == PRIMARY == SPACE FOR 72322800 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+ 58203183 ATOM PAIRS WERE FOUND FOR ATOM LIST
+  3419228 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+ SPACE FOR 30239316 ATOM PAIRS AND        0 GROUP PAIRS
+
+ Image nonbond list generation found:
+ 10134822 ATOM PAIRS WERE FOUND FOR ATOM LIST
+        0 ATOM PAIRS WERE FOUND FOR ATOM SELF LIST
+   827279 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+  
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>     
+  
+ CHARMM>    faster on
+ MISCOM> FAST option: EXPANDED (limited fast routines)
+  
+ CHARMM>     
+  
+ CHARMM>    energy omm
+
+ SELECTED IMAGES ATOMS BEING CENTERED ABOUT  0.000000  0.000000  0.000000
+
+ <MKIMAT2>: updating the image atom lists and remapping
+ Transformation   Atoms  Groups  Residues  Min-Distance
+    1  C001 has     114      38      38        0.02
+    2  C002 has    1614     540     540        0.00
+    3  C003 has     141      47      47        2.84
+    4  C004 has    1915     641     641        0.00
+    5  C005 has   19324    6446    6439        0.00
+    6  C006 has    2020     674     674        0.00
+    7  C007 has    1252     418     418        0.00
+    8  C008 has   12808    4271    4265        0.00
+    9  C009 has    1347     449     449        0.00
+   10  C010 has   15676    5228    5225        0.00
+   12  C012 has     141      47      47        2.42
+   13  C013 has    1628     546     546        0.00
+   14  C014 has     117      39      39        1.14
+ Total of    169958 atoms and     56203 groups and     52837 residues were included
+
+ <MAKGRP> found      0 image group exclusions.
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VFSWIt  
+     BYGRoup  NOEXtnd  EWALd   
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 10.000 CTOFNB = 12.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ PME EWALD OPTIONS: KAPPA  =  0.340  QCOR =  0.000  Bspline order = 6
+ FFTX= 128  FFTY= 108  FFTZ=  90
+                Using Pub FFT
+                Real-to-Complex FFT
+ There are 58203183 atom  pairs and   176273 atom  exclusions.
+ There are        0 group pairs and    12527 group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR 72322800 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+ 58203183 ATOM PAIRS WERE FOUND FOR ATOM LIST
+  3419228 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+ SPACE FOR 30239316 ATOM PAIRS AND        0 GROUP PAIRS
+
+ Image nonbond list generation found:
+ 10134822 ATOM PAIRS WERE FOUND FOR ATOM LIST
+        0 ATOM PAIRS WERE FOUND FOR ATOM SELF LIST
+   827279 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+get_PlatformDefaults> Finding default platform values
+get_PlatformDefaults> Default values found: platform=CUDA precision=mixed deviceid=0
+Setup_OpenMM: Initializing OpenMM context
+CHARMM> Using switching functions for vdW interactions and OpenMM PME/RxnFld for electrostatics
+CHARMM> Using OpenMM nb routines.
+CHARMM> configuring OpenMM PME with
+        alpha     0.3400
+        fft  128  108   90
+
+NBFIxes in effect, using CustomNonbondedForce
+CHARMM> OpenMM switching function selection.
+CHARMM> Electrostatic options: switch=F fswitch=F fshift=F PME/Ewald=T RxnFld=F
+CHARMM> van der Waals options: vswitch=F vfswitch=T OpenMM vdW switch=F
+ Available OpenMM platform 0: Reference 
+ Available OpenMM platform 1: CPU       
+ Available OpenMM platform 2: CUDA      
+ Available OpenMM platform 3: OpenCL    
+Init_context: Using OpenMM platform CUDA      
+       CudaDeviceIndex = 0
+       CudaCompiler = /usr/local/cuda/bin/nvcc
+       CudaPrecision = mixed
+ENER ENR:  Eval#     ENERgy      Delta-E         GRMS
+ENER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+ENER CROSS:           CMAPs        PMF1D        PMF2D        PRIMO
+ENER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+ ----------       ---------    ---------    ---------    ---------    ---------
+ENER>        0-340133.54683      0.00000     14.11365
+ENER INTERN>     3854.87184   7217.17608      0.00000   9566.83869    491.88070
+ENER CROSS>      -466.95152      0.00000      0.00000      0.00000
+ENER EXTERN>  -360797.36261      0.00000      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+ CHARMM>     
+  
+ CHARMM>    coor copy comp
+ SELECTED COORDINATES COPIED TO THE COMPARISON SET.
+
+  
+ CHARMM>     
+  
+ CHARMM>    ioform extended
+ MISCOM> Expanded I/O format is used.
+  
+ CHARMM>    set nsteps 1000
+ Parameter: NSTEPS <- "1000"
+  
+ CHARMM>    set nwrite 10
+ Parameter: NWRITE <- "10"
+  
+ CHARMM>    set gamma 1
+ Parameter: GAMMA <- "1"
+  
+ CHARMM>     
+  
+ CHARMM>    shake fast bonh tol 1.0e-8 para
+ SHKCOM> SHAKE parameters: TOL =   0.1000D-07 MXITer =    500
+
+          104429 constraints will held by SHAKE.
+ FSSHKINI: Fast shake initialized with    7052 bond contraints and    32459 water constraints (3-center).
+ FSSHKINI:     7052 constraints are in groups of:    32459
+ FSSHKINI:   2728 2-body (CH),   1346 3-body(CH2),    544 4-body(CH3),      0 >4-body. 
+ FSSHKINI: Fast shake initialized with    7052 bond contraints and    32459 water constraints (3-center).
+ FSSHKINI:     7052 constraints are in groups of:    32459
+ FSSHKINI:   2728 2-body (CH),   1346 3-body(CH2),    544 4-body(CH3),      0 >4-body. 
+  
+ CHARMM>     
+  
+ CHARMM>    set echeck = echeck -1
+ Parameter: ECHECK <- "ECHECK -1"
+  
+ CHARMM>     
+  
+ CHARMM>    !open read card unit 10 name ../common/2agy-310k.res
+ CHARMM>    !open write card unit 11 name  2agy-310k-gamma-@gamma.res
+ CHARMM>    open write card unit 10 name  2agy-310k-gamma-@gamma.res
+ Parameter: GAMMA -> "1"
+ VOPEN> Attempting to open::2agy-310k-gamma-1.res::
+ OPNLGU> Unit 10 opened for WRITE access to 2agy-310k-gamma-1.res
+  
+ CHARMM>     
+  
+ CHARMM>    dynamics leap restart timestep 0.002 -
+ CHARMM>         nstep @nsteps nprint @nwrite iprfrq @nwrite isvfrq @nsteps iunwri -1 iunread 10 -
+ CHARMM>         firstt 310 finalt 310  -
+ CHARMM>         ichecw 0 ihtfrq 0 ieqfrq 0 -
+ CHARMM>         iasors 1 iasvel 1 iscvel 0  -
+ CHARMM>         ilbfrq 0 inbfrq -1 imgfrq -1 @echeck bycb -
+ CHARMM>         ntrfq 100 -
+ CHARMM>         omm langevin gamma @gamma
+ Parameter: NSTEPS -> "1000"
+ Parameter: NWRITE -> "10"
+ Parameter: NWRITE -> "10"
+ Parameter: NSTEPS -> "1000"
+ Parameter: ECHECK -> "ECHECK -1"
+ Parameter: GAMMA -> "1"
+  IUNREA = 10         IUNWRI = -1          IUNOS = -1
+  IUNCRD = -1         IUNVEL = -1          KUNIT = -1
+ TITLE>  * FINAL HEATING USING SERIAL CODE
+ TITLE>  *  DATE:    11/ 8/16     23:58:55      CREATED BY USER: ra15808
+ TITLE>  *
+ READYN> dynamics restart file was read. Current step=  680000
+ NSTEP  =500000  JHSTRT =     0
+
+ SELECTED IMAGES ATOMS BEING CENTERED ABOUT  0.000000  0.000000  0.000000
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VFSWIt  
+     BYCB     NOEXtnd  EWALd   
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 10.000 CTOFNB = 12.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ PME EWALD OPTIONS: KAPPA  =  0.340  QCOR =  0.000  Bspline order = 6
+ FFTX= 128  FFTY= 108  FFTZ=  90
+                Using Pub FFT
+                Real-to-Complex FFT
+ There are 58203183 atom  pairs and   176273 atom  exclusions.
+ There are        0 group pairs and    12527 group exclusions.
+Using Image CUBE search
+Using Image CUBE search
+ PRNHBD: CUToff Hydrogen Bond  distance =    0.5000   Angle =   90.0000
+         CuT switching ON HB dist. =     3.5000  OFf HB dist. =    4.0000
+         CuT switching ON Hb Angle =    50.0000  OFf Hb Angle =   70.0000
+         ACCEptor antecedents included
+         All hydrogen bonds for each hydrogen will be found
+         Hydrogen bonds between excluded atoms will be kept
+
+ DCNTRL> Langevin integration requested.
+ DCNTRL>  OpenMM interface requested for energy and dynamics calculations.
+ DCNTRL>  Constant temperature w/ OpenMM using Langevin heatbath requested.
+ DCNTRL>  Reference heatbath temperature is   310.000K
+ DCNTRL>  Using friction coefficient value of     1.000  ps^-1
+   NSTEP =     1000    NSAVC =     1000    NSAVV =       10
+  ISCALE =        0   ISCVEL =        0   IASORS =        1
+  IASVEL =        1   ICHECW =        0   NTRFRQ =      100
+  IHTFRQ =        0   IEQFRQ =        0   NPRINT =       10
+  INBFRQ =       -1   IHBFRQ =        0   IPRFRQ =     1000
+  ILBFRQ =        0   IMGFRQ =       -1
+  ISVFRQ =     1000   NCYCLE =     1000    NSNOS =       10
+  FIRSTT =   310.000  TEMINC =     5.000  TSTRUC =  -999.000
+  FINALT =   310.000  TWINDH =    10.000  TWINDL =   -10.000
+
+  TIME STEP =  4.09097E-02 AKMA       2.00000E-03 PS
+
+  RANDOM NUM. GEN. SEED(S) = 308008652 2124832175 10314007 1669500619
+
+           SHAKE TOLERANCE =     0.10000E-07
+ NUMBER OF DEGREES OF FREEDOM = 231154
+OpenMM integrator options changed
+Destroying OpenMM context
+Setup_OpenMM: Initializing OpenMM context
+CHARMM> Using switching functions for vdW interactions and OpenMM PME/RxnFld for electrostatics
+CHARMM> Using OpenMM nb routines.
+CHARMM> configuring OpenMM PME with
+        alpha     0.3400
+        fft  128  108   90
+
+NBFIxes in effect, using CustomNonbondedForce
+CHARMM> OpenMM switching function selection.
+CHARMM> Electrostatic options: switch=F fswitch=F fshift=F PME/Ewald=T RxnFld=F
+CHARMM> van der Waals options: vswitch=F vfswitch=T OpenMM vdW switch=F
+ Available OpenMM platform 0: Reference 
+ Available OpenMM platform 1: CPU       
+ Available OpenMM platform 2: CUDA      
+ Available OpenMM platform 3: OpenCL    
+Init_context: Using OpenMM platform CUDA      
+       CudaDeviceIndex = 0
+       CudaCompiler = /usr/local/cuda/bin/nvcc
+       CudaPrecision = mixed
+DYNA DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+DYNA PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+DYNA INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+DYNA CROSS:           CMAPs        PMF1D        PMF2D        PRIMO
+DYNA EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+DYNA PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>        0   1360.00000-267170.22713  70923.86331-338094.09045    308.80289
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3908.85908   7431.64312      0.00000   9504.35287    522.16329
+DYNA CROSS>      -498.60146      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358962.50737      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>       10   1360.02000-267214.58883  71261.66483-338476.25367    310.27368
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3874.03243   7439.03708      0.00000   9541.69396    510.92421
+DYNA CROSS>      -510.71991      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359331.22172      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>       20   1360.04000-267182.29282  70972.32588-338154.61870    309.01390
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3935.29685   7365.48149      0.00000   9595.28469    537.10347
+DYNA CROSS>      -506.61542      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359081.16969      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>       30   1360.06000-267103.05543  71313.43347-338416.48890    310.49908
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3897.52673   7492.32187      0.00000   9524.07452    530.25684
+DYNA CROSS>      -509.61841      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359351.04980      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>       40   1360.08000-267119.16780  71338.62953-338457.79732    310.60878
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3922.96382   7396.67545      0.00000   9488.00330    516.07983
+DYNA CROSS>      -500.83401      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359280.68605      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>       50   1360.10000-267185.85614  70973.76009-338159.61623    309.02014
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3970.10042   7529.70791      0.00000   9505.94811    532.30273
+DYNA CROSS>      -491.42181      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359206.25388      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>       60   1360.12000-267289.09543  71045.77640-338334.87183    309.33370
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3982.65707   7403.08183      0.00000   9518.50996    528.68621
+DYNA CROSS>      -488.19350      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359279.61402      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>       70   1360.14000-267306.93234  70906.93240-338213.86474    308.72917
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4034.53387   7443.06558      0.00000   9536.18524    514.87224
+DYNA CROSS>      -469.84212      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359272.67996      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>       80   1360.16000-267267.00510  70736.16715-338003.17226    307.98566
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3968.50968   7433.16290      0.00000   9556.14180    524.04953
+DYNA CROSS>      -473.88184      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359011.15322      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>       90   1360.18000-267325.84624  71047.59412-338373.44036    309.34161
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3942.97606   7476.34098      0.00000   9533.41125    484.77786
+DYNA CROSS>      -480.09753      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359330.84962      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      100   1360.20000-267214.85568  70874.18373-338089.03941    308.58658
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3936.42240   7476.48863      0.00000   9557.03922    516.00305
+DYNA CROSS>      -472.01361      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359102.97921      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      110   1360.22000-267182.46705  70992.87141-338175.33846    309.10335
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3943.21639   7495.21401      0.00000   9535.77380    539.17371
+DYNA CROSS>      -477.09011      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359211.62631      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      120   1360.24000-267211.53757  70884.22393-338095.76149    308.63030
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3949.42135   7467.35429      0.00000   9507.69425    537.96952
+DYNA CROSS>      -460.14321      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359098.05878      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      130   1360.26000-267214.18525  70939.26890-338153.45415    308.86997
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3856.74265   7485.59285      0.00000   9481.29965    499.55909
+DYNA CROSS>      -484.49409      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358992.15442      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      140   1360.28000-267046.56814  71177.07407-338223.64221    309.90537
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3906.84556   7461.09785      0.00000   9513.75744    531.23581
+DYNA CROSS>      -495.56441      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359141.01577      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      150   1360.30000-267067.71812  71130.41045-338198.12857    309.70220
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3860.17158   7506.44142      0.00000   9493.98214    524.50341
+DYNA CROSS>      -496.31919      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359086.90837      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      160   1360.32000-267052.72164  70963.82265-338016.54429    308.97687
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3965.59986   7521.95300      0.00000   9565.62674    512.16851
+DYNA CROSS>      -488.59894      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359093.29328      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      170   1360.34000-267104.09780  70712.46470-337816.56251    307.88246
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3973.23542   7442.23692      0.00000   9526.35327    520.61069
+DYNA CROSS>      -454.33678      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358824.66174      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      180   1360.36000-267077.45885  71343.17992-338420.63877    310.62860
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3884.75013   7531.72884      0.00000   9524.43576    470.23474
+DYNA CROSS>      -455.40522      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359376.38395      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      190   1360.38000-267017.22256  71151.88628-338169.10884    309.79570
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4030.05497   7517.09181      0.00000   9503.20854    523.61629
+DYNA CROSS>      -464.87911      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359278.20069      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      200   1360.40000-266948.43152  71253.63825-338202.06977    310.23873
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3936.91689   7591.94664      0.00000   9513.22748    483.96364
+DYNA CROSS>      -458.91587      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359269.20849      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      210   1360.42000-266958.22731  71076.57188-338034.79919    309.46778
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4014.83129   7533.42867      0.00000   9530.42941    486.42328
+DYNA CROSS>      -455.09472      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359144.81737      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      220   1360.44000-267001.25091  71438.59191-338439.84281    311.04402
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3948.73546   7398.88180      0.00000   9596.15320    509.40773
+DYNA CROSS>      -457.19925      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359435.82253      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      230   1360.46000-267042.52949  70997.70656-338040.23605    309.12440
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3902.80283   7419.31214      0.00000   9536.50440    498.93166
+DYNA CROSS>      -468.43673      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358929.35045      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      240   1360.48000-267027.91177  70982.71715-338010.62891    309.05914
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3972.84222   7477.57750      0.00000   9586.56936    514.25404
+DYNA CROSS>      -467.88437      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359093.98757      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      250   1360.50000-267093.51379  70870.91518-337964.42897    308.57235
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3937.29435   7451.49824      0.00000   9545.17030    532.61443
+DYNA CROSS>      -458.09580      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358972.91008      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      260   1360.52000-267133.17270  71210.85828-338344.03098    310.05247
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3964.48565   7362.72305      0.00000   9545.80468    500.08444
+DYNA CROSS>      -473.70843      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359243.42097      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      270   1360.54000-267109.64903  71175.91419-338285.56323    309.90032
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3989.85686   7289.41975      0.00000   9526.58739    502.66576
+DYNA CROSS>      -495.62615      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359098.46580      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      280   1360.56000-267071.67491  71056.93313-338128.60804    309.38228
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3923.08798   7415.68314      0.00000   9561.11451    502.39954
+DYNA CROSS>      -494.22483      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359036.66815      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      290   1360.58000-267058.44812  71005.11578-338063.56389    309.15666
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3902.38925   7466.61876      0.00000   9508.02561    512.45599
+DYNA CROSS>      -483.02441      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358970.02980      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      300   1360.60000-267052.02093  71055.27914-338107.30007    309.37507
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3968.69273   7376.05661      0.00000   9546.60633    528.30669
+DYNA CROSS>      -488.80288      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359038.15994      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      310   1360.62000-267087.62193  70941.04857-338028.67050    308.87771
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3890.38023   7561.60641      0.00000   9474.90895    526.11192
+DYNA CROSS>      -463.77758      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359017.89987      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      320   1360.64000-267040.53683  71106.04399-338146.58082    309.59610
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4004.76158   7477.51133      0.00000   9549.51937    501.10471
+DYNA CROSS>      -488.12024      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359191.35686      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      330   1360.66000-267005.78172  71210.05182-338215.83354    310.04896
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3945.93926   7485.79926      0.00000   9509.66864    514.68863
+DYNA CROSS>      -478.94037      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359192.98884      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      340   1360.68000-267033.88084  71280.11301-338313.99385    310.35400
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3936.64546   7362.82170      0.00000   9513.34755    517.66763
+DYNA CROSS>      -481.55322      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359162.92351      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      350   1360.70000-266986.72324  70742.19220-337728.91544    308.01189
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3948.09182   7590.25313      0.00000   9520.61979    534.14994
+DYNA CROSS>      -486.99366      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358835.03609      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      360   1360.72000-266984.85076  71072.85719-338057.70796    309.45161
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3954.14612   7436.41434      0.00000   9511.28766    520.88201
+DYNA CROSS>      -475.04084      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359005.39708      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      370   1360.74000-266914.89059  71070.27598-337985.16657    309.44037
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3977.45345   7520.90504      0.00000   9538.48905    547.05664
+DYNA CROSS>      -487.06948      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359082.00072      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      380   1360.76000-266929.28385  70993.64801-337922.93186    309.10673
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4040.87217   7460.76962      0.00000   9523.12056    544.43945
+DYNA CROSS>      -484.16466      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359007.96922      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      390   1360.78000-266944.17554  70865.23403-337809.40957    308.54762
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3865.97889   7665.40467      0.00000   9472.62810    519.39614
+DYNA CROSS>      -484.56277      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358848.25537      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      400   1360.80000-266889.03056  71040.57266-337929.60322    309.31104
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4008.36973   7538.17524      0.00000   9522.98665    498.85521
+DYNA CROSS>      -476.25733      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359021.73338      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      410   1360.82000-266840.24685  70848.87711-337689.12396    308.47640
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4013.23540   7549.76383      0.00000   9528.08010    525.86465
+DYNA CROSS>      -470.19780      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358835.87047      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      420   1360.84000-266858.32856  71295.83883-338154.16738    310.42247
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3995.44130   7396.73569      0.00000   9540.64502    508.32950
+DYNA CROSS>      -476.35948      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359118.95937      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      430   1360.86000-266842.01520  71266.37826-338108.39346    310.29420
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3898.15940   7422.77100      0.00000   9534.96020    515.16523
+DYNA CROSS>      -483.93050      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358995.51840      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      440   1360.88000-266931.88508  71062.50685-337994.39193    309.40654
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3983.38982   7537.79200      0.00000   9516.80264    490.36172
+DYNA CROSS>      -468.02399      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359054.71421      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      450   1360.90000-266841.49621  71150.74228-337992.23849    309.79072
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3916.09004   7480.20723      0.00000   9508.11110    517.58301
+DYNA CROSS>      -478.72134      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358935.50908      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      460   1360.92000-266840.86841  71059.42853-337900.29695    309.39314
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3958.37268   7422.66128      0.00000   9559.00047    505.25784
+DYNA CROSS>      -475.85075      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358869.73775      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      470   1360.94000-266886.31191  71168.90750-338055.21941    309.86981
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3953.66316   7420.88797      0.00000   9540.21469    524.28106
+DYNA CROSS>      -476.26505      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359018.00253      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      480   1360.96000-266849.01892  71199.86676-338048.88568    310.00461
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3929.62511   7500.45189      0.00000   9510.35482    517.06546
+DYNA CROSS>      -494.95328      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359011.42973      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      490   1360.98000-266894.00816  71105.56056-337999.56872    309.59400
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4020.54770   7460.09863      0.00000   9510.20737    523.92940
+DYNA CROSS>      -490.21686      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359024.13422      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      500   1361.00000-267021.87368  71156.62508-338178.49876    309.81634
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3958.61123   7459.37415      0.00000   9526.54769    508.94423
+DYNA CROSS>      -490.10948      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359141.86808      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      510   1361.02000-267083.51306  71098.61854-338182.13160    309.56377
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3979.96978   7444.65605      0.00000   9513.34191    514.07552
+DYNA CROSS>      -483.06627      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359151.10951      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      520   1361.04000-266987.26952  70886.62075-337873.89027    308.64073
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3938.80517   7556.15009      0.00000   9498.95423    516.12399
+DYNA CROSS>      -475.75388      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358908.17081      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      530   1361.06000-266905.64272  71069.58800-337975.23072    309.43738
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3927.86827   7369.02045      0.00000   9554.29550    526.45519
+DYNA CROSS>      -477.75873      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358875.11303      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      540   1361.08000-266814.82515  71342.23086-338157.05601    310.62446
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3900.07796   7397.01491      0.00000   9485.33706    512.65004
+DYNA CROSS>      -474.14124      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358977.99529      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      550   1361.10000-266814.08068  71360.49425-338174.57493    310.70398
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3988.09126   7431.26487      0.00000   9525.35680    525.62529
+DYNA CROSS>      -467.64460      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359177.26945      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      560   1361.12000-266909.20390  71117.43645-338026.64035    309.64571
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3933.15372   7509.07536      0.00000   9510.42232    520.81800
+DYNA CROSS>      -479.52008      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359020.58997      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      570   1361.14000-266884.38637  71503.00298-338387.38936    311.32447
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3977.87952   7414.44514      0.00000   9523.64788    542.16911
+DYNA CROSS>      -467.62041      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359377.90993      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      580   1361.16000-266852.81775  71360.13773-338212.95548    310.70243
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4008.90201   7410.24645      0.00000   9567.49039    516.57456
+DYNA CROSS>      -485.45332      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359230.71591      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      590   1361.18000-266828.85765  71102.21432-337931.07198    309.57943
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4031.32377   7458.93467      0.00000   9514.94327    538.51613
+DYNA CROSS>      -459.30929      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359015.48169      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      600   1361.20000-266909.51785  71428.72913-338338.24698    311.00108
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4023.51928   7419.20953      0.00000   9520.32366    534.62076
+DYNA CROSS>      -447.41779      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359388.50264      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      610   1361.22000-266928.69899  71165.84680-338094.54579    309.85649
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3912.30235   7538.51362      0.00000   9506.94986    546.95566
+DYNA CROSS>      -479.84023      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359119.42812      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      620   1361.24000-266903.64724  71223.57968-338127.22691    310.10786
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3908.05581   7429.20079      0.00000   9550.84978    523.08129
+DYNA CROSS>      -461.77415      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359076.64096      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      630   1361.26000-266896.31348  71300.84331-338197.15679    310.44426
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3967.40593   7438.30419      0.00000   9542.87366    516.62725
+DYNA CROSS>      -473.41153      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359188.95623      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      640   1361.28000-266829.25419  71171.35709-338000.61128    309.88048
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3981.44821   7435.32513      0.00000   9502.80799    511.14581
+DYNA CROSS>      -478.86720      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358952.47157      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      650   1361.30000-266803.06342  70866.77447-337669.83788    308.55432
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3903.79992   7437.97121      0.00000   9538.82429    546.00760
+DYNA CROSS>      -479.67993      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358616.76165      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      660   1361.32000-266740.08623  71213.04262-337953.12885    310.06198
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3932.94978   7372.38761      0.00000   9508.48217    529.75853
+DYNA CROSS>      -461.96521      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358834.74251      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      670   1361.34000-266749.53576  71200.66469-337950.20044    310.00808
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3965.73741   7467.22265      0.00000   9561.21902    518.99311
+DYNA CROSS>      -482.57350      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358980.79969      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      680   1361.36000-266703.01250  71169.69637-337872.70886    309.87325
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4142.19147   7364.68129      0.00000   9543.94029    524.63551
+DYNA CROSS>      -476.72164      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358971.43682      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      690   1361.38000-266655.32011  71237.43707-337892.75717    310.16819
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3999.92743   7391.73572      0.00000   9530.60673    524.43857
+DYNA CROSS>      -479.26795      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358860.19714      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      700   1361.40000-266664.05430  71187.16794-337851.22223    309.94932
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3991.23781   7463.59716      0.00000   9544.20823    531.45318
+DYNA CROSS>      -461.55080      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358920.16758      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      710   1361.42000-266746.37599  71308.74661-338055.12260    310.47867
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3987.09662   7591.48328      0.00000   9508.70936    517.76083
+DYNA CROSS>      -483.58782      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359176.58418      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      720   1361.44000-266742.39791  71229.75200-337972.14991    310.13473
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4032.25038   7438.00642      0.00000   9561.11744    549.27141
+DYNA CROSS>      -499.24214      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359053.55438      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      730   1361.46000-266668.14258  71185.60759-337853.75017    309.94253
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3991.64633   7455.70584      0.00000   9563.27978    540.30004
+DYNA CROSS>      -491.17361      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358913.50827      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      740   1361.48000-266684.69508  71439.90849-338124.60358    311.04975
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3951.69005   7432.38746      0.00000   9561.40809    519.12559
+DYNA CROSS>      -483.88292      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359105.33202      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      750   1361.50000-266619.61075  71338.51615-337958.12690    310.60829
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3959.00464   7450.02224      0.00000   9530.70634    515.07697
+DYNA CROSS>      -470.82491      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358942.11177      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      760   1361.52000-266702.37215  71211.24485-337913.61701    310.05415
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3925.21496   7497.83131      0.00000   9527.96025    522.67590
+DYNA CROSS>      -484.19348      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358903.10703      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      770   1361.54000-266739.12762  71289.70587-338028.83349    310.39577
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3916.42350   7431.13577      0.00000   9555.58790    550.49514
+DYNA CROSS>      -462.10966      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359020.36562      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      780   1361.56000-266871.39957  70946.39234-337817.79191    308.90098
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4008.64401   7486.37551      0.00000   9507.07804    507.39685
+DYNA CROSS>      -471.06344      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358856.22393      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      790   1361.58000-266829.54040  71258.98999-338088.53038    310.26203
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3931.77304   7456.03988      0.00000   9565.15315    543.41013
+DYNA CROSS>      -459.24839      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359125.65825      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      800   1361.60000-266832.64287  71214.50620-338047.14907    310.06835
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4046.85225   7508.90881      0.00000   9520.30278    519.92113
+DYNA CROSS>      -449.87621      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359193.25841      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      810   1361.62000-266808.00830  71120.59427-337928.60256    309.65946
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4041.23306   7476.94582      0.00000   9487.51015    532.84646
+DYNA CROSS>      -455.65433      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359011.48394      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      820   1361.64000-266832.62327  71001.77197-337834.39524    309.14210
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3983.53278   7394.71404      0.00000   9513.36589    519.63252
+DYNA CROSS>      -456.40009      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358789.24059      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      830   1361.66000-266972.74819  71365.78320-338338.53139    310.72701
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4072.96940   7369.21890      0.00000   9490.74525    549.57062
+DYNA CROSS>      -480.34391      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359340.69176      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      840   1361.68000-266909.53511  71128.98902-338038.52413    309.69601
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3934.88214   7604.81900      0.00000   9514.48067    512.52157
+DYNA CROSS>      -484.08917      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359121.13847      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      850   1361.70000-266865.54711  70971.63115-337837.17827    309.01087
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3955.23440   7547.04940      0.00000   9524.93005    539.88217
+DYNA CROSS>      -475.32407      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358928.94994      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      860   1361.72000-266784.37484  71110.64268-337895.01752    309.61613
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4033.76406   7501.24033      0.00000   9553.16327    507.22810
+DYNA CROSS>      -459.49714      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359030.91728      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      870   1361.74000-266864.55940  71146.37462-338010.93402    309.77170
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3984.09297   7470.94315      0.00000   9518.23660    522.94147
+DYNA CROSS>      -460.44518      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359046.70407      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      880   1361.76000-266832.30674  71067.23067-337899.53741    309.42711
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4005.00375   7624.41118      0.00000   9493.45782    520.16999
+DYNA CROSS>      -463.48358      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359079.09817      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      890   1361.78000-266827.17830  71314.39112-338141.56942    310.50325
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3959.24185   7497.60535      0.00000   9539.65940    512.46989
+DYNA CROSS>      -487.66398      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359162.88250      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      900   1361.80000-266820.72431  71067.31858-337888.04289    309.42749
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3997.03306   7571.76409      0.00000   9532.56823    537.61284
+DYNA CROSS>      -481.16864      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359045.85174      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      910   1361.82000-266827.00692  71069.99800-337897.00492    309.43916
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3983.42266   7535.08102      0.00000   9523.24316    534.84945
+DYNA CROSS>      -475.36435      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358998.23725      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      920   1361.84000-266766.94214  71361.59730-338128.53944    310.70879
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3956.79150   7465.89139      0.00000   9508.73625    550.46077
+DYNA CROSS>      -479.63396      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359130.78607      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      930   1361.86000-266749.58336  71077.37063-337826.95398    309.47126
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4038.38645   7434.43528      0.00000   9484.87673    496.32989
+DYNA CROSS>      -464.74652      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358816.23666      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      940   1361.88000-266727.13067  71038.38499-337765.51565    309.30152
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3957.89643   7455.90993      0.00000   9516.91216    512.05957
+DYNA CROSS>      -468.97782      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358739.31760      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      950   1361.90000-266703.40381  71323.16209-338026.56590    310.54144
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4009.46453   7429.20789      0.00000   9546.95586    522.49106
+DYNA CROSS>      -486.98597      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359047.69972      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      960   1361.92000-266684.25423  71007.06497-337691.31920    309.16515
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3991.07101   7572.45405      0.00000   9530.05205    550.82792
+DYNA CROSS>      -488.07880      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358847.64536      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      970   1361.94000-266661.24447  71427.41556-338088.66003    310.99536
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3977.41282   7485.94052      0.00000   9513.49579    538.29953
+DYNA CROSS>      -494.83512      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359108.97364      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      980   1361.96000-266729.34771  71294.02390-338023.37161    310.41457
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3973.69105   7523.12496      0.00000   9507.54911    549.06752
+DYNA CROSS>      -490.61404      0.00000      0.00000      0.00000
+DYNA EXTERN>  -359086.19090      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      990   1361.98000-266716.21825  70962.44006-337678.65830    308.97085
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4043.71890   7470.55925      0.00000   9515.50761    531.47210
+DYNA CROSS>      -486.41436      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358753.50248      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>     1000   1362.00000-266694.83143  71051.13433-337745.96576    309.35703
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3967.77328   7544.96425      0.00000   9565.06728    556.11711
+DYNA CROSS>      -493.84858      0.00000      0.00000      0.00000
+DYNA EXTERN>  -358886.03934      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 1000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER CROSS:           CMAPs        PMF1D        PMF2D        PRIMO
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     1000   1362.00000-266926.23301  71126.60115-338052.83416    309.68561
+AVER PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+AVER INTERN>     3964.72758   7468.53863      0.00000   9527.19961    521.90042
+AVER CROSS>      -477.55349      0.00000      0.00000      0.00000
+AVER EXTERN>  -359057.64718      0.00000      0.00000      0.00000      0.00000
+AVER PRESS>          0.0000       0.0000       0.0000       0.0000 1049706.4927
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 1000 steps:
+FLUC>     1000   1362.00000    168.86452    167.06205    182.94126      0.72739
+FLUC PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+FLUC INTERN>       48.94396     64.98199      0.00000     24.85724     16.33987
+FLUC CROSS>        13.51822      0.00000      0.00000      0.00000
+FLUC EXTERN>      158.46215      0.00000      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000      0.00000      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+ OpenMM was used to perform energy and force evaluation.
+
+
+     DETAILS ABOUT CENTRE OF MASS
+     POSITION          :    62.055478        51.464903        45.613299    
+     VELOCITY          :   7.42586932E-06  -6.11144027E-06   3.00248668E-05
+     ANGULAR MOMENTUM  :   -34708.899        49818.733       -23927.156    
+     KINETIC ENERGY    :   3.43966538E-04
+
+     DETAILS ABOUT CENTRE OF MASS
+     POSITION          :    62.055478        51.464903        45.613299    
+     VELOCITY          :   7.42586932E-06  -6.11144027E-06   3.00248668E-05
+     ANGULAR MOMENTUM  :   -34708.899        49818.733       -23927.156    
+     KINETIC ENERGY    :   3.43966538E-04
+  
+ CHARMM>     
+  
+ CHARMM>    coor rms
+ TOTAL SQUARE DIFF IS************  DENOMINATOR IS 111861.0000
+       THUS RMS DIFF IS  106.676186
+ RMS FOUND FOR SELECTED COORDINATES WITHOUT ROTATION
+  
+ CHARMM>     
+  
+ CHARMM>    !write coord card unit 12 name 2agy-310k-gamma-@gamma.cor
+ CHARMM>    !* Partially equilibrated using OMM/Langevin Gamma = @gamma
+ CHARMM>    !*
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    stop
+ VCLOSE: Closing unit   10 with status "KEEP"
+$$$$$$  New timer profile $$$$$
+   Shake Setup                     0.16 Other:            0.00
+   First List                      7.55 Other:            0.00
+   Shake time                      0.00 Other:            0.00
+      dynamc                          2.59 Other:            0.00
+   Dynamics total                  2.59 Other:            0.00
+      xdistm setup                    0.00 Other:            0.00
+      xdistm Build list               7.33 Other:            0.00
+   List time                      22.01 Other:           14.67
+            Recip Ewald time                0.00 Other:            0.00
+         Ewald time                      0.00 Other:            0.00
+      Nonbond force                   0.00 Other:            0.00
+         Bond energy                     0.00 Other:            0.00
+         Angle energy                    0.00 Other:            0.00
+         Dihedral energy                 0.00 Other:            0.00
+         Restraints energy               0.00 Other:            0.00
+      INTRNL energy                   0.00 Other:            0.00
+   Energy time                    83.42 Other:           83.42
+      load plugins                    0.63 Other:            0.00
+      build system                    0.43 Other:            0.00
+      init context                    5.04 Other:            0.00
+   OpenMM overhead                 6.11 Other:            0.00
+ Total time                    170.95 Other:           49.10
+
+                    NORMAL TERMINATION BY NORMAL STOP
+                    MOST SEVERE WARNING WAS AT LEVEL  0
+
+                    $$$$$ JOB ACCOUNTING INFORMATION $$$$$
+                     ELAPSED TIME:     2.85  MINUTES 
+                         CPU TIME:     1.52  MINUTES 

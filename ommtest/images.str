@@ -1,0 +1,4 @@
+* Stream file for additional image specification
+
+image bysegid sele segid his2 end
+image byres sele .not. (segid his2 .or. segid bwat) end

@@ -1,0 +1,40 @@
+* Join the water shell and ions with the protein (+ xstal waters) 
+*
+
+stream /panfs/panasas01/chem/ra15808/aadh/setup.inp
+
+prnlev 5
+
+stream @charmmtop/toppar_water_ions_fixed.str
+
+!
+! READ IN WATER AND IONS
+!
+!TIP3 20468
+!ICL 51
+!INA 63
+
+!open read unit 10 card name water_shell.pdb
+!read segid W100 PDB build setup unit 10
+
+
+read sequ tips 20468 
+gene BWAT setup first none last none nodihe noangl
+read sequ CLA 51
+gene CLA setup first none last none nodihe noangl
+read sequ SOD 63 
+gene SOD setup first none last none nodihe noangl
+ 
+read coor pdb name water_shell.pdb 
+
+!
+! WRITE OUT THE PROTEIN AND WATER
+!
+
+ioformat extend
+
+write psf card name water_shell_new.psf
+write coor pdb name water_shell_new.pdb
+write coor card name water_shell_new.crd
+
+stop

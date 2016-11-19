@@ -1,0 +1,46 @@
+* Heat the HIS dimer to 310K
+*
+
+stream toppar_water_ions_fixed.str
+read rtf card name top_all36_prot.rtf append flex
+read para card name par_all36_prot.prm append flex
+
+set molname his-dimer-final
+
+read psf card name @molname.psf
+read coor card name @molname.cor
+
+stream build_crystal.str
+stream images.str
+stream non_bond_spec.str
+
+energy omm
+
+
+set nsteps = 10
+set cutoff = 11
+set ctofnb = 8
+set ctonnb = 7.5
+
+
+!  turn on faster options and set-up SHAKE
+faster on
+
+shake fast bonh tol 1.0e-8 para 
+
+set echeck = echeck -1
+
+open unit 20 write form name restart.res
+
+! Run NVE dynamics, write restart file
+calc nwrite = int ( @nsteps / 10 )
+! Run dynamics in periodic box
+dynamics leap start timestep 0.002 -
+     nstep @nsteps nprint @nwrite iprfrq @nwrite isvfrq @nsteps iunwri 20 -
+     firstt 298 finalt 298  -
+     ichecw 0 ihtfrq 0 ieqfrq 0 -
+     iasors 1 iasvel 1 iscvel 0  -
+     ilbfrq 0 inbfrq -1 imgfrq -1 @echeck bycb -
+     ntrfq @nsteps - !PME
+     omm ! Just turn on openMM, get Leapfrog Verlet, NVE
+

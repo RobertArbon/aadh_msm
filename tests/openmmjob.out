@@ -1,0 +1,505 @@
+1
+                 Chemistry at HARvard Macromolecular Mechanics
+           (CHARMM) - Developmental Version 41a2   February 15, 2016            
+                             Git commit ID f89d5df                              
+       Copyright(c) 1984-2014  President and Fellows of Harvard College
+                              All Rights Reserved
+     Current operating system: Linux-2.6.32-220.23.1.el6.x86_64(x86_64)@nod     
+                 Created on  9/30/16 at 17:33:46 by user: ra15808     
+
+            Maximum number of ATOMS:    360720, and RESidues:      120240
+ RDTITL> * FINAL HEATING
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    stream ../setup.inp
+ VOPEN> Attempting to open::../setup.inp::
+ OPNLGU> Unit 99 opened for READONLY access to ../setup.inp
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * DIRECTORY DEFINITIONS
+ RDTITL> *
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>    set root /panfs/panasas01/chem/ra15808
+ Parameter: ROOT <- "/PANFS/PANASAS01/CHEM/RA15808"
+  
+ CHARMM>    set datadir @root/aadh/data
+ Parameter: ROOT -> "/PANFS/PANASAS01/CHEM/RA15808"
+ Parameter: DATADIR <- "/PANFS/PANASAS01/CHEM/RA15808/AADH/DATA"
+  
+ CHARMM>    set geomdir @root/aadh/data/kr/geoms
+ Parameter: ROOT -> "/PANFS/PANASAS01/CHEM/RA15808"
+ Parameter: GEOMDIR <- "/PANFS/PANASAS01/CHEM/RA15808/AADH/DATA/KR/GEOMS"
+  
+ CHARMM>    set evbgeoms @root/aadh/evb/kr_geoms
+ Parameter: ROOT -> "/PANFS/PANASAS01/CHEM/RA15808"
+ Parameter: EVBGEOMS <- "/PANFS/PANASAS01/CHEM/RA15808/AADH/EVB/KR_GEOMS"
+  
+ CHARMM>    set basedir @root/aadh
+ Parameter: ROOT -> "/PANFS/PANASAS01/CHEM/RA15808"
+ Parameter: BASEDIR <- "/PANFS/PANASAS01/CHEM/RA15808/AADH"
+  
+ CHARMM>    set charmmtop @root/c41a2/toppar
+ Parameter: ROOT -> "/PANFS/PANASAS01/CHEM/RA15808"
+ Parameter: CHARMMTOP <- "/PANFS/PANASAS01/CHEM/RA15808/C41A2/TOPPAR"
+  
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>     
+  
+ CHARMM>    prnlev 6
+  
+ CHARMM>     
+  
+ CHARMM>    faster on
+ MISCOM> FAST option: EXPANDED (limited fast routines)
+  
+ CHARMM>     
+  
+ CHARMM>    set molname ala3
+ Parameter: MOLNAME <- "ALA3"
+  
+ CHARMM>    read rtf card name ./common/top_all36_prot.rtf
+ VOPEN> Attempting to open::./common/top_all36_prot.rtf::
+ MAINIO> Residue topology file being read from unit  90.
+ TITLE> *>>>>>>>>CHARMM36 ALL-HYDROGEN TOPOLOGY FILE FOR PROTEINS <<<<<<
+ TITLE> *>>>>> INCLUDES PHI, PSI CROSS TERM MAP (CMAP) CORRECTION <<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>>>>> MAY 2011 <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> * ALL COMMENTS TO THE CHARMM WEB SITE: WWW.CHARMM.ORG
+ TITLE> *             PARAMETER SET DISCUSSION FORUM
+ TITLE> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read param card flex name ./common/par_all36_prot.prm
+ VOPEN> Attempting to open::./common/par_all36_prot.prm::
+
+          PARAMETER FILE BEING READ FROM UNIT 90
+ TITLE> *>>>> CHARMM36 ALL-HYDROGEN PARAMETER FILE FOR PROTEINS <<<<<<<<<<
+ TITLE> *>>>>> INCLUDES PHI, PSI CROSS TERM MAP (CMAP) CORRECTION <<<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>>>>> FEB. 2012 <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> * ALL COMMENTS TO THE CHARMM WEB SITE: WWW.CHARMM.ORG
+ TITLE> *             PARAMETER SET DISCUSSION FORUM
+ TITLE> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    stream ./common/toppar_water_ions.str
+ VOPEN> Attempting to open::./common/toppar_water_ions.str::
+ OPNLGU> Unit 99 opened for READONLY access to ./common/toppar_water_ions.str
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * TOPLOGY AND PARAMETER INFORMATION FOR WATER AND IONS.
+ RDTITL> *
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    !Testcase
+ CHARMM>    !test_water_ions.inp
+ CHARMM>     
+  
+ CHARMM>    ! IMPORTANT NOTE: this file contains NBFixes between carboxylates and sodium,
+ CHARMM>    ! which will only apply if the main files containing carboxylate atom types
+ CHARMM>    ! have been read in first!
+ CHARMM>     
+  
+ CHARMM>    !references
+ CHARMM>    !
+ CHARMM>    !TIP3P water model
+ CHARMM>    !
+ CHARMM>    !W.L. Jorgensen; J.Chandrasekhar; J.D. Madura; R.W. Impey;
+ CHARMM>    !M.L. Klein; "Comparison of simple potential functions for
+ CHARMM>    !simulating liquid water", J. Chem. Phys. 79 926-935 (1983).
+ CHARMM>    !
+ CHARMM>    !IONS
+ CHARMM>    !
+ CHARMM>    !Ions from Roux and coworkers
+ CHARMM>    !
+ CHARMM>    !Beglov, D. and Roux, B., Finite Representation of an Infinite
+ CHARMM>    !Bulk System: Solvent Boundary Potential for Computer Simulations,
+ CHARMM>    !Journal of Chemical Physics, 1994, 100: 9050-9063
+ CHARMM>    !
+ CHARMM>    !ZINC
+ CHARMM>    !
+ CHARMM>    !Stote, R.H. and Karplus, M. Zinc Binding in Proteins and
+ CHARMM>    !Solution: A Simple but Accurate Nonbonded Representation, PROTEINS:
+ CHARMM>    !Structure, Function, and Genetics 23:12-31 (1995)
+ CHARMM>     
+  
+ CHARMM>    !test "append" to determine if previous toppar files have been read and
+ CHARMM>    !add append to "read rtf card" if true
+ CHARMM>    set nat ?NATC
+ RDCMND substituted energy or value "?NATC" to "83"
+ Parameter: NAT <- "83"
+  
+ CHARMM>    set app
+ Parameter: APP <- "" <empty>
+  
+ CHARMM>    !We're exploiting what is arguably a bug in the parser. On the left hand side,
+ CHARMM>    !the quotes have priority, so NAT is correctly substituted. On the right hand
+ CHARMM>    !side, the ? has priority and NATC" (sic) is not a valid substitution...
+ CHARMM>    if "@NAT" ne "?NATC" if @nat ne 0 set app append
+ Parameter: NAT -> "83"
+ Parameter: NAT -> "83"
+ RDCMND: can not substitute energy "?NATC""
+ Comparing ""83"" and ""?NATC"".
+ IF test evaluated as true.  Performing command
+ Comparing "83" and "0".
+ IF test evaluated as true.  Performing command
+ Parameter: APP <- "APPEND"
+  
+ CHARMM>     
+  
+ CHARMM>    read rtf card @app
+ Parameter: APP -> "APPEND"
+ MAINIO> Residue topology file being read from unit  99.
+ RDTITL> * TOPOLOGY FOR WATER AND IONS
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    read para card flex @app
+ Parameter: APP -> "APPEND"
+
+          PARAMETER FILE BEING READ FROM UNIT 99
+ RDTITL> * PARAMETERS FOR WATER AND IONS
+ RDTITL> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>     
+  
+ CHARMM>    ! The following section contains NBFixes for sodium interacting with
+ CHARMM>    ! carboxylate oxygens of various CHARMM force fields. It will generate
+ CHARMM>    ! level -1 warnings whenever any of these force fields have not been
+ CHARMM>    ! read prior to the current stream file. Since we don't want to force
+ CHARMM>    ! the user to always read all the force fields, we're suppressing the
+ CHARMM>    ! warnings. The only side effect is that you will have "most severe
+ CHARMM>    ! warning was at level 0" at the end of your output. Also note that
+ CHARMM>    ! the user is responsible for reading the current file last if they
+ CHARMM>    ! want the NBFixes to apply. A more elegant solution would require new
+ CHARMM>    ! features to be added to CHARMM.
+ CHARMM>    ! parallel fix, to avoid duplicated messages in the log
+ CHARMM>    set para
+ Parameter: PARA <- "" <empty>
+  
+ CHARMM>    if ?NUMNODE gt 1 set para node 0
+ RDCMND substituted energy or value "?NUMNODE" to "1"
+ Comparing "1" and "1".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>     
+  
+ CHARMM>    set wrn ?WRNLEV
+ RDCMND substituted energy or value "?WRNLEV" to "5"
+ Parameter: WRN <- "5"
+  
+ CHARMM>    ! Some versions of CHARMM don't seem to initialize wrnlev...
+ CHARMM>    if "@WRN" eq "?WRNLEV" set wrn 5
+ Parameter: WRN -> "5"
+ RDCMND: can not substitute energy "?WRNLEV""
+ Comparing ""5"" and ""?WRNLEV"".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>    set bom ?bomlev
+ RDCMND substituted energy or value "?BOMLEV" to "0"
+ Parameter: BOM <- "0"
+  
+ CHARMM>    WRNLEV -1 @PARA
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    BOMLEV -1 @PARA
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    read para card flex append
+
+          PARAMETER FILE BEING READ FROM UNIT 99
+ RDTITL> * NBFIX BETWEEN CARBOXYLATE AND SODIUM
+ RDTITL> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>    BOMLEV @bom @PARA
+ Parameter: BOM -> "0"
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    WRNLEV @wrn @PARA
+ Parameter: WRN -> "5"
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    return
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>     
+  
+ CHARMM>    read psf card name ./common/@molname.psf
+ Parameter: MOLNAME -> "ALA3"
+ VOPEN> Attempting to open::./common/ala3.psf::
+ MAINIO> Protein structure file being read from unit  90.
+ TITLE>  * ALA3 SYSTEM
+ TITLE>  *  DATE:     9/30/16     17:17:56      CREATED BY USER: ra15808
+ TITLE>  *
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        3   Number of residues   =      468
+         Number of atoms         =     1429   Number of groups     =      477
+         Number of bonds         =     1424   Number of angles     =      533
+         Number of dihedrals     =       91   Number of impropers  =        8
+         Number of cross-terms   =        3
+         Number of HB acceptors  =      465   Number of HB donors  =      926
+         Number of NB exclusions =        0   Total charge =    0.00000
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read coord card name ./common/@molname.cor
+ Parameter: MOLNAME -> "ALA3"
+ VOPEN> Attempting to open::./common/ala3.cor::
+          SPATIAL COORDINATES BEING READ FROM UNIT 90
+ TITLE> * ALA3 SYSTEM
+ TITLE> *  DATE:     9/30/16     17:17:56      CREATED BY USER: RA15808
+ TITLE> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    !set e1 bond
+ CHARMM>    !set e2 angl
+ CHARMM>    !set e3 urey
+ CHARMM>    !set e4 dihe
+ CHARMM>    !set e5 impr
+ CHARMM>    !set e6 cmap
+ CHARMM>    !set e1 vdw
+ CHARMM>    !set e2 elec
+ CHARMM>     
+  
+ CHARMM>    energy
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VFSWIt  
+     BYGRoup  NOEXtnd  NOEWald 
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 10.000 CTOFNB = 12.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ There are        0 atom  pairs and        0 atom  exclusions.
+ There are        0 group pairs and        0 group exclusions.
+ <MAKINB> with mode   5 found   1496 exclusions and     91 interactions(1-4)
+ <MAKGRP> found     27 group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   410625 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   379242 ATOM PAIRS WERE FOUND FOR ATOM LIST
+    16547 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+ENER ENR:  Eval#     ENERgy      Delta-E         GRMS
+ENER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+ENER CROSS:           CMAPs        PMF1D        PMF2D        PRIMO
+ENER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+ ----------       ---------    ---------    ---------    ---------    ---------
+ENER>        0  -4456.08231      0.00000      1.88101
+ENER INTERN>      122.62758     92.24362      0.20837     11.83495      0.28696
+ENER CROSS>        -3.98193      0.00000      0.00000      0.00000
+ENER EXTERN>      392.35509  -5071.65695      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+ CHARMM>     
+  
+ CHARMM>    energy omm
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VFSWIt  
+     BYGRoup  NOEXtnd  NOEWald 
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 10.000 CTOFNB = 12.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ There are   379242 atom  pairs and     1587 atom  exclusions.
+ There are        0 group pairs and       27 group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR   410625 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+   379242 ATOM PAIRS WERE FOUND FOR ATOM LIST
+    16547 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+get_PlatformDefaults> Finding default platform values
+get_PlatformDefaults> Default values found: platform=CPU precision= deviceid=
+nblckcalls=   0   0 qblock=   F   F
+Setup_OpenMM: Initializing OpenMM context
+CHARMM> OpenMM using random seed       1335413854
+CHARMM> Using switching functions for electrostatic and vdW interactions
+NBFIxes in effect, using CustomNonbondedForce
+Exception - nbswitch_setup_vdwelec14..    1    8  -0.08370  1.89271  0.02145
+Exception - nbswitch_setup_vdwelec14..    1    9  -0.01890  3.38542  0.01000
+Exception - nbswitch_setup_vdwelec14..    2    6  -0.04590  2.44106  0.05367
+Exception - nbswitch_setup_vdwelec14..    2    7  -0.04230  2.57470  0.06928
+Exception - nbswitch_setup_vdwelec14..    3    6  -0.04590  2.44106  0.05367
+Exception - nbswitch_setup_vdwelec14..    3    7  -0.04230  2.57470  0.06928
+Exception - nbswitch_setup_vdwelec14..    4    6  -0.04590  2.44106  0.05367
+Exception - nbswitch_setup_vdwelec14..    4    7  -0.04230  2.57470  0.06928
+Exception - nbswitch_setup_vdwelec14..    5   10   0.04590  2.95778  0.04919
+Exception - nbswitch_setup_vdwelec14..    5   11  -0.13770  3.47450  0.03317
+Exception - nbswitch_setup_vdwelec14..    5   15   0.26011  3.56359  0.11000
+Exception - nbswitch_setup_vdwelec14..    6    8  -0.15810  1.44726  0.07430
+Exception - nbswitch_setup_vdwelec14..    6    9  -0.03570  2.93997  0.03464
+Exception - nbswitch_setup_vdwelec14..    7   12  -0.04230  2.57470  0.06928
+Exception - nbswitch_setup_vdwelec14..    7   13  -0.04230  2.57470  0.06928
+Exception - nbswitch_setup_vdwelec14..    7   14  -0.04230  2.57470  0.06928
+Exception - nbswitch_setup_vdwelec14..    7   16   0.23971  2.62815  0.15492
+Exception - nbswitch_setup_vdwelec14..    7   17   0.22091  2.76179  0.20000
+Exception - nbswitch_setup_vdwelec14..    8   10   0.02790  1.37599  0.03181
+Exception - nbswitch_setup_vdwelec14..    8   11  -0.08370  1.89271  0.02145
+Exception - nbswitch_setup_vdwelec14..    8   15   0.15810  1.98180  0.07113
+Exception - nbswitch_setup_vdwelec14..    9   18   0.02170  1.89271  0.02145
+Exception - nbswitch_setup_vdwelec14..    9   19   0.00490  3.38542  0.01000
+Exception - nbswitch_setup_vdwelec14..   10   12   0.00810  2.36979  0.02298
+Exception - nbswitch_setup_vdwelec14..   10   13   0.00810  2.36979  0.02298
+Exception - nbswitch_setup_vdwelec14..   10   14   0.00810  2.36979  0.02298
+Exception - nbswitch_setup_vdwelec14..   10   16  -0.04590  2.42324  0.05138
+Exception - nbswitch_setup_vdwelec14..   10   17  -0.04230  2.55688  0.06633
+Exception - nbswitch_setup_vdwelec14..   11   16   0.13770  2.93997  0.03464
+Exception - nbswitch_setup_vdwelec14..   11   17   0.12690  3.07360  0.04472
+Exception - nbswitch_setup_vdwelec14..   12   15   0.04590  2.97560  0.05138
+Exception - nbswitch_setup_vdwelec14..   13   15   0.04590  2.97560  0.05138
+Exception - nbswitch_setup_vdwelec14..   14   15   0.04590  2.97560  0.05138
+Exception - nbswitch_setup_vdwelec14..   15   20   0.04590  2.95778  0.04919
+Exception - nbswitch_setup_vdwelec14..   15   21  -0.13770  3.47450  0.03317
+Exception - nbswitch_setup_vdwelec14..   15   25   0.26011  3.56359  0.11000
+Exception - nbswitch_setup_vdwelec14..   16   18  -0.15810  1.44726  0.07430
+Exception - nbswitch_setup_vdwelec14..   16   19  -0.03570  2.93997  0.03464
+Exception - nbswitch_setup_vdwelec14..   17   22  -0.04230  2.57470  0.06928
+Exception - nbswitch_setup_vdwelec14..   17   23  -0.04230  2.57470  0.06928
+Exception - nbswitch_setup_vdwelec14..   17   24  -0.04230  2.57470  0.06928
+Exception - nbswitch_setup_vdwelec14..   17   26   0.23971  2.62815  0.15492
+Exception - nbswitch_setup_vdwelec14..   17   27   0.22091  2.76179  0.20000
+Exception - nbswitch_setup_vdwelec14..   18   20   0.02790  1.37599  0.03181
+Exception - nbswitch_setup_vdwelec14..   18   21  -0.08370  1.89271  0.02145
+Exception - nbswitch_setup_vdwelec14..   18   25   0.15810  1.98180  0.07113
+Exception - nbswitch_setup_vdwelec14..   19   28   0.02170  1.89271  0.02145
+Exception - nbswitch_setup_vdwelec14..   19   29   0.00490  3.38542  0.01000
+Exception - nbswitch_setup_vdwelec14..   20   22   0.00810  2.36979  0.02298
+Exception - nbswitch_setup_vdwelec14..   20   23   0.00810  2.36979  0.02298
+Exception - nbswitch_setup_vdwelec14..   20   24   0.00810  2.36979  0.02298
+Exception - nbswitch_setup_vdwelec14..   20   26  -0.04590  2.42324  0.05138
+Exception - nbswitch_setup_vdwelec14..   20   27  -0.04230  2.55688  0.06633
+Exception - nbswitch_setup_vdwelec14..   21   26   0.13770  2.93997  0.03464
+Exception - nbswitch_setup_vdwelec14..   21   27   0.12690  3.07360  0.04472
+Exception - nbswitch_setup_vdwelec14..   22   25   0.04590  2.97560  0.05138
+Exception - nbswitch_setup_vdwelec14..   23   25   0.04590  2.97560  0.05138
+Exception - nbswitch_setup_vdwelec14..   24   25   0.04590  2.97560  0.05138
+Exception - nbswitch_setup_vdwelec14..   25   30   0.04590  2.95778  0.04919
+Exception - nbswitch_setup_vdwelec14..   25   31  -0.13770  3.47450  0.03317
+Exception - nbswitch_setup_vdwelec14..   25   35   0.26011  3.56359  0.11000
+Exception - nbswitch_setup_vdwelec14..   26   28  -0.15810  1.44726  0.07430
+Exception - nbswitch_setup_vdwelec14..   26   29  -0.03570  2.93997  0.03464
+Exception - nbswitch_setup_vdwelec14..   27   32  -0.04230  2.57470  0.06928
+Exception - nbswitch_setup_vdwelec14..   27   33  -0.04230  2.57470  0.06928
+Exception - nbswitch_setup_vdwelec14..   27   34  -0.04230  2.57470  0.06928
+Exception - nbswitch_setup_vdwelec14..   27   36   0.23971  2.62815  0.15492
+Exception - nbswitch_setup_vdwelec14..   27   37   0.22091  2.76179  0.20000
+Exception - nbswitch_setup_vdwelec14..   28   30   0.02790  1.37599  0.03181
+Exception - nbswitch_setup_vdwelec14..   28   31  -0.08370  1.89271  0.02145
+Exception - nbswitch_setup_vdwelec14..   28   35   0.15810  1.98180  0.07113
+Exception - nbswitch_setup_vdwelec14..   29   38   0.02170  1.89271  0.02145
+Exception - nbswitch_setup_vdwelec14..   29   39  -0.00770  3.38542  0.01000
+Exception - nbswitch_setup_vdwelec14..   30   32   0.00810  2.36979  0.02298
+Exception - nbswitch_setup_vdwelec14..   30   33   0.00810  2.36979  0.02298
+Exception - nbswitch_setup_vdwelec14..   30   34   0.00810  2.36979  0.02298
+Exception - nbswitch_setup_vdwelec14..   30   36  -0.04590  2.42324  0.05138
+Exception - nbswitch_setup_vdwelec14..   30   37  -0.04230  2.55688  0.06633
+Exception - nbswitch_setup_vdwelec14..   31   36   0.13770  2.93997  0.03464
+Exception - nbswitch_setup_vdwelec14..   31   37   0.12690  3.07360  0.04472
+Exception - nbswitch_setup_vdwelec14..   32   35   0.04590  2.97560  0.05138
+Exception - nbswitch_setup_vdwelec14..   33   35   0.04590  2.97560  0.05138
+Exception - nbswitch_setup_vdwelec14..   34   35   0.04590  2.97560  0.05138
+Exception - nbswitch_setup_vdwelec14..   35   40   0.04590  2.97560  0.05138
+Exception - nbswitch_setup_vdwelec14..   35   41   0.04590  2.97560  0.05138
+Exception - nbswitch_setup_vdwelec14..   35   42   0.04590  2.97560  0.05138
+Exception - nbswitch_setup_vdwelec14..   36   38  -0.15810  1.44726  0.07430
+Exception - nbswitch_setup_vdwelec14..   36   39   0.05610  2.93997  0.03464
+Exception - nbswitch_setup_vdwelec14..   38   40   0.02790  1.39381  0.03323
+Exception - nbswitch_setup_vdwelec14..   38   41   0.02790  1.39381  0.03323
+Exception - nbswitch_setup_vdwelec14..   38   42   0.02790  1.39381  0.03323
+CHARMM> an OpenMM force will be created using the following OpenMM compatible formula
+step(Ron-r)*(ccnba*tr6*tr6-ccnbb*tr6+ccnbb*onoff3-ccnba*onoff6)+step(r-Ron)*step(Roff-r)*(cr12*rjunk6 - cr6*rjunk3)-step(r-Ron)*step(Ron-r)*(cr12*rjunk6 - cr6*rjunk3) + step(Roff-r) * (1-r/Roff)^2 * ((138.935456 * charge1 * charge2) * r1);cr6  = ccnbb*ofdif3*rjunk3;cr12 = ccnba*ofdif6*rjunk6;rjunk3 = r3-recof3;rjunk6 = tr6-recof6;r3 = r1*tr2;r1 = sqrt(tr2);tr6 = tr2 * tr2 * tr2;tr2 = 1.0/s2;s2 = r*r;ccnbb = 4.0*epsilon*sigma^6;ccnba = 4.0*epsilon*sigma^12;sigma = 0.5*(sigma1+sigma2);epsilon = sqrt(epsilon1*epsilon2);onoff3 = recof3/on3;onoff6 = recof6/on6;ofdif3 = off3/(off3 - on3);ofdif6 = off6/(off6 - on6);recof3 = 1.0/off3;on6 = on3*on3;on3 = c2onnb*Ron;recof6 = 1.0/off6;off6 = off3*off3;off3 = c2ofnb*Roff;c2ofnb = Roff*Roff;c2onnb = Ron*Ron;
+CHARMM> an OpenMM force will be created for nonbonded 1-4 interactions using the following OpenMM compatible formula
+step(Ron-r)*(ccnba*tr6*tr6-ccnbb*tr6+ccnbb*onoff3-ccnba*onoff6)+step(r-Ron)*step(Roff-r)*(cr12*rjunk6 - cr6*rjunk3)-step(r-Ron)*step(Ron-r)*(cr12*rjunk6 - cr6*rjunk3) + step(Roff-r) * (1-r/Roff)^2 * ((138.935456 * charge) * r1);cr6  = ccnbb*ofdif3*rjunk3;cr12 = ccnba*ofdif6*rjunk6;rjunk3 = r3-recof3;rjunk6 = tr6-recof6;r3 = r1*tr2;r1 = sqrt(tr2);tr6 = tr2 * tr2 * tr2;tr2 = 1.0/s2;s2 = r*r;ccnbb = 4.0*epsilon*sigma^6;ccnba = 4.0*epsilon*sigma^12;onoff3 = recof3/on3;onoff6 = recof6/on6;ofdif3 = off3/(off3 - on3);ofdif6 = off6/(off6 - on6);recof3 = 1.0/off3;on6 = on3*on3;on3 = c2onnb*Ron;recof6 = 1.0/off6;off6 = off3*off3;off3 = c2ofnb*Roff;c2ofnb = Roff*Roff;c2onnb = Ron*Ron;
+ Number of global parameters for NB14 is      2
+ Number of per pair parameters for NB14 is      3
+ Number of NB14 pairs is     91
+CHARMM> OpenMM switching function selection.
+CHARMM> Electrostatic options: switch=F fswitch=F fshift=T PME/Ewald=F RxnFld=F
+CHARMM> van der Waals options: vswitch=F vfswitch=T OpenMM vdW switch=F
+Init_context: Using OpenMM platform CPU       
+ENER ENR:  Eval#     ENERgy      Delta-E         GRMS
+ENER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+ENER CROSS:           CMAPs        PMF1D        PMF2D        PRIMO
+ENER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+ ----------       ---------    ---------    ---------    ---------    ---------
+ENER>        0  -4456.08887      0.00656      1.88094
+ENER INTERN>      122.83595     92.24362      0.00000     11.83495      0.28696
+ENER CROSS>        -3.98873      0.00000      0.00000      0.00000
+ENER EXTERN>    -4679.30162      0.00000      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+ CHARMM>     
+  
+ CHARMM>    !set ctr 1
+ CHARMM>    !label loop1
+ CHARMM>    !	skip all excl @e@@ctr
+ CHARMM>    !	energy
+ CHARMM>    !	set che@ctr ?ener
+ CHARMM>    !    incr ctr by 1
+ CHARMM>    !if @ctr .le. 2 goto loop1
+ CHARMM>    !
+ CHARMM>    !set ctr 1
+ CHARMM>    !label loop2
+ CHARMM>    !    skip all excl @e@@ctr
+ CHARMM>    !    energy omm
+ CHARMM>    !    set mme@ctr ?ener
+ CHARMM>    !	incr ctr by 1
+ CHARMM>    !if @ctr .le. 2 goto loop2
+ CHARMM>    !
+ CHARMM>    !set ctr 1
+ CHARMM>    !label loop3
+ CHARMM>    !	calc diff ( @che@@ctr - @mme@@ctr ) / sqrt( @che@@ctr * @mme@@ctr )
+ CHARMM>    !	if @diff .le. 1e-2 then
+ CHARMM>    !		echo TEST @ctr PASSED
+ CHARMM>    !	endif
+ CHARMM>    !    if @diff .gt. 1e-2 then
+ CHARMM>    !		echo TEST @ctr FAILED
+ CHARMM>    !	endif
+ CHARMM>    !	incr ctr by 1
+ CHARMM>    !if @ctr .le. 2 goto loop3
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    stop
+$$$$$$  New timer profile $$$$$
+   List time                       0.02 Other:            0.00
+      Nonbond force                   0.01 Other:            0.00
+         Bond energy                     0.00 Other:            0.00
+         Angle energy                    0.00 Other:            0.00
+         Dihedral energy                 0.00 Other:            0.00
+         Restraints energy               0.00 Other:            0.00
+      INTRNL energy                   0.00 Other:            0.00
+   Energy time                     0.14 Other:            0.14
+      load plugins                    0.03 Other:            0.00
+      build system                    0.01 Other:            0.00
+      init context                    0.58 Other:            0.00
+   OpenMM overhead                 0.62 Other:            0.00
+ Total time                      1.64 Other:            0.86
+
+                    NORMAL TERMINATION BY NORMAL STOP
+                    MOST SEVERE WARNING WAS AT LEVEL  0
+
+                    $$$$$ JOB ACCOUNTING INFORMATION $$$$$
+                     ELAPSED TIME:     1.64  SECONDS 
+                         CPU TIME:     3.02  SECONDS 

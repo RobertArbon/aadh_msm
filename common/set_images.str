@@ -1,0 +1,3 @@
+*Stream file for the image centering.  This adds to the build_crystal.str file. 
+image byseg sele segid AL* .or. segid BT* end ! protein
+image byres sele .not. (segid AL* .or. segid BT* .or. segid *WAT) end ! ions

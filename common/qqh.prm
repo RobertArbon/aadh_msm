@@ -1,0 +1,29 @@
+* Link atom parameters for AADH
+*
+
+ATOMS
+MASS 101 QQH1 1.00800 !
+
+BONDS
+QQH1 CA   0.000 1.0000 !
+QQH1 CT2  0.000 1.0000 !
+QQH1 CT2A 0.000 1.0000 !
+
+ANGLES
+QQH1 CT2 HA2  0.000 1.0000 !
+QQH1 CT2A HA2 0.000 1.0000 !
+QQH1 CT2 CY   0.000 1.0000 !
+QQH1 CT2 CC   0.000 1.0000 !
+QQH1 CA  CA   0.000 1.0000 !
+QQH1 CA  CPT   0.000 1.0000 !
+
+NONBONDED nbxmod  5 atom cdiel fshift vatom vdistance vfswitch -
+cutnb 14.0 ctofnb 12.0 ctonnb 10.0 eps 1.0 e14fac 1.0 wmin 1.5 
+
+!**************************************************************
+! QQH
+!**************************************************************
+QQH1 0.000000 0.000000 0.000000 ! Link Atom
+
+!
+END

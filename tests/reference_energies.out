@@ -1,0 +1,433 @@
+1
+                 Chemistry at HARvard Macromolecular Mechanics
+           (CHARMM) - Developmental Version 41a2   February 15, 2016            
+                             Git commit ID f89d5df                              
+       Copyright(c) 1984-2014  President and Fellows of Harvard College
+                              All Rights Reserved
+     Current operating system: Linux-2.6.32-220.23.1.el6.x86_64(x86_64)@nod     
+                 Created on 10/3/16 at 20:50:59 by user: ra15808     
+
+            Maximum number of ATOMS:    360720, and RESidues:      120240
+ RDTITL> * FINAL HEATING USING SERIAL CODE
+ RDTITL> *
+  
+ CHARMM>    envi OPENMM_PLATFORM "Reference"
+  
+ CHARMM>     
+  
+ CHARMM>    stream /panfs/panasas01/chem/ra15808/aadh/setup.inp
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/aadh/setup.inp::
+ OPNLGU> Unit 99 opened for READONLY access to /panfs/panasas01/chem/ra15808/aadh/setup.inp
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * DIRECTORY DEFINITIONS
+ RDTITL> *
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>    set root /panfs/panasas01/chem/ra15808
+ Parameter: ROOT <- "/PANFS/PANASAS01/CHEM/RA15808"
+  
+ CHARMM>    set datadir @root/aadh/data
+ Parameter: ROOT -> "/PANFS/PANASAS01/CHEM/RA15808"
+ Parameter: DATADIR <- "/PANFS/PANASAS01/CHEM/RA15808/AADH/DATA"
+  
+ CHARMM>    set geomdir @root/aadh/data/kr/geoms
+ Parameter: ROOT -> "/PANFS/PANASAS01/CHEM/RA15808"
+ Parameter: GEOMDIR <- "/PANFS/PANASAS01/CHEM/RA15808/AADH/DATA/KR/GEOMS"
+  
+ CHARMM>    set evbgeoms @root/aadh/evb/kr_geoms
+ Parameter: ROOT -> "/PANFS/PANASAS01/CHEM/RA15808"
+ Parameter: EVBGEOMS <- "/PANFS/PANASAS01/CHEM/RA15808/AADH/EVB/KR_GEOMS"
+  
+ CHARMM>    set basedir @root/aadh
+ Parameter: ROOT -> "/PANFS/PANASAS01/CHEM/RA15808"
+ Parameter: BASEDIR <- "/PANFS/PANASAS01/CHEM/RA15808/AADH"
+  
+ CHARMM>    set charmmtop @root/c41a2/toppar
+ Parameter: ROOT -> "/PANFS/PANASAS01/CHEM/RA15808"
+ Parameter: CHARMMTOP <- "/PANFS/PANASAS01/CHEM/RA15808/C41A2/TOPPAR"
+  
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>     
+  
+ CHARMM>    prnlev 5
+  
+ CHARMM>     
+  
+ CHARMM>    set molname 2agy_final_min
+ Parameter: MOLNAME <- "2AGY_FINAL_MIN"
+  
+ CHARMM>     
+  
+ CHARMM>    stream @charmmtop/toppar_water_ions_fixed.str
+ Parameter: CHARMMTOP -> "/PANFS/PANASAS01/CHEM/RA15808/C41A2/TOPPAR"
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/c41a2/toppar/toppar_water_ions_fixed.str::
+ OPNLGU> Unit 99 opened for READONLY access to /panfs/panasas01/chem/ra15808/c41a2/toppar/toppar_water_ions_fixed.str
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * TOPLOGY AND PARAMETER INFORMATION FOR WATER AND IONS.
+ RDTITL> *
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    !Testcase
+ CHARMM>    !test_water_ions.inp
+ CHARMM>     
+  
+ CHARMM>    ! IMPORTANT NOTE: this file contains NBFixes between carboxylates and sodium,
+ CHARMM>    ! which will only apply if the main files containing carboxylate atom types
+ CHARMM>    ! have been read in first!
+ CHARMM>     
+  
+ CHARMM>    !references
+ CHARMM>    !
+ CHARMM>    !TIP3P water model
+ CHARMM>    !
+ CHARMM>    !W.L. Jorgensen; J.Chandrasekhar; J.D. Madura; R.W. Impey;
+ CHARMM>    !M.L. Klein; "Comparison of simple potential functions for
+ CHARMM>    !simulating liquid water", J. Chem. Phys. 79 926-935 (1983).
+ CHARMM>    !
+ CHARMM>    !IONS
+ CHARMM>    !
+ CHARMM>    !Ions from Roux and coworkers
+ CHARMM>    !
+ CHARMM>    !Beglov, D. and Roux, B., Finite Representation of an Infinite
+ CHARMM>    !Bulk System: Solvent Boundary Potential for Computer Simulations,
+ CHARMM>    !Journal of Chemical Physics, 1994, 100: 9050-9063
+ CHARMM>    !
+ CHARMM>    !ZINC
+ CHARMM>    !
+ CHARMM>    !Stote, R.H. and Karplus, M. Zinc Binding in Proteins and
+ CHARMM>    !Solution: A Simple but Accurate Nonbonded Representation, PROTEINS:
+ CHARMM>    !Structure, Function, and Genetics 23:12-31 (1995)
+ CHARMM>     
+  
+ CHARMM>    !test "append" to determine if previous toppar files have been read and
+ CHARMM>    !add append to "read rtf card" if true
+ CHARMM>    set nat ?NATC
+ RDCMND: can not substitute energy "?NATC"
+ Parameter: NAT <- "?NATC"
+  
+ CHARMM>    set app
+ Parameter: APP <- "" <empty>
+  
+ CHARMM>    !We're exploiting what is arguably a bug in the parser. On the left hand side,
+ CHARMM>    !the quotes have priority, so NAT is correctly substituted. On the right hand
+ CHARMM>    !side, the ? has priority and NATC" (sic) is not a valid substitution...
+ CHARMM>    if "@NAT" ne "?NATC" if @nat ne 0 set app append
+ Parameter: NAT -> "?NATC"
+ Parameter: NAT -> "?NATC"
+ RDCMND: can not substitute energy "?NATC""
+ Comparing ""?NATC"" and ""?NATC"".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>     
+  
+ CHARMM>    read rtf card  !REA 26/07/2013 - deleted @app - always stream this first and everything else must be appended)
+ MAINIO> Residue topology file being read from unit  99.
+ RDTITL> * TOPOLOGY FOR WATER AND IONS
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    read para card flex  !REA - deleted @app
+
+          PARAMETER FILE BEING READ FROM UNIT 99
+ RDTITL> * PARAMETERS FOR WATER AND IONS
+ RDTITL> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>     
+  
+ CHARMM>    ! The following section contains NBFixes for sodium interacting with
+ CHARMM>    ! carboxylate oxygens of various CHARMM force fields. It will generate
+ CHARMM>    ! level -1 warnings whenever any of these force fields have not been
+ CHARMM>    ! read prior to the current stream file. Since we don't want to force
+ CHARMM>    ! the user to always read all the force fields, we're suppressing the
+ CHARMM>    ! warnings. The only side effect is that you will have "most severe
+ CHARMM>    ! warning was at level 0" at the end of your output. Also note that
+ CHARMM>    ! the user is responsible for reading the current file last if they
+ CHARMM>    ! want the NBFixes to apply. A more elegant solution would require new
+ CHARMM>    ! features to be added to CHARMM.
+ CHARMM>    ! parallel fix, to avoid duplicated messages in the log
+ CHARMM>    set para
+ Parameter: PARA <- "" <empty>
+  
+ CHARMM>    if ?NUMNODE gt 1 set para node 0
+ RDCMND substituted energy or value "?NUMNODE" to "1"
+ Comparing "1" and "1".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>     
+  
+ CHARMM>    set wrn ?WRNLEV
+ RDCMND substituted energy or value "?WRNLEV" to "5"
+ Parameter: WRN <- "5"
+  
+ CHARMM>    ! Some versions of CHARMM don't seem to initialize wrnlev...
+ CHARMM>    if "@WRN" eq "?WRNLEV" set wrn 5
+ Parameter: WRN -> "5"
+ RDCMND: can not substitute energy "?WRNLEV""
+ Comparing ""5"" and ""?WRNLEV"".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>    set bom ?bomlev
+ RDCMND substituted energy or value "?BOMLEV" to "0"
+ Parameter: BOM <- "0"
+  
+ CHARMM>    WRNLEV -1 @PARA
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    BOMLEV -1 @PARA
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    read para card flex append
+
+          PARAMETER FILE BEING READ FROM UNIT 99
+ RDTITL> * NBFIX BETWEEN CARBOXYLATE AND SODIUM
+ RDTITL> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>    BOMLEV @bom @PARA
+ Parameter: BOM -> "0"
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    WRNLEV @wrn @PARA
+ Parameter: WRN -> "5"
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    return
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>    read rtf card name @charmmtop/top_all36_prot.rtf append flex
+ Parameter: CHARMMTOP -> "/PANFS/PANASAS01/CHEM/RA15808/C41A2/TOPPAR"
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/c41a2/toppar/top_all36_prot.rtf::
+ MAINIO> Residue topology file being read from unit  90.
+ TITLE> *>>>>>>>>CHARMM36 ALL-HYDROGEN TOPOLOGY FILE FOR PROTEINS <<<<<<
+ TITLE> *>>>>> INCLUDES PHI, PSI CROSS TERM MAP (CMAP) CORRECTION <<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>>>>> MAY 2011 <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> * ALL COMMENTS TO THE CHARMM WEB SITE: WWW.CHARMM.ORG
+ TITLE> *             PARAMETER SET DISCUSSION FORUM
+ TITLE> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read rtf card name /panfs/panasas01/chem/ra15808/aadh/data/ra/aadh_topologies.rtf append flex
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/aadh/data/ra/aadh_topologies.rtf::
+ MAINIO> Residue topology file being read from unit  90.
+ TITLE> * RESIDUES AND PATCHES FOR CREATING AADH REACTANT AND PRODUCTS
+ TITLE> * ATOM DEFINITIONS IS TAKEN FROM TOP_ALL36_PROT.RTF
+ TITLE> * PREAMLE IS TAKEN FROM TOP_TTW.INP
+ TITLE> * >>>>>
+ TITLE> * RESI TTW - /DATA/KR/TOP_TTW.INP
+ TITLE> * RESI TTW2 - /DATA/KR/TOP_TTW.INP - I DON'T THINK THIS IS USED SO THIS WON'T BE ADJUSTED.
+ TITLE> * PRES TRPM - /DATA/NEW_MD/TRPM.RTF
+ TITLE> * PRES TTWP - /DATA/KR/TTW_PROD.RTF
+ TITLE> * PRES ASP1/2 - /DATA/KR/TTW_PROD.RTF
+ TITLE> * PRES TTQ_TRP - /DATA/NEW_MD/TTW_TOP.INP
+ TITLE> * THE ORIGINAL PATCHES AND RESIDUES WERE SPECIFIED IN THE CHARM22 FF
+ TITLE> * 23/07/2016 - THE PRODUCT PATCHES WILL HAVE TO CHANGE (TO GET RID OF DELE STATEMENT)
+ TITLE> *               AND TO PRESERVE THE ATOMS LABELLING CHANGES.
+ TITLE> *
+ WARNING from DECODI -- Zero length string being converted to 0
+ RTFRDR> WARNING: Version number is NOT specified.
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read para card name @charmmtop/par_all36_prot_mod.prm append flex
+ Parameter: CHARMMTOP -> "/PANFS/PANASAS01/CHEM/RA15808/C41A2/TOPPAR"
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/c41a2/toppar/par_all36_prot_mod.prm::
+
+          PARAMETER FILE BEING READ FROM UNIT 90
+ TITLE> *>>>> CHARMM36 ALL-HYDROGEN PARAMETER FILE FOR PROTEINS <<<<<<<<<<
+ TITLE> *>>>>> INCLUDES PHI, PSI CROSS TERM MAP (CMAP) CORRECTION <<<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>>>>> JAN. 2016 <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> * ALL COMMENTS TO THE CHARMM WEB SITE: WWW.CHARMM.ORG
+ TITLE> *             PARAMETER SET DISCUSSION FORUM
+ TITLE> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read para card name @datadir/ra/aadh_parameters.prm append flex
+ Parameter: DATADIR -> "/PANFS/PANASAS01/CHEM/RA15808/AADH/DATA"
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/aadh/data/ra/aadh_parameters.prm::
+
+          PARAMETER FILE BEING READ FROM UNIT 90
+ TITLE> * PARAMETERS SPECIFIC TO AADH.  TO BE USED IN CONJUNCTION WITH AADH_TOPOLOGIES.RTF
+ TITLE> * THESE WERE TAKEN FROM EACH SECTION IN /DATA/KR/PAR_TTW.INP
+ TITLE> *   AND ADDITIONALLY FROM /DATA/NEW_MD/PAR_TTW.INP
+ TITLE> * THERE'S NO ANGLE PARAMETERS FOR HA ONLY HA1/2/3 SO CHANGE THE HAS IN THE AADH_TOPOLOGIES
+ TITLE> * ADDED NBFIX
+ TITLE>  
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    read psf card name ../evb/sampling/common/@molname.psf
+ Parameter: MOLNAME -> "2AGY_FINAL_MIN"
+ VOPEN> Attempting to open::../evb/sampling/common/2agy_final_min.psf::
+ MAINIO> Protein structure file being read from unit  90.
+ PSFRD2> Reading PSF in the expanded format.
+ TITLE>  * 2AGY_C36_STATE0_MIN_WB_MIN NEUTRALIZED WITH POTASSIUM CHLORIDE
+ TITLE>  *  DATE:     8/19/16     12: 6:55      CREATED BY USER: robert_arbon
+ TITLE>  *
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        8   Number of residues   =    33469
+         Number of atoms         =   111861   Number of groups     =    36819
+         Number of bonds         =   111996   Number of angles     =    58795
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    33897   Number of HB donors  =    66564
+         Number of NB exclusions =        0   Total charge =   -0.00000
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read coord card name ../evb/sampling/common/@molname.crd
+ Parameter: MOLNAME -> "2AGY_FINAL_MIN"
+ VOPEN> Attempting to open::../evb/sampling/common/2agy_final_min.crd::
+          SPATIAL COORDINATES BEING READ FROM UNIT 90
+ TITLE> * 2AGY, MINIMIZED, NEUTRALIZED, NOT HEATED
+ TITLE> *  DATE:     8/19/16     16:23: 4      CREATED BY USER: ROBERT_ARBON
+ TITLE> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    ener
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VFSWIt  
+     BYGRoup  NOEXtnd  NOEWald 
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 10.000 CTOFNB = 12.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ There are        0 atom  pairs and        0 atom  exclusions.
+ There are        0 group pairs and        0 group exclusions.
+ <MAKINB> with mode   5 found 138336 exclusions and  37937 interactions(1-4)
+ <MAKGRP> found  12527 group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR 32143445 ATOM PAIRS AND        0 GROUP PAIRS
+ == PRIMARY == SPACE FOR 48215188 ATOM PAIRS AND        0 GROUP PAIRS
+ == PRIMARY == SPACE FOR 72322800 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+ 59170785 ATOM PAIRS WERE FOUND FOR ATOM LIST
+  3518343 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+ENER ENR:  Eval#     ENERgy      Delta-E         GRMS
+ENER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+ENER CROSS:           CMAPs        PMF1D        PMF2D        PRIMO
+ENER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+ ----------       ---------    ---------    ---------    ---------    ---------
+ENER>        0-402296.64634      0.00000      4.11908
+ENER INTERN>    16712.44329  13994.32923    653.36055   8799.02089    165.85792
+ENER CROSS>      -478.21717      0.00000      0.00000      0.00000
+ENER EXTERN>    66564.94379-508708.38486      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+ CHARMM>    set chme ?ener
+ RDCMND substituted energy or value "?ENER" to "-402296.646"
+ Parameter: CHME <- "-402296.646"
+  
+ CHARMM>     
+  
+ CHARMM>    ener omm
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VFSWIt  
+     BYGRoup  NOEXtnd  NOEWald 
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 10.000 CTOFNB = 12.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ There are 59170785 atom  pairs and   176273 atom  exclusions.
+ There are        0 group pairs and    12527 group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR 72322800 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+ 59170785 ATOM PAIRS WERE FOUND FOR ATOM LIST
+  3518343 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+get_PlatformDefaults> Finding default platform values
+get_PlatformDefaults> Default values found: platform=Reference precision= deviceid=
+Setup_OpenMM: Initializing OpenMM context
+CHARMM> Using switching functions for electrostatic and vdW interactions
+NBFIxes in effect, using CustomNonbondedForce
+CHARMM> OpenMM switching function selection.
+CHARMM> Electrostatic options: switch=F fswitch=F fshift=T PME/Ewald=F RxnFld=F
+CHARMM> van der Waals options: vswitch=F vfswitch=T OpenMM vdW switch=F
+ Available OpenMM platform 0: Reference 
+ Available OpenMM platform 1: CPU       
+Init_context: Using OpenMM platform Reference 
+ENER ENR:  Eval#     ENERgy      Delta-E         GRMS
+ENER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+ENER CROSS:           CMAPs        PMF1D        PMF2D        PRIMO
+ENER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+ ----------       ---------    ---------    ---------    ---------    ---------
+ENER>        0-402296.27063     -0.37572      4.11905
+ENER INTERN>    17365.80384  13994.32923      0.00000   8799.02089    165.85792
+ENER CROSS>      -477.81299      0.00000      0.00000      0.00000
+ENER EXTERN>  -442143.46952      0.00000      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+ CHARMM>    set omme ?ener
+ RDCMND substituted energy or value "?ENER" to "-402296.271"
+ Parameter: OMME <- "-402296.271"
+  
+ CHARMM>     
+  
+ CHARMM>    calc diff ( @chme - @omme ) / sqrt( @chme * @omme )
+ Parameter: CHME -> "-402296.646"
+ Parameter: OMME -> "-402296.271"
+ Parameter: CHME -> "-402296.646"
+ Parameter: OMME -> "-402296.271"
+Evaluating: (-402296.646--402296.271)/SQRT(-402296.646*-402296.271)
+ Parameter: DIFF <- "-9.321483997E-07"
+  
+ CHARMM>     
+  
+ CHARMM>    echo @diff
+ Parameter: DIFF -> "-9.321483997E-07"
+-9.321483997E-07
+  
+ CHARMM>     
+  
+ CHARMM>    !open unit 10 write card name forces.xyz
+ CHARMM>    !outu 10
+ CHARMM>    !
+ CHARMM>    !scalar dx show
+ CHARMM>    !scalar dy show
+ CHARMM>    !scalar dz show
+ CHARMM>    !outu 5
+ CHARMM>     
+  
+$$$$$$  New timer profile $$$$$
+   List time                      77.48 Other:            0.00
+      Nonbond force                   1.74 Other:            0.00
+         Bond energy                     0.00 Other:            0.00
+         Angle energy                    0.01 Other:            0.00
+         Dihedral energy                 0.01 Other:            0.00
+         Restraints energy               0.00 Other:            0.00
+      INTRNL energy                   0.01 Other:            0.00
+   Energy time                   131.17 Other:          129.42
+      load plugins                    0.57 Other:            0.00
+      build system                    0.39 Other:            0.00
+      init context                    0.91 Other:            0.00
+   OpenMM overhead                 1.87 Other:            0.00
+ Total time                    213.50 Other:            2.98
+
+                    NORMAL TERMINATION BY END OF FILE
+                    MOST SEVERE WARNING WAS AT LEVEL  0
+
+                    $$$$$ JOB ACCOUNTING INFORMATION $$$$$
+                     ELAPSED TIME:     3.56  MINUTES 
+                         CPU TIME:     2.05  MINUTES 

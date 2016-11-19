@@ -1,0 +1,52 @@
+* Create small test system
+*
+
+
+read rtf card name ./common/top_all36_prot.rtf
+read param card flex name ./common/par_all36_prot.prm
+stream ./common/toppar_water_ions.str
+
+read sequ ala 3
+generate pro0 first ace last ct3 setup
+read sequ tip3 465
+generate wt00 setup noangl nodihe
+
+read coor pdb name ./common/ala3_solv-equil.pdb resi
+
+read sequ card
+* add ions
+*
+4
+SOD CLA SOD CLA
+
+generate ions
+
+set nion = 1
+label addions
+      define wat select resname tip3 end
+      set firstwat = ?selires
+      set lastwat = ?nres
+      Calc delwat = int ( ?rand * ( @lastwat - @firstwat ) ) + @firstwat
+      coor stat select resname tip3 .and. ires @delwat end
+      set x = ?xave
+      set y = ?yave
+      set z = ?zave
+      scalar x set ?xave select segid ions .and. resid @nion end
+      scalar y set ?yave select segid ions .and. resid @nion end
+      scalar z set ?zave select segid ions .and. resid @nion end
+      delete atom select .byres. ( resname tip3 .and. ires @delwat ) end
+      incr nion by 1
+if nion le 4 goto addions
+
+mini sd nstep 50
+
+
+write psf card name ./common/ala3.psf
+* ala3 system
+*
+
+write coor card name ./common/ala3.cor
+* ala3 system
+*
+
+stop

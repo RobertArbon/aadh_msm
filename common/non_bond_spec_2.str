@@ -1,0 +1,17 @@
+* Stream file for non bonded specification. 
+! use fftvecs.py to get fft values:
+set ftx 128
+set fty 108
+set ftz 90
+
+set kppa 0.34
+calc kmx int( @kppa*@xdim )
+calc kmy int( @kppa*@ydim )
+calc kmz int( @kppa*@zdim )
+NBONDED inbfrq -1 imgfrq -1 nbxmod 5 -                                              ! C36 DEFAULTS 
+        atom cdiel - !fshift -                                                         ! use atom based electrostatics, C36 DEFAULTS
+        vatom vdistance vfswitch -                                                  ! C36 DEFAULTS   
+        elec ewald kappa @kppa spline nopm kmxx @kmx kmxy @kmy kmxz @kmz   -        ! standard Ewald SUMMATION
+        cutnb 14.0 ctofnb 12.0 ctonnb 10.0 -                                        ! C36 DEFAULTS  
+        cutim 14.0 -                                                                ! must be same as cutnb
+        eps 1.0 e14fac 1.0 wmin 1.5                                                 ! C36 DEFAULTS   

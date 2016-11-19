@@ -1,0 +1,93 @@
+* Removes bad WDVs contacts from crystal waters
+*
+
+stream /users/robert_arbon/code/aadh/setup.inp
+
+prnlev 5
+
+ioformat extend
+
+set molname 2agy_c36_state0
+stream @charmmtop/toppar_water_ions_fixed.str
+read rtf card name @charmmtop/top_all36_prot.rtf append flex
+read rtf card name @datadir/ra/aadh_topologies.rtf append flex
+read para card name @charmmtop/par_all36_prot_mod.prm append flex
+read para card name @datadir/ra/aadh_parameters.prm append flex
+
+read psf card name ../common/@molname.psf
+read coor card name ../common/@molname.crd
+
+! SELECTIONS
+define prot sele .not. segid XW* end
+define mainc sele type n .or. type ca .or. type c .or. type o end
+
+! CONSTRAINTS:
+cons harm sele mainc end force 1.0
+
+! NONBOND OPTIONS 
+NBONDED nbxmod  5 atom cdiel fshift vatom vdistance vfswitch -
+cutnb 14.0 ctofnb 12.0 ctonnb 10.0 eps 1.0 e14fac 1.0 wmin 1.5 
+
+coor copy comp
+
+!MINIMIZATION
+
+mini sd nstep 50 nprint 25
+mini abnr nstep 3500 npri 25 tolg 0.01
+
+energy
+
+!CALCULATE RMS
+
+coor rms sele mainc end
+coor rms sele ( .not. type h* ) .and. ( .not. mainc ) end
+
+! REORIENT PROTEIN
+coordinate orient
+
+!WRITE OUT STRUCTURE
+write psf card name @molname_min.psf
+* Minimized @molname to remove bad VdWs contacts
+* Reoriented along x axis
+*
+
+write psf xplor card name @molname_min_xplor.psf
+* Minimized @molname to remove bad VdWs contacts
+* Reoriented along x axis
+* 
+
+write coord card name @molname_min.crd
+* Minimized @molname to remove bad VdWs contacts
+* Reoriented along x axis
+*
+
+write coord pdb name @molname_min.pdb
+* Minimized @molname to remove bad VdWs contacts
+* Reoriented along x axis
+* 
+
+! CALCULATE SUITABLE CUTOFF SIZE
+set padding 12
+calc padding @padding*2
+
+coordinate statistics select prot end
+
+calc xdim = int( abs ( ?XMAX - ?XMIN ) + @padding)
+calc ydim = int( abs ( ?YMAX - ?YMIN ) + @padding)
+calc zdim = int( abs ( ?ZMAX - ?ZMIN ) + @padding)
+
+open write unit 1 card name @molname_min_boxdims.str
+write title unit 1
+* set XSIZ @xdim
+* set YSIZ @ydim
+* set ZSIZ @zdim
+*
+
+close unit 1
+
+
+
+
+
+stop
+

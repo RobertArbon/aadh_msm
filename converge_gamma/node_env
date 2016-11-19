@@ -1,0 +1,102 @@
+Running on host node46-002
+Time is Fri Oct 28 15:23:36 BST 2016
+Directory is /panfs/panasas01/chem/ra15808/aadh/md/converge_gamma
+PBS job ID is 5018778.master.cm.cluster
+This jobs runs on the following machines:
+node46-002
+MODULE_VERSION_STACK=3.2.6
+CHARMM_PLUGIN_DIR=/panfs/panasas01/chem/ra15808/c41a2/lib/gnu/openmm_plugins
+MANPATH=/cm/shared/languages/Python-2.7.6/share/man:/cm/shared/languages/GCC-4.8.4/share/man:/cm/shared/apps/openmpi/gcc/64/1.6.5/share/man/:ignore:/cm/local/apps/environment-modules/3.2.6/man:/cm/shared/apps/torque/4.2.4.1/share/man:/cm/shared/tools/cmake-3.1.0/share:/cm/shared/tools/git-1.8.4.2/share/man
+CUDA_PATH=/cm/shared/apps/cuda-7.5.18
+CUDA_INC_PATH=/cm/shared/apps/cuda-7.5.18
+HOSTNAME=node46-002
+PBS_VERSION=TORQUE-4.2.4.1
+SHELL=/bin/bash
+HISTSIZE=1000
+PBS_JOBNAME=omm.sh
+LIBRARY_PATH=/cm/shared/apps/cuda-7.5.18/lib64:/usr/lib64
+DFTB_COMMAND=/panfs/panasas01/chem/ra15808/dftb+_1.2.2_src/prg_dftb/dftb+
+PBS_ENVIRONMENT=PBS_BATCH
+TK_LIBRARY=/usr/lib64
+OLDPWD=/panfs/panasas01/chem/ra15808
+QTDIR=/usr/lib64/qt-3.3
+QTINC=/usr/lib64/qt-3.3/include
+PBS_HOME=/cm/shared/apps/torque/4.2.4.1/spool
+ATLAS=/cm/shared/libraries/gnu_builds/atlas-3.10.1
+PBS_O_WORKDIR=/panfs/panasas01/chem/ra15808/aadh/md/converge_gamma
+CUDATK=/cm/shared/apps/cuda-7.5.18
+TORQUE_HOME=/cm/shared/apps/torque/4.2.4.1/spool
+USER=ra15808
+PBS_TASKNUM=1
+LD_LIBRARY_PATH=/cm/shared/apps/OpenMM/lib:/cm/shared/apps/OpenMM/lib/plugins:/cm/shared/apps/OpenMM/lib:/cm/shared/languages/Python-2.7.6/lib:/cm/shared/languages/GCC-4.8.4/lib64:/cm/shared/languages/GCC-4.8.4/lib:/cm/shared/apps/openmpi/gcc/64/1.6.5/lib64:/cm/shared/apps/moab/7.2.9/lib:/cm/shared/apps/torque/4.2.4.1/lib:/cm/shared/apps/cuda-7.5.18/lib64:/usr/lib64:/cm/shared/apps/cuda-7.5.18/open64/lib:/cm/shared/apps/cuda-7.5.18/extras/CUPTI/lib:/cm/shared/tools/cmake-3.1.0/lib:/cm/shared/tools/git-1.8.4.2/lib
+PBS_O_HOME=/panfs/panasas01/chem/ra15808
+TCL_LIBRARY=/usr/lib64
+CPATH=/cm/shared/apps/cuda-7.5.18/include
+PBS_WALLTIME=300
+CUDA_CACHE_DISABLE=1
+PBS_MOMPORT=15003
+PBS_GPUFILE=/cm/local/apps/torque/4.2.4.1/spool/aux//5018778.master.cm.clustergpu
+PBS_O_QUEUE=gpu
+PATH=/panfs/panasas01/chem/ra15808/ase/tools:/cm/shared/apps/OpenMM:/cm/shared/languages/Python-2.7.6/bin:/cm/shared/languages/GCC-4.8.4/bin:/cm/shared/apps/openmpi/gcc/64/1.6.5/bin:/cm/shared/apps/moab/7.2.9/sbin:/cm/shared/apps/moab/7.2.9/bin:/usr/lib64/qt-3.3/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/sbin:/usr/sbin:/opt/dell/srvadmin/bin:.:/cm/shared/apps/torque/4.2.4.1/bin:/cm/shared/apps/torque/4.2.4.1/sbin:/cm/shared/apps/cuda-7.5.18/bin:/cm/shared/apps/cuda-7.5.18/open64/bin:/cm/shared/tools/cmake-3.1.0/bin:/cm/shared/tools/git-1.8.4.2/bin:/panfs/panasas01/chem/ra15808/bin
+PBS_O_LOGNAME=ra15808
+MAIL=/var/spool/mail/ra15808
+MODULE_VERSION=3.2.6
+CUDA_INSTALL_PATH=/cm/shared/apps/cuda-7.5.18
+PBS_O_LANG=en_GB.UTF-8
+PBS_JOBCOOKIE=535F5A8708F865B8E2CF31908084CF17
+LD_RUN_PATH=/cm/shared/apps/openmpi/gcc/64/1.6.5/lib64
+PWD=/panfs/panasas01/chem/ra15808/aadh/md/converge_gamma
+CHARMM_ROOT=/panfs/panasas01/chem/ra15808/c41a2
+_LMFILES_=/cm/local/modulefiles/shared:/cm/local/modulefiles/dot:/cm/shared/modulefiles/torque/4.2.4.1:/cm/shared/modulefiles/moab/7.2.9:/cm/shared/modulefiles/default-environment:/cm/shared/modulefiles/cuda/toolkit/7.5.18:/cm/shared/modulefiles/openmpi/gcc/64/1.6.5:/cm/shared/modulefiles/languages/gcc-4.8.4:/cm/shared/modulefiles/languages/python-2.7.6:/cm/shared/modulefiles/tools/cmake-3.1.0:/cm/shared/modulefiles/tools/git-1.8.4.2:/cm/shared/modulefiles/apps/openmm-7.0.1
+LANG=en_US
+PBS_NODENUM=0
+MAKE_COMMAND=make -j4
+MODULEPATH=/cm/local/modulefiles:/cm/shared/modulefiles
+MOABHOMEDIR=/cm/shared/apps/moab/7.2.9
+PBS_NUM_NODES=1
+LOADEDMODULES=shared:dot:torque/4.2.4.1:moab/7.2.9:default-environment:cuda/toolkit/7.5.18:openmpi/gcc/64/1.6.5:languages/gcc-4.8.4:languages/python-2.7.6:tools/cmake-3.1.0:tools/git-1.8.4.2:apps/openmm-7.0.1
+DFTB_PREFIX=/panfs/panasas01/chem/ra15808/dftb+_1.2.2_src/mio-1-1/
+PBS_O_SHELL=/bin/bash
+PBS_JOBID=5018778.master.cm.cluster
+ENVIRONMENT=BATCH
+HISTCONTROL=ignoredups
+HOME=/panfs/panasas01/chem/ra15808
+SHLVL=2
+PBS_O_HOST=newblue2.cm.cluster
+INCLUDEPATH=/cm/shared/apps/cuda-7.5.18/include:/cm/shared/apps/cuda-7.5.18/include/CL:/cm/shared/apps/cuda-7.5.18/extras/CUPTI/include:/cm/shared/apps/cuda-7.5.18/extras/Debugger/include
+PBS_VNODENUM=0
+LOGNAME=ra15808
+PYTHONPATH=/panfs/panasas01/chem/ra15808/amp:/panfs/panasas01/chem/ra15808/ase:/cm/local/apps/cuda-driver/libs/current/pynvml:/panfs/panasas01/chem/ra15808/py_mods:/cm/local/apps/cuda-driver/libs/current/pynvml
+CVS_RSH=ssh
+QTLIB=/usr/lib64/qt-3.3/lib
+OPENMM_PLUGIN_DIR=/cm/shared/apps/OpenMM/lib/plugins
+PBS_QUEUE=gpu
+MODULESHOME=/cm/local/apps/environment-modules/3.2.6//Modules/3.2.6
+MPI_HOME=/cm/shared/apps/openmpi/gcc/64/1.6.5
+PBS_O_MAIL=/var/spool/mail/ra15808
+PBS_MICFILE=/cm/local/apps/torque/4.2.4.1/spool/aux//5018778.master.cm.clustermic
+LESSOPEN=|/usr/bin/lesspipe.sh %s
+PBS_NP=1
+MPI_RUN=/cm/shared/apps/openmpi/gcc/64/1.6.5/bin/mpirun
+PBS_O_SERVER=master.cm.cluster
+PBS_NUM_PPN=1
+PBS_NODEFILE=/cm/local/apps/torque/4.2.4.1/spool/aux//5018778.master.cm.cluster
+G_BROKEN_FILENAMES=1
+PBS_O_PATH=/panfs/panasas01/chem/ra15808/ase/tools:/cm/shared/apps/OpenMM:/cm/shared/languages/Python-2.7.6/bin:/cm/shared/languages/GCC-4.8.4/bin:/cm/shared/apps/openmpi/gcc/64/1.6.5/bin:/cm/shared/apps/moab/7.2.9/sbin:/cm/shared/apps/moab/7.2.9/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/sbin:/usr/sbin:/opt/dell/srvadmin/bin:.:/cm/shared/apps/torque/4.2.4.1/bin:/cm/shared/apps/torque/4.2.4.1/sbin:/cm/shared/apps/cuda-7.5.18/bin:/cm/shared/apps/cuda-7.5.18/open64/bin:/cm/shared/tools/cmake-3.1.0/bin:/cm/shared/tools/git-1.8.4.2/bin:/panfs/panasas01/chem/ra15808/bin
+BASH_FUNC_module()=() {  eval `/cm/local/apps/environment-modules/3.2.6//Modules/$MODULE_VERSION/bin/modulecmd bash $*`
+}
+_=/bin/env
+There are 4 Platforms available:
+
+1 Reference - Successfully computed forces
+2 CPU - Successfully computed forces
+3 CUDA - Error computing forces with CUDA platform
+4 OpenCL - Error computing forces with OpenCL platform
+
+OpenCL platform error: Error initializing context: clCreateContext (-33)
+
+CUDA platform error: Error loading CUDA module: CUDA_ERROR_NO_BINARY_FOR_GPU (209)
+
+Median difference in forces between platforms:
+
+Reference vs. CPU: 2.00146e-06

@@ -1,0 +1,67 @@
+* Final heating using serial code
+*
+
+envi OPENMM_PLATFORM  "CUDA"   ! /CUDA/Reference   Use OpenMM platform based on 
+envi OPENMM_PRECISION "mixed"   ! /mixed/double    Do calculations in single 
+
+stream /panfs/panasas01/chem/ra15808/aadh/setup.inp
+
+prnlev 5
+
+
+set buildcrystal ../common/build_crystal.str
+set imaging ../common/set_images.str
+set nonbondspec ../common/non_bond_spec.str
+
+stream @charmmtop/toppar_water_ions_fixed.str
+read rtf card name @charmmtop/top_all36_prot.rtf append flex
+read rtf card name /panfs/panasas01/chem/ra15808/aadh/data/ra/aadh_topologies.rtf append flex
+read para card name @charmmtop/par_all36_prot_mod.prm append flex
+read para card name @datadir/ra/aadh_parameters.prm append flex
+
+read psf card name ../common/2agy_final_min.psf
+read coord card name ../common/2agy-310k.crd
+
+! constraints
+shake bonh param sele all end
+
+! setup crystal
+stream @buildcrystal
+stream @imaging
+stream @nonbondspec
+
+faster on
+
+energy omm 
+
+coor copy comp
+
+ioform extended
+set nsteps  100000
+set nwrite 50 
+set gamma 1
+ 
+shake fast bonh tol 1.0e-8 para 
+
+set echeck = echeck -1
+
+open read card unit 10 name ../common/2agy-310k.res
+open write card unit 11 name  2agy-310k-anderson-250.res  
+
+dynamics leap restart timestep 0.002 -
+     nstep @nsteps nprint @nwrite iprfrq @nwrite isvfrq @nsteps iunwri 11 iunread 10 - 
+     firstt 310 finalt 310  -
+     ichecw 0 ihtfrq 0 ieqfrq 0 -
+     iasors 1 iasvel 1 iscvel 0  -
+     ilbfrq 0 inbfrq -1 imgfrq -1 @echeck bycb -
+     ntrfq 100 - 
+     omm andersen colfrq 250  
+     
+coor rms
+
+write coord card unit 12 name 2agy-310k-anderson-250.cor
+* Partially equilibrated using OMM/anderson
+*
+
+
+stop

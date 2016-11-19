@@ -1,0 +1,17 @@
+* Heat the HIS dimer to 310K
+*
+
+stream toppar_water_ions_fixed.str
+read rtf card name top_all36_prot.rtf append flex
+read para card name par_all36_prot.prm append flex
+
+set molname his-dimer-final
+
+read psf card name @molname.psf
+read coor card name @molname.cor
+
+stream build_crystal.str
+stream images.str
+stream non_bond_spec.str
+
+energy omm

@@ -1,0 +1,2650 @@
+1
+                 Chemistry at HARvard Macromolecular Mechanics
+           (CHARMM) - Developmental Version 41a2   February 15, 2016            
+                             Git commit ID f89d5df                              
+       Copyright(c) 1984-2014  President and Fellows of Harvard College
+                              All Rights Reserved
+     Current operating system: Linux-2.6.32-220.23.1.el6.x86_64(x86_64)@new     
+                 Created on 10/27/16 at 16:05:16 by user: ra15808     
+
+            Maximum number of ATOMS:    360720, and RESidues:      120240
+ RDTITL> * HEAT THE HIS DIMER TO 310K
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    envi OPENMM_PLATFORM  "CUDA"   ! /CUDA/Reference   Use OpenMM platform based on
+  
+ CHARMM>    envi OPENMM_PRECISION "mixed"   ! /mixed/double    Do calculations in single
+  
+ CHARMM>     
+  
+ CHARMM>    faster on
+ MISCOM> FAST option: EXPANDED (limited fast routines)
+  
+ CHARMM>     
+  
+ CHARMM>    stream toppar_water_ions_fixed.str
+ VOPEN> Attempting to open::toppar_water_ions_fixed.str::
+ OPNLGU> Unit 99 opened for READONLY access to toppar_water_ions_fixed.str
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * TOPLOGY AND PARAMETER INFORMATION FOR WATER AND IONS.
+ RDTITL> *
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    !Testcase
+ CHARMM>    !test_water_ions.inp
+ CHARMM>     
+  
+ CHARMM>    ! IMPORTANT NOTE: this file contains NBFixes between carboxylates and sodium,
+ CHARMM>    ! which will only apply if the main files containing carboxylate atom types
+ CHARMM>    ! have been read in first!
+ CHARMM>     
+  
+ CHARMM>    !references
+ CHARMM>    !
+ CHARMM>    !TIP3P water model
+ CHARMM>    !
+ CHARMM>    !W.L. Jorgensen; J.Chandrasekhar; J.D. Madura; R.W. Impey;
+ CHARMM>    !M.L. Klein; "Comparison of simple potential functions for
+ CHARMM>    !simulating liquid water", J. Chem. Phys. 79 926-935 (1983).
+ CHARMM>    !
+ CHARMM>    !IONS
+ CHARMM>    !
+ CHARMM>    !Ions from Roux and coworkers
+ CHARMM>    !
+ CHARMM>    !Beglov, D. and Roux, B., Finite Representation of an Infinite
+ CHARMM>    !Bulk System: Solvent Boundary Potential for Computer Simulations,
+ CHARMM>    !Journal of Chemical Physics, 1994, 100: 9050-9063
+ CHARMM>    !
+ CHARMM>    !ZINC
+ CHARMM>    !
+ CHARMM>    !Stote, R.H. and Karplus, M. Zinc Binding in Proteins and
+ CHARMM>    !Solution: A Simple but Accurate Nonbonded Representation, PROTEINS:
+ CHARMM>    !Structure, Function, and Genetics 23:12-31 (1995)
+ CHARMM>     
+  
+ CHARMM>    !test "append" to determine if previous toppar files have been read and
+ CHARMM>    !add append to "read rtf card" if true
+ CHARMM>    set nat ?NATC
+ RDCMND: can not substitute energy "?NATC"
+ Parameter: NAT <- "?NATC"
+  
+ CHARMM>    set app
+ Parameter: APP <- "" <empty>
+  
+ CHARMM>    !We're exploiting what is arguably a bug in the parser. On the left hand side,
+ CHARMM>    !the quotes have priority, so NAT is correctly substituted. On the right hand
+ CHARMM>    !side, the ? has priority and NATC" (sic) is not a valid substitution...
+ CHARMM>    if "@NAT" ne "?NATC" if @nat ne 0 set app append
+ Parameter: NAT -> "?NATC"
+ Parameter: NAT -> "?NATC"
+ RDCMND: can not substitute energy "?NATC""
+ Comparing ""?NATC"" and ""?NATC"".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>     
+  
+ CHARMM>    read rtf card  !REA 26/07/2013 - deleted @app - always stream this first and everything else must be appended)
+ MAINIO> Residue topology file being read from unit  99.
+ RDTITL> * TOPOLOGY FOR WATER AND IONS
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    read para card flex  !REA - deleted @app
+
+          PARAMETER FILE BEING READ FROM UNIT 99
+ RDTITL> * PARAMETERS FOR WATER AND IONS
+ RDTITL> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>     
+  
+ CHARMM>    ! The following section contains NBFixes for sodium interacting with
+ CHARMM>    ! carboxylate oxygens of various CHARMM force fields. It will generate
+ CHARMM>    ! level -1 warnings whenever any of these force fields have not been
+ CHARMM>    ! read prior to the current stream file. Since we don't want to force
+ CHARMM>    ! the user to always read all the force fields, we're suppressing the
+ CHARMM>    ! warnings. The only side effect is that you will have "most severe
+ CHARMM>    ! warning was at level 0" at the end of your output. Also note that
+ CHARMM>    ! the user is responsible for reading the current file last if they
+ CHARMM>    ! want the NBFixes to apply. A more elegant solution would require new
+ CHARMM>    ! features to be added to CHARMM.
+ CHARMM>    ! parallel fix, to avoid duplicated messages in the log
+ CHARMM>    set para
+ Parameter: PARA <- "" <empty>
+  
+ CHARMM>    if ?NUMNODE gt 1 set para node 0
+ RDCMND substituted energy or value "?NUMNODE" to "1"
+ Comparing "1" and "1".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>     
+  
+ CHARMM>    set wrn ?WRNLEV
+ RDCMND substituted energy or value "?WRNLEV" to "5"
+ Parameter: WRN <- "5"
+  
+ CHARMM>    ! Some versions of CHARMM don't seem to initialize wrnlev...
+ CHARMM>    if "@WRN" eq "?WRNLEV" set wrn 5
+ Parameter: WRN -> "5"
+ RDCMND: can not substitute energy "?WRNLEV""
+ Comparing ""5"" and ""?WRNLEV"".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>    set bom ?bomlev
+ RDCMND substituted energy or value "?BOMLEV" to "0"
+ Parameter: BOM <- "0"
+  
+ CHARMM>    WRNLEV -1 @PARA
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    BOMLEV -1 @PARA
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    read para card flex append
+
+          PARAMETER FILE BEING READ FROM UNIT 99
+ RDTITL> * NBFIX BETWEEN CARBOXYLATE AND SODIUM
+ RDTITL> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>    BOMLEV @bom @PARA
+ Parameter: BOM -> "0"
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    WRNLEV @wrn @PARA
+ Parameter: WRN -> "5"
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    return
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>    read rtf card name top_all36_prot.rtf append flex
+ VOPEN> Attempting to open::top_all36_prot.rtf::
+ MAINIO> Residue topology file being read from unit  90.
+ TITLE> *>>>>>>>>CHARMM36 ALL-HYDROGEN TOPOLOGY FILE FOR PROTEINS <<<<<<
+ TITLE> *>>>>> INCLUDES PHI, PSI CROSS TERM MAP (CMAP) CORRECTION <<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>>>>> MAY 2011 <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> * ALL COMMENTS TO THE CHARMM WEB SITE: WWW.CHARMM.ORG
+ TITLE> *             PARAMETER SET DISCUSSION FORUM
+ TITLE> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read para card name par_all36_prot.prm append flex
+ VOPEN> Attempting to open::par_all36_prot.prm::
+
+          PARAMETER FILE BEING READ FROM UNIT 90
+ TITLE> *>>>> CHARMM36 ALL-HYDROGEN PARAMETER FILE FOR PROTEINS <<<<<<<<<<
+ TITLE> *>>>>> INCLUDES PHI, PSI CROSS TERM MAP (CMAP) CORRECTION <<<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>>>>> FEB. 2012 <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> * ALL COMMENTS TO THE CHARMM WEB SITE: WWW.CHARMM.ORG
+ TITLE> *             PARAMETER SET DISCUSSION FORUM
+ TITLE> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    set molname his-dimer-final
+ Parameter: MOLNAME <- "HIS-DIMER-FINAL"
+  
+ CHARMM>     
+  
+ CHARMM>    set finalT 55
+ Parameter: FINALT <- "55"
+  
+ CHARMM>    set initT 50
+ Parameter: INITT <- "50"
+  
+ CHARMM>    set incT 5
+ Parameter: INCT <- "5"
+  
+ CHARMM>    set nsteps 1000
+ Parameter: NSTEPS <- "1000"
+  
+ CHARMM>    calc niter (@finalT - @initT)/@incT
+ Parameter: FINALT -> "55"
+ Parameter: INITT -> "50"
+ Parameter: INCT -> "5"
+Evaluating: (55-50)/5
+ Parameter: NITER <- "1"
+  
+ CHARMM>    set ctr 0
+ Parameter: CTR <- "0"
+  
+ CHARMM>    calc nwrite @nsteps / 10
+ Parameter: NSTEPS -> "1000"
+Evaluating: 1000/10
+ Parameter: NWRITE <- "100"
+  
+ CHARMM>    set echeck = echeck -1
+ Parameter: ECHECK <- "ECHECK -1"
+  
+ CHARMM>     
+  
+ CHARMM>    label loop
+  
+ CHARMM>        calc currT @initT + @ctr*@incT
+ Parameter: INITT -> "50"
+ Parameter: CTR -> "0"
+ Parameter: INCT -> "5"
+Evaluating: 50+0*5
+ Parameter: CURRT <- "50"
+  
+ CHARMM>        calc prevT @initT + (@ctr-1)*@incT
+ Parameter: INITT -> "50"
+ Parameter: CTR -> "0"
+ Parameter: INCT -> "5"
+Evaluating: 50+(0-1)*5
+ Parameter: PREVT <- "45"
+  
+ CHARMM>        open write card unit 10 name @molname-@currT.res
+ Parameter: MOLNAME -> "HIS-DIMER-FINAL"
+ Parameter: CURRT -> "50"
+ VOPEN> Attempting to open::his-dimer-final-50.res::
+ OPNLGU> Unit 10 opened for WRITE access to his-dimer-final-50.res
+  
+ CHARMM>     
+  
+ CHARMM>         if @ctr .ne. 0 then
+ Parameter: CTR -> "0"
+ Comparing "0" and "0".
+ IF test evaluated as false.  Skip to ELSE or ENDIF
+  
+ CHARMM>     
+  
+ CHARMM>         read psf card name @molname.psf
+ Parameter: MOLNAME -> "HIS-DIMER-FINAL"
+ VOPEN> Attempting to open::his-dimer-final.psf::
+ MAINIO> Protein structure file being read from unit  90.
+ PSFRD2> Reading PSF in the expanded format.
+ TITLE>  * NEUTRALIZED AND MINIMIZED HIS-DIMER
+ TITLE>  *  DATE:     8/24/16     13:58:16      CREATED BY USER: robert_arbon
+ TITLE>  *
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        4   Number of residues   =     1412
+         Number of atoms         =     4266   Number of groups     =     1421
+         Number of bonds         =     4261   Number of angles     =     1488
+         Number of dihedrals     =      118   Number of impropers  =       14
+         Number of cross-terms   =        2
+         Number of HB acceptors  =     1407   Number of HB donors  =     2815
+         Number of NB exclusions =        0   Total charge =    0.00000
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>         if @ctr .eq. 0 then
+ Parameter: CTR -> "0"
+ Comparing "0" and "0".
+ IF test evaluated as true.  Performing command
+  
+ CHARMM>             read coor card name @molname.cor
+ Parameter: MOLNAME -> "HIS-DIMER-FINAL"
+ VOPEN> Attempting to open::his-dimer-final.cor::
+          SPATIAL COORDINATES BEING READ FROM UNIT 90
+ TITLE> * NEUTRALIZED AND MINIMIZED HIS-DIMER
+ TITLE> *  DATE:     8/24/16     13:58:16      CREATED BY USER: ROBERT_ARBON
+ TITLE> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>             set strtcmd start
+ Parameter: STRTCMD <- "START"
+  
+ CHARMM>             set resunit -1
+ Parameter: RESUNIT <- "-1"
+  
+ CHARMM>         endif
+  
+ CHARMM>     
+  
+ CHARMM>        if @ctr .ne. 0 then
+ Parameter: CTR -> "0"
+ Comparing "0" and "0".
+ IF test evaluated as false.  Skip to ELSE or ENDIF
+  
+ CHARMM>     
+  
+ CHARMM>         stream build_crystal.str
+ VOPEN> Attempting to open::build_crystal.str::
+ OPNLGU> Unit 99 opened for READONLY access to build_crystal.str
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * STREAM FILE FOR SETTING UP CUBIC CRYSTAL.
+ RDTITL> SET LENGTH 35.6263665
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     set length 35.6263665
+ Parameter: LENGTH <- "35.6263665"
+  
+ CHARMM>     calc cutoff @length/2
+ Parameter: LENGTH -> "35.6263665"
+Evaluating: 35.6263665/2
+ Parameter: CUTOFF <- "17.8131833"
+  
+ CHARMM>     CRYSTAL DEFI cubic @length @length @length 90.0 90.0 90.0
+ Parameter: LENGTH -> "35.6263665"
+ Parameter: LENGTH -> "35.6263665"
+ Parameter: LENGTH -> "35.6263665"
+ Crystal Parameters : Crystal Type = CUBI
+           A     =   35.62637 B    =   35.62637 C     =   35.62637
+           Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+  
+ CHARMM>     CRYSTAL BUILD cutoff @cutoff noper 0
+ Parameter: CUTOFF -> "17.8131833"
+ XBUILD> Building all transformations with a minimum atom-atom
+         contact distance of less than   17.81 Angstroms.
+
+ Range of Grid Search for Transformation     1 :
+ Lattice Vector A    -2 TO     2
+ Lattice Vector B    -2 TO     2
+ Lattice Vector C    -2 TO     2
+
+
+ The number of transformations generated =    26
+
+
+ Number  Symop   A   B   C   Distance
+
+      1      1  -1  -1  -1     3.4307
+      2      1  -1   0  -1     2.1366
+      3      1  -1   1  -1     4.2400
+      4      1   0  -1  -1     2.0770
+      5      1   0   0  -1     2.3080
+      6      1   0   1  -1     3.5733
+      7      1  -1  -1   0     2.2039
+      8      1  -1   0   0     2.1921
+      9      1  -1   1   0     2.7175
+     10      1   0  -1   0     1.7709
+     11      1   0   1   0     1.7709
+     12      1  -1  -1   1     5.3932
+     13      1  -1   0   1     3.2878
+     14      1  -1   1   1     5.4391
+     15      1   0  -1   1     3.5733
+     16      1   0   0   1     2.3080
+     17      1   0   1   1     2.0770
+     18      1   1   1   1     3.4307
+     19      1   1   0   1     2.1366
+     20      1   1  -1   1     4.2400
+     21      1   1   1   0     2.2039
+     22      1   1   0   0     2.1921
+     23      1   1  -1   0     2.7175
+     24      1   1   1  -1     5.3932
+     25      1   1   0  -1     3.2878
+     26      1   1  -1  -1     5.4391
+                     THERE ARE NO ROTATIONS FOR THIS TRANSFORMATION SET
+    26 Transformations have been processed.
+
+  
+ CHARMM>     IMAGE BYRES SELE SEGID BWAT END
+ SELRPN>   4212 atoms have been selected out of   4266
+ IMAGE CENTERING ON FOR SOME ATOMS
+  
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>         stream images.str
+ VOPEN> Attempting to open::images.str::
+ OPNLGU> Unit 99 opened for READONLY access to images.str
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * STREAM FILE FOR ADDITIONAL IMAGE SPECIFICATION
+ RDTITL>  
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    image bysegid sele segid his2 end
+ SELRPN>     48 atoms have been selected out of   4266
+ IMAGE CENTERING ON FOR SOME ATOMS
+  
+ CHARMM>    image byres sele .not. (segid his2 .or. segid bwat) end
+ SELRPN>      6 atoms have been selected out of   4266
+ IMAGE CENTERING ON FOR SOME ATOMS
+  
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>         stream non_bond_spec.str
+ VOPEN> Attempting to open::non_bond_spec.str::
+ OPNLGU> Unit 99 opened for READONLY access to non_bond_spec.str
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * STREAM FILE FOR SPECIFYING NON-BONDED SPECIFICATIONS USING THE STANDARD EWALD SUMMATION
+ RDTITL> *
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    set kppa 0.34
+ Parameter: KPPA <- "0.34"
+  
+ CHARMM>    calc kmx int( @kppa*@length )
+ Parameter: KPPA -> "0.34"
+ Parameter: LENGTH -> "35.6263665"
+Evaluating: INT(0.34*35.6263665)
+ Parameter: KMX <- "12"
+  
+ CHARMM>    calc kmy int( @kppa*@length )
+ Parameter: KPPA -> "0.34"
+ Parameter: LENGTH -> "35.6263665"
+Evaluating: INT(0.34*35.6263665)
+ Parameter: KMY <- "12"
+  
+ CHARMM>    calc kmz int( @kppa*@length )
+ Parameter: KPPA -> "0.34"
+ Parameter: LENGTH -> "35.6263665"
+Evaluating: INT(0.34*35.6263665)
+ Parameter: KMZ <- "12"
+  
+ CHARMM>     
+  
+ CHARMM>    NBONDED inbfrq -1 imgfrq -1 nbxmod 5 -                                              ! C36 DEFAULTS
+ CHARMM>            atom cdiel -                                                                 ! use atom based electrostatics, C36 DEFAULTS
+ CHARMM>            vatom vdistance vfswitch -                                                  ! C36 DEFAULTS
+ CHARMM>            elec ewald kappa @kppa spline nopm kmxx @kmx kmxy @kmy kmxz @kmz   -        ! standard Ewald SUMMATION
+ CHARMM>            cutnb 14.0 ctofnb 12.0 ctonnb 10.0 -                                        ! C36 DEFAULTS
+ CHARMM>            cutim 14.0 -                                                                ! must be same as cutnb
+ CHARMM>            eps 1.0 e14fac 1.0 wmin 1.5                                                 ! C36 DEFAULTS
+ Parameter: KPPA -> "0.34"
+ Parameter: KMX -> "12"
+ Parameter: KMY -> "12"
+ Parameter: KMZ -> "12"
+
+ SELECTED IMAGES ATOMS BEING CENTERED ABOUT  0.000000  0.000000  0.000000
+ RESIDUE   61 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE   87 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE  153 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE  164 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE  165 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE  167 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE  200 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE  208 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE  224 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE  335 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE  406 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE  411 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE  456 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  486 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE  509 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE  516 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  630 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  671 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  675 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  683 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE  701 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE  745 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE  751 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  802 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE  806 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  808 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  820 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  850 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE  860 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE  866 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE  897 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE  985 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE 1039 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1095 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1118 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE 1160 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE 1164 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE 1166 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE 1169 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE 1180 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE 1184 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE 1206 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1209 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE 1227 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE 1346 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE 1364 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE 1382 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1395 OPERATED ON BY TRANSFORMATION C008
+
+ <MKIMAT2>: updating the image atom lists and remapping
+ Transformation   Atoms  Groups  Residues  Min-Distance
+    1  C001 has     127      43      43        0.73
+    2  C002 has     464     156     156        0.00
+    3  C003 has      96      32      32        0.43
+    4  C004 has     478     160     160        0.00
+    5  C005 has    1704     569     569        0.00
+    6  C006 has     468     156     156        0.00
+    7  C007 has     516     174     174        0.04
+    8  C008 has    1685     565     565        0.00
+    9  C009 has     480     160     160        0.07
+   10  C010 has    1741     583     583        0.00
+   12  C012 has      99      33      33        2.13
+   13  C013 has     501     167     167        0.00
+   14  C014 has      87      29      29        3.74
+ Total of12712 atoms and 4248 groups and 4239 residues were included
+
+ Fill Ewald table: Number of points=     10000 EWXmax=    4.250000
+ fill erfc table: linear inter has rms error = 0.979220D-08 maximum error = 0.218740D-07
+ fill erfc table: cubic spline has rms error = 0.360331D-11 maximum error = 0.108438D-10
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VFSWIt  
+     BYGRoup  NOEXtnd  EWALd   
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 10.000 CTOFNB = 12.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ EWALD OPTIONS: KAPPA  =  0.340 KMAX   =      5 KSQMAX =     27
+                Using Pub FFT
+                Real-to-Complex FFT
+ There are        0 atom  pairs and        0 atom  exclusions.
+ There are        0 group pairs and        0 group exclusions.
+ <MAKINB> with mode   5 found   4345 exclusions and    108 interactions(1-4)
+ <MAKGRP> found     23 group exclusions.
+ <MAKGRP> found      0 image group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR  1225842 ATOM PAIRS AND        0 GROUP PAIRS
+ == PRIMARY == SPACE FOR  1838783 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+  1435438 ATOM PAIRS WERE FOUND FOR ATOM LIST
+    73244 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+ SPACE FOR  2848866 ATOM PAIRS AND        0 GROUP PAIRS
+
+ Image nonbond list generation found:
+   871769 ATOM PAIRS WERE FOUND FOR ATOM LIST
+        0 ATOM PAIRS WERE FOUND FOR ATOM SELF LIST
+    70591 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+  
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>     
+  
+ CHARMM>         ! Configure shake
+  
+ CHARMM>         shake bonh param sele all end
+ SELRPN>   4266 atoms have been selected out of   4266
+ SHKCOM> SHAKE parameters: TOL =   0.1000D-09 MXITer =    500
+
+            4235 constraints will held by SHAKE.
+  
+ CHARMM>     
+  
+ CHARMM>         dynamics leap @strtcmd timestep 0.002 -
+ CHARMM>              nstep @nsteps nprint @nwrite iprfrq @nwrite isvfrq @nsteps -
+ CHARMM>              iunwri 10 iunread @resunit -
+ CHARMM>              firstt @currT finalt @currT  -
+ CHARMM>              ichecw 0 ihtfrq 0 ieqfrq 0 -
+ CHARMM>              iasors 1 iasvel 1 iscvel 0  -
+ CHARMM>              ilbfrq 0 inbfrq -1 imgfrq -1 @echeck bycb -
+ CHARMM>              ntrfq @nsteps -
+ CHARMM>              omm langevin gamma 10 ! turn on openmm, set-up Langevin
+ Parameter: STRTCMD -> "START"
+ Parameter: NSTEPS -> "1000"
+ Parameter: NWRITE -> "100"
+ Parameter: NWRITE -> "100"
+ Parameter: NSTEPS -> "1000"
+ Parameter: RESUNIT -> "-1"
+ Parameter: CURRT -> "50"
+ Parameter: CURRT -> "50"
+ Parameter: ECHECK -> "ECHECK -1"
+ Parameter: NSTEPS -> "1000"
+  IUNREA = -1         IUNWRI = 10          IUNOS = -1
+  IUNCRD = -1         IUNVEL = -1          KUNIT = -1
+
+ SELECTED IMAGES ATOMS BEING CENTERED ABOUT  0.000000  0.000000  0.000000
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VFSWIt  
+     BYCB     NOEXtnd  EWALd   
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 10.000 CTOFNB = 12.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ EWALD OPTIONS: KAPPA  =  0.340 KMAX   =      5 KSQMAX =     27
+                Using Pub FFT
+                Real-to-Complex FFT
+ There are  1435438 atom  pairs and     4453 atom  exclusions.
+ There are        0 group pairs and       23 group exclusions.
+Using Image CUBE search
+Using Image CUBE search
+ DCNTRL> Langevin integration requested.
+ DCNTRL>  OpenMM interface requested for energy and dynamics calculations.
+ DCNTRL>  Constant temperature w/ OpenMM using Langevin heatbath requested.
+ DCNTRL>  Reference heatbath temperature is    50.000K
+ DCNTRL>  Using friction coefficient value of    10.000  ps^-1
+   NSTEP =     1000    NSAVC =       10    NSAVV =       10
+  ISCALE =        0   ISCVEL =        0   IASORS =        1
+  IASVEL =        1   ICHECW =        0   NTRFRQ =     1000
+  IHTFRQ =        0   IEQFRQ =        0   NPRINT =      100
+  INBFRQ =       -1   IHBFRQ =        0   IPRFRQ =     1000
+  ILBFRQ =        0   IMGFRQ =       -1
+  ISVFRQ =     1000   NCYCLE =     1000    NSNOS =       10
+  FIRSTT =    50.000  TEMINC =     5.000  TSTRUC =  -999.000
+  FINALT =    50.000  TWINDH =    10.000  TWINDL =   -10.000
+
+  TIME STEP =  4.09097E-02 AKMA       2.00000E-03 PS
+
+  RANDOM NUM. GEN. SEED(S) = 388929343 388929343 388929343 388929343
+
+           SHAKE TOLERANCE =     0.10000E-09
+ NUMBER OF DEGREES OF FREEDOM =   8563
+
+          GAUSSIAN OPTION                  IS            1
+          VELOCITIES ASSIGNED AT TEMPERATURE =     62.5000
+          SEED FOR RANDOM NUMBER GENERATOR IS:
+          SEEDS> 388929343 388929343 388929343 388929343
+
+     DETAILS ABOUT CENTRE OF MASS
+     POSITION          :  -7.82796174E-02   6.46001223E-02  -5.93012825E-02
+     VELOCITY          :   5.69014384E-04  -3.34480563E-03  -1.75203798E-03
+     ANGULAR MOMENTUM  :    1008.1213        985.38109       -709.44343    
+     KINETIC ENERGY    :   0.18855610    
+get_PlatformDefaults> Finding default platform values
+get_PlatformDefaults> Default values found: platform=CUDA precision=mixed deviceid=0
+Setup_OpenMM: Initializing OpenMM context
+CHARMM> Using switching functions for vdW interactions and OpenMM PME/RxnFld for electrostatics
+CHARMM> Using OpenMM nb routines.
+NBFIxes in effect, using CustomNonbondedForce
+CHARMM> OpenMM switching function selection.
+CHARMM> Electrostatic options: switch=F fswitch=F fshift=F PME/Ewald=F RxnFld=F
+CHARMM> van der Waals options: vswitch=F vfswitch=T OpenMM vdW switch=F
+ Available OpenMM platform 0: Reference 
+ Available OpenMM platform 1: CPU       
+ Available OpenMM platform 2: CUDA      
+ Available OpenMM platform 3: OpenCL    
+Init_context: Using OpenMM platform CUDA      
+       CudaDeviceIndex = 0
+       CudaCompiler = /usr/local/cuda/bin/nvcc
+       CudaPrecision = mixed
+OpenMM: Velocities scaled or randomized
+DYNA DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+DYNA PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+DYNA INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+DYNA CROSS:           CMAPs        PMF1D        PMF2D        PRIMO
+DYNA EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+DYNA PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>        0      0.00000 -17774.65042    779.54559 -18554.19602     91.62331
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>      678.79931    402.37667      0.00000     28.84236      0.09032
+DYNA CROSS>        -5.44175      0.00000      0.00000      0.00000
+DYNA EXTERN>   -19658.86294      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      100      0.20000 -16740.80154    399.92804 -17140.72958     47.00524
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        2.82165      7.77658      0.00000     29.05570      0.26994
+DYNA CROSS>        -5.66786      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17174.98556      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      200      0.40000 -16701.36503    410.70513 -17112.07016     48.27192
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        2.58700      6.22423      0.00000     30.74625      0.35176
+DYNA CROSS>        -4.88676      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17147.09263      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      300      0.60000 -16713.03343    417.28373 -17130.31716     49.04513
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        3.08129      5.98502      0.00000     30.64390      0.16453
+DYNA CROSS>        -5.45228      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17164.73964      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      400      0.80000 -16707.00216    427.34278 -17134.34494     50.22741
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        3.65997      7.64023      0.00000     30.27595      0.25999
+DYNA CROSS>        -5.55619      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17170.62485      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      500      1.00000 -16708.81764    422.40670 -17131.22433     49.64725
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        4.22539      8.01207      0.00000     30.43067      0.26637
+DYNA CROSS>        -4.84863      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17169.31031      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      600      1.20000 -16730.98960    428.26795 -17159.25755     50.33615
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        2.62949      6.80155      0.00000     29.90761      0.31454
+DYNA CROSS>        -5.61616      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17193.29466      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      700      1.40000 -16723.49685    422.00271 -17145.49956     49.59977
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        3.10156      7.43660      0.00000     30.19733      0.20103
+DYNA CROSS>        -6.04734      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17180.38889      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      800      1.60000 -16759.26108    414.18357 -17173.44465     48.68075
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        4.71837      6.79899      0.00000     30.72108      0.18810
+DYNA CROSS>        -5.11877      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17210.75242      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      900      1.80000 -16752.31183    428.55609 -17180.86793     50.37002
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        3.59301      7.84162      0.00000     30.18023      0.35197
+DYNA CROSS>        -5.13612      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17217.69872      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>     1000      2.00000 -16788.76434    430.58215 -17219.34649     50.60815
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        2.24216      8.49425      0.00000     29.48593      0.46770
+DYNA CROSS>        -5.13282      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17254.90380      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 1000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER CROSS:           CMAPs        PMF1D        PMF2D        PRIMO
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     1000      2.00000 -16827.31763    452.80040 -17280.11803     53.21956
+AVER PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+AVER INTERN>       64.67811     43.21707      0.00000     30.04427      0.26602
+AVER CROSS>        -5.35497      0.00000      0.00000      0.00000
+AVER EXTERN>   -17412.96858      0.00000      0.00000      0.00000      0.00000
+AVER PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 1000 steps:
+FLUC>     1000      2.00000    300.63104    103.69810    403.89645     12.18808
+FLUC PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+FLUC INTERN>      194.20346    113.57863      0.00000      0.62578      0.09967
+FLUC CROSS>         0.34793      0.00000      0.00000      0.00000
+FLUC EXTERN>      710.78964      0.00000      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000      0.00000      0.00000      0.00000      0.00069
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+ OpenMM was used to perform energy and force evaluation.
+
+
+     DETAILS ABOUT CENTRE OF MASS
+     POSITION          :    17.902508        17.842085        17.587721    
+     VELOCITY          :   5.66575912E-04  -1.57533297E-05  -2.83249963E-05
+     ANGULAR MOMENTUM  :    738.55649       -337.10074       -311.27538    
+     KINETIC ENERGY    :   4.16470469E-03
+ WRIDYN: RESTart file was written at step    1000
+ VCLOSE: Closing unit   10 with status "KEEP"
+
+     DETAILS ABOUT CENTRE OF MASS
+     POSITION          :    17.902508        17.842085        17.587721    
+     VELOCITY          :   5.66575912E-04  -1.57533297E-05  -2.83249963E-05
+     ANGULAR MOMENTUM  :    738.55649       -337.10074       -311.27538    
+     KINETIC ENERGY    :   4.16470469E-03
+  
+ CHARMM>     
+  
+ CHARMM>          write coor card name @molname-@currT.cor
+ Parameter: MOLNAME -> "HIS-DIMER-FINAL"
+ Parameter: CURRT -> "50"
+ VOPEN> Attempting to open::his-dimer-final-50.cor::
+ RDTITL> * COORDINATES AFTER HEATING TO 50
+ RDTITL> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>         incr ctr by 1
+ Parameter: CTR <- "1"
+  
+ CHARMM>     
+  
+ CHARMM>         if @ctr .le. @niter goto loop
+ Parameter: CTR -> "1"
+ Parameter: NITER -> "1"
+ Comparing "1" and "1".
+ IF test evaluated as true.  Performing command
+  
+ CHARMM>        calc currT @initT + @ctr*@incT
+ Parameter: INITT -> "50"
+ Parameter: CTR -> "1"
+ Parameter: INCT -> "5"
+Evaluating: 50+1*5
+ Parameter: CURRT <- "55"
+  
+ CHARMM>        calc prevT @initT + (@ctr-1)*@incT
+ Parameter: INITT -> "50"
+ Parameter: CTR -> "1"
+ Parameter: INCT -> "5"
+Evaluating: 50+(1-1)*5
+ Parameter: PREVT <- "50"
+  
+ CHARMM>        open write card unit 10 name @molname-@currT.res
+ Parameter: MOLNAME -> "HIS-DIMER-FINAL"
+ Parameter: CURRT -> "55"
+ VOPEN> Attempting to open::his-dimer-final-55.res::
+ OPNLGU> Unit 10 opened for WRITE access to his-dimer-final-55.res
+  
+ CHARMM>     
+  
+ CHARMM>         if @ctr .ne. 0 then
+ Parameter: CTR -> "1"
+ Comparing "1" and "0".
+ IF test evaluated as true.  Performing command
+  
+ CHARMM>             bomlev -1
+  
+ CHARMM>             dele atom sele all end
+ SELRPN>   4266 atoms have been selected out of   4266
+
+ Message from MAPIC: Atom numbers are changed.
+
+ Message from MAPIC:       1412 residues deleted.
+
+ Message from MAPIC:          4 segments deleted.
+ DELTIC:      4261 bonds deleted
+ DELTIC:      1488 angles deleted
+ DELTIC:       118 dihedrals deleted
+ DELTIC:        14 improper dihedrals deleted
+ DELTIC:         2 crossterm maps deleted
+ DELTIC:      2815 donors deleted
+ DELTIC:      1407 acceptors deleted
+
+      ***** LEVEL  0 WARNING FROM <CLIMAG> *****
+      ***** PSF modified with image centering active: Now off.
+      ******************************************
+      BOMLEV ( -1) IS NOT REACHED. WRNLEV IS  5
+
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        0   Number of residues   =        0
+         Number of atoms         =        0   Number of groups     =        0
+         Number of bonds         =        0   Number of angles     =        0
+         Number of dihedrals     =        0   Number of impropers  =        0
+         Number of cross-terms   =        0
+         Number of HB acceptors  =        0   Number of HB donors  =        0
+         Number of NB exclusions =        0   Total charge =    0.00000
+  
+ CHARMM>             bomlev 0
+  
+ CHARMM>         endif
+  
+ CHARMM>     
+  
+ CHARMM>         read psf card name @molname.psf
+ Parameter: MOLNAME -> "HIS-DIMER-FINAL"
+ VOPEN> Attempting to open::his-dimer-final.psf::
+ MAINIO> Protein structure file being read from unit  90.
+ PSFRD2> Reading PSF in the expanded format.
+ TITLE>  * NEUTRALIZED AND MINIMIZED HIS-DIMER
+ TITLE>  *  DATE:     8/24/16     13:58:16      CREATED BY USER: robert_arbon
+ TITLE>  *
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        4   Number of residues   =     1412
+         Number of atoms         =     4266   Number of groups     =     1421
+         Number of bonds         =     4261   Number of angles     =     1488
+         Number of dihedrals     =      118   Number of impropers  =       14
+         Number of cross-terms   =        2
+         Number of HB acceptors  =     1407   Number of HB donors  =     2815
+         Number of NB exclusions =        0   Total charge =    0.00000
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>         if @ctr .eq. 0 then
+ Parameter: CTR -> "1"
+ Comparing "1" and "0".
+ IF test evaluated as false.  Skip to ELSE or ENDIF
+  
+ CHARMM>     
+  
+ CHARMM>        if @ctr .ne. 0 then
+ Parameter: CTR -> "1"
+ Comparing "1" and "0".
+ IF test evaluated as true.  Performing command
+  
+ CHARMM>            open read card unit 20 name @molname-@prevT.res
+ Parameter: MOLNAME -> "HIS-DIMER-FINAL"
+ Parameter: PREVT -> "50"
+ VOPEN> Attempting to open::his-dimer-final-50.res::
+ OPNLGU> Unit 20 opened for READONLY access to his-dimer-final-50.res
+  
+ CHARMM>            read coor card name @molname-@prevT.cor
+ Parameter: MOLNAME -> "HIS-DIMER-FINAL"
+ Parameter: PREVT -> "50"
+ VOPEN> Attempting to open::his-dimer-final-50.cor::
+          SPATIAL COORDINATES BEING READ FROM UNIT 90
+ TITLE> * COORDINATES AFTER HEATING TO 50
+ TITLE> *  DATE:    10/27/16     16: 5:33      CREATED BY USER: RA15808
+ TITLE> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>            set strtcmd restart
+ Parameter: STRTCMD <- "RESTART"
+  
+ CHARMM>            set resunit 20
+ Parameter: RESUNIT <- "20"
+  
+ CHARMM>         endif
+  
+ CHARMM>     
+  
+ CHARMM>         stream build_crystal.str
+ VOPEN> Attempting to open::build_crystal.str::
+ OPNLGU> Unit 99 opened for READONLY access to build_crystal.str
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * STREAM FILE FOR SETTING UP CUBIC CRYSTAL.
+ RDTITL> SET LENGTH 35.6263665
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     set length 35.6263665
+ Parameter: LENGTH <- "35.6263665"
+  
+ CHARMM>     calc cutoff @length/2
+ Parameter: LENGTH -> "35.6263665"
+Evaluating: 35.6263665/2
+ Parameter: CUTOFF <- "17.8131833"
+  
+ CHARMM>     CRYSTAL DEFI cubic @length @length @length 90.0 90.0 90.0
+ Parameter: LENGTH -> "35.6263665"
+ Parameter: LENGTH -> "35.6263665"
+ Parameter: LENGTH -> "35.6263665"
+ Crystal Parameters : Crystal Type = CUBI
+           A     =   35.62637 B    =   35.62637 C     =   35.62637
+           Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+  
+ CHARMM>     CRYSTAL BUILD cutoff @cutoff noper 0
+ Parameter: CUTOFF -> "17.8131833"
+ XBUILD> Building all transformations with a minimum atom-atom
+         contact distance of less than   17.81 Angstroms.
+
+ Range of Grid Search for Transformation     1 :
+ Lattice Vector A    -2 TO     2
+ Lattice Vector B    -2 TO     2
+ Lattice Vector C    -2 TO     2
+
+
+ The number of transformations generated =    26
+
+
+ Number  Symop   A   B   C   Distance
+
+      1      1  -1  -1  -1     9.8301
+      2      1  -1   0  -1     1.8650
+      3      1  -1   1  -1     4.6490
+      4      1   0  -1  -1     6.5289
+      5      1   0   0  -1     2.1244
+      6      1   0   1  -1     1.7984
+      7      1  -1  -1   0     1.8121
+      8      1  -1   0   0     3.9010
+      9      1  -1   1   0     5.6430
+     10      1   0  -1   0     2.9652
+     11      1   0   1   0     2.9652
+     12      1  -1  -1   1     2.3159
+     13      1  -1   0   1     3.3113
+     14      1  -1   1   1     8.1073
+     15      1   0  -1   1     1.7984
+     16      1   0   0   1     2.1244
+     17      1   0   1   1     6.5289
+     18      1   1   1   1     9.8301
+     19      1   1   0   1     1.8650
+     20      1   1  -1   1     4.6490
+     21      1   1   1   0     1.8121
+     22      1   1   0   0     3.9010
+     23      1   1  -1   0     5.6430
+     24      1   1   1  -1     2.3159
+     25      1   1   0  -1     3.3113
+     26      1   1  -1  -1     8.1073
+                     THERE ARE NO ROTATIONS FOR THIS TRANSFORMATION SET
+    26 Transformations have been processed.
+
+  
+ CHARMM>     IMAGE BYRES SELE SEGID BWAT END
+ SELRPN>   4212 atoms have been selected out of   4266
+ IMAGE CENTERING ON FOR SOME ATOMS
+  
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>         stream images.str
+ VOPEN> Attempting to open::images.str::
+ OPNLGU> Unit 99 opened for READONLY access to images.str
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * STREAM FILE FOR ADDITIONAL IMAGE SPECIFICATION
+ RDTITL>  
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    image bysegid sele segid his2 end
+ SELRPN>     48 atoms have been selected out of   4266
+ IMAGE CENTERING ON FOR SOME ATOMS
+  
+ CHARMM>    image byres sele .not. (segid his2 .or. segid bwat) end
+ SELRPN>      6 atoms have been selected out of   4266
+ IMAGE CENTERING ON FOR SOME ATOMS
+  
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>         stream non_bond_spec.str
+ VOPEN> Attempting to open::non_bond_spec.str::
+ OPNLGU> Unit 99 opened for READONLY access to non_bond_spec.str
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * STREAM FILE FOR SPECIFYING NON-BONDED SPECIFICATIONS USING THE STANDARD EWALD SUMMATION
+ RDTITL> *
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    set kppa 0.34
+ Parameter: KPPA <- "0.34"
+  
+ CHARMM>    calc kmx int( @kppa*@length )
+ Parameter: KPPA -> "0.34"
+ Parameter: LENGTH -> "35.6263665"
+Evaluating: INT(0.34*35.6263665)
+ Parameter: KMX <- "12"
+  
+ CHARMM>    calc kmy int( @kppa*@length )
+ Parameter: KPPA -> "0.34"
+ Parameter: LENGTH -> "35.6263665"
+Evaluating: INT(0.34*35.6263665)
+ Parameter: KMY <- "12"
+  
+ CHARMM>    calc kmz int( @kppa*@length )
+ Parameter: KPPA -> "0.34"
+ Parameter: LENGTH -> "35.6263665"
+Evaluating: INT(0.34*35.6263665)
+ Parameter: KMZ <- "12"
+  
+ CHARMM>     
+  
+ CHARMM>    NBONDED inbfrq -1 imgfrq -1 nbxmod 5 -                                              ! C36 DEFAULTS
+ CHARMM>            atom cdiel -                                                                 ! use atom based electrostatics, C36 DEFAULTS
+ CHARMM>            vatom vdistance vfswitch -                                                  ! C36 DEFAULTS
+ CHARMM>            elec ewald kappa @kppa spline nopm kmxx @kmx kmxy @kmy kmxz @kmz   -        ! standard Ewald SUMMATION
+ CHARMM>            cutnb 14.0 ctofnb 12.0 ctonnb 10.0 -                                        ! C36 DEFAULTS
+ CHARMM>            cutim 14.0 -                                                                ! must be same as cutnb
+ CHARMM>            eps 1.0 e14fac 1.0 wmin 1.5                                                 ! C36 DEFAULTS
+ Parameter: KPPA -> "0.34"
+ Parameter: KMX -> "12"
+ Parameter: KMY -> "12"
+ Parameter: KMZ -> "12"
+
+ SELECTED IMAGES ATOMS BEING CENTERED ABOUT  0.000000  0.000000  0.000000
+ SEGMENT HIS2     OPERATED ON BY TRANSFORMATION C007
+ RESIDUE    3 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE    4 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE    5 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE    6 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE    7 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE    8 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE    9 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   10 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   11 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   12 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   13 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   14 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   15 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   16 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   17 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   18 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   19 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   20 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   21 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   22 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   23 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   24 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   25 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   26 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   27 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   28 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   29 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   30 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   31 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   32 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   33 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   34 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   35 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   36 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   37 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   38 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   39 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   40 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   41 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   42 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   43 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   44 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   45 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   46 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   47 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   48 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   49 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   50 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   51 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   52 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   53 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   54 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   55 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   56 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   57 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   58 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   59 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   60 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   61 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   62 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   63 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   64 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   65 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   66 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   67 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   68 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE   69 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   70 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   71 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   72 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   73 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   74 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   75 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   76 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   77 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   78 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   79 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   80 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   81 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   82 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   83 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   84 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   85 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   86 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   87 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE   88 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   89 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   90 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   91 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   92 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   93 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   94 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   95 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   96 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   97 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   98 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE   99 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  100 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  101 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  102 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  103 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  104 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  105 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  106 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  107 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  108 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  109 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  110 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  111 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  112 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  113 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  114 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  115 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  116 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  117 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  118 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  119 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  120 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  121 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  122 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  123 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  124 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  125 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  126 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  127 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  128 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  129 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  130 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  131 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  132 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  133 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  134 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  135 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  136 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  137 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  138 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  139 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  140 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  141 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  142 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  143 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  144 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  145 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  146 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  147 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  148 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  149 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  150 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  151 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  152 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  153 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  154 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  155 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  156 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  157 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  158 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  159 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  160 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  161 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  162 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  163 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  164 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  165 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  166 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  167 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  168 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  169 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  170 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  171 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  172 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  173 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  174 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  175 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  176 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  177 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  178 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  179 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  180 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  181 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  182 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  183 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  184 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  185 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  186 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  187 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  188 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  189 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  190 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  191 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  192 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  193 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  194 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  195 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  196 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  197 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  198 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  199 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  200 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  201 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  202 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  203 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  204 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  205 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  206 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  207 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  208 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  209 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  210 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  211 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  212 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  213 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  214 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  215 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  216 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  217 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  218 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  219 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  220 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  221 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  222 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  223 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  224 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  225 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  226 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  227 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  228 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  229 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  230 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  231 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  232 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  233 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  234 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  235 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  236 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  237 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  238 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  239 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  240 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  241 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  242 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  243 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  244 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  245 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  246 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  247 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  248 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  249 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  250 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  251 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  252 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  253 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  254 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  255 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  256 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  257 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  258 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  259 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  260 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  261 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  262 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  263 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  264 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  265 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  266 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  267 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  268 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  269 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  270 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  271 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  272 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  273 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  274 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  275 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  276 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  277 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  278 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  279 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  280 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  281 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  282 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  283 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  284 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  285 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  286 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  287 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  288 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  289 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  290 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  291 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  292 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  293 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  294 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  295 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  296 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  297 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  298 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  299 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  300 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  301 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  302 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  303 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  304 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  305 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  306 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  307 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  308 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  309 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  310 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  311 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  312 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  313 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  314 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  315 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  316 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  317 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  318 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  319 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  320 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  321 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  322 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  323 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  324 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  325 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  326 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  327 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  328 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  329 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  330 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  331 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  332 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  333 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  334 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  335 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  336 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  337 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  338 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  339 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  340 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  341 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  342 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  343 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  344 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  345 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  346 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  347 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  348 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  349 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  350 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  351 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  352 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  353 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  354 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  355 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  356 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  357 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  358 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  359 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  360 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  361 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  362 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  363 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  364 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  365 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  366 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  367 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  368 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  369 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  370 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  371 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  372 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  373 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  374 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  375 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  376 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  377 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  378 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  379 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  380 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  381 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  382 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  383 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  384 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  385 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  386 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  387 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  388 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  389 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  390 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  391 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  392 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  393 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  394 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  395 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  396 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  397 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  398 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  399 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  400 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  401 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  402 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  403 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  404 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  405 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  406 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  407 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  408 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  409 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  410 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  411 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE  412 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  413 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  414 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  415 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  416 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  417 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  418 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  419 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  420 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  421 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  422 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  423 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  424 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  425 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  426 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  427 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  428 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  429 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  430 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  431 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  432 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  433 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  434 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  435 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  436 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  437 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  438 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  439 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  440 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  441 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  442 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  443 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  444 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  445 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  446 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  447 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  448 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  449 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  450 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  451 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  452 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  453 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  454 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  455 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  456 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  457 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  458 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  459 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  460 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  461 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  462 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  463 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  464 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  465 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  466 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  467 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  468 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  469 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  470 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  471 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  472 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  473 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  474 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE  475 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE  476 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  477 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE  478 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  479 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE  480 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  481 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  482 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  483 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  484 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  485 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  486 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  487 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  488 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  489 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  490 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  491 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  492 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  493 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  494 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  495 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  496 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  497 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  498 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  499 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  500 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  501 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  502 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  503 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  504 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  505 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  506 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  507 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  508 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  509 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  510 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  511 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  512 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  513 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  514 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  515 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  516 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  517 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  518 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  519 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE  520 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  521 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  522 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  523 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  524 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  525 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  526 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  527 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  528 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  529 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  530 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  531 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  532 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  533 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  534 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  535 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  536 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  537 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  538 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  539 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  540 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  541 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  542 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  543 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  544 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  545 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  546 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  547 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  548 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  549 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  550 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  551 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  552 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  553 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  554 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  555 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  556 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  557 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  558 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  559 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  560 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  561 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  562 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  563 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  564 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  565 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  566 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  567 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  568 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  569 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  570 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  571 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  572 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  573 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  574 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  575 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  576 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  577 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  578 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  579 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  580 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  581 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  582 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  583 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  584 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  585 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  586 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  587 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  588 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  590 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  591 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  592 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  593 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  594 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  595 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  596 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  597 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  598 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  599 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  600 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  601 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  602 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  603 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  604 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  605 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  606 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  607 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  608 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  609 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  610 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  611 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  612 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  613 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  614 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  615 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  616 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  617 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  618 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  619 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  620 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  621 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  622 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  623 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  624 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  625 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  626 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  627 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  628 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  630 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  631 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  632 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  633 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  634 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  635 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  636 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  637 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  638 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  639 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  640 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  641 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  642 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  643 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  644 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  645 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  646 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  647 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  648 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  649 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  650 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  651 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  653 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  654 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  656 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  657 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  658 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  659 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  660 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  661 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  662 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  663 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  664 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  665 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  666 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  667 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  668 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  669 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  670 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  671 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  672 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  673 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  674 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  675 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  676 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  677 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  678 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  679 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  680 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  681 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  682 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  683 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  684 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  685 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  686 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  687 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  688 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  689 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE  690 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  691 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  692 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE  693 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  694 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  696 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  697 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  698 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  699 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  700 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  701 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  702 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  703 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  704 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  705 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  706 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  707 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  708 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  709 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  710 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  711 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  712 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  713 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  714 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  715 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  716 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  717 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  718 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  719 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  720 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  721 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  722 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  723 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  724 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  725 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  726 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  727 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  728 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  729 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  730 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  731 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  732 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  733 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  734 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  735 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  736 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  737 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  738 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  739 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  740 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  741 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  742 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  743 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  744 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  745 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE  746 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  747 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  748 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  749 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  750 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  751 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  752 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  753 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  754 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  755 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  756 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  757 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  758 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  759 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  760 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  761 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  762 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE  763 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  764 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  765 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  766 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  767 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  768 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  769 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  770 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  771 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  772 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  773 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  774 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  775 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  776 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  777 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  778 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  779 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  780 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  781 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  782 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  783 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  784 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  785 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  786 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  787 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  788 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  789 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  790 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  791 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  792 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  793 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  794 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  795 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  796 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  797 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  798 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  799 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  800 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  801 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  802 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  803 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  804 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  805 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  806 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  807 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  808 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  809 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  810 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  811 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  812 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  813 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  814 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  815 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  816 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  817 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  818 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  819 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  820 OPERATED ON BY TRANSFORMATION C001
+ RESIDUE  821 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  822 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  823 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  824 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  825 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  826 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  827 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  828 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  829 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  830 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  831 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  832 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  833 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  834 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  835 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  836 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  837 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  838 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  839 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  840 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  841 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  842 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  843 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  844 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  845 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  846 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  847 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  848 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  849 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  851 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  852 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  853 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  854 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE  855 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  856 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  857 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  858 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  859 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  860 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  861 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  862 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  863 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  864 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  865 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  866 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE  867 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  868 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  869 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  870 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  871 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  872 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  873 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  874 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  875 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  876 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  877 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  878 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  879 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  880 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  881 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  882 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  883 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  884 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  885 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  886 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  887 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  888 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  889 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  890 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  891 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  892 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  893 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  894 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  895 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  896 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  897 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  898 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  899 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  900 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  901 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  902 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  903 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  904 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  905 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  906 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  907 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  908 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  909 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  910 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  911 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  912 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  913 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  914 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  915 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  916 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  917 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  918 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  919 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  920 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  921 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  922 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  923 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  924 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  925 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  926 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  927 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  928 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  929 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  930 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  931 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  932 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  933 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  934 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  935 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  936 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  937 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  939 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  940 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  941 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  942 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  943 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  944 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  945 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  946 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  947 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  948 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  949 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  950 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE  951 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  952 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  953 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  954 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  955 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  956 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  957 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  958 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  959 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  960 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  961 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  962 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  963 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  964 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  965 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  966 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  967 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  968 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  969 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  970 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  971 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  972 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  973 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  974 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  975 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  976 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  977 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  978 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  979 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  980 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  981 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  982 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  983 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  984 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  985 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  986 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  987 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  988 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  989 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  990 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  991 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  992 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  993 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  994 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  995 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE  996 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  997 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  998 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE  999 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1000 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1001 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1002 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1003 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1004 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE 1005 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1006 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1007 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE 1008 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1009 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1010 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1011 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1012 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1013 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1014 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1015 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1016 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1017 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1018 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1019 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1020 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1021 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE 1022 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1023 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1024 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1025 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1026 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1027 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1028 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1029 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1031 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1032 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1033 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1034 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1035 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1036 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1037 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1038 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1039 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE 1040 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1041 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1042 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1043 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1044 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1045 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1046 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1047 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1048 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1049 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1050 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1051 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1052 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1054 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1055 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1056 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1057 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1058 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1059 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1060 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1061 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1062 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1063 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1064 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1065 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1066 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1067 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1068 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1069 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1070 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1071 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1072 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1073 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1074 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1075 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1076 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1077 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1078 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1079 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1080 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1081 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1082 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1083 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1084 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1085 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1086 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1087 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1088 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1089 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1090 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1092 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1093 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1094 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1095 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1096 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1097 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1098 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1099 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1100 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1101 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1102 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE 1103 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1104 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1105 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1106 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1107 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1108 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1109 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1110 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1111 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1112 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1113 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1114 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1115 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1116 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1117 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1118 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE 1119 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1120 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1121 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1122 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1123 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1124 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1125 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1126 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1127 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1128 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1129 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1130 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1131 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1132 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1133 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1134 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1135 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1136 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1137 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1138 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1139 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1140 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1141 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1142 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1143 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1144 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1145 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1146 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1147 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1148 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1149 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1150 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1151 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1152 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1153 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1154 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1155 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1156 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1157 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1158 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1159 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1161 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1162 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1163 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1165 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE 1166 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE 1167 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE 1168 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1169 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE 1170 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1171 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1172 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1173 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1174 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1175 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE 1176 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1177 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1178 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1179 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1180 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE 1181 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1182 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1183 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1184 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE 1185 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE 1186 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1187 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1188 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1189 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1191 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1192 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1193 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1194 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1195 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1196 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1197 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1198 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE 1199 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1200 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1201 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1202 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1203 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1204 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1205 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE 1206 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE 1207 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1208 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1209 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE 1210 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE 1211 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1212 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1213 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1214 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1215 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1216 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1217 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1218 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1219 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1220 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE 1221 OPERATED ON BY TRANSFORMATION C007
+ RESIDUE 1222 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1223 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1224 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1225 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1226 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1227 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE 1228 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1229 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1235 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1252 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1292 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1344 OPERATED ON BY TRANSFORMATION C002
+ RESIDUE 1345 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE 1346 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE 1347 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE 1349 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE 1356 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE 1364 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE 1366 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE 1374 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE 1381 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1382 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1383 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1385 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1388 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE 1395 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE 1407 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE 1408 OPERATED ON BY TRANSFORMATION C004
+ RESIDUE 1412 OPERATED ON BY TRANSFORMATION C002
+
+ <MKIMAT2>: updating the image atom lists and remapping
+ Transformation   Atoms  Groups  Residues  Min-Distance
+    1  C001 has     127      43      43        0.33
+    2  C002 has     476     160     160        0.00
+    3  C003 has      93      31      31        0.83
+    4  C004 has     481     161     161        0.33
+    5  C005 has    1695     566     566        0.00
+    6  C006 has     492     164     164        0.00
+    7  C007 has     507     171     171        0.33
+    8  C008 has    1682     564     564        0.00
+    9  C009 has     471     157     157        0.35
+   10  C010 has    1741     583     583        0.00
+   12  C012 has      90      30      30        1.82
+   13  C013 has     492     164     164        0.00
+   14  C014 has      90      30      30        3.58
+ Total of12703 atoms and 4245 groups and 4236 residues were included
+
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VFSWIt  
+     BYCB     NOEXtnd  EWALd   
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 10.000 CTOFNB = 12.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ EWALD OPTIONS: KAPPA  =  0.340 KMAX   =      5 KSQMAX =     27
+                Using Pub FFT
+                Real-to-Complex FFT
+ There are        0 atom  pairs and        0 atom  exclusions.
+ There are        0 group pairs and        0 group exclusions.
+ <MAKINB> with mode   5 found   4345 exclusions and    108 interactions(1-4)
+ <MAKGRP> found     23 group exclusions.
+ <MAKGRP> found      0 image group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR  1866069 ATOM PAIRS AND        0 GROUP PAIRS
+ == IMAGES === SPACE FOR  1133299 ATOM PAIRS AND        0 GROUP PAIRS
+Using Image CUBE search
+  NBNDGCM found:
+     1433351  atom pairs
+      873666  image atom pairs
+           0  self atom pairs
+  
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>     
+  
+ CHARMM>         ! Configure shake
+  
+ CHARMM>         shake bonh param sele all end
+ SELRPN>   4266 atoms have been selected out of   4266
+ SHKCOM> SHAKE parameters: TOL =   0.1000D-09 MXITer =    500
+
+            4235 constraints will held by SHAKE.
+  
+ CHARMM>     
+  
+ CHARMM>         dynamics leap @strtcmd timestep 0.002 -
+ CHARMM>              nstep @nsteps nprint @nwrite iprfrq @nwrite isvfrq @nsteps -
+ CHARMM>              iunwri 10 iunread @resunit -
+ CHARMM>              firstt @currT finalt @currT  -
+ CHARMM>              ichecw 0 ihtfrq 0 ieqfrq 0 -
+ CHARMM>              iasors 1 iasvel 1 iscvel 0  -
+ CHARMM>              ilbfrq 0 inbfrq -1 imgfrq -1 @echeck bycb -
+ CHARMM>              ntrfq @nsteps -
+ CHARMM>              omm langevin gamma 10 ! turn on openmm, set-up Langevin
+ Parameter: STRTCMD -> "RESTART"
+ Parameter: NSTEPS -> "1000"
+ Parameter: NWRITE -> "100"
+ Parameter: NWRITE -> "100"
+ Parameter: NSTEPS -> "1000"
+ Parameter: RESUNIT -> "20"
+ Parameter: CURRT -> "55"
+ Parameter: CURRT -> "55"
+ Parameter: ECHECK -> "ECHECK -1"
+ Parameter: NSTEPS -> "1000"
+  IUNREA = 20         IUNWRI = 10          IUNOS = -1
+  IUNCRD = -1         IUNVEL = -1          KUNIT = -1
+ TITLE>  * HEAT THE HIS DIMER TO 310K
+ TITLE>  *  DATE:    10/27/16     16: 5:33      CREATED BY USER: ra15808
+ TITLE>  *
+ READYN> dynamics restart file was read. Current step=    1000
+ NSTEP  =  1000  JHSTRT =     0
+
+ SELECTED IMAGES ATOMS BEING CENTERED ABOUT  0.000000  0.000000  0.000000
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VFSWIt  
+     BYCB     NOEXtnd  EWALd   
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 10.000 CTOFNB = 12.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ EWALD OPTIONS: KAPPA  =  0.340 KMAX   =      5 KSQMAX =     27
+                Using Pub FFT
+                Real-to-Complex FFT
+ There are  1433351 atom  pairs and     4453 atom  exclusions.
+ There are        0 group pairs and       23 group exclusions.
+Using Image CUBE search
+ PRNHBD: CUToff Hydrogen Bond  distance =    0.5000   Angle =   90.0000
+         CuT switching ON HB dist. =     3.5000  OFf HB dist. =    4.0000
+         CuT switching ON Hb Angle =    50.0000  OFf Hb Angle =   70.0000
+         ACCEptor antecedents included
+         All hydrogen bonds for each hydrogen will be found
+         Hydrogen bonds between excluded atoms will be kept
+
+ DCNTRL> Langevin integration requested.
+ DCNTRL>  OpenMM interface requested for energy and dynamics calculations.
+ DCNTRL>  Constant temperature w/ OpenMM using Langevin heatbath requested.
+ DCNTRL>  Reference heatbath temperature is    55.000K
+ DCNTRL>  Using friction coefficient value of    10.000  ps^-1
+   NSTEP =     1000    NSAVC =       10    NSAVV =       10
+  ISCALE =        0   ISCVEL =        0   IASORS =        1
+  IASVEL =        1   ICHECW =        0   NTRFRQ =     1000
+  IHTFRQ =        0   IEQFRQ =        0   NPRINT =      100
+  INBFRQ =       -1   IHBFRQ =        0   IPRFRQ =     1000
+  ILBFRQ =        0   IMGFRQ =       -1
+  ISVFRQ =     1000   NCYCLE =     1000    NSNOS =       10
+  FIRSTT =    55.000  TEMINC =     5.000  TSTRUC =  -999.000
+  FINALT =    55.000  TWINDH =    10.000  TWINDL =   -10.000
+
+  TIME STEP =  4.09097E-02 AKMA       2.00000E-03 PS
+
+  RANDOM NUM. GEN. SEED(S) = 1039414197 422146435 1613452629 53037304
+
+           SHAKE TOLERANCE =     0.10000E-09
+ NUMBER OF DEGREES OF FREEDOM =   8563
+OpenMM integrator options changed
+Destroying OpenMM context
+OpenMM system changed
+Setup_OpenMM: Initializing OpenMM context
+CHARMM> Using switching functions for vdW interactions and OpenMM PME/RxnFld for electrostatics
+CHARMM> Using OpenMM nb routines.
+NBFIxes in effect, using CustomNonbondedForce
+CHARMM> OpenMM switching function selection.
+CHARMM> Electrostatic options: switch=F fswitch=F fshift=F PME/Ewald=F RxnFld=F
+CHARMM> van der Waals options: vswitch=F vfswitch=T OpenMM vdW switch=F
+ Available OpenMM platform 0: Reference 
+ Available OpenMM platform 1: CPU       
+ Available OpenMM platform 2: CUDA      
+ Available OpenMM platform 3: OpenCL    
+Init_context: Using OpenMM platform CUDA      
+       CudaDeviceIndex = 0
+       CudaCompiler = /usr/local/cuda/bin/nvcc
+       CudaPrecision = mixed
+DYNA DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+DYNA PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+DYNA INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+DYNA CROSS:           CMAPs        PMF1D        PMF2D        PRIMO
+DYNA EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+DYNA PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>        0      2.00000 -16788.76602    430.58215 -17219.34817     50.60815
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        2.24211      8.49427      0.00000     29.48593      0.46770
+DYNA CROSS>        -5.13282      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17254.90537      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      100      2.20000 -16727.74197    457.17853 -17184.92050     53.73414
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        3.27829      6.95064      0.00000     30.47646      0.60459
+DYNA CROSS>        -5.34303      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17220.88764      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      200      2.40000 -16685.49819    467.23595 -17152.73415     54.91623
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        2.75638      8.71523      0.00000     30.49773      0.20976
+DYNA CROSS>        -6.25196      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17188.66132      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      300      2.60000 -16706.23825    465.63687 -17171.87512     54.72828
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        5.11433      6.92246      0.00000     30.25302      0.34697
+DYNA CROSS>        -4.69242      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17209.81931      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      400      2.80000 -16711.82779    460.53499 -17172.36278     54.12863
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        3.48497      7.78058      0.00000     31.23899      0.33087
+DYNA CROSS>        -4.77237      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17210.42563      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      500      3.00000 -16722.70666    456.66834 -17179.37501     53.67417
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        3.37202      7.74050      0.00000     31.01994      0.38581
+DYNA CROSS>        -4.34722      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17217.54599      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      600      3.20000 -16719.28814    461.00974 -17180.29788     54.18443
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        4.56316      8.35849      0.00000     30.03718      0.31345
+DYNA CROSS>        -4.53916      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17219.03111      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      700      3.40000 -16714.60166    467.05395 -17181.65561     54.89484
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        2.71090      7.92379      0.00000     30.94848      0.21177
+DYNA CROSS>        -4.91312      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17218.53750      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      800      3.60000 -16737.91362    453.45992 -17191.37353     53.29707
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        4.25935      6.24028      0.00000     30.26787      0.32455
+DYNA CROSS>        -5.04031      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17227.42522      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      900      3.80000 -16736.37835    459.43386 -17195.81221     53.99921
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        3.40847      7.18099      0.00000     30.25978      0.19103
+DYNA CROSS>        -4.35341      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17232.49916      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>     1000      4.00000 -16735.86621    469.32886 -17205.19507     55.16222
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>        3.11082      6.77688      0.00000     30.17724      0.44325
+DYNA CROSS>        -5.23068      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17240.47249      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 1000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER CROSS:           CMAPs        PMF1D        PMF2D        PRIMO
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     1000      4.00000 -16726.07517    458.92029 -17184.99546     53.93885
+AVER PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+AVER INTERN>        3.48189      7.55310      0.00000     30.42388      0.34816
+AVER CROSS>        -4.96514      0.00000      0.00000      0.00000
+AVER EXTERN>   -17221.83734      0.00000      0.00000      0.00000      0.00000
+AVER PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 1000 steps:
+FLUC>     1000      4.00000     24.69288     10.16664     17.01110      1.19493
+FLUC PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+FLUC INTERN>        0.81424      0.75885      0.00000      0.47422      0.11871
+FLUC CROSS>         0.51828      0.00000      0.00000      0.00000
+FLUC EXTERN>       16.51185      0.00000      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000      0.00000      0.00000      0.00000      0.00069
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+ OpenMM was used to perform energy and force evaluation.
+
+
+     DETAILS ABOUT CENTRE OF MASS
+     POSITION          :    17.828034        17.917006        17.463255    
+     VELOCITY          :  -7.66969143E-05  -4.21507496E-04  -3.33051134E-04
+     ANGULAR MOMENTUM  :   -27.934325       -601.04349        1282.2611    
+     KINETIC ENERGY    :   3.80799305E-03
+ WRIDYN: RESTart file was written at step    2000
+ VCLOSE: Closing unit   10 with status "KEEP"
+
+     DETAILS ABOUT CENTRE OF MASS
+     POSITION          :    17.828034        17.917006        17.463255    
+     VELOCITY          :  -7.66969143E-05  -4.21507496E-04  -3.33051134E-04
+     ANGULAR MOMENTUM  :   -27.934325       -601.04349        1282.2611    
+     KINETIC ENERGY    :   3.80799305E-03
+  
+ CHARMM>     
+  
+ CHARMM>          write coor card name @molname-@currT.cor
+ Parameter: MOLNAME -> "HIS-DIMER-FINAL"
+ Parameter: CURRT -> "55"
+ VOPEN> Attempting to open::his-dimer-final-55.cor::
+ RDTITL> * COORDINATES AFTER HEATING TO 55
+ RDTITL> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>         incr ctr by 1
+ Parameter: CTR <- "2"
+  
+ CHARMM>     
+  
+ CHARMM>         if @ctr .le. @niter goto loop
+ Parameter: CTR -> "2"
+ Parameter: NITER -> "1"
+ Comparing "2" and "1".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>     
+  
+ CHARMM>    stop
+ VCLOSE: Closing unit   20 with status "KEEP"
+$$$$$$  New timer profile $$$$$
+   Shake Setup                     0.00 Other:            0.00
+   First List                      0.25 Other:            0.00
+      dynamc                         11.30 Other:            0.00
+   Dynamics total                 11.30 Other:            0.00
+      xdistm setup                    0.00 Other:            0.00
+      xdistm Build list               0.32 Other:            0.00
+   List time                       0.32 Other:            0.00
+   Energy time                    14.31 Other:            0.00
+      load plugins                    0.03 Other:            0.00
+      build system                    0.01 Other:            0.00
+      init context                    2.17 Other:            0.00
+   OpenMM overhead                 2.20 Other:            0.00
+ Total time                     31.35 Other:            2.96
+
+                    NORMAL TERMINATION BY NORMAL STOP
+                    MOST SEVERE WARNING WAS AT LEVEL  0
+
+                    $$$$$ JOB ACCOUNTING INFORMATION $$$$$
+                     ELAPSED TIME:    31.35  SECONDS 
+                         CPU TIME:    11.79  SECONDS 

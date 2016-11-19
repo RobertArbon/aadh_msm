@@ -1,0 +1,15 @@
+ * STREAM FILE FOR SETTING UP CUBIC CRYSTAL.
+
+ set xdim 124.181628
+ calc xcen @xdim/2*0
+ set ydim 101.902572
+ calc ycen @ydim/2*0
+ set zdim 82.9517187
+ calc zcen @zdim/2*0
+
+ set cutim 14
+
+ CRYSTAL DEFI ORTHS @xdim @ydim @zdim 90.0 90.0 90.0
+ CRYSTAL BUILD CUTOFF @cutim NOPER 0
+ image byseg xcen @xcen ycen @ycen zcen @zcen  sele segid AL* .or. segid BT* end ! protein
+ image byres xcen @xcen ycen @ycen zcen @zcen sele .not. (segid AL* .or. segid BT*) end ! water ions

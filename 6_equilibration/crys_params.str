@@ -1,0 +1,17 @@
+*Stream file for new crystal parameters
+*
+
+set XDIM 125.522459
+set XCEN  62.7612295
+set YDIM 103.403057
+set YCEN 51.7015285
+set ZDIM 84.3863609
+set ZCEN 42.1931804
+
+set cutim 14
+
+CRYSTAL DEFI ORTHS @xdim @ydim @zdim 90.0 90.0 90.0
+CRYSTAL BUILD CUTOFF @cutim NOPER 0
+
+image byseg xcen @xcen ycen @ycen zcen @zcen  sele segid AL* .or. segid BT* end ! protein
+image byres xcen @xcen ycen @ycen zcen @zcen sele .not. (segid AL* .or. segid BT*) end ! water ions

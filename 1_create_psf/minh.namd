@@ -1,0 +1,105 @@
+#############################################################
+## JOB DESCRIPTION                                         ##
+#############################################################
+
+# Minimize hydrogens only after solvation
+# Fixed solute heavy atoms
+# Periodic Boundary conditions
+#
+# Configuration file set up by Marc van der Kamp, July 2004
+# Adjusted Jan 2006 for use with CHARMM PSF and parameters
+#
+# Full electrostatics using Particle-Mesh Ewald (PME)
+# vdW cutoff: 12 A, switchdistance: 10 A
+#
+# System: AADH
+
+#############################################################
+## I/O PARAMETERS                                          ##
+#############################################################
+
+set outputname     minh
+
+firsttimestep	   0
+
+# Provide fix_heavy.pdb file for fixing heavy solute atoms (1 in beta column for fixed)
+# Change periodic box size for other systems (CellBasisVector, CellOrigin and also PMEGridSize)
+
+#############################################################
+## GENERAL SIMULATION PARAMETERS                           ##
+#############################################################
+
+# molecular system
+coordinates 2agy_sol_ion.pdb
+structure   2agy_sol_ion.psf
+
+# force field
+paratypecharmm on
+parameters par_ttw.inp
+
+# Force-Field Parameters
+exclude             scaled1-4
+1-4scaling          1.0    ;# default
+cutoff              12 ;# Can be chosen relatively small because of PME (see below)
+switching           on ;# Turn on the switching functions
+switchdist          10 ;# cutoff - 2
+pairlistdist        14
+
+temperature         0
+
+# Periodic box
+# (Dimensions will be adjusted when constant pressure simulations are run, stored in .xsc file)
+# dimensions can be obtained using "measure minmax $all" in VMD, center from "measure center" in VMD
+# BasisVectors should be somewhat larger than measured box-size to add some extra space 
+# to your system's bounding box since each atom's radius will wrap around
+cellBasisVector1  120.0  0.0  0.0
+cellBasisVector2  0.0  100.0  0.0
+cellBasisVector3  0.0  0.0 120.0 
+cellOrigin 3.00423 1.95290 23.09598
+
+# PME (for full-system periodic electrostatics)
+PME            on ;# Use PME for electrostatic calculation, only possible with periodic boundary conditions!
+PMEGridSizeX    64 ;# (2x2x2x3x5) grid density app. 1
+PMEGridSizeY    64 ;# (2x3x3x5)  use integers with small factors (2,3,5) for efficiency
+PMEGridSizeZ    90 ;# (2x2x5x5)
+
+
+# Integrator Parameters
+timestep            2.0  ;# 2fs/step
+rigidBonds          all  ;# needed for 2fs steps
+rigidTolerance      0.00005  ;# Default is  0.00001
+nonbondedFreq       1  ;# Must at least be calculated every 2fs (here every step)
+fullElectFrequency  2  ;# PME only every other step
+stepspercycle       10
+
+# Wrap molecules for easier view in dcd
+wrapWater	on
+wrapAll         on
+wrapNearest     off ;# use 'on' for non-rectangular cells
+
+# Output
+outputName          $outputname
+outputEnergies      100 ;# Energy output frequency
+dcdfile             $outputname.dcd
+DCDfreq             1000 ;# Trajectory file frequency
+xstFreq             1000
+restartfreq         1000 ;# Restart file frequency
+restartname         $outputname
+outputTiming        1000 ;# shows time per step and time to completion
+
+
+#############################################################
+## SPECIFIC SIMULATION PARAMETERS                          ##
+#############################################################
+
+# Fix all heavy atoms
+fixedAtoms	on
+fixedAtomsFile	fix_heavy_vmd.pdb
+fixedAtomsCol	B
+
+#############################################################
+## EXECUTION SCRIPT                                        ##
+#############################################################
+
+### Minimization  ###
+minimize	5000

@@ -1,0 +1,6 @@
+ * STREAM FILE FOR SETTING UP CUBIC CRYSTAL.
+ set length 35.6263665
+ calc cutoff @length/2
+ CRYSTAL DEFI cubic @length @length @length 90.0 90.0 90.0
+ CRYSTAL BUILD cutoff @cutoff noper 0
+ IMAGE BYRES SELE SEGID BWAT END

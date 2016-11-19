@@ -1,0 +1,8 @@
+This outlines the procedure for sampling the reactive conformations using a selection of the AADH enzyme. 
+
+
+1. Prepare the reactive geometry psf/pdb/crd from 2agy_sol_ion.pdb created by KR.
+    We're including the crystal waters but not the bulk water (add this later) 
+2. Optional (if using EVB) prepare the reactant state psf/pdb/crd.  
+3. Truncate full system to 25 A around the NT of TTQ/TRP 
+3. 

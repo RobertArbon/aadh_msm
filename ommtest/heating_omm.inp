@@ -1,0 +1,75 @@
+* Heat the HIS dimer to 310K
+*
+
+envi OPENMM_PLATFORM  "CUDA"   ! /CUDA/Reference   Use OpenMM platform based on
+envi OPENMM_PRECISION "mixed"   ! /mixed/double    Do calculations in single
+
+faster on
+
+stream toppar_water_ions_fixed.str
+read rtf card name top_all36_prot.rtf append flex
+read para card name par_all36_prot.prm append flex
+
+set molname his-dimer-final
+
+set finalT 55
+set initT 50
+set incT 5
+set nsteps 1000
+calc niter (@finalT - @initT)/@incT
+set ctr 0
+calc nwrite @nsteps / 10
+set echeck = echeck -1
+
+label loop
+    calc currT @initT + @ctr*@incT
+    calc prevT @initT + (@ctr-1)*@incT
+    open write card unit 10 name @molname-@currT.res
+     
+     if @ctr .ne. 0 then
+         bomlev -1
+         dele atom sele all end
+         bomlev 0
+     endif
+
+     read psf card name @molname.psf
+
+     if @ctr .eq. 0 then
+         read coor card name @molname.cor
+         set strtcmd start
+         set resunit -1
+     endif
+
+    if @ctr .ne. 0 then
+        open read card unit 20 name @molname-@prevT.res
+        read coor card name @molname-@prevT.cor
+        set strtcmd restart
+        set resunit 20
+     endif
+
+     stream build_crystal.str
+     stream images.str
+     stream non_bond_spec.str
+     
+     ! Configure shake
+     shake bonh param sele all end
+
+     dynamics leap @strtcmd timestep 0.002 -
+          nstep @nsteps nprint @nwrite iprfrq @nwrite isvfrq @nsteps -  
+          iunwri 10 iunread @resunit -  
+          firstt @currT finalt @currT  -
+          ichecw 0 ihtfrq 0 ieqfrq 0 -
+          iasors 1 iasvel 1 iscvel 0  -
+          ilbfrq 0 inbfrq -1 imgfrq -1 @echeck bycb -
+          ntrfq @nsteps - 
+          omm langevin gamma 10 ! turn on openmm, set-up Langevin
+
+      write coor card name @molname-@currT.cor
+      * Coordinates after heating to @currT
+      *
+
+     incr ctr by 1
+
+     if @ctr .le. @niter goto loop
+
+stop

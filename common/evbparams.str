@@ -1,0 +1,16 @@
+* Stream file for 2-D Gaussian EVB parameters
+set shiftR 32.8883102625
+set shiftP1 -8.51961926659
+set shiftP2 -3.05357655666
+set couplingRP1 24.7632096888
+set centreRP1a -90.2548715445
+set widthRP1a 214340.318349
+set thetaRP1 -25237.8396556
+set centreRP1b -440.771711732
+set widthRP1b -64896.0317418
+set couplingRP2 65.3416861321
+set centreRP2a 0.0576678093572
+set widthRP2a 2137.78266306
+set thetaRP2 0.578564135298
+set centreRP2b 2.95836311386
+set widthRP2b 0.582831860495
