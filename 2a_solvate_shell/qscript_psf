@@ -1,0 +1,15 @@
+#!/bin/bash
+#PBS -l walltime=00:30:00
+#PBS -l nodes=1:ppn=1
+#PBS -j oe
+#PBS -N create_psf 
+cd $PBS_O_WORKDIR
+echo Running on host `hostname`
+echo Time is `date`
+echo Directory is `pwd`
+echo PBS job ID is $PBS_JOBID
+echo `cat $PBS_NODEFILE | uniq`
+
+charmm -i create_reactant_psf.inp > create_reactant_psf.out
+
+
