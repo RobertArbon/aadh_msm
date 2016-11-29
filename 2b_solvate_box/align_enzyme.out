@@ -1,0 +1,611 @@
+1
+                 Chemistry at HARvard Macromolecular Mechanics
+           (CHARMM) - Developmental Version 41a2   February 15, 2016            
+                             Git commit ID 505ecd5                              
+       Copyright(c) 1984-2014  President and Fellows of Harvard College
+                              All Rights Reserved
+     Current operating system: Darwin-14.5.0(x86_64)@eduroam-66-217.nomadic     
+                 Created on 11/28/16 at 16:59:25 by user: robert_arbon
+
+            Maximum number of ATOMS:    360720, and RESidues:      120240
+ RDTITL> * ALIGNS ENZYME READY FOR SOLVATING IN A BOX.
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    prnlev 5
+  
+ CHARMM>     
+  
+ CHARMM>    ioformat extend
+ MISCOM> Expanded I/O format is used.
+  
+ CHARMM>    set datadir ../common
+ Parameter: DATADIR <- "../COMMON"
+  
+ CHARMM>    set molname 2agy_c36_state0_ws
+ Parameter: MOLNAME <- "2AGY_C36_STATE0_WS"
+  
+ CHARMM>    stream @datadir/toppar_water_ions_fixed.str
+ Parameter: DATADIR -> "../COMMON"
+ VOPEN> Attempting to open::../COMMON/TOPPAR_WATER_IONS_FIXED.STR::
+ OPNLGU> Unit 99 opened for READONLY access to ../COMMON/TOPPAR_WATER_IONS_FIXED.STR
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * TOPLOGY AND PARAMETER INFORMATION FOR WATER AND IONS.
+ RDTITL> *
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    !Testcase
+ CHARMM>    !test_water_ions.inp
+ CHARMM>     
+  
+ CHARMM>    ! IMPORTANT NOTE: this file contains NBFixes between carboxylates and sodium,
+ CHARMM>    ! which will only apply if the main files containing carboxylate atom types
+ CHARMM>    ! have been read in first!
+ CHARMM>     
+  
+ CHARMM>    !references
+ CHARMM>    !
+ CHARMM>    !TIP3P water model
+ CHARMM>    !
+ CHARMM>    !W.L. Jorgensen; J.Chandrasekhar; J.D. Madura; R.W. Impey;
+ CHARMM>    !M.L. Klein; "Comparison of simple potential functions for
+ CHARMM>    !simulating liquid water", J. Chem. Phys. 79 926-935 (1983).
+ CHARMM>    !
+ CHARMM>    !IONS
+ CHARMM>    !
+ CHARMM>    !Ions from Roux and coworkers
+ CHARMM>    !
+ CHARMM>    !Beglov, D. and Roux, B., Finite Representation of an Infinite
+ CHARMM>    !Bulk System: Solvent Boundary Potential for Computer Simulations,
+ CHARMM>    !Journal of Chemical Physics, 1994, 100: 9050-9063
+ CHARMM>    !
+ CHARMM>    !ZINC
+ CHARMM>    !
+ CHARMM>    !Stote, R.H. and Karplus, M. Zinc Binding in Proteins and
+ CHARMM>    !Solution: A Simple but Accurate Nonbonded Representation, PROTEINS:
+ CHARMM>    !Structure, Function, and Genetics 23:12-31 (1995)
+ CHARMM>     
+  
+ CHARMM>    !test "append" to determine if previous toppar files have been read and
+ CHARMM>    !add append to "read rtf card" if true
+ CHARMM>    set nat ?NATC
+ RDCMND: can not substitute energy "?NATC"
+ Parameter: NAT <- "?NATC"
+  
+ CHARMM>    set app
+ Parameter: APP <- "" <empty>
+  
+ CHARMM>    !We're exploiting what is arguably a bug in the parser. On the left hand side,
+ CHARMM>    !the quotes have priority, so NAT is correctly substituted. On the right hand
+ CHARMM>    !side, the ? has priority and NATC" (sic) is not a valid substitution...
+ CHARMM>    if "@NAT" ne "?NATC" if @nat ne 0 set app append
+ Parameter: NAT -> "?NATC"
+ Parameter: NAT -> "?NATC"
+ RDCMND: can not substitute energy "?NATC""
+ Comparing ""?NATC"" and ""?NATC"".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>     
+  
+ CHARMM>    read rtf card  !REA 26/07/2013 - deleted @app - always stream this first and everything else must be appended)
+ MAINIO> Residue topology file being read from unit  99.
+ RDTITL> * TOPOLOGY FOR WATER AND IONS
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    read para card flex  !REA - deleted @app
+
+          PARAMETER FILE BEING READ FROM UNIT 99
+ RDTITL> * PARAMETERS FOR WATER AND IONS
+ RDTITL> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>     
+  
+ CHARMM>    ! The following section contains NBFixes for sodium interacting with
+ CHARMM>    ! carboxylate oxygens of various CHARMM force fields. It will generate
+ CHARMM>    ! level -1 warnings whenever any of these force fields have not been
+ CHARMM>    ! read prior to the current stream file. Since we don't want to force
+ CHARMM>    ! the user to always read all the force fields, we're suppressing the
+ CHARMM>    ! warnings. The only side effect is that you will have "most severe
+ CHARMM>    ! warning was at level 0" at the end of your output. Also note that
+ CHARMM>    ! the user is responsible for reading the current file last if they
+ CHARMM>    ! want the NBFixes to apply. A more elegant solution would require new
+ CHARMM>    ! features to be added to CHARMM.
+ CHARMM>    ! parallel fix, to avoid duplicated messages in the log
+ CHARMM>    set para
+ Parameter: PARA <- "" <empty>
+  
+ CHARMM>    if ?NUMNODE gt 1 set para node 0
+ RDCMND substituted energy or value "?NUMNODE" to "1"
+ Comparing "1" and "1".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>     
+  
+ CHARMM>    set wrn ?WRNLEV
+ RDCMND substituted energy or value "?WRNLEV" to "5"
+ Parameter: WRN <- "5"
+  
+ CHARMM>    ! Some versions of CHARMM don't seem to initialize wrnlev...
+ CHARMM>    if "@WRN" eq "?WRNLEV" set wrn 5
+ Parameter: WRN -> "5"
+ RDCMND: can not substitute energy "?WRNLEV""
+ Comparing ""5"" and ""?WRNLEV"".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>    set bom ?bomlev
+ RDCMND substituted energy or value "?BOMLEV" to "0"
+ Parameter: BOM <- "0"
+  
+ CHARMM>    WRNLEV -1 @PARA
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    BOMLEV -1 @PARA
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    read para card flex append
+
+          PARAMETER FILE BEING READ FROM UNIT 99
+ RDTITL> * NBFIX BETWEEN CARBOXYLATE AND SODIUM
+ RDTITL> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>    BOMLEV @bom @PARA
+ Parameter: BOM -> "0"
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    WRNLEV @wrn @PARA
+ Parameter: WRN -> "5"
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    return
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>    read rtf card name @datadir/top_all36_prot.rtf append flex
+ Parameter: DATADIR -> "../COMMON"
+ VOPEN> Attempting to open::../COMMON/TOP_ALL36_PROT.RTF::
+ MAINIO> Residue topology file being read from unit  90.
+ TITLE> *>>>>>>>>CHARMM36 ALL-HYDROGEN TOPOLOGY FILE FOR PROTEINS <<<<<<
+ TITLE> *>>>>> INCLUDES PHI, PSI CROSS TERM MAP (CMAP) CORRECTION <<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>>>>> MAY 2011 <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> * ALL COMMENTS TO THE CHARMM WEB SITE: WWW.CHARMM.ORG
+ TITLE> *             PARAMETER SET DISCUSSION FORUM
+ TITLE> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read rtf card name @datadir/aadh_topologies.rtf append flex
+ Parameter: DATADIR -> "../COMMON"
+ VOPEN> Attempting to open::../COMMON/AADH_TOPOLOGIES.RTF::
+ MAINIO> Residue topology file being read from unit  90.
+ TITLE> * RESIDUES AND PATCHES FOR CREATING AADH REACTANT AND PRODUCTS
+ TITLE> * ATOM DEFINITIONS IS TAKEN FROM TOP_ALL36_PROT.RTF
+ TITLE> * PREAMLE IS TAKEN FROM TOP_TTW.INP
+ TITLE> * >>>>>
+ TITLE> * RESI TTW - /DATA/KR/TOP_TTW.INP
+ TITLE> * RESI TTW2 - /DATA/KR/TOP_TTW.INP - I DON'T THINK THIS IS USED SO THIS WON'T BE ADJUSTED.
+ TITLE> * PRES TRPM - /DATA/NEW_MD/TRPM.RTF
+ TITLE> * PRES TTWP - /DATA/KR/TTW_PROD.RTF
+ TITLE> * PRES ASP1/2 - /DATA/KR/TTW_PROD.RTF
+ TITLE> * PRES TTQ_TRP - /DATA/NEW_MD/TTW_TOP.INP
+ TITLE> * THE ORIGINAL PATCHES AND RESIDUES WERE SPECIFIED IN THE CHARM22 FF
+ TITLE> * 23/07/2016 - THE PRODUCT PATCHES WILL HAVE TO CHANGE (TO GET RID OF DELE STATEMENT)
+ TITLE> *               AND TO PRESERVE THE ATOMS LABELLING CHANGES.
+ TITLE> *
+ WARNING from DECODI -- Zero length string being converted to 0
+ RTFRDR> WARNING: Version number is NOT specified.
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read para card name @datadir/par_all36_prot_mod.prm append flex
+ Parameter: DATADIR -> "../COMMON"
+ VOPEN> Attempting to open::../COMMON/PAR_ALL36_PROT_MOD.PRM::
+
+          PARAMETER FILE BEING READ FROM UNIT 90
+ TITLE> *>>>> CHARMM36 ALL-HYDROGEN PARAMETER FILE FOR PROTEINS <<<<<<<<<<
+ TITLE> *>>>>> INCLUDES PHI, PSI CROSS TERM MAP (CMAP) CORRECTION <<<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>>>>> JAN. 2016 <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> * ALL COMMENTS TO THE CHARMM WEB SITE: WWW.CHARMM.ORG
+ TITLE> *             PARAMETER SET DISCUSSION FORUM
+ TITLE> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read para card name @datadir/aadh_parameters.prm append flex
+ Parameter: DATADIR -> "../COMMON"
+ VOPEN> Attempting to open::../COMMON/AADH_PARAMETERS.PRM::
+
+          PARAMETER FILE BEING READ FROM UNIT 90
+ TITLE> * PARAMETERS SPECIFIC TO AADH.  TO BE USED IN CONJUNCTION WITH AADH_TOPOLOGIES.RTF
+ TITLE> * THESE WERE TAKEN FROM EACH SECTION IN /DATA/KR/PAR_TTW.INP
+ TITLE> *   AND ADDITIONALLY FROM /DATA/NEW_MD/PAR_TTW.INP
+ TITLE> * THERE'S NO ANGLE PARAMETERS FOR HA ONLY HA1/2/3 SO CHANGE THE HAS IN THE AADH_TOPOLOGIES
+ TITLE> * ADDED NBFIX
+ TITLE>  
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    read psf card name ../common/@molname.psf
+ Parameter: MOLNAME -> "2AGY_C36_STATE0_WS"
+ VOPEN> Attempting to open::../COMMON/2AGY_C36_STATE0_WS.PSF::
+ MAINIO> Protein structure file being read from unit  90.
+ PSFRD2> Reading PSF in the expanded format.
+ TITLE>  * BASED ON 2AGY_SOL_ION.PDB CREATED BY KR, FOUND IN CURIE/KR8728/AADH/NEW_MD
+ TITLE>  * VMD REMOVED THE SOLVATED IONS AND WATER BUT KEPT THE CRYSTAL WATER AND PROTEIN
+ TITLE>  * NEW PSF AND PDB CREATED USING THE CHARMM 36 FORCEFIELD
+ TITLE>  * ADDS THE WATER SHELL FROM GRUBMULLER'S SOLVATE PROGRAM
+ TITLE>  *  DATE:    11/28/16     16:36: 7      CREATED BY USER: robert_arbon
+ TITLE>  *
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =       11   Number of residues   =    24079
+         Number of atoms         =    83819   Number of groups     =    27429
+         Number of bonds         =    84018   Number of angles     =    49469
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    24571   Number of HB donors  =    47912
+         Number of NB exclusions =        0   Total charge =  -12.00000
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read coor card name ../common/@molname.cor
+ Parameter: MOLNAME -> "2AGY_C36_STATE0_WS"
+ VOPEN> Attempting to open::../COMMON/2AGY_C36_STATE0_WS.COR::
+          SPATIAL COORDINATES BEING READ FROM UNIT 90
+ TITLE> * BASED ON 2AGY_SOL_ION.PDB CREATED BY KR, FOUND IN CURIE/KR8728/AADH/NEW_MD
+ TITLE> * VMD REMOVED THE SOLVATED IONS AND WATER BUT KEPT THE CRYSTAL WATER AND PROTEIN
+ TITLE> * NEW PSF AND PDB CREATED USING THE CHARMM 36 FORCEFIELD
+ TITLE> * ADDS THE WATER SHELL FROM GRUBMULLER'S SOLVATE PROGRAM
+ TITLE> *  DATE:    11/28/16     16:36: 8      CREATED BY USER: ROBERT_ARBON
+ TITLE> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    !
+ CHARMM>    ! SOME TIDY UP
+ CHARMM>    join XW1 XW2 renumber
+ SEGMENTS "XW1     " AND "XW2     " HAVE BEEN JOINED.
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =       10   Number of residues   =    24079
+         Number of atoms         =    83819   Number of groups     =    27429
+         Number of bonds         =    84018   Number of angles     =    49469
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    24571   Number of HB donors  =    47912
+         Number of NB exclusions =        0   Total charge =  -12.00000
+  
+ CHARMM>    join XW1 XW3 renumber
+ SEGMENTS "XW1     " AND "XW3     " HAVE BEEN JOINED.
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        9   Number of residues   =    24079
+         Number of atoms         =    83819   Number of groups     =    27429
+         Number of bonds         =    84018   Number of angles     =    49469
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    24571   Number of HB donors  =    47912
+         Number of NB exclusions =        0   Total charge =  -12.00000
+  
+ CHARMM>    join XW1 XW4 renumber
+ SEGMENTS "XW1     " AND "XW4     " HAVE BEEN JOINED.
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        8   Number of residues   =    24079
+         Number of atoms         =    83819   Number of groups     =    27429
+         Number of bonds         =    84018   Number of angles     =    49469
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    24571   Number of HB donors  =    47912
+         Number of NB exclusions =        0   Total charge =  -12.00000
+  
+ CHARMM>     
+  
+ CHARMM>    rename segid XWAT sele segid XW1 end
+ SELRPN>   4536 atoms have been selected out of  83819
+ SEGMENT 'XW1     ' IS RENAMED TO 'XWAT    '
+  
+ CHARMM>     
+  
+ CHARMM>    set ctr 2
+ Parameter: CTR <- "2"
+  
+ CHARMM>    label loop
+  
+ CHARMM>      join WAT1 WAT@ctr renumber
+ Parameter: CTR -> "2"
+ SEGMENTS "WAT1    " AND "WAT2    " HAVE BEEN JOINED.
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        7   Number of residues   =    24079
+         Number of atoms         =    83819   Number of groups     =    27429
+         Number of bonds         =    84018   Number of angles     =    49469
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    24571   Number of HB donors  =    47912
+         Number of NB exclusions =        0   Total charge =  -12.00000
+  
+ CHARMM>      incr ctr 1
+ Parameter: CTR <- "3"
+ **** Warning ****  The following extraneous characters
+ were found while command processing in miscom
+ 1
+  
+ CHARMM>    if @ctr .lt. 3.5 then goto loop
+ Parameter: CTR -> "3"
+ Comparing "3" and "3.5".
+ IF test evaluated as true.  Performing command
+  
+ CHARMM>      join WAT1 WAT@ctr renumber
+ Parameter: CTR -> "3"
+ SEGMENTS "WAT1    " AND "WAT3    " HAVE BEEN JOINED.
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        6   Number of residues   =    24079
+         Number of atoms         =    83819   Number of groups     =    27429
+         Number of bonds         =    84018   Number of angles     =    49469
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    24571   Number of HB donors  =    47912
+         Number of NB exclusions =        0   Total charge =  -12.00000
+  
+ CHARMM>      incr ctr 1
+ Parameter: CTR <- "4"
+ **** Warning ****  The following extraneous characters
+ were found while command processing in miscom
+ 1
+  
+ CHARMM>    if @ctr .lt. 3.5 then goto loop
+ Parameter: CTR -> "4"
+ Comparing "4" and "3.5".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>     
+  
+ CHARMM>    rename segid BWAT sele segid WT4 end
+ SELRPN>      0 atoms have been selected out of  83819
+  
+ CHARMM>     
+  
+ CHARMM>    rename segid AL2 sele segid A end
+ SELRPN>   5570 atoms have been selected out of  83819
+ SEGMENT 'A       ' IS RENAMED TO 'AL2     '
+  
+ CHARMM>    rename segid AL1 sele segid B end
+ SELRPN>   5570 atoms have been selected out of  83819
+ SEGMENT 'B       ' IS RENAMED TO 'AL1     '
+  
+ CHARMM>     
+  
+ CHARMM>    rename segid BT1 sele segid D end
+ SELRPN>   1639 atoms have been selected out of  83819
+ SEGMENT 'D       ' IS RENAMED TO 'BT1     '
+  
+ CHARMM>    rename segid BT2 sele segid H end
+ SELRPN>   1641 atoms have been selected out of  83819
+ SEGMENT 'H       ' IS RENAMED TO 'BT2     '
+  
+ CHARMM>     
+  
+ CHARMM>    join AL1 renumber
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        6   Number of residues   =    24079
+         Number of atoms         =    83819   Number of groups     =    27429
+         Number of bonds         =    84018   Number of angles     =    49469
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    24571   Number of HB donors  =    47912
+         Number of NB exclusions =        0   Total charge =  -12.00000
+  
+ CHARMM>    join AL2 renumber
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        6   Number of residues   =    24079
+         Number of atoms         =    83819   Number of groups     =    27429
+         Number of bonds         =    84018   Number of angles     =    49469
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    24571   Number of HB donors  =    47912
+         Number of NB exclusions =        0   Total charge =  -12.00000
+  
+ CHARMM>    join BT1 renumber
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        6   Number of residues   =    24079
+         Number of atoms         =    83819   Number of groups     =    27429
+         Number of bonds         =    84018   Number of angles     =    49469
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    24571   Number of HB donors  =    47912
+         Number of NB exclusions =        0   Total charge =  -12.00000
+  
+ CHARMM>    join BT2 renumber
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        6   Number of residues   =    24079
+         Number of atoms         =    83819   Number of groups     =    27429
+         Number of bonds         =    84018   Number of angles     =    49469
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    24571   Number of HB donors  =    47912
+         Number of NB exclusions =        0   Total charge =  -12.00000
+  
+ CHARMM>     
+  
+ CHARMM>    define prot sele segid AL* .or. segid BT* end
+ SELRPN>  14420 atoms have been selected out of  83819
+  
+ CHARMM>     
+  
+ CHARMM>    ! REORIENT PROTEIN
+ CHARMM>    coordinate orient
+
+ ORIENT THE COORDINATES TO ALIGN WITH AXIS
+
+ MOMENTS
+************************************************
+                ********************************
+                                ****************
+
+ Transpose of the rotation matrix
+     0.681355   -0.162682    0.713646
+     0.729975    0.222664   -0.646187
+    -0.053780    0.961226    0.270467
+ CENTER OF ATOMS BEFORE TRANSLATION     2.93392     3.90448    22.66218
+ AXIS OF ROTATION IS -0.806783 -0.385182 -0.448037  ANGLE IS   85.00
+
+ ALL COORDINATES ORIENTED IN THE MAIN SET BASED ON SELECTED ATOMS.
+
+  
+ CHARMM>     
+  
+ CHARMM>    ! CALCULATE SUITABLE CUTOFF SIZE
+ CHARMM>    set padding 14
+ Parameter: PADDING <- "14"
+  
+ CHARMM>     
+  
+ CHARMM>    coordinate statistics select prot end
+ SELRPN>  14420 atoms have been selected out of  83819
+ STATISTICS FOR     14420 SELECTED ATOMS:
+    XMIN =  -50.449820 XMAX =   51.829186 XAVE =    0.610581
+    YMIN =  -37.024654 YMAX =   37.219213 YAVE =   -1.064694
+    ZMIN =  -32.058128 ZMAX =   27.842314 ZAVE =   -2.474608
+    WMIN =    0.000000 WMAX =    0.000000 WAVE =    0.000000
+  
+ CHARMM>     
+  
+ CHARMM>    calc xmin = int(?xmin - @padding)
+ Parameter: PADDING -> "14"
+ RDCMND substituted energy or value "?XMIN" to "-50.4498196"
+Evaluating: INT(-50.4498196-14)
+ Parameter: XMIN <- "-64"
+  
+ CHARMM>    calc xmax = int(?xmax + @padding)
+ Parameter: PADDING -> "14"
+ RDCMND substituted energy or value "?XMAX" to "51.8291862"
+Evaluating: INT(51.8291862+14)
+ Parameter: XMAX <- "65"
+  
+ CHARMM>    calc ymin = int(?ymin - @padding)
+ Parameter: PADDING -> "14"
+ RDCMND substituted energy or value "?YMIN" to "-37.0246535"
+Evaluating: INT(-37.0246535-14)
+ Parameter: YMIN <- "-51"
+  
+ CHARMM>    calc ymax = int(?ymax + @padding)
+ Parameter: PADDING -> "14"
+ RDCMND substituted energy or value "?YMAX" to "37.2192133"
+Evaluating: INT(37.2192133+14)
+ Parameter: YMAX <- "51"
+  
+ CHARMM>    calc zmin = int(?zmin - @padding)
+ Parameter: PADDING -> "14"
+ RDCMND substituted energy or value "?ZMIN" to "-32.0581278"
+Evaluating: INT(-32.0581278-14)
+ Parameter: ZMIN <- "-46"
+  
+ CHARMM>    calc zmax = int(?zmax + @padding)
+ Parameter: PADDING -> "14"
+ RDCMND substituted energy or value "?ZMAX" to "27.8423144"
+Evaluating: INT(27.8423144+14)
+ Parameter: ZMAX <- "41"
+  
+ CHARMM>     
+  
+ CHARMM>    calc xdim = int( abs ( @XMAX - @XMIN ) )
+ Parameter: XMAX -> "65"
+ Parameter: XMIN -> "-64"
+Evaluating: INT(ABS(65--64))
+ Parameter: XDIM <- "129"
+  
+ CHARMM>    calc ydim = int( abs ( @YMAX - @YMIN ) )
+ Parameter: YMAX -> "51"
+ Parameter: YMIN -> "-51"
+Evaluating: INT(ABS(51--51))
+ Parameter: YDIM <- "102"
+  
+ CHARMM>    calc zdim = int( abs ( @ZMAX - @ZMIN ) )
+ Parameter: ZMAX -> "41"
+ Parameter: ZMIN -> "-46"
+Evaluating: INT(ABS(41--46))
+ Parameter: ZDIM <- "87"
+  
+ CHARMM>     
+  
+ CHARMM>    open write unit 1 card name @molname_min_boxdims.str
+ Parameter: MOLNAME -> "2AGY_C36_STATE0_WS"
+ VOPEN> Attempting to open::2agy_c36_state0_ws_min_boxdims.str::
+ OPNLGU> Unit  1 opened for WRITE access to 2agy_c36_state0_ws_min_boxdims.str
+  
+ CHARMM>    write title unit 1
+ RDTITL> * SET XSIZ 129
+ RDTITL> * SET YSIZ 102
+ RDTITL> * SET ZSIZ 87
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    close unit 1
+ VCLOSE: Closing unit    1 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    !WRITE OUT STRUCTURE
+ CHARMM>    write psf card name @molname_realigned.psf
+ Parameter: MOLNAME -> "2AGY_C36_STATE0_WS"
+ VOPEN> Attempting to open::2agy_c36_state0_ws_realigned.psf::
+ RDTITL> * REORIENTED ALONG X AXIS
+ RDTITL> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    write coord card name @molname_realigned.cor
+ Parameter: MOLNAME -> "2AGY_C36_STATE0_WS"
+ VOPEN> Attempting to open::2agy_c36_state0_ws_realigned.cor::
+ RDTITL> * REORIENTED ALONG X AXIS
+ RDTITL> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    write coord pdb name @molname_realigned.pdb
+ Parameter: MOLNAME -> "2AGY_C36_STATE0_WS"
+ VOPEN> Attempting to open::2agy_c36_state0_ws_realigned.pdb::
+ RDTITL> * REORIENTED ALONG X AXIS
+ RDTITL> *
+  Write CHARMM-pdb format
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    stop
+$$$$$$  New timer profile $$$$$
+ Total time                      2.00 Other:            0.00
+
+                    NORMAL TERMINATION BY NORMAL STOP
+                    MOST SEVERE WARNING WAS AT LEVEL  0
+
+                    $$$$$ JOB ACCOUNTING INFORMATION $$$$$
+                     ELAPSED TIME:     2.00  SECONDS 
+                         CPU TIME:     1.78  SECONDS 

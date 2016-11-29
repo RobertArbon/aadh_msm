@@ -4,8 +4,8 @@
                              Git commit ID f89d5df                              
        Copyright(c) 1984-2014  President and Fellows of Harvard College
                               All Rights Reserved
-     Current operating system: Linux-2.6.32-220.23.1.el6.x86_64(x86_64)@nod     
-                 Created on 11/24/16 at 18:09:29 by user: ra15808     
+     Current operating system: Linux-2.6.32-220.23.1.el6.x86_64(x86_64)@new     
+                 Created on 11/28/16 at 12:01:30 by user: ra15808     
 
             Maximum number of ATOMS:    360720, and RESidues:      120240
  RDTITL> * BASED ON 2AGY_SOL_ION.PDB CREATED BY KR, FOUND IN CURIE/KR8728/AADH/NEW_MD
@@ -2234,6 +2234,9 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>     
   
+ CHARMM>    ioformat extend
+ MISCOM> Expanded I/O format is used.
+  
  CHARMM>    !
  CHARMM>    ! WRITE OUT THE PROTEIN AND WATER
  CHARMM>    !
@@ -2261,11 +2264,11 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>    stop
 $$$$$$  New timer profile $$$$$
- Total time                     20.95 Other:            0.00
+ Total time                     20.19 Other:            0.00
 
                     NORMAL TERMINATION BY NORMAL STOP
                     MOST SEVERE WARNING WAS AT LEVEL  0
 
                     $$$$$ JOB ACCOUNTING INFORMATION $$$$$
-                     ELAPSED TIME:    20.97  SECONDS 
-                         CPU TIME:    20.22  SECONDS 
+                     ELAPSED TIME:    20.19  SECONDS 
+                         CPU TIME:    19.62  SECONDS 

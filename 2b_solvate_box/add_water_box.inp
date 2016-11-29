@@ -1,0 +1,57 @@
+* Adds water from VMD  
+*
+
+prnlev 5
+
+ioformat extend
+set datadir ../common
+set molname 2agy_c36_state0_ws_realigned 
+stream @datadir/toppar_water_ions_fixed.str
+read rtf card name @datadir/top_all36_prot.rtf append flex
+read rtf card name @datadir/aadh_topologies.rtf append flex
+read para card name @datadir/par_all36_prot_mod.prm append flex
+read para card name @datadir/aadh_parameters.prm append flex
+
+read psf card name @molname.psf
+read coor card name @molname.cor
+
+!
+! READ IN SEQUENCES 
+!
+set ctr 1
+label loop
+    read sequ pdb  name wt@ctr.pdb
+    gene wt@ctr setup first none last none nodihe noangl
+    incr ctr by 1
+if @ctr .le. 12 then goto loop
+
+!
+! READ IN COORDINATES
+!
+set ctr 1
+label loop2
+     read coor pdb resid name wt@ctr.pdb sele segid wt@ctr end
+     incr ctr by 1
+if @ctr .le. 12 then goto loop2
+
+!
+! RENAME WATER SEGMENTS
+!
+set ctr 1
+label loop3
+  join WAT1 WT@ctr renumber
+  incr ctr 1
+if @ctr .le. 12 then goto loop3
+
+rename segid BWAT sele segid WAT1 end
+
+write psf card name 2agy_c36_state0_wb.psf
+* AADH Water box added via VMD, no ions
+*
+write coor card name 2agy_c36_state0_wb.cor
+* AADH Water box added via VMD, no ions
+*
+
+write coor pdb name 2agy_c36_state0_wb.pdb
+* AADH Water box added via VMD, no ions
+*

@@ -2,6 +2,7 @@
 * VMD removed the solvated ions and water but kept the crystal water and protein
 * NEW PSF and PDB created using the CHARMM 36 forcefield
 * Adds the water shell from Grubmuller's Solvate program
+*
 
 prnlev 7
 set datadir ../common
@@ -89,6 +90,7 @@ read coor pdb resid name "WAT1.pdb" sele segid WAT1 end
 read coor pdb resid name "WAT2.pdb" sele segid WAT2 end
 read coor pdb resid name "WAT3.pdb" sele segid WAT3 end
 
+ioformat extend
 !
 ! WRITE OUT THE PROTEIN AND WATER
 !
