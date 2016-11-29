@@ -1,26 +1,30 @@
-* Final minimisation
+* Minimisation
 *
-
-stream /panfs/panasas01/chem/ra15808/aadh/setup.inp
 
 prnlev 5
 
-set molname 2agy_c36_state0_min_wb_min_neut
-
-stream @charmmtop/toppar_water_ions_fixed.str
-read rtf card name @charmmtop/top_all36_prot.rtf append flex
-read rtf card name @datadir/ra/aadh_topologies.rtf append flex
-read para card name @charmmtop/par_all36_prot_mod.prm append flex
-read para card name @datadir/ra/aadh_parameters.prm append flex
+set molname 2agy_c36_state0_neut
+set datadir ../common
+stream @datadir/toppar_water_ions_fixed.str
+read rtf card name @datadir/top_all36_prot.rtf append flex
+read rtf card name @datadir/aadh_topologies.rtf append flex
+read para card name @datadir/par_all36_prot_mod.prm append flex
+read para card name @datadir/aadh_parameters.prm append flex
 
 read psf card name ../common/@molname.psf
 read coord card name ../common/@molname.crd
 
+define heavy_all sele all .and. .not. type H* end
+
 define protein sele segid AL* .or. segid BT* end
-define backbone sele type n .or. type ca .or. type c .or. type o end
-define prothyd sele (segid AL* .and. type H*) .or. (segid BT* .and. type H*) end
-define water sele resid *WAT end
-define ions sele resid CLA .or. resid POT end
+define heavy_prot sele protein .and. .not. type H* end 
+define light_prot sele protein .and. type H* end 
+
+define backbone_prot sele type n .or. type ca .or. type c .or. type o end
+define residues_prot sele protein .and. .not. backbone_prot end
+
+define water sele segid *WAT end
+define ions sele segid ion end
 
 !
 ! Orient the cell so that the origin is a corner, not the centre.
