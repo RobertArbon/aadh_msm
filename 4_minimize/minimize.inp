@@ -74,9 +74,9 @@ write title card unit 20
 !
 ! Setup non-bonded forces
 !
-set ftx 128
-set fty 108
-set ftz 90
+set ftx 144 
+set fty 120
+set ftz 108 
 NBONDED inbfrq -1 imgfrq -1 nbxmod 5 -                                              ! C36 DEFAULTS
         atom cdiel fshift -                                                         ! use atom based electrostatics, C36 DEFAULTS
         vatom vdistance vfswitch -                                                  ! C36 DEFAULTS
@@ -94,7 +94,6 @@ coor copy comp
 !
 open write card unit 30 name minimization_traj.txt
 
-cons clear
 energy 
 coor rms comp sele heavy_prot end
 
@@ -111,7 +110,7 @@ cons rmsd force 5 mass comp sele heavy_all end
 mini sd nstep 100
 mini abnr nstep 3000 nprint 100 tolg 0.01
 
-cons clear
+cons rmsd clear
 energy
 coor rms comp sele heavy_prot end
 
@@ -131,7 +130,7 @@ cons rmsd force 5 mass comp sele heavy_prot end
 mini sd nstep 100
 mini abnr nstep 3000 nprint 100 tolg 0.01
 
-cons clear
+cons rmsd clear
 energy
 coor rms comp sele all end
 
@@ -150,7 +149,7 @@ cons rmsd force 5 mass comp sele  backbone_prot end
 mini sd nstep 100
 mini abnr nstep 3000 nprint 100 tolg 0.01
 
-cons clear
+cons rmsd clear
 energy 
 coor rms comp sele heavy_prot end
 
@@ -168,7 +167,6 @@ write coor card name 2agy_solv_min-step-3.cor
 mini sd nstep 100
 mini abnr nstep 5000 nprint 100 tolg 0.01
 
-cons clear
 energy 
 coor rms comp sele heavy_prot end
 
