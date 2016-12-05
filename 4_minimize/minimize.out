@@ -18062,7 +18062,7 @@ ABNR CONSTR>       43.01912      0.00000      0.00000      0.00000      0.00000
  CHARMM>     
   
  CHARMM>    cons rmsd clear
- RSMD restraint cleared 
+ mSMD restraint cleared 
   
  CHARMM>    energy
 

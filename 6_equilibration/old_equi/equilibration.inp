@@ -1,0 +1,96 @@
+* Final heating using serial code
+*
+
+envi OPENMM_PLATFORM  "CUDA"   ! /CUDA/Reference   Use OpenMM platform based on 
+envi OPENMM_PRECISION "mixed"   ! /mixed/double    Do calculations in single 
+
+stream /panfs/panasas01/chem/ra15808/aadh/setup.inp
+
+prnlev 5
+
+stream @charmmtop/toppar_water_ions_fixed.str
+read rtf card name @charmmtop/top_all36_prot.rtf append flex
+read rtf card name /panfs/panasas01/chem/ra15808/aadh/data/ra/aadh_topologies.rtf append flex
+read para card name @charmmtop/par_all36_prot_mod.prm append flex
+read para card name @datadir/ra/aadh_parameters.prm append flex
+
+read psf card name ../common/2agy_final_min.psf
+read coord card name ../common/2agy-310k.crd
+
+! Orient the cell so that the origin is a corner, not the centre. 
+
+coordinate statistics select all end
+
+calc xdim = ( abs ( ?XMAX - ?XMIN ) + 0.0  )
+calc ydim = ( abs ( ?YMAX - ?YMIN ) + 0.0  )
+calc zdim = ( abs ( ?ZMAX - ?ZMIN ) + 0.0  )
+
+coor trans xdir @xdim ydir @ydim zdir @zdim factor 0.5
+
+coordinate statistics select all end
+
+! constraints
+shake bonh param sele all end
+
+! setup crystal
+calc xcen @xdim/2
+calc ycen @ydim/2
+calc zcen @zdim/2
+
+set cutim 14
+
+CRYSTAL DEFI ORTHS @xdim @ydim @zdim 90.0 90.0 90.0
+CRYSTAL BUILD CUTOFF @cutim NOPER 0
+image byseg xcen @xcen ycen @ycen zcen @zcen  sele segid AL* .or. segid BT* end ! protein
+image byres xcen @xcen ycen @ycen zcen @zcen sele .not. (segid AL* .or. segid BT*) end ! water ions
+
+! use fftvecs.py to get fft values:
+set ftx 128
+set fty 108
+set ftz 90
+NBONDED inbfrq -1 imgfrq -1 nbxmod 5 -                                              ! C36 DEFAULTS
+        atom cdiel fshift -                                                         ! use atom based electrostatics, C36 DEFAULTS
+        vatom vdistance vfswitch -                                                  ! C36 DEFAULTS
+        elec ewald pmew fftx @ftx ffty @fty fftz @ftz kappa .34 spline order 6 -    ! PME SUMMATION
+        cutnb 14.0 ctofnb 12.0 ctonnb 10.0 -                                        ! C36 DEFAULTS
+        cutim @cutim -                                                                ! must be same as cutnb
+        eps 1.0 e14fac 1.0 wmin 1.5                                                 ! C36 DEFAULTS
+
+faster on
+
+energy omm 
+
+coor copy comp
+
+ioform extended
+
+set nsteps 1000000
+set nwrite 500 
+set gamma 1
+ 
+shake fast bonh tol 1.0e-8 para 
+
+set echeck = echeck -1
+
+open write card unit 11 name  2agy-310k-1atm-equil.res  
+open unit 12 write file name  2agy-310k-1atm-equil.dcd
+
+dynamics leap start timestep 0.002 -
+     nstep @nsteps nprint @nwrite iprfrq @nwrite isvfrq @nsteps iunwri 11 iunread -1 - 
+     iuncrd 12 nsavc @nwrite - 
+     firstt 310 finalt 310  -
+     ichecw 0 ihtfrq 0 ieqfrq 0 -
+     iasors 1 iasvel 1 iscvel 0  -
+     ilbfrq 0 inbfrq -1 imgfrq -1 @echeck bycb -
+     ntrfq 100 - 
+     omm langevin gamma @gamma prmc pref 1.0 iprsfrq 25
+     
+coor rms
+coor statistics sele all end
+
+write coord card unit 12 name 2agy-310k-1atm-equil.cor
+* Equilibrated using OMM/Langevin and 1atm pressure 
+*
+
+
+stop

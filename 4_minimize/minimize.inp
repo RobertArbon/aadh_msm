@@ -58,7 +58,7 @@ image byres xcen @xcen ycen @ycen zcen @zcen sele .not. (segid AL* .or. segid BT
 ! 
 ! Write out crystal parameters
 !
-open write card unit 20 name cyrstal_params.str
+open write card unit 20 name crystal_params.str
 
 write title card unit 20
 * Crystal parameters from Minimization:
@@ -71,6 +71,11 @@ write title card unit 20
 * set cutim @cutim 
 *
 
+write coord card name @molname-shifted.cor
+* Realigned the Crystal structure to be compatible with OpenMM
+*
+
+stop
 !
 ! Setup non-bonded forces
 !

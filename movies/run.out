@@ -1,0 +1,923 @@
+1
+                 Chemistry at HARvard Macromolecular Mechanics
+           (CHARMM) - Developmental Version 41a2   February 15, 2016            
+                             Git commit ID f89d5df                              
+       Copyright(c) 1984-2014  President and Fellows of Harvard College
+                              All Rights Reserved
+     Current operating system: Linux-2.6.32-642.6.2.el6.x86_64(x86_64)@node     
+                 Created on 12/4/16 at 11:42:13 by user: ra15808     
+
+            Maximum number of ATOMS:    360720, and RESidues:      120240
+ RDTITL> * HEATING IN STAGES
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    envi OPENMM_PLATFORM  "CUDA"   ! /CUDA/Reference   Use OpenMM platform based on
+  
+ CHARMM>    envi OPENMM_PRECISION "mixed"   ! /mixed/double    Do calculations in single
+  
+ CHARMM>     
+  
+ CHARMM>    prnlev 5
+  
+ CHARMM>    set datadir ../common
+ Parameter: DATADIR <- "../COMMON"
+  
+ CHARMM>    stream @datadir/toppar_water_ions_fixed.str
+ Parameter: DATADIR -> "../COMMON"
+ VOPEN> Attempting to open::../common/toppar_water_ions_fixed.str::
+ OPNLGU> Unit 99 opened for READONLY access to ../common/toppar_water_ions_fixed.str
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * TOPLOGY AND PARAMETER INFORMATION FOR WATER AND IONS.
+ RDTITL> *
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    !Testcase
+ CHARMM>    !test_water_ions.inp
+ CHARMM>     
+  
+ CHARMM>    ! IMPORTANT NOTE: this file contains NBFixes between carboxylates and sodium,
+ CHARMM>    ! which will only apply if the main files containing carboxylate atom types
+ CHARMM>    ! have been read in first!
+ CHARMM>     
+  
+ CHARMM>    !references
+ CHARMM>    !
+ CHARMM>    !TIP3P water model
+ CHARMM>    !
+ CHARMM>    !W.L. Jorgensen; J.Chandrasekhar; J.D. Madura; R.W. Impey;
+ CHARMM>    !M.L. Klein; "Comparison of simple potential functions for
+ CHARMM>    !simulating liquid water", J. Chem. Phys. 79 926-935 (1983).
+ CHARMM>    !
+ CHARMM>    !IONS
+ CHARMM>    !
+ CHARMM>    !Ions from Roux and coworkers
+ CHARMM>    !
+ CHARMM>    !Beglov, D. and Roux, B., Finite Representation of an Infinite
+ CHARMM>    !Bulk System: Solvent Boundary Potential for Computer Simulations,
+ CHARMM>    !Journal of Chemical Physics, 1994, 100: 9050-9063
+ CHARMM>    !
+ CHARMM>    !ZINC
+ CHARMM>    !
+ CHARMM>    !Stote, R.H. and Karplus, M. Zinc Binding in Proteins and
+ CHARMM>    !Solution: A Simple but Accurate Nonbonded Representation, PROTEINS:
+ CHARMM>    !Structure, Function, and Genetics 23:12-31 (1995)
+ CHARMM>     
+  
+ CHARMM>    !test "append" to determine if previous toppar files have been read and
+ CHARMM>    !add append to "read rtf card" if true
+ CHARMM>    set nat ?NATC
+ RDCMND: can not substitute energy "?NATC"
+ Parameter: NAT <- "?NATC"
+  
+ CHARMM>    set app
+ Parameter: APP <- "" <empty>
+  
+ CHARMM>    !We're exploiting what is arguably a bug in the parser. On the left hand side,
+ CHARMM>    !the quotes have priority, so NAT is correctly substituted. On the right hand
+ CHARMM>    !side, the ? has priority and NATC" (sic) is not a valid substitution...
+ CHARMM>    if "@NAT" ne "?NATC" if @nat ne 0 set app append
+ Parameter: NAT -> "?NATC"
+ Parameter: NAT -> "?NATC"
+ RDCMND: can not substitute energy "?NATC""
+ Comparing ""?NATC"" and ""?NATC"".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>     
+  
+ CHARMM>    read rtf card  !REA 26/07/2013 - deleted @app - always stream this first and everything else must be appended)
+ MAINIO> Residue topology file being read from unit  99.
+ RDTITL> * TOPOLOGY FOR WATER AND IONS
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    read para card flex  !REA - deleted @app
+
+          PARAMETER FILE BEING READ FROM UNIT 99
+ RDTITL> * PARAMETERS FOR WATER AND IONS
+ RDTITL> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>     
+  
+ CHARMM>    ! The following section contains NBFixes for sodium interacting with
+ CHARMM>    ! carboxylate oxygens of various CHARMM force fields. It will generate
+ CHARMM>    ! level -1 warnings whenever any of these force fields have not been
+ CHARMM>    ! read prior to the current stream file. Since we don't want to force
+ CHARMM>    ! the user to always read all the force fields, we're suppressing the
+ CHARMM>    ! warnings. The only side effect is that you will have "most severe
+ CHARMM>    ! warning was at level 0" at the end of your output. Also note that
+ CHARMM>    ! the user is responsible for reading the current file last if they
+ CHARMM>    ! want the NBFixes to apply. A more elegant solution would require new
+ CHARMM>    ! features to be added to CHARMM.
+ CHARMM>    ! parallel fix, to avoid duplicated messages in the log
+ CHARMM>    set para
+ Parameter: PARA <- "" <empty>
+  
+ CHARMM>    if ?NUMNODE gt 1 set para node 0
+ RDCMND substituted energy or value "?NUMNODE" to "1"
+ Comparing "1" and "1".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>     
+  
+ CHARMM>    set wrn ?WRNLEV
+ RDCMND substituted energy or value "?WRNLEV" to "5"
+ Parameter: WRN <- "5"
+  
+ CHARMM>    ! Some versions of CHARMM don't seem to initialize wrnlev...
+ CHARMM>    if "@WRN" eq "?WRNLEV" set wrn 5
+ Parameter: WRN -> "5"
+ RDCMND: can not substitute energy "?WRNLEV""
+ Comparing ""5"" and ""?WRNLEV"".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>    set bom ?bomlev
+ RDCMND substituted energy or value "?BOMLEV" to "0"
+ Parameter: BOM <- "0"
+  
+ CHARMM>    WRNLEV -1 @PARA
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    BOMLEV -1 @PARA
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    read para card flex append
+
+          PARAMETER FILE BEING READ FROM UNIT 99
+ RDTITL> * NBFIX BETWEEN CARBOXYLATE AND SODIUM
+ RDTITL> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>    BOMLEV @bom @PARA
+ Parameter: BOM -> "0"
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    WRNLEV @wrn @PARA
+ Parameter: WRN -> "5"
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    return
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>    read rtf card name @datadir/top_all36_prot.rtf append flex
+ Parameter: DATADIR -> "../COMMON"
+ VOPEN> Attempting to open::../common/top_all36_prot.rtf::
+ MAINIO> Residue topology file being read from unit  90.
+ TITLE> *>>>>>>>>CHARMM36 ALL-HYDROGEN TOPOLOGY FILE FOR PROTEINS <<<<<<
+ TITLE> *>>>>> INCLUDES PHI, PSI CROSS TERM MAP (CMAP) CORRECTION <<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>>>>> MAY 2011 <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> * ALL COMMENTS TO THE CHARMM WEB SITE: WWW.CHARMM.ORG
+ TITLE> *             PARAMETER SET DISCUSSION FORUM
+ TITLE> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read rtf card name @datadir/aadh_topologies.rtf append flex
+ Parameter: DATADIR -> "../COMMON"
+ VOPEN> Attempting to open::../common/aadh_topologies.rtf::
+ MAINIO> Residue topology file being read from unit  90.
+ TITLE> * RESIDUES AND PATCHES FOR CREATING AADH REACTANT AND PRODUCTS
+ TITLE> * ATOM DEFINITIONS IS TAKEN FROM TOP_ALL36_PROT.RTF
+ TITLE> * PREAMLE IS TAKEN FROM TOP_TTW.INP
+ TITLE> * >>>>>
+ TITLE> * RESI TTW - /DATA/KR/TOP_TTW.INP
+ TITLE> * RESI TTW2 - /DATA/KR/TOP_TTW.INP - I DON'T THINK THIS IS USED SO THIS WON'T BE ADJUSTED.
+ TITLE> * PRES TRPM - /DATA/NEW_MD/TRPM.RTF
+ TITLE> * PRES TTWP - /DATA/KR/TTW_PROD.RTF
+ TITLE> * PRES ASP1/2 - /DATA/KR/TTW_PROD.RTF
+ TITLE> * PRES TTQ_TRP - /DATA/NEW_MD/TTW_TOP.INP
+ TITLE> * THE ORIGINAL PATCHES AND RESIDUES WERE SPECIFIED IN THE CHARM22 FF
+ TITLE> * 23/07/2016 - THE PRODUCT PATCHES WILL HAVE TO CHANGE (TO GET RID OF DELE STATEMENT)
+ TITLE> *               AND TO PRESERVE THE ATOMS LABELLING CHANGES.
+ TITLE> *
+ WARNING from DECODI -- Zero length string being converted to 0
+ RTFRDR> WARNING: Version number is NOT specified.
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read para card name @datadir/par_all36_prot_mod.prm append flex
+ Parameter: DATADIR -> "../COMMON"
+ VOPEN> Attempting to open::../common/par_all36_prot_mod.prm::
+
+          PARAMETER FILE BEING READ FROM UNIT 90
+ TITLE> *>>>> CHARMM36 ALL-HYDROGEN PARAMETER FILE FOR PROTEINS <<<<<<<<<<
+ TITLE> *>>>>> INCLUDES PHI, PSI CROSS TERM MAP (CMAP) CORRECTION <<<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>>>>> JAN. 2016 <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> * ALL COMMENTS TO THE CHARMM WEB SITE: WWW.CHARMM.ORG
+ TITLE> *             PARAMETER SET DISCUSSION FORUM
+ TITLE> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read para card name @datadir/aadh_parameters.prm append flex
+ Parameter: DATADIR -> "../COMMON"
+ VOPEN> Attempting to open::../common/aadh_parameters.prm::
+
+          PARAMETER FILE BEING READ FROM UNIT 90
+ TITLE> * PARAMETERS SPECIFIC TO AADH.  TO BE USED IN CONJUNCTION WITH AADH_TOPOLOGIES.RTF
+ TITLE> * THESE WERE TAKEN FROM EACH SECTION IN /DATA/KR/PAR_TTW.INP
+ TITLE> *   AND ADDITIONALLY FROM /DATA/NEW_MD/PAR_TTW.INP
+ TITLE> * THERE'S NO ANGLE PARAMETERS FOR HA ONLY HA1/2/3 SO CHANGE THE HAS IN THE AADH_TOPOLOGIES
+ TITLE> * ADDED NBFIX
+ TITLE>  
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    read psf card name ../common/2agy_c36_state0_neut.psf
+ VOPEN> Attempting to open::../common/2agy_c36_state0_neut.psf::
+ MAINIO> Protein structure file being read from unit  90.
+ PSFRD2> Reading PSF in the expanded format.
+ TITLE>  * AADH WATER BOX ADDED VIA VMD WITH 150 MMOL/L NACL IONS
+ TITLE>  *  DATE:    11/29/16     16:44:13      CREATED BY USER: robert_arbon
+ TITLE>  *
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        7   Number of residues   =    58444
+         Number of atoms         =   186246   Number of groups     =    61794
+         Number of bonds         =   186111   Number of angles     =    83500
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    58602   Number of HB donors  =   115974
+         Number of NB exclusions =        0   Total charge =   -0.00000
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read coord card name ../common/2agy-heating-310.cor
+ VOPEN> Attempting to open::../common/2agy-heating-310.cor::
+          SPATIAL COORDINATES BEING READ FROM UNIT 90
+ TITLE> * 2AGY INTERMEDIATE OUTPUT.  HEATED TO 310 K
+ TITLE> *  DATE:    12/ 3/16     13:56:28      CREATED BY USER: RA15808
+ TITLE> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    define backbone_prot sele type n .or. type ca .or. type c .or. type o end
+ SELRPN>   3780 atoms have been selected out of 186246
+  
+ CHARMM>     
+  
+ CHARMM>    stream crystal_params.str
+ VOPEN> Attempting to open::crystal_params.str::
+ OPNLGU> Unit 99 opened for READONLY access to crystal_params.str
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * CRYSTAL PARAMETERS FROM MINIMIZATION:
+ RDTITL> SET XDIM 132.94535
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     SET XDIM 132.94535
+ Parameter: XDIM <- "132.94535"
+  
+ CHARMM>     SET YDIM 111.449759
+ Parameter: YDIM <- "111.449759"
+  
+ CHARMM>     SET ZDIM 107.636263
+ Parameter: ZDIM <- "107.636263"
+  
+ CHARMM>     SET XCEN 66.472675
+ Parameter: XCEN <- "66.472675"
+  
+ CHARMM>     SET YCEN 55.7248795
+ Parameter: YCEN <- "55.7248795"
+  
+ CHARMM>     SET ZCEN 53.8181315
+ Parameter: ZCEN <- "53.8181315"
+  
+ CHARMM>     SET CUTIM 14
+ Parameter: CUTIM <- "14"
+  
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>     
+  
+ CHARMM>    CRYSTAL DEFI ORTHS @xdim @ydim @zdim 90.0 90.0 90.0
+ Parameter: XDIM -> "132.94535"
+ Parameter: YDIM -> "111.449759"
+ Parameter: ZDIM -> "107.636263"
+ Crystal Parameters : Crystal Type = ORTH
+           A     =  132.94535 B    =  111.44976 C     =  107.63626
+           Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+  
+ CHARMM>    CRYSTAL BUILD CUTOFF @cutim NOPER 0
+ Parameter: CUTIM -> "14"
+ XBUILD> Building all transformations with a minimum atom-atom
+         contact distance of less than   14.00 Angstroms.
+
+ Range of Grid Search for Transformation     1 :
+ Lattice Vector A    -2 TO     2
+ Lattice Vector B    -2 TO     2
+ Lattice Vector C    -2 TO     2
+
+
+ The number of transformations generated =    26
+
+
+ Number  Symop   A   B   C   Distance
+
+      1      1  -1  -1  -1     5.3622
+      2      1  -1   0  -1     3.0652
+      3      1  -1   1  -1     2.3152
+      4      1   0  -1  -1     3.8111
+      5      1   0   0  -1     2.2832
+      6      1   0   1  -1     3.0618
+      7      1  -1  -1   0     4.3603
+      8      1  -1   0   0     2.7595
+      9      1  -1   1   0     2.6992
+     10      1   0  -1   0     3.2629
+     11      1   0   1   0     3.2629
+     12      1  -1  -1   1     5.8076
+     13      1  -1   0   1     3.5400
+     14      1  -1   1   1     6.2986
+     15      1   0  -1   1     3.0618
+     16      1   0   0   1     2.2832
+     17      1   0   1   1     3.8111
+     18      1   1   1   1     5.3622
+     19      1   1   0   1     3.0652
+     20      1   1  -1   1     2.3152
+     21      1   1   1   0     4.3603
+     22      1   1   0   0     2.7595
+     23      1   1  -1   0     2.6992
+     24      1   1   1  -1     5.8076
+     25      1   1   0  -1     3.5400
+     26      1   1  -1  -1     6.2986
+                     THERE ARE NO ROTATIONS FOR THIS TRANSFORMATION SET
+    26 Transformations have been processed.
+
+  
+ CHARMM>    image byseg xcen @xcen ycen @ycen zcen @zcen  sele segid AL* .or. segid BT* end ! protein
+ Parameter: XCEN -> "66.472675"
+ Parameter: YCEN -> "55.7248795"
+ Parameter: ZCEN -> "53.8181315"
+ SELRPN>  14420 atoms have been selected out of 186246
+ IMAGE CENTERING ON FOR SOME ATOMS
+  
+ CHARMM>    image byres xcen @xcen ycen @ycen zcen @zcen sele .not. (segid AL* .or. segid BT*) end ! water ions
+ Parameter: XCEN -> "66.472675"
+ Parameter: YCEN -> "55.7248795"
+ Parameter: ZCEN -> "53.8181315"
+ SELRPN> 171826 atoms have been selected out of 186246
+ IMAGE CENTERING ON FOR SOME ATOMS
+  
+ CHARMM>     
+  
+ CHARMM>    !
+ CHARMM>    ! Setup non-bonded forces
+ CHARMM>    !
+ CHARMM>    set ftx 144
+ Parameter: FTX <- "144"
+  
+ CHARMM>    set fty 120
+ Parameter: FTY <- "120"
+  
+ CHARMM>    set ftz 108
+ Parameter: FTZ <- "108"
+  
+ CHARMM>    NBONDED inbfrq -1 imgfrq -1 nbxmod 5 -                                              ! C36 DEFAULTS
+ CHARMM>            atom cdiel fshift -                                                         ! use atom based electrostatics, C36 DEFAULTS
+ CHARMM>            vatom vdistance vfswitch -                                                  ! C36 DEFAULTS
+ CHARMM>            elec ewald pmew fftx @ftx ffty @fty fftz @ftz kappa .34 spline order 6 -    ! PME SUMMATION
+ CHARMM>            cutnb 14.0 ctofnb 12.0 ctonnb 10.0 -                                        ! C36 DEFAULTS
+ CHARMM>            cutim @cutim -                                                                ! must be same as cutnb
+ CHARMM>            eps 1.0 e14fac 1.0 wmin 1.5                                                 ! C36 DEFAULTS
+ Parameter: FTX -> "144"
+ Parameter: FTY -> "120"
+ Parameter: FTZ -> "108"
+ Parameter: CUTIM -> "14"
+
+ SELECTED IMAGES ATOMS BEING CENTERED ABOUT 66.472675 55.724880 53.818131
+ RESIDUE13979 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE15082 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE16016 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE16178 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE18181 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE21706 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE22488 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE22656 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE23366 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE23479 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE23596 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE24087 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE24632 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE24795 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE25040 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE26533 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE27796 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE29027 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE29199 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE29317 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE29354 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE29467 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE29692 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE30034 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE30391 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE30422 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE30773 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE31818 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE31846 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE32394 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE32403 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE32961 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE33230 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE33426 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE33749 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE33848 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE33923 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE34040 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE34412 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE35621 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE36572 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE37075 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE37453 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE37724 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE37859 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE37873 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE38320 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE38787 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE39125 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE39178 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE39949 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE39979 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE40577 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE40610 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE40813 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE41046 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE41180 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE41606 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE41633 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE41668 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE41863 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE42516 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE42770 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE43052 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE44403 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE44460 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE45143 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE45715 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE46400 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE46612 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE46641 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE46740 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE46744 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE47909 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE48717 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE49330 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE49527 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE49855 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE50119 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE50378 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE50537 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE51504 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE51647 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE51683 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE51730 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE52620 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE54567 OPERATED ON BY TRANSFORMATION C008
+ RESIDUE54719 OPERATED ON BY TRANSFORMATION C005
+ RESIDUE54847 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE55571 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE56069 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE56476 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE56598 OPERATED ON BY TRANSFORMATION C010
+ RESIDUE56844 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE57390 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE57509 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE57574 OPERATED ON BY TRANSFORMATION C022
+
+ <MKIMAT2>: updating the image atom lists and remapping
+ Transformation   Atoms  Groups  Residues  Min-Distance
+    1  C001 has     117      39      39        1.88
+    2  C002 has    1966     658     658        0.00
+    3  C003 has     188      64      64        0.58
+    4  C004 has    2407     803     803        0.00
+    5  C005 has   24984    8354    8354        0.00
+    6  C006 has    2426     812     812        0.00
+    7  C007 has    1912     638     638        0.00
+    8  C008 has   20105    6725    6725        0.00
+    9  C009 has    1940     650     650        0.00
+   10  C010 has   24008    8038    8038        0.00
+   12  C012 has     150      50      50        2.78
+   13  C013 has    1950     654     654        0.00
+   14  C014 has     102      34      34        1.25
+ Total of    268501 atoms and     89313 groups and     85963 residues were included
+
+ <PME> Total heap storage needed =    11338263
+ Fill Ewald table: Number of points=     10000 EWXmax=    4.250000
+ fill erfc table: linear inter has rms error = 0.979220D-08 maximum error = 0.218740D-07
+ fill erfc table: cubic spline has rms error = 0.360331D-11 maximum error = 0.108438D-10
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VFSWIt  
+     BYGRoup  NOEXtnd  EWALd   
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 10.000 CTOFNB = 12.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ PME EWALD OPTIONS: KAPPA  =  0.340  QCOR =  0.000  Bspline order = 6
+ FFTX= 144  FFTY= 120  FFTZ= 108
+                Using Pub FFT
+                Real-to-Complex FFT
+ There are        0 atom  pairs and        0 atom  exclusions.
+ There are        0 group pairs and        0 group exclusions.
+ <MAKINB> with mode   5 found 212451 exclusions and  37937 interactions(1-4)
+ <MAKGRP> found  12527 group exclusions.
+ <MAKGRP> found      0 image group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR 53518099 ATOM PAIRS AND        0 GROUP PAIRS
+ == PRIMARY == SPACE FOR 80277168 ATOM PAIRS AND        0 GROUP PAIRS
+ == PRIMARY == SPACE FOR120415776 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+108446096 ATOM PAIRS WERE FOUND FOR ATOM LIST
+  6393283 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+ SPACE FOR 47906590 ATOM PAIRS AND        0 GROUP PAIRS
+
+ Image nonbond list generation found:
+ 16252716 ATOM PAIRS WERE FOUND FOR ATOM LIST
+        0 ATOM PAIRS WERE FOUND FOR ATOM SELF LIST
+  1330855 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+  
+ CHARMM>     
+  
+ CHARMM>    faster on
+ MISCOM> FAST option: EXPANDED (limited fast routines)
+  
+ CHARMM>     
+  
+ CHARMM>    omm on
+Energy and dynamics calculations will use OpenMM.
+  
+ CHARMM>     
+  
+ CHARMM>    shake fast bonh tol 1.0e-8 para
+ SHKCOM> SHAKE parameters: TOL =   0.1000D-07 MXITer =    500
+
+          178544 constraints will held by SHAKE.
+ FSSHKINI: Fast shake initialized with    7052 bond contraints and    57164 water constraints (3-center).
+ FSSHKINI:     7052 constraints are in groups of:    57164
+ FSSHKINI:   2728 2-body (CH),   1346 3-body(CH2),    544 4-body(CH3),      0 >4-body. 
+ FSSHKINI: Fast shake initialized with    7052 bond contraints and    57164 water constraints (3-center).
+ FSSHKINI:     7052 constraints are in groups of:    57164
+ FSSHKINI:   2728 2-body (CH),   1346 3-body(CH2),    544 4-body(CH3),      0 >4-body. 
+  
+ CHARMM>     
+  
+ CHARMM>    set echeck = echeck -1
+ Parameter: ECHECK <- "ECHECK -1"
+  
+ CHARMM>     
+  
+ CHARMM>    energy omm
+
+ SELECTED IMAGES ATOMS BEING CENTERED ABOUT 66.472675 55.724880 53.818131
+
+ <MKIMAT2>: updating the image atom lists and remapping
+ Transformation   Atoms  Groups  Residues  Min-Distance
+    1  C001 has     117      39      39        1.88
+    2  C002 has    1966     658     658        0.00
+    3  C003 has     188      64      64        0.58
+    4  C004 has    2407     803     803        0.00
+    5  C005 has   24984    8354    8354        0.00
+    6  C006 has    2426     812     812        0.00
+    7  C007 has    1912     638     638        0.00
+    8  C008 has   20105    6725    6725        0.00
+    9  C009 has    1940     650     650        0.00
+   10  C010 has   24008    8038    8038        0.00
+   12  C012 has     150      50      50        2.78
+   13  C013 has    1950     654     654        0.00
+   14  C014 has     102      34      34        1.25
+ Total of    268501 atoms and     89313 groups and     85963 residues were included
+
+ <MAKGRP> found      0 image group exclusions.
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VFSWIt  
+     BYGRoup  NOEXtnd  EWALd   
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 10.000 CTOFNB = 12.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ PME EWALD OPTIONS: KAPPA  =  0.340  QCOR =  0.000  Bspline order = 6
+ FFTX= 144  FFTY= 120  FFTZ= 108
+                Using Pub FFT
+                Real-to-Complex FFT
+ There are108446096 atom  pairs and   250388 atom  exclusions.
+ There are        0 group pairs and    12527 group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR120415776 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+108446096 ATOM PAIRS WERE FOUND FOR ATOM LIST
+  6393283 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+ SPACE FOR 47906590 ATOM PAIRS AND        0 GROUP PAIRS
+
+ Image nonbond list generation found:
+ 16252716 ATOM PAIRS WERE FOUND FOR ATOM LIST
+        0 ATOM PAIRS WERE FOUND FOR ATOM SELF LIST
+  1330855 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+get_PlatformDefaults> Finding default platform values
+get_PlatformDefaults> Default values found: platform=CUDA precision=mixed deviceid=0
+Setup_OpenMM: Initializing OpenMM context
+CHARMM> Using switching functions for vdW interactions and OpenMM PME/RxnFld for electrostatics
+CHARMM> Using OpenMM nb routines.
+CHARMM> configuring OpenMM PME with
+        alpha     0.3400
+        fft  144  120  108
+
+NBFIxes in effect, using CustomNonbondedForce
+CHARMM> OpenMM switching function selection.
+CHARMM> Electrostatic options: switch=F fswitch=F fshift=F PME/Ewald=T RxnFld=F
+CHARMM> van der Waals options: vswitch=F vfswitch=T OpenMM vdW switch=F
+ Available OpenMM platform 0: Reference 
+ Available OpenMM platform 1: CPU       
+ Available OpenMM platform 2: CUDA      
+ Available OpenMM platform 3: OpenCL    
+Init_context: Using OpenMM platform CUDA      
+       CudaDeviceIndex = 0
+       CudaCompiler = /usr/local/cuda/bin/nvcc
+       CudaPrecision = mixed
+ENER ENR:  Eval#     ENERgy      Delta-E         GRMS
+ENER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+ENER CROSS:           CMAPs        PMF1D        PMF2D        PRIMO
+ENER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+ ----------       ---------    ---------    ---------    ---------    ---------
+ENER>        0-615876.59727      0.00000     14.20570
+ENER INTERN>     3793.19849   7507.00850      0.00000   9717.94648    443.32399
+ENER CROSS>      -489.37477      0.00000      0.00000      0.00000
+ENER EXTERN>  -636848.70002      0.00000      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+ CHARMM>     
+  
+ CHARMM>    open read card unit 11 name  2agy-heating-310.res
+ VOPEN> Attempting to open::2agy-heating-310.res::
+ OPNLGU> Unit 11 opened for READONLY access to 2agy-heating-310.res
+  
+ CHARMM>    open unit 12 write file name  2agy-movie-310-nvt.dcd
+ VOPEN> Attempting to open::2agy-movie-310-nvt.dcd::
+ OPNLGU> Unit 12 opened for WRITE access to 2agy-movie-310-nvt.dcd
+  
+ CHARMM>     
+  
+ CHARMM>    dynamics leap restart timestep 0.002 -
+ CHARMM>         nstep 1000 nprint 100 iprfrq 100 iunwri -1 iunread 11 -
+ CHARMM>         iuncrd 12 nsavc 10 -
+ CHARMM>         firstt 310 finalt 310  -
+ CHARMM>         ichecw 0 ihtfrq 0 ieqfrq 0 -
+ CHARMM>         iasors 1 iasvel 1 iscvel 0  -
+ CHARMM>         ilbfrq 0 inbfrq -1 imgfrq -1 @echeck bycb -
+ CHARMM>         ntrfq 100 -
+ CHARMM>         omm langevin gamma 1
+ Parameter: ECHECK -> "ECHECK -1"
+  IUNREA = 11         IUNWRI = -1          IUNOS = -1
+  IUNCRD = 12         IUNVEL = -1          KUNIT = -1
+ TITLE>  * 2AGY INTERMEDIATE OUTPUT.  HEATED TO 285 K
+ TITLE>  *  DATE:    12/ 3/16     13:56:27      CREATED BY USER: ra15808
+ TITLE>  *
+ READYN> dynamics restart file was read. Current step=   65000
+ NSTEP  =  5000  JHSTRT =     0
+
+ SELECTED IMAGES ATOMS BEING CENTERED ABOUT 66.472675 55.724880 53.818131
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VFSWIt  
+     BYCB     NOEXtnd  EWALd   
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 10.000 CTOFNB = 12.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ PME EWALD OPTIONS: KAPPA  =  0.340  QCOR =  0.000  Bspline order = 6
+ FFTX= 144  FFTY= 120  FFTZ= 108
+                Using Pub FFT
+                Real-to-Complex FFT
+ There are108446096 atom  pairs and   250388 atom  exclusions.
+ There are        0 group pairs and    12527 group exclusions.
+Using Image CUBE search
+Using Image CUBE search
+ PRNHBD: CUToff Hydrogen Bond  distance =    0.5000   Angle =   90.0000
+         CuT switching ON HB dist. =     3.5000  OFf HB dist. =    4.0000
+         CuT switching ON Hb Angle =    50.0000  OFf Hb Angle =   70.0000
+         ACCEptor antecedents included
+         All hydrogen bonds for each hydrogen will be found
+         Hydrogen bonds between excluded atoms will be kept
+
+ DCNTRL> Langevin integration requested.
+ DCNTRL>  OpenMM interface requested for energy and dynamics calculations.
+ DCNTRL>  Constant temperature w/ OpenMM using Langevin heatbath requested.
+ DCNTRL>  Reference heatbath temperature is   310.000K
+ DCNTRL>  Using friction coefficient value of     1.000  ps^-1
+   NSTEP =     1000    NSAVC =       10    NSAVV =       10
+  ISCALE =        0   ISCVEL =        0   IASORS =        1
+  IASVEL =        1   ICHECW =        0   NTRFRQ =      100
+  IHTFRQ =        0   IEQFRQ =        0   NPRINT =      100
+  INBFRQ =       -1   IHBFRQ =        0   IPRFRQ =     1000
+  ILBFRQ =        0   IMGFRQ =       -1
+  ISVFRQ =        0   NCYCLE =     1000    NSNOS =       10
+  FIRSTT =   310.000  TEMINC =     5.000  TSTRUC =  -999.000
+  FINALT =   310.000  TWINDH =    10.000  TWINDL =   -10.000
+
+  TIME STEP =  4.09097E-02 AKMA       2.00000E-03 PS
+
+  RANDOM NUM. GEN. SEED(S) = 1523411558 1101458217 1684484555 1609090439
+
+           SHAKE TOLERANCE =     0.10000E-07
+ NUMBER OF DEGREES OF FREEDOM = 380194
+OpenMM integrator options changed
+Destroying OpenMM context
+Setup_OpenMM: Initializing OpenMM context
+CHARMM> Using switching functions for vdW interactions and OpenMM PME/RxnFld for electrostatics
+CHARMM> Using OpenMM nb routines.
+CHARMM> configuring OpenMM PME with
+        alpha     0.3400
+        fft  144  120  108
+
+NBFIxes in effect, using CustomNonbondedForce
+CHARMM> OpenMM switching function selection.
+CHARMM> Electrostatic options: switch=F fswitch=F fshift=F PME/Ewald=T RxnFld=F
+CHARMM> van der Waals options: vswitch=F vfswitch=T OpenMM vdW switch=F
+ Available OpenMM platform 0: Reference 
+ Available OpenMM platform 1: CPU       
+ Available OpenMM platform 2: CUDA      
+ Available OpenMM platform 3: OpenCL    
+Init_context: Using OpenMM platform CUDA      
+       CudaDeviceIndex = 0
+       CudaCompiler = /usr/local/cuda/bin/nvcc
+       CudaPrecision = mixed
+DYNA DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+DYNA PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+DYNA INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+DYNA CROSS:           CMAPs        PMF1D        PMF2D        PRIMO
+DYNA EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+DYNA PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>        0    130.00000-498953.68618 116922.91116-615876.59734    309.51717
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3793.19849   7507.00850      0.00000   9717.94648    443.32399
+DYNA CROSS>      -489.37477      0.00000      0.00000      0.00000
+DYNA EXTERN>  -636848.70003      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1594817.1476
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      100    130.20000-498666.54843 116316.33199-614982.88042    307.91144
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4001.19429   7739.24511      0.00000   9725.54814    556.38779
+DYNA CROSS>      -422.15651      0.00000      0.00000      0.00000
+DYNA EXTERN>  -636583.10034      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1594817.1476
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      200    130.40000-498342.32809 116886.17957-615228.50767    309.41993
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3990.97047   7734.25009      0.00000   9702.70099    555.60984
+DYNA CROSS>      -450.58818      0.00000      0.00000      0.00000
+DYNA EXTERN>  -636761.45178      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1594817.1476
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      300    130.60000-498091.17078 116997.47623-615088.64700    309.71456
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4050.42335   7730.24141      0.00000   9727.83428    520.87057
+DYNA CROSS>      -459.53555      0.00000      0.00000      0.00000
+DYNA EXTERN>  -636658.48185      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1594817.1476
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      400    130.80000-498102.45998 116986.22099-615088.68098    309.68476
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3936.42399   7829.30213      0.00000   9763.79790    528.98151
+DYNA CROSS>      -435.66480      0.00000      0.00000      0.00000
+DYNA EXTERN>  -636711.52255      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1594817.1476
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      500    131.00000-497941.44920 116874.17684-614815.62604    309.38816
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4092.58603   7698.06995      0.00000   9832.16539    519.49350
+DYNA CROSS>      -432.91942      0.00000      0.00000      0.00000
+DYNA EXTERN>  -636525.02277      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1594817.1476
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      600    131.20000-497876.71823 117321.31830-615198.03653    310.57183
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4028.50088   7669.24878      0.00000   9832.07859    553.68709
+DYNA CROSS>      -473.17099      0.00000      0.00000      0.00000
+DYNA EXTERN>  -636808.38201      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1594817.1476
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      700    131.40000-497605.57127 117524.49705-615130.06832    311.10968
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4107.10266   7764.56209      0.00000   9827.23711    512.99298
+DYNA CROSS>      -462.19330      0.00000      0.00000      0.00000
+DYNA EXTERN>  -636879.77079      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1594817.1476
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      800    131.60000-497528.84373 116863.18282-614392.02655    309.35906
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4048.13410   7753.22838      0.00000   9800.35440    571.82122
+DYNA CROSS>      -434.02690      0.00000      0.00000      0.00000
+DYNA EXTERN>  -636131.53894      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1594817.1476
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>      900    131.80000-497469.21158 116690.03672-614159.24830    308.90071
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4053.00255   7703.49458      0.00000   9834.87756    568.95796
+DYNA CROSS>      -441.57453      0.00000      0.00000      0.00000
+DYNA EXTERN>  -635878.00889      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1594817.1476
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>     1000    132.00000-497649.74507 116621.62412-614271.36918    308.71961
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3972.09854   7758.77095      0.00000   9801.11575    553.49105
+DYNA CROSS>      -472.27721      0.00000      0.00000      0.00000
+DYNA EXTERN>  -635884.56932      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 1594817.1476
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+    100   COORDINATE SETS STARTING FROM
+     STEP NO    65010   FOR EVERY    10  STEPS
+     WRITTEN ON UNIT   12
+
+ VCLOSE: Closing unit   12 with status "KEEP"
+ DYNAMC> Averages for the last 1000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER CROSS:           CMAPs        PMF1D        PMF2D        PRIMO
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     1000    132.00000-497983.04340 116836.91091-614819.95430    309.28951
+AVER PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+AVER INTERN>     3999.51814   7699.29595      0.00000   9779.90989    541.95649
+AVER CROSS>      -441.83980      0.00000      0.00000      0.00000
+AVER EXTERN>  -636398.79551      0.00000      0.00000      0.00000      0.00000
+AVER PRESS>          0.0000       0.0000       0.0000       0.0000 1594817.1476
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 1000 steps:
+FLUC>     1000    132.00000    447.90702    354.45539    291.76276      0.93831
+FLUC PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+FLUC INTERN>       52.02304     62.61060      0.00000     49.69946     19.58983
+FLUC CROSS>        19.52570      0.00000      0.00000      0.00000
+FLUC EXTERN>      266.54422      0.00000      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000      0.00000      0.00000      0.00000      0.10597
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+ OpenMM was used to perform energy and force evaluation.
+
+
+     DETAILS ABOUT CENTRE OF MASS
+     POSITION          :    66.464628        55.740185        53.711497    
+     VELOCITY          :  -3.20344476E-06  -6.73482833E-06   1.28671855E-05
+     ANGULAR MOMENTUM  :   -26269.662        21368.551       -19015.895    
+     KINETIC ENERGY    :   1.26566504E-04
+
+     DETAILS ABOUT CENTRE OF MASS
+     POSITION          :    66.464628        55.740185        53.711497    
+     VELOCITY          :  -3.20344476E-06  -6.73482833E-06   1.28671855E-05
+     ANGULAR MOMENTUM  :   -26269.662        21368.551       -19015.895    
+     KINETIC ENERGY    :   1.26566504E-04
+  
+ CHARMM>     
+  
+ CHARMM>    stop
+ VCLOSE: Closing unit   11 with status "KEEP"
+$$$$$$  New timer profile $$$$$
+   Shake Setup                     0.16 Other:            0.00
+   First List                     13.26 Other:            0.00
+   Shake time                      0.01 Other:            0.00
+      dynamc                          3.92 Other:            0.00
+   Dynamics total                  3.92 Other:            0.00
+      xdistm setup                    0.00 Other:            0.00
+      xdistm Build list              12.94 Other:            0.00
+   List time                      56.86 Other:           43.91
+            Recip Ewald time                0.00 Other:            0.00
+         Ewald time                      0.00 Other:            0.00
+      Nonbond force                   0.00 Other:            0.00
+         Bond energy                     0.00 Other:            0.00
+         Angle energy                    0.00 Other:            0.00
+         Dihedral energy                 0.00 Other:            0.00
+         Restraints energy               0.00 Other:            0.00
+      INTRNL energy                   0.00 Other:            0.00
+   Energy time                   145.70 Other:          145.70
+      load plugins                    0.03 Other:            0.00
+      build system                    0.71 Other:            0.00
+      init context                    5.98 Other:            0.00
+   OpenMM overhead                 6.72 Other:            0.00
+ Total time                    329.66 Other:          103.03
+
+                    NORMAL TERMINATION BY NORMAL STOP
+                    MOST SEVERE WARNING WAS AT LEVEL  0
+
+                    $$$$$ JOB ACCOUNTING INFORMATION $$$$$
+                     ELAPSED TIME:     5.49  MINUTES 
+                         CPU TIME:     3.17  MINUTES 
