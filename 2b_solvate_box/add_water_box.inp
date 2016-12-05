@@ -34,16 +34,16 @@ label loop2
      incr ctr by 1
 if @ctr .le. 12 then goto loop2
 
+!!
+!! RENAME WATER SEGMENTS
+!!
+!set ctr 1
+!label loop3
+!  join WAT1 WT@ctr renumber
+!  incr ctr 1
+!if @ctr .le. 12 then goto loop3
 !
-! RENAME WATER SEGMENTS
-!
-set ctr 1
-label loop3
-  join WAT1 WT@ctr renumber
-  incr ctr 1
-if @ctr .le. 12 then goto loop3
-
-rename segid BWAT sele segid WAT1 end
+!rename segid BWAT sele segid WAT1 end
 
 write psf card name 2agy_c36_state0_wb.psf
 * AADH Water box added via VMD, no ions

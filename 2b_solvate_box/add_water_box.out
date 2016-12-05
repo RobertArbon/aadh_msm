@@ -4,8 +4,8 @@
                              Git commit ID 505ecd5                              
        Copyright(c) 1984-2014  President and Fellows of Harvard College
                               All Rights Reserved
-     Current operating system: Darwin-14.5.0(x86_64)@vpn-user-248-152.nomad     
-                 Created on 11/28/16 at 20:51:45 by user: robert_arbon
+     Current operating system: Darwin-14.5.0(x86_64)@vpn-user-248-080.nomad     
+                 Created on 11/29/16 at 16:00:26 by user: robert_arbon
 
             Maximum number of ATOMS:    360720, and RESidues:      120240
  RDTITL> * ADDS WATER FROM VMD
@@ -2624,320 +2624,16 @@
   
  CHARMM>     
   
+ CHARMM>    !!
+ CHARMM>    !! RENAME WATER SEGMENTS
+ CHARMM>    !!
+ CHARMM>    !set ctr 1
+ CHARMM>    !label loop3
+ CHARMM>    !  join WAT1 WT@ctr renumber
+ CHARMM>    !  incr ctr 1
+ CHARMM>    !if @ctr .le. 12 then goto loop3
  CHARMM>    !
- CHARMM>    ! RENAME WATER SEGMENTS
- CHARMM>    !
- CHARMM>    set ctr 1
- Parameter: CTR <- "1"
-  
- CHARMM>    label loop3
-  
- CHARMM>      join WAT1 WT@ctr renumber
- Parameter: CTR -> "1"
- SEGMENTS "WAT1    " AND "WT1     " HAVE BEEN JOINED.
- THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
- PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
- PSFSUM> Summary of the structure file counters :
-         Number of segments      =       17   Number of residues   =    58304
-         Number of atoms         =   186494   Number of groups     =    61654
-         Number of bonds         =   186693   Number of angles     =    83694
-         Number of dihedrals     =    38677   Number of impropers  =     2624
-         Number of cross-terms   =      936
-         Number of HB acceptors  =    58796   Number of HB donors  =   116362
-         Number of NB exclusions =        0   Total charge =  -12.00000
-  
- CHARMM>      incr ctr 1
- Parameter: CTR <- "2"
- **** Warning ****  The following extraneous characters
- were found while command processing in miscom
- 1
-  
- CHARMM>    if @ctr .le. 12 then goto loop3
- Parameter: CTR -> "2"
- Comparing "2" and "12".
- IF test evaluated as true.  Performing command
-  
- CHARMM>      join WAT1 WT@ctr renumber
- Parameter: CTR -> "2"
- SEGMENTS "WAT1    " AND "WT2     " HAVE BEEN JOINED.
- THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
- PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
- PSFSUM> Summary of the structure file counters :
-         Number of segments      =       16   Number of residues   =    58304
-         Number of atoms         =   186494   Number of groups     =    61654
-         Number of bonds         =   186693   Number of angles     =    83694
-         Number of dihedrals     =    38677   Number of impropers  =     2624
-         Number of cross-terms   =      936
-         Number of HB acceptors  =    58796   Number of HB donors  =   116362
-         Number of NB exclusions =        0   Total charge =  -12.00000
-  
- CHARMM>      incr ctr 1
- Parameter: CTR <- "3"
- **** Warning ****  The following extraneous characters
- were found while command processing in miscom
- 1
-  
- CHARMM>    if @ctr .le. 12 then goto loop3
- Parameter: CTR -> "3"
- Comparing "3" and "12".
- IF test evaluated as true.  Performing command
-  
- CHARMM>      join WAT1 WT@ctr renumber
- Parameter: CTR -> "3"
- SEGMENTS "WAT1    " AND "WT3     " HAVE BEEN JOINED.
- THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
- PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
- PSFSUM> Summary of the structure file counters :
-         Number of segments      =       15   Number of residues   =    58304
-         Number of atoms         =   186494   Number of groups     =    61654
-         Number of bonds         =   186693   Number of angles     =    83694
-         Number of dihedrals     =    38677   Number of impropers  =     2624
-         Number of cross-terms   =      936
-         Number of HB acceptors  =    58796   Number of HB donors  =   116362
-         Number of NB exclusions =        0   Total charge =  -12.00000
-  
- CHARMM>      incr ctr 1
- Parameter: CTR <- "4"
- **** Warning ****  The following extraneous characters
- were found while command processing in miscom
- 1
-  
- CHARMM>    if @ctr .le. 12 then goto loop3
- Parameter: CTR -> "4"
- Comparing "4" and "12".
- IF test evaluated as true.  Performing command
-  
- CHARMM>      join WAT1 WT@ctr renumber
- Parameter: CTR -> "4"
- SEGMENTS "WAT1    " AND "WT4     " HAVE BEEN JOINED.
- THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
- PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
- PSFSUM> Summary of the structure file counters :
-         Number of segments      =       14   Number of residues   =    58304
-         Number of atoms         =   186494   Number of groups     =    61654
-         Number of bonds         =   186693   Number of angles     =    83694
-         Number of dihedrals     =    38677   Number of impropers  =     2624
-         Number of cross-terms   =      936
-         Number of HB acceptors  =    58796   Number of HB donors  =   116362
-         Number of NB exclusions =        0   Total charge =  -12.00000
-  
- CHARMM>      incr ctr 1
- Parameter: CTR <- "5"
- **** Warning ****  The following extraneous characters
- were found while command processing in miscom
- 1
-  
- CHARMM>    if @ctr .le. 12 then goto loop3
- Parameter: CTR -> "5"
- Comparing "5" and "12".
- IF test evaluated as true.  Performing command
-  
- CHARMM>      join WAT1 WT@ctr renumber
- Parameter: CTR -> "5"
- SEGMENTS "WAT1    " AND "WT5     " HAVE BEEN JOINED.
- THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
- PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
- PSFSUM> Summary of the structure file counters :
-         Number of segments      =       13   Number of residues   =    58304
-         Number of atoms         =   186494   Number of groups     =    61654
-         Number of bonds         =   186693   Number of angles     =    83694
-         Number of dihedrals     =    38677   Number of impropers  =     2624
-         Number of cross-terms   =      936
-         Number of HB acceptors  =    58796   Number of HB donors  =   116362
-         Number of NB exclusions =        0   Total charge =  -12.00000
-  
- CHARMM>      incr ctr 1
- Parameter: CTR <- "6"
- **** Warning ****  The following extraneous characters
- were found while command processing in miscom
- 1
-  
- CHARMM>    if @ctr .le. 12 then goto loop3
- Parameter: CTR -> "6"
- Comparing "6" and "12".
- IF test evaluated as true.  Performing command
-  
- CHARMM>      join WAT1 WT@ctr renumber
- Parameter: CTR -> "6"
- SEGMENTS "WAT1    " AND "WT6     " HAVE BEEN JOINED.
- THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
- PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
- PSFSUM> Summary of the structure file counters :
-         Number of segments      =       12   Number of residues   =    58304
-         Number of atoms         =   186494   Number of groups     =    61654
-         Number of bonds         =   186693   Number of angles     =    83694
-         Number of dihedrals     =    38677   Number of impropers  =     2624
-         Number of cross-terms   =      936
-         Number of HB acceptors  =    58796   Number of HB donors  =   116362
-         Number of NB exclusions =        0   Total charge =  -12.00000
-  
- CHARMM>      incr ctr 1
- Parameter: CTR <- "7"
- **** Warning ****  The following extraneous characters
- were found while command processing in miscom
- 1
-  
- CHARMM>    if @ctr .le. 12 then goto loop3
- Parameter: CTR -> "7"
- Comparing "7" and "12".
- IF test evaluated as true.  Performing command
-  
- CHARMM>      join WAT1 WT@ctr renumber
- Parameter: CTR -> "7"
- SEGMENTS "WAT1    " AND "WT7     " HAVE BEEN JOINED.
- THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
- PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
- PSFSUM> Summary of the structure file counters :
-         Number of segments      =       11   Number of residues   =    58304
-         Number of atoms         =   186494   Number of groups     =    61654
-         Number of bonds         =   186693   Number of angles     =    83694
-         Number of dihedrals     =    38677   Number of impropers  =     2624
-         Number of cross-terms   =      936
-         Number of HB acceptors  =    58796   Number of HB donors  =   116362
-         Number of NB exclusions =        0   Total charge =  -12.00000
-  
- CHARMM>      incr ctr 1
- Parameter: CTR <- "8"
- **** Warning ****  The following extraneous characters
- were found while command processing in miscom
- 1
-  
- CHARMM>    if @ctr .le. 12 then goto loop3
- Parameter: CTR -> "8"
- Comparing "8" and "12".
- IF test evaluated as true.  Performing command
-  
- CHARMM>      join WAT1 WT@ctr renumber
- Parameter: CTR -> "8"
- SEGMENTS "WAT1    " AND "WT8     " HAVE BEEN JOINED.
- THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
- PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
- PSFSUM> Summary of the structure file counters :
-         Number of segments      =       10   Number of residues   =    58304
-         Number of atoms         =   186494   Number of groups     =    61654
-         Number of bonds         =   186693   Number of angles     =    83694
-         Number of dihedrals     =    38677   Number of impropers  =     2624
-         Number of cross-terms   =      936
-         Number of HB acceptors  =    58796   Number of HB donors  =   116362
-         Number of NB exclusions =        0   Total charge =  -12.00000
-  
- CHARMM>      incr ctr 1
- Parameter: CTR <- "9"
- **** Warning ****  The following extraneous characters
- were found while command processing in miscom
- 1
-  
- CHARMM>    if @ctr .le. 12 then goto loop3
- Parameter: CTR -> "9"
- Comparing "9" and "12".
- IF test evaluated as true.  Performing command
-  
- CHARMM>      join WAT1 WT@ctr renumber
- Parameter: CTR -> "9"
- SEGMENTS "WAT1    " AND "WT9     " HAVE BEEN JOINED.
- THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
- PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
- PSFSUM> Summary of the structure file counters :
-         Number of segments      =        9   Number of residues   =    58304
-         Number of atoms         =   186494   Number of groups     =    61654
-         Number of bonds         =   186693   Number of angles     =    83694
-         Number of dihedrals     =    38677   Number of impropers  =     2624
-         Number of cross-terms   =      936
-         Number of HB acceptors  =    58796   Number of HB donors  =   116362
-         Number of NB exclusions =        0   Total charge =  -12.00000
-  
- CHARMM>      incr ctr 1
- Parameter: CTR <- "10"
- **** Warning ****  The following extraneous characters
- were found while command processing in miscom
- 1
-  
- CHARMM>    if @ctr .le. 12 then goto loop3
- Parameter: CTR -> "10"
- Comparing "10" and "12".
- IF test evaluated as true.  Performing command
-  
- CHARMM>      join WAT1 WT@ctr renumber
- Parameter: CTR -> "10"
- SEGMENTS "WAT1    " AND "WT10    " HAVE BEEN JOINED.
- THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
- PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
- PSFSUM> Summary of the structure file counters :
-         Number of segments      =        8   Number of residues   =    58304
-         Number of atoms         =   186494   Number of groups     =    61654
-         Number of bonds         =   186693   Number of angles     =    83694
-         Number of dihedrals     =    38677   Number of impropers  =     2624
-         Number of cross-terms   =      936
-         Number of HB acceptors  =    58796   Number of HB donors  =   116362
-         Number of NB exclusions =        0   Total charge =  -12.00000
-  
- CHARMM>      incr ctr 1
- Parameter: CTR <- "11"
- **** Warning ****  The following extraneous characters
- were found while command processing in miscom
- 1
-  
- CHARMM>    if @ctr .le. 12 then goto loop3
- Parameter: CTR -> "11"
- Comparing "11" and "12".
- IF test evaluated as true.  Performing command
-  
- CHARMM>      join WAT1 WT@ctr renumber
- Parameter: CTR -> "11"
- SEGMENTS "WAT1    " AND "WT11    " HAVE BEEN JOINED.
- THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
- PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
- PSFSUM> Summary of the structure file counters :
-         Number of segments      =        7   Number of residues   =    58304
-         Number of atoms         =   186494   Number of groups     =    61654
-         Number of bonds         =   186693   Number of angles     =    83694
-         Number of dihedrals     =    38677   Number of impropers  =     2624
-         Number of cross-terms   =      936
-         Number of HB acceptors  =    58796   Number of HB donors  =   116362
-         Number of NB exclusions =        0   Total charge =  -12.00000
-  
- CHARMM>      incr ctr 1
- Parameter: CTR <- "12"
- **** Warning ****  The following extraneous characters
- were found while command processing in miscom
- 1
-  
- CHARMM>    if @ctr .le. 12 then goto loop3
- Parameter: CTR -> "12"
- Comparing "12" and "12".
- IF test evaluated as true.  Performing command
-  
- CHARMM>      join WAT1 WT@ctr renumber
- Parameter: CTR -> "12"
- SEGMENTS "WAT1    " AND "WT12    " HAVE BEEN JOINED.
- THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
- PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
- PSFSUM> Summary of the structure file counters :
-         Number of segments      =        6   Number of residues   =    58304
-         Number of atoms         =   186494   Number of groups     =    61654
-         Number of bonds         =   186693   Number of angles     =    83694
-         Number of dihedrals     =    38677   Number of impropers  =     2624
-         Number of cross-terms   =      936
-         Number of HB acceptors  =    58796   Number of HB donors  =   116362
-         Number of NB exclusions =        0   Total charge =  -12.00000
-  
- CHARMM>      incr ctr 1
- Parameter: CTR <- "13"
- **** Warning ****  The following extraneous characters
- were found while command processing in miscom
- 1
-  
- CHARMM>    if @ctr .le. 12 then goto loop3
- Parameter: CTR -> "13"
- Comparing "13" and "12".
- IF test evaluated as false.  Skipping command
-  
- CHARMM>     
-  
- CHARMM>    rename segid BWAT sele segid WAT1 end
- SELRPN> 167538 atoms have been selected out of 186494
- SEGMENT 'WAT1    ' IS RENAMED TO 'BWAT    '
-  
+ CHARMM>    !rename segid BWAT sele segid WAT1 end
  CHARMM>     
   
  CHARMM>    write psf card name 2agy_c36_state0_wb.psf
@@ -2963,11 +2659,11 @@
  VCLOSE: Closing unit   90 with status "KEEP"
   
 $$$$$$  New timer profile $$$$$
- Total time                     23.77 Other:            0.00
+ Total time                     18.95 Other:            0.00
 
                     NORMAL TERMINATION BY END OF FILE
                     MOST SEVERE WARNING WAS AT LEVEL  0
 
                     $$$$$ JOB ACCOUNTING INFORMATION $$$$$
-                     ELAPSED TIME:    23.77  SECONDS 
-                         CPU TIME:    22.21  SECONDS 
+                     ELAPSED TIME:    18.96  SECONDS 
+                         CPU TIME:    18.72  SECONDS 

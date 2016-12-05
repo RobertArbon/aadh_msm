@@ -1,18 +1,18 @@
 1
                  Chemistry at HARvard Macromolecular Mechanics
            (CHARMM) - Developmental Version 41a2   February 15, 2016            
-                             Git commit ID f89d5df                              
+                             Git commit ID 505ecd5                              
        Copyright(c) 1984-2014  President and Fellows of Harvard College
                               All Rights Reserved
-     Current operating system: Linux-2.6.32-220.23.1.el6.x86_64(x86_64)@new     
-                 Created on 11/28/16 at 12:01:30 by user: ra15808     
+     Current operating system: Darwin-14.5.0(x86_64)@eduroam-66-217.nomadic     
+                 Created on 11/28/16 at 16:35:53 by user: robert_arbon
 
             Maximum number of ATOMS:    360720, and RESidues:      120240
  RDTITL> * BASED ON 2AGY_SOL_ION.PDB CREATED BY KR, FOUND IN CURIE/KR8728/AADH/NEW_MD
  RDTITL> * VMD REMOVED THE SOLVATED IONS AND WATER BUT KEPT THE CRYSTAL WATER AND PROTEIN
  RDTITL> * NEW PSF AND PDB CREATED USING THE CHARMM 36 FORCEFIELD
  RDTITL> * ADDS THE WATER SHELL FROM GRUBMULLER'S SOLVATE PROGRAM
- RDTITL>  
+ RDTITL> *
   
  CHARMM>     
   
@@ -23,8 +23,8 @@
   
  CHARMM>    stream @datadir/toppar_water_ions_fixed.str
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/toppar_water_ions_fixed.str::
- OPNLGU> Unit 99 opened for READONLY access to ../common/toppar_water_ions_fixed.str
+ VOPEN> Attempting to open::../COMMON/TOPPAR_WATER_IONS_FIXED.STR::
+ OPNLGU> Unit 99 opened for READONLY access to ../COMMON/TOPPAR_WATER_IONS_FIXED.STR
 
                     INPUT STREAM SWITCHING TO UNIT    99
  RDTITL> * TOPLOGY AND PARAMETER INFORMATION FOR WATER AND IONS.
@@ -170,7 +170,7 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>    read rtf card name @datadir/top_all36_prot.rtf append flex
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/top_all36_prot.rtf::
+ VOPEN> Attempting to open::../COMMON/TOP_ALL36_PROT.RTF::
  MAINIO> Residue topology file being read from unit  90.
  TITLE> *>>>>>>>>CHARMM36 ALL-HYDROGEN TOPOLOGY FILE FOR PROTEINS <<<<<<
  TITLE> *>>>>> INCLUDES PHI, PSI CROSS TERM MAP (CMAP) CORRECTION <<<<<<<
@@ -182,7 +182,7 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>    read rtf card name @datadir/aadh_topologies.rtf append flex
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/aadh_topologies.rtf::
+ VOPEN> Attempting to open::../COMMON/AADH_TOPOLOGIES.RTF::
  MAINIO> Residue topology file being read from unit  90.
  TITLE> * RESIDUES AND PATCHES FOR CREATING AADH REACTANT AND PRODUCTS
  TITLE> * ATOM DEFINITIONS IS TAKEN FROM TOP_ALL36_PROT.RTF
@@ -204,7 +204,7 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>    read para card name @datadir/par_all36_prot_mod.prm append flex
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/par_all36_prot_mod.prm::
+ VOPEN> Attempting to open::../COMMON/PAR_ALL36_PROT_MOD.PRM::
 
           PARAMETER FILE BEING READ FROM UNIT 90
  TITLE> *>>>> CHARMM36 ALL-HYDROGEN PARAMETER FILE FOR PROTEINS <<<<<<<<<<
@@ -219,7 +219,7 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>    read para card name @datadir/aadh_parameters.prm append flex
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/aadh_parameters.prm::
+ VOPEN> Attempting to open::../COMMON/AADH_PARAMETERS.PRM::
 
           PARAMETER FILE BEING READ FROM UNIT 90
  TITLE> * PARAMETERS SPECIFIC TO AADH.  TO BE USED IN CONJUNCTION WITH AADH_TOPOLOGIES.RTF
@@ -236,7 +236,7 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>    read sequ pdb firstresid 73 name @datadir/B.pdb
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/b.pdb::
+ VOPEN> Attempting to open::../COMMON/B.PDB::
  MAINIO> Sequence information being read from unit  90.
  TITLE>  *
 
@@ -283,7 +283,7 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>    read sequ pdb firstresid 71 name @datadir/D.pdb
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/d.pdb::
+ VOPEN> Attempting to open::../COMMON/D.PDB::
  MAINIO> Sequence information being read from unit  90.
  TITLE>  *
 
@@ -317,7 +317,7 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>    read sequ pdb firstresid 73 name @datadir/A.pdb
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/a.pdb::
+ VOPEN> Attempting to open::../COMMON/A.PDB::
  MAINIO> Sequence information being read from unit  90.
  TITLE>  *
 
@@ -364,7 +364,7 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>    read sequ pdb firstresid 71 name @datadir/H.pdb
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/h.pdb::
+ VOPEN> Attempting to open::../COMMON/H.PDB::
  MAINIO> Sequence information being read from unit  90.
  TITLE>  *
 
@@ -845,7 +845,7 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
  CHARMM>    !
  CHARMM>    read sequ pdb name @datadir/XW1.pdb
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/xw1.pdb::
+ VOPEN> Attempting to open::../COMMON/XW1.PDB::
  MAINIO> Sequence information being read from unit  90.
  TITLE>  *
 
@@ -877,7 +877,7 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>    read sequ pdb name @datadir/XW2.pdb
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/xw2.pdb::
+ VOPEN> Attempting to open::../COMMON/XW2.PDB::
  MAINIO> Sequence information being read from unit  90.
  TITLE>  *
 
@@ -908,7 +908,7 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>    read sequ pdb name @datadir/XW3.pdb
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/xw3.pdb::
+ VOPEN> Attempting to open::../COMMON/XW3.PDB::
  MAINIO> Sequence information being read from unit  90.
  TITLE>  *
 
@@ -963,7 +963,7 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>    read sequ pdb name @datadir/XW4.pdb
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/xw4.pdb::
+ VOPEN> Attempting to open::../COMMON/XW4.PDB::
  MAINIO> Sequence information being read from unit  90.
  TITLE>  *
 
@@ -2062,7 +2062,7 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
  MAINIO> Sequence information being read from unit  90.
  TITLE>  *
 
-          RESIDUE SEQUENCE --   584 RESIDUES
+          RESIDUE SEQUENCE --  1623 RESIDUES
           TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
           TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
           TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
@@ -2092,7 +2092,59 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
           TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
           TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
           TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
-          TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3TIP3
+          TIP3TIP3TIP3
  VCLOSE: Closing unit   90 with status "KEEP"
   
  CHARMM>    gene WAT3 setup first none last none nodihe noangl
@@ -2101,12 +2153,12 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
  GENPSF> Segment  11 has been generated. Its identifier is WAT3.
  PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
  PSFSUM> Summary of the structure file counters :
-         Number of segments      =       11   Number of residues   =    23040
-         Number of atoms         =    80702   Number of groups     =    26390
-         Number of bonds         =    80901   Number of angles     =    48430
+         Number of segments      =       11   Number of residues   =    24079
+         Number of atoms         =    83819   Number of groups     =    27429
+         Number of bonds         =    84018   Number of angles     =    49469
          Number of dihedrals     =    38677   Number of impropers  =     2624
          Number of cross-terms   =      936
-         Number of HB acceptors  =    23532   Number of HB donors  =    45834
+         Number of HB acceptors  =    24571   Number of HB donors  =    47912
          Number of NB exclusions =        0   Total charge =  -12.00000
   
  CHARMM>     
@@ -2116,9 +2168,9 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
  CHARMM>    !
  CHARMM>    read coor pdb resid name @datadir/A.pdb sele segid A end
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/a.pdb::
+ VOPEN> Attempting to open::../COMMON/A.PDB::
   read CHARMM-pdb format
- SELRPN>   5570 atoms have been selected out of  80702
+ SELRPN>   5570 atoms have been selected out of  83819
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2127,9 +2179,9 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>    read coor pdb resid name @datadir/D.pdb sele segid D end
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/d.pdb::
+ VOPEN> Attempting to open::../COMMON/D.PDB::
   read CHARMM-pdb format
- SELRPN>   1639 atoms have been selected out of  80702
+ SELRPN>   1639 atoms have been selected out of  83819
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2138,9 +2190,9 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>    read coor pdb resid name @datadir/B.pdb sele segid B end
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/b.pdb::
+ VOPEN> Attempting to open::../COMMON/B.PDB::
   read CHARMM-pdb format
- SELRPN>   5570 atoms have been selected out of  80702
+ SELRPN>   5570 atoms have been selected out of  83819
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2149,9 +2201,9 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>    read coor pdb resid name @datadir/H.pdb sele segid H end
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/h.pdb::
+ VOPEN> Attempting to open::../COMMON/H.PDB::
   read CHARMM-pdb format
- SELRPN>   1641 atoms have been selected out of  80702
+ SELRPN>   1641 atoms have been selected out of  83819
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2160,9 +2212,9 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>    read coor pdb resid name @datadir/XW1.pdb sele segid XW1 end
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/xw1.pdb::
+ VOPEN> Attempting to open::../COMMON/XW1.PDB::
   read CHARMM-pdb format
- SELRPN>    534 atoms have been selected out of  80702
+ SELRPN>    534 atoms have been selected out of  83819
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2171,9 +2223,9 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>    read coor pdb resid name @datadir/XW2.pdb sele segid XW2 end
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/xw2.pdb::
+ VOPEN> Attempting to open::../COMMON/XW2.PDB::
   read CHARMM-pdb format
- SELRPN>    435 atoms have been selected out of  80702
+ SELRPN>    435 atoms have been selected out of  83819
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2182,9 +2234,9 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>    read coor pdb resid name @datadir/XW3.pdb sele segid XW3 end
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/xw3.pdb::
+ VOPEN> Attempting to open::../COMMON/XW3.PDB::
   read CHARMM-pdb format
- SELRPN>   1863 atoms have been selected out of  80702
+ SELRPN>   1863 atoms have been selected out of  83819
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2193,9 +2245,9 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>    read coor pdb resid name @datadir/XW4.pdb sele segid XW4 end
  Parameter: DATADIR -> "../COMMON"
- VOPEN> Attempting to open::../common/xw4.pdb::
+ VOPEN> Attempting to open::../COMMON/XW4.PDB::
   read CHARMM-pdb format
- SELRPN>   1704 atoms have been selected out of  80702
+ SELRPN>   1704 atoms have been selected out of  83819
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2205,7 +2257,7 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
  CHARMM>    read coor pdb resid name "WAT1.pdb" sele segid WAT1 end
  VOPEN> Attempting to open::WAT1.pdb::
   read CHARMM-pdb format
- SELRPN>  29997 atoms have been selected out of  80702
+ SELRPN>  29997 atoms have been selected out of  83819
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2215,7 +2267,7 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
  CHARMM>    read coor pdb resid name "WAT2.pdb" sele segid WAT2 end
  VOPEN> Attempting to open::WAT2.pdb::
   read CHARMM-pdb format
- SELRPN>  29997 atoms have been selected out of  80702
+ SELRPN>  29997 atoms have been selected out of  83819
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2225,7 +2277,7 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
  CHARMM>    read coor pdb resid name "WAT3.pdb" sele segid WAT3 end
  VOPEN> Attempting to open::WAT3.pdb::
   read CHARMM-pdb format
- SELRPN>   1752 atoms have been selected out of  80702
+ SELRPN>   4869 atoms have been selected out of  83819
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2264,11 +2316,11 @@ PARRDR> ALL ANGLES HAVE POSITIVE MINIMA
   
  CHARMM>    stop
 $$$$$$  New timer profile $$$$$
- Total time                     20.19 Other:            0.00
+ Total time                     15.77 Other:            0.00
 
                     NORMAL TERMINATION BY NORMAL STOP
                     MOST SEVERE WARNING WAS AT LEVEL  0
 
                     $$$$$ JOB ACCOUNTING INFORMATION $$$$$
-                     ELAPSED TIME:    20.19  SECONDS 
-                         CPU TIME:    19.62  SECONDS 
+                     ELAPSED TIME:    15.77  SECONDS 
+                         CPU TIME:    14.64  SECONDS 
