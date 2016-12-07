@@ -1,4 +1,4 @@
-* Adds water from VMD  
+* Adds water and ions from VMD  
 *
 
 prnlev 5
@@ -25,6 +25,9 @@ label loop
     incr ctr by 1
 if @ctr .le. 12 then goto loop
 
+read sequ pdb name ion.pdb
+gene ion setup first none last none nodihe noangl
+
 !
 ! READ IN COORDINATES
 !
@@ -34,24 +37,26 @@ label loop2
      incr ctr by 1
 if @ctr .le. 12 then goto loop2
 
-!!
-!! RENAME WATER SEGMENTS
-!!
-!set ctr 1
-!label loop3
-!  join WAT1 WT@ctr renumber
-!  incr ctr 1
-!if @ctr .le. 12 then goto loop3
+read coor pdb resid name ion.pdb sele segid ion end
+
 !
-!rename segid BWAT sele segid WAT1 end
+! RENAME WATER SEGMENTS
+!
+set ctr 1
+label loop3
+  join WAT1 WT@ctr renumber
+  incr ctr 1
+if @ctr .le. 12 then goto loop3
 
-write psf card name 2agy_c36_state0_wb.psf
-* AADH Water box added via VMD, no ions
+rename segid BWAT sele segid WAT1 end
+
+write psf card name 2agy_solv_ion.psf
+* AADH Water box added via VMD with ions
 *
-write coor card name 2agy_c36_state0_wb.cor
-* AADH Water box added via VMD, no ions
+write coor card name 2agy_solv_ion.cor
+* AADH Water box added via VMD with ions
 *
 
-write coor pdb name 2agy_c36_state0_wb.pdb
-* AADH Water box added via VMD, no ions
+write coor pdb name 2agy_solv_ion.pdb
+* AADH Water box added via VMD with ions
 *

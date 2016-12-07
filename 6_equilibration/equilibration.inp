@@ -13,19 +13,21 @@ read para card name @datadir/par_all36_prot_mod.prm append flex
 read para card name @datadir/aadh_parameters.prm append flex
 
 read psf card name ../common/2agy_c36_state0_neut.psf
-read coord card name ../common/2agy_solv_min.cor
+read coord card name ../common/2agy-heating-310.cor
 
 define backbone_prot sele type n .or. type ca .or. type c .or. type o end
 
+!
+! SETUP CRYSTAL
+!
 stream crystal_params.str
-
-CRYSTAL DEFI ORTHS @xdim @ydim @zdim 90.0 90.0 90.0
-CRYSTAL BUILD CUTOFF @cutim NOPER 0
+crystal defi orths @xdim @ydim @zdim 90.0 90.0 90.0
+crystal build cutoff @cutim noper 0
 image byseg xcen @xcen ycen @ycen zcen @zcen  sele segid AL* .or. segid BT* end ! protein
 image byres xcen @xcen ycen @ycen zcen @zcen sele .not. (segid AL* .or. segid BT*) end ! water ions
 
 !
-! Setup non-bonded forces
+! NON-BONDED FORCES 
 !
 set ftx 144 
 set fty 120
@@ -38,76 +40,77 @@ NBONDED inbfrq -1 imgfrq -1 nbxmod 5 -                                          
         cutim @cutim -                                                                ! must be same as cutnb
         eps 1.0 e14fac 1.0 wmin 1.5                                                 ! C36 DEFAULTS
 
+
 faster on
 omm on
-
 shake fast bonh tol 1.0e-8 para
-
 set echeck = echeck -1
-
-set nsteps 5000
-set nwrite 100
-set gamma 1
-
 coor copy comp 
 !
-! Heating loop
+! DYNAMICS PARAMETERS
+!
+set nsteps 1000  !000 ! 20ps of equilibration
+set nwrite 100   ! Write out ever 0.2ps
+
+!
+! EQUILIBRATION 
 !
 energy omm 
 
-set tstart 10
-set tend 310
-set tinc 25
-
-set tcurr @tstart
-
-cons harm absolute expo 2 force 10 sele backbone_prot end mass comp 
+set startres 10
+set endres 0
+set incres 1
+set curres @startres
 
 label loop
-
-    if @tcurr .eq. @tstart then
-         set startcon start
-         set readunit -1
+    
+    if @curres .eq. @startres then
+        open read card unit 10 name  ../common/2agy-heating-310.res
     endif
-    if @tcurr .gt. @tstart then 
-        set startcon restart
-        set readunit 10
-        open read card unit 10 name 2agy-heating-@told.res
+        
+    if @curres .lt. @startres then
+        open read card unit 10 name  2agy-equil-310-1-res-@oldres.res
     endif
+ 
+    open write card unit 11 name 2agy-equil-310-1-res-@curres.res
+    open write file unit 12 name 2agy-equil-310-1-res-@curres.dcd
 
-    open write card unit 11 name  2agy-heating-@tcurr.res
-     
-    dynamics leap @startcon timestep 0.002 -
-         nstep @nsteps nprint @nwrite iprfrq @nwrite isvfrq @nsteps iunwri 11 iunread @readunit -
-         firstt @tcurr finalt @tcurr  -
+	cons harm absolute expo 2 force @curres sele backbone_prot end mass comp 
+
+    dynamics leap restart timestep 0.002 -
+         nstep @nsteps nprint @nwrite iprfrq @nwrite iunwri 11 iunread 10 -
+         firstt 310 finalt 310  -
+         iuncrd 12 nsavc @nwrite - 
          ichecw 0 ihtfrq 0 ieqfrq 0 -
          iasors 1 iasvel 1 iscvel 0  -
          ilbfrq 0 inbfrq -1 imgfrq -1 @echeck bycb -
          ntrfq 100 -
-         omm langevin gamma @gamma 
+         omm langevin gamma 1 prmc pref 1.0 iprsfrq 25
+   
+    coor rms comp sele backbone_prot end
+    coor rms comp sele segid BT* .or. segid AL* end    
     
-    coor rms copy sele backbone_prot end
-    coor rms copy sele segid BT* .or. segid AL* end    
+    cons harm clear 
 
-    write coor card name 2agy-heating-@tcurr.cor
-    * 2agy intermediate output.  Heated to @tcurr K
+    write coor card name 2agy-equil-310-1-res-@curres.cor 
+    * 2agy equilibration intermediate output.  
     *
     
  
-    set told @tcurr 
-    calc tcurr = @tcurr + @tinc
-    if @tcurr .le. @tend goto loop
+    set oldres @curres 
+    calc curres = @curres - @incres
+    if @curres .ge. @endres goto loop
   
 
 !
 ! Write out coordinates
 !
-write coor card name 2agy_heated.cor
-* 2agy, minimized, neutralized, heated to 310K
+write coor card name 2agy_equilibrated.cor
+* 2agy, minimized, neutralized, equilibrated to NPT 1atm, 310K
 *
 
-write coor pdb name 2agy_heated.cor
-* 2agy, minimized, neutralized, heated to 310K
+write coor pdb name 2agy_equilibrated.pdb
+* 2agy, minimized, neutralized, equilibrated to NPT 1atm, 310K
 *
 
 stop

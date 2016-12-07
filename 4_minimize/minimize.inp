@@ -75,7 +75,6 @@ write coord card name @molname-shifted.cor
 * Realigned the Crystal structure to be compatible with OpenMM
 *
 
-stop
 !
 ! Setup non-bonded forces
 !

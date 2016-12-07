@@ -4,11 +4,11 @@
                              Git commit ID 505ecd5                              
        Copyright(c) 1984-2014  President and Fellows of Harvard College
                               All Rights Reserved
-     Current operating system: Darwin-14.5.0(x86_64)@vpn-user-248-080.nomad     
-                 Created on 11/29/16 at 16:00:26 by user: robert_arbon
+     Current operating system: Darwin-14.5.0(x86_64)@eduroam-29-220.nomadic     
+                 Created on 12/7/16 at 13:26:45 by user: robert_arbon
 
             Maximum number of ATOMS:    360720, and RESidues:      120240
- RDTITL> * ADDS WATER FROM VMD
+ RDTITL> * ADDS WATER AND IONS FROM VMD
  RDTITL> *
   
  CHARMM>     
@@ -279,7 +279,7 @@
  MAINIO> Sequence information being read from unit  90.
  TITLE>  *
 
-          RESIDUE SEQUENCE --  5541 RESIDUES
+          RESIDUE SEQUENCE --  4470 RESIDUES
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
@@ -503,61 +503,7 @@
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
  VCLOSE: Closing unit   90 with status "KEEP"
   
  CHARMM>        gene wt@ctr setup first none last none nodihe noangl
@@ -567,12 +513,12 @@
  GENPSF> Segment   7 has been generated. Its identifier is WT1.
  PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
  PSFSUM> Summary of the structure file counters :
-         Number of segments      =        7   Number of residues   =    29620
-         Number of atoms         =   100442   Number of groups     =    32970
-         Number of bonds         =   100641   Number of angles     =    55010
+         Number of segments      =        7   Number of residues   =    28549
+         Number of atoms         =    97229   Number of groups     =    31899
+         Number of bonds         =    97428   Number of angles     =    53939
          Number of dihedrals     =    38677   Number of impropers  =     2624
          Number of cross-terms   =      936
-         Number of HB acceptors  =    30112   Number of HB donors  =    58994
+         Number of HB acceptors  =    29041   Number of HB donors  =    56852
          Number of NB exclusions =        0   Total charge =  -12.00000
   
  CHARMM>        incr ctr by 1
@@ -589,7 +535,7 @@
  MAINIO> Sequence information being read from unit  90.
  TITLE>  *
 
-          RESIDUE SEQUENCE --  3937 RESIDUES
+          RESIDUE SEQUENCE --  3302 RESIDUES
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
@@ -755,38 +701,7 @@
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    
  VCLOSE: Closing unit   90 with status "KEEP"
   
  CHARMM>        gene wt@ctr setup first none last none nodihe noangl
@@ -796,12 +711,12 @@
  GENPSF> Segment   8 has been generated. Its identifier is WT2.
  PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
  PSFSUM> Summary of the structure file counters :
-         Number of segments      =        8   Number of residues   =    33557
-         Number of atoms         =   112253   Number of groups     =    36907
-         Number of bonds         =   112452   Number of angles     =    58947
+         Number of segments      =        8   Number of residues   =    31851
+         Number of atoms         =   107135   Number of groups     =    35201
+         Number of bonds         =   107334   Number of angles     =    57241
          Number of dihedrals     =    38677   Number of impropers  =     2624
          Number of cross-terms   =      936
-         Number of HB acceptors  =    34049   Number of HB donors  =    66868
+         Number of HB acceptors  =    32343   Number of HB donors  =    63456
          Number of NB exclusions =        0   Total charge =  -12.00000
   
  CHARMM>        incr ctr by 1
@@ -818,7 +733,7 @@
  MAINIO> Sequence information being read from unit  90.
  TITLE>  *
 
-          RESIDUE SEQUENCE --  4413 RESIDUES
+          RESIDUE SEQUENCE --  3840 RESIDUES
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
@@ -1011,35 +926,6 @@
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
  VCLOSE: Closing unit   90 with status "KEEP"
   
  CHARMM>        gene wt@ctr setup first none last none nodihe noangl
@@ -1049,12 +935,12 @@
  GENPSF> Segment   9 has been generated. Its identifier is WT3.
  PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
  PSFSUM> Summary of the structure file counters :
-         Number of segments      =        9   Number of residues   =    37970
-         Number of atoms         =   125492   Number of groups     =    41320
-         Number of bonds         =   125691   Number of angles     =    63360
+         Number of segments      =        9   Number of residues   =    35691
+         Number of atoms         =   118655   Number of groups     =    39041
+         Number of bonds         =   118854   Number of angles     =    61081
          Number of dihedrals     =    38677   Number of impropers  =     2624
          Number of cross-terms   =      936
-         Number of HB acceptors  =    38462   Number of HB donors  =    75694
+         Number of HB acceptors  =    36183   Number of HB donors  =    71136
          Number of NB exclusions =        0   Total charge =  -12.00000
   
  CHARMM>        incr ctr by 1
@@ -1071,26 +957,7 @@
  MAINIO> Sequence information being read from unit  90.
  TITLE>  *
 
-          RESIDUE SEQUENCE --  3000 RESIDUES
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          RESIDUE SEQUENCE --  2620 RESIDUES
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
@@ -1231,12 +1098,12 @@
  GENPSF> Segment  10 has been generated. Its identifier is WT4.
  PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
  PSFSUM> Summary of the structure file counters :
-         Number of segments      =       10   Number of residues   =    40970
-         Number of atoms         =   134492   Number of groups     =    44320
-         Number of bonds         =   134691   Number of angles     =    66360
+         Number of segments      =       10   Number of residues   =    38311
+         Number of atoms         =   126515   Number of groups     =    41661
+         Number of bonds         =   126714   Number of angles     =    63701
          Number of dihedrals     =    38677   Number of impropers  =     2624
          Number of cross-terms   =      936
-         Number of HB acceptors  =    41462   Number of HB donors  =    81694
+         Number of HB acceptors  =    38803   Number of HB donors  =    76376
          Number of NB exclusions =        0   Total charge =  -12.00000
   
  CHARMM>        incr ctr by 1
@@ -1253,7 +1120,7 @@
  MAINIO> Sequence information being read from unit  90.
  TITLE>  *
 
-          RESIDUE SEQUENCE --  5612 RESIDUES
+          RESIDUE SEQUENCE --  4584 RESIDUES
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
@@ -1295,278 +1162,6 @@
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
- VCLOSE: Closing unit   90 with status "KEEP"
-  
- CHARMM>        gene wt@ctr setup first none last none nodihe noangl
- Parameter: CTR -> "5"
- NO PATCHING WILL BE DONE ON THE FIRST RESIDUE
- NO PATCHING WILL BE DONE ON THE LAST  RESIDUE
- GENPSF> Segment  11 has been generated. Its identifier is WT5.
- PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
- PSFSUM> Summary of the structure file counters :
-         Number of segments      =       11   Number of residues   =    46582
-         Number of atoms         =   151328   Number of groups     =    49932
-         Number of bonds         =   151527   Number of angles     =    71972
-         Number of dihedrals     =    38677   Number of impropers  =     2624
-         Number of cross-terms   =      936
-         Number of HB acceptors  =    47074   Number of HB donors  =    92918
-         Number of NB exclusions =        0   Total charge =  -12.00000
-  
- CHARMM>        incr ctr by 1
- Parameter: CTR <- "6"
-  
- CHARMM>    if @ctr .le. 12 then goto loop
- Parameter: CTR -> "6"
- Comparing "6" and "12".
- IF test evaluated as true.  Performing command
-  
- CHARMM>        read sequ pdb  name wt@ctr.pdb
- Parameter: CTR -> "6"
- VOPEN> Attempting to open::WT6.PDB::
- MAINIO> Sequence information being read from unit  90.
- TITLE>  *
-
-          RESIDUE SEQUENCE --  3764 RESIDUES
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
@@ -1759,18 +1354,209 @@
  VCLOSE: Closing unit   90 with status "KEEP"
   
  CHARMM>        gene wt@ctr setup first none last none nodihe noangl
+ Parameter: CTR -> "5"
+ NO PATCHING WILL BE DONE ON THE FIRST RESIDUE
+ NO PATCHING WILL BE DONE ON THE LAST  RESIDUE
+ GENPSF> Segment  11 has been generated. Its identifier is WT5.
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =       11   Number of residues   =    42895
+         Number of atoms         =   140267   Number of groups     =    46245
+         Number of bonds         =   140466   Number of angles     =    68285
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    43387   Number of HB donors  =    85544
+         Number of NB exclusions =        0   Total charge =  -12.00000
+  
+ CHARMM>        incr ctr by 1
+ Parameter: CTR <- "6"
+  
+ CHARMM>    if @ctr .le. 12 then goto loop
+ Parameter: CTR -> "6"
+ Comparing "6" and "12".
+ IF test evaluated as true.  Performing command
+  
+ CHARMM>        read sequ pdb  name wt@ctr.pdb
+ Parameter: CTR -> "6"
+ VOPEN> Attempting to open::WT6.PDB::
+ MAINIO> Sequence information being read from unit  90.
+ TITLE>  *
+
+          RESIDUE SEQUENCE --  3165 RESIDUES
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>        gene wt@ctr setup first none last none nodihe noangl
  Parameter: CTR -> "6"
  NO PATCHING WILL BE DONE ON THE FIRST RESIDUE
  NO PATCHING WILL BE DONE ON THE LAST  RESIDUE
  GENPSF> Segment  12 has been generated. Its identifier is WT6.
  PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
  PSFSUM> Summary of the structure file counters :
-         Number of segments      =       12   Number of residues   =    50346
-         Number of atoms         =   162620   Number of groups     =    53696
-         Number of bonds         =   162819   Number of angles     =    75736
+         Number of segments      =       12   Number of residues   =    46060
+         Number of atoms         =   149762   Number of groups     =    49410
+         Number of bonds         =   149961   Number of angles     =    71450
          Number of dihedrals     =    38677   Number of impropers  =     2624
          Number of cross-terms   =      936
-         Number of HB acceptors  =    50838   Number of HB donors  =   100446
+         Number of HB acceptors  =    46552   Number of HB donors  =    91874
          Number of NB exclusions =        0   Total charge =  -12.00000
   
  CHARMM>        incr ctr by 1
@@ -1787,7 +1573,7 @@
  MAINIO> Sequence information being read from unit  90.
  TITLE>  *
 
-          RESIDUE SEQUENCE --  4337 RESIDUES
+          RESIDUE SEQUENCE --  3700 RESIDUES
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
@@ -1973,38 +1759,6 @@
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
  VCLOSE: Closing unit   90 with status "KEEP"
   
  CHARMM>        gene wt@ctr setup first none last none nodihe noangl
@@ -2014,12 +1768,12 @@
  GENPSF> Segment  13 has been generated. Its identifier is WT7.
  PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
  PSFSUM> Summary of the structure file counters :
-         Number of segments      =       13   Number of residues   =    54683
-         Number of atoms         =   175631   Number of groups     =    58033
-         Number of bonds         =   175830   Number of angles     =    80073
+         Number of segments      =       13   Number of residues   =    49760
+         Number of atoms         =   160862   Number of groups     =    53110
+         Number of bonds         =   161061   Number of angles     =    75150
          Number of dihedrals     =    38677   Number of impropers  =     2624
          Number of cross-terms   =      936
-         Number of HB acceptors  =    55175   Number of HB donors  =   109120
+         Number of HB acceptors  =    50252   Number of HB donors  =    99274
          Number of NB exclusions =        0   Total charge =  -12.00000
   
  CHARMM>        incr ctr by 1
@@ -2036,7 +1790,7 @@
  MAINIO> Sequence information being read from unit  90.
  TITLE>  *
 
-          RESIDUE SEQUENCE --  3032 RESIDUES
+          RESIDUE SEQUENCE --  2679 RESIDUES
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
@@ -2170,25 +1924,7 @@
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
  VCLOSE: Closing unit   90 with status "KEEP"
   
  CHARMM>        gene wt@ctr setup first none last none nodihe noangl
@@ -2198,12 +1934,12 @@
  GENPSF> Segment  14 has been generated. Its identifier is WT8.
  PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
  PSFSUM> Summary of the structure file counters :
-         Number of segments      =       14   Number of residues   =    57715
-         Number of atoms         =   184727   Number of groups     =    61065
-         Number of bonds         =   184926   Number of angles     =    83105
+         Number of segments      =       14   Number of residues   =    52439
+         Number of atoms         =   168899   Number of groups     =    55789
+         Number of bonds         =   169098   Number of angles     =    77829
          Number of dihedrals     =    38677   Number of impropers  =     2624
          Number of cross-terms   =      936
-         Number of HB acceptors  =    58207   Number of HB donors  =   115184
+         Number of HB acceptors  =    52931   Number of HB donors  =   104632
          Number of NB exclusions =        0   Total charge =  -12.00000
   
  CHARMM>        incr ctr by 1
@@ -2220,7 +1956,7 @@
  MAINIO> Sequence information being read from unit  90.
  TITLE>  *
 
-          RESIDUE SEQUENCE --   199 RESIDUES
+          RESIDUE SEQUENCE --   195 RESIDUES
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
@@ -2230,7 +1966,7 @@
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
           TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
-          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
+          TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    TIP3    
  VCLOSE: Closing unit   90 with status "KEEP"
   
  CHARMM>        gene wt@ctr setup first none last none nodihe noangl
@@ -2240,12 +1976,12 @@
  GENPSF> Segment  15 has been generated. Its identifier is WT9.
  PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
  PSFSUM> Summary of the structure file counters :
-         Number of segments      =       15   Number of residues   =    57914
-         Number of atoms         =   185324   Number of groups     =    61264
-         Number of bonds         =   185523   Number of angles     =    83304
+         Number of segments      =       15   Number of residues   =    52634
+         Number of atoms         =   169484   Number of groups     =    55984
+         Number of bonds         =   169683   Number of angles     =    78024
          Number of dihedrals     =    38677   Number of impropers  =     2624
          Number of cross-terms   =      936
-         Number of HB acceptors  =    58406   Number of HB donors  =   115582
+         Number of HB acceptors  =    53126   Number of HB donors  =   105022
          Number of NB exclusions =        0   Total charge =  -12.00000
   
  CHARMM>        incr ctr by 1
@@ -2279,12 +2015,12 @@
  GENPSF> Segment  16 has been generated. Its identifier is WT10.
  PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
  PSFSUM> Summary of the structure file counters :
-         Number of segments      =       16   Number of residues   =    58045
-         Number of atoms         =   185717   Number of groups     =    61395
-         Number of bonds         =   185916   Number of angles     =    83435
+         Number of segments      =       16   Number of residues   =    52765
+         Number of atoms         =   169877   Number of groups     =    56115
+         Number of bonds         =   170076   Number of angles     =    78155
          Number of dihedrals     =    38677   Number of impropers  =     2624
          Number of cross-terms   =      936
-         Number of HB acceptors  =    58537   Number of HB donors  =   115844
+         Number of HB acceptors  =    53257   Number of HB donors  =   105284
          Number of NB exclusions =        0   Total charge =  -12.00000
   
  CHARMM>        incr ctr by 1
@@ -2319,12 +2055,12 @@
  GENPSF> Segment  17 has been generated. Its identifier is WT11.
  PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
  PSFSUM> Summary of the structure file counters :
-         Number of segments      =       17   Number of residues   =    58204
-         Number of atoms         =   186194   Number of groups     =    61554
-         Number of bonds         =   186393   Number of angles     =    83594
+         Number of segments      =       17   Number of residues   =    52924
+         Number of atoms         =   170354   Number of groups     =    56274
+         Number of bonds         =   170553   Number of angles     =    78314
          Number of dihedrals     =    38677   Number of impropers  =     2624
          Number of cross-terms   =      936
-         Number of HB acceptors  =    58696   Number of HB donors  =   116162
+         Number of HB acceptors  =    53416   Number of HB donors  =   105602
          Number of NB exclusions =        0   Total charge =  -12.00000
   
  CHARMM>        incr ctr by 1
@@ -2356,12 +2092,12 @@
  GENPSF> Segment  18 has been generated. Its identifier is WT12.
  PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
  PSFSUM> Summary of the structure file counters :
-         Number of segments      =       18   Number of residues   =    58304
-         Number of atoms         =   186494   Number of groups     =    61654
-         Number of bonds         =   186693   Number of angles     =    83694
+         Number of segments      =       18   Number of residues   =    53024
+         Number of atoms         =   170654   Number of groups     =    56374
+         Number of bonds         =   170853   Number of angles     =    78414
          Number of dihedrals     =    38677   Number of impropers  =     2624
          Number of cross-terms   =      936
-         Number of HB acceptors  =    58796   Number of HB donors  =   116362
+         Number of HB acceptors  =    53516   Number of HB donors  =   105802
          Number of NB exclusions =        0   Total charge =  -12.00000
   
  CHARMM>        incr ctr by 1
@@ -2371,6 +2107,46 @@
  Parameter: CTR -> "13"
  Comparing "13" and "12".
  IF test evaluated as false.  Skipping command
+  
+ CHARMM>     
+  
+ CHARMM>    read sequ pdb name ion.pdb
+ VOPEN> Attempting to open::ION.PDB::
+ MAINIO> Sequence information being read from unit  90.
+ TITLE>  *
+
+          RESIDUE SEQUENCE --   306 RESIDUES
+          SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     
+          SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     
+          SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     
+          SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     
+          SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     
+          SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     
+          SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     
+          SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     SOD     CLA     
+          CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     
+          CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     
+          CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     
+          CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     
+          CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     
+          CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     
+          CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     CLA     
+          CLA     CLA     CLA     CLA     CLA     CLA     
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    gene ion setup first none last none nodihe noangl
+ NO PATCHING WILL BE DONE ON THE FIRST RESIDUE
+ NO PATCHING WILL BE DONE ON THE LAST  RESIDUE
+ GENPSF> Segment  19 has been generated. Its identifier is ION.
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =       19   Number of residues   =    53330
+         Number of atoms         =   170960   Number of groups     =    56680
+         Number of bonds         =   170853   Number of angles     =    78414
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    53516   Number of HB donors  =   105802
+         Number of NB exclusions =        0   Total charge =   -0.00000
   
  CHARMM>     
   
@@ -2387,7 +2163,7 @@
  Parameter: CTR -> "1"
  VOPEN> Attempting to open::WT1.PDB::
   read CHARMM-pdb format
- SELRPN>  16623 atoms have been selected out of 186494
+ SELRPN>  13410 atoms have been selected out of 170960
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2407,7 +2183,7 @@
  Parameter: CTR -> "2"
  VOPEN> Attempting to open::WT2.PDB::
   read CHARMM-pdb format
- SELRPN>  11811 atoms have been selected out of 186494
+ SELRPN>   9906 atoms have been selected out of 170960
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2427,7 +2203,7 @@
  Parameter: CTR -> "3"
  VOPEN> Attempting to open::WT3.PDB::
   read CHARMM-pdb format
- SELRPN>  13239 atoms have been selected out of 186494
+ SELRPN>  11520 atoms have been selected out of 170960
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2447,7 +2223,7 @@
  Parameter: CTR -> "4"
  VOPEN> Attempting to open::WT4.PDB::
   read CHARMM-pdb format
- SELRPN>   9000 atoms have been selected out of 186494
+ SELRPN>   7860 atoms have been selected out of 170960
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2467,7 +2243,7 @@
  Parameter: CTR -> "5"
  VOPEN> Attempting to open::WT5.PDB::
   read CHARMM-pdb format
- SELRPN>  16836 atoms have been selected out of 186494
+ SELRPN>  13752 atoms have been selected out of 170960
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2487,7 +2263,7 @@
  Parameter: CTR -> "6"
  VOPEN> Attempting to open::WT6.PDB::
   read CHARMM-pdb format
- SELRPN>  11292 atoms have been selected out of 186494
+ SELRPN>   9495 atoms have been selected out of 170960
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2507,7 +2283,7 @@
  Parameter: CTR -> "7"
  VOPEN> Attempting to open::WT7.PDB::
   read CHARMM-pdb format
- SELRPN>  13011 atoms have been selected out of 186494
+ SELRPN>  11100 atoms have been selected out of 170960
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2527,7 +2303,7 @@
  Parameter: CTR -> "8"
  VOPEN> Attempting to open::WT8.PDB::
   read CHARMM-pdb format
- SELRPN>   9096 atoms have been selected out of 186494
+ SELRPN>   8037 atoms have been selected out of 170960
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2547,7 +2323,7 @@
  Parameter: CTR -> "9"
  VOPEN> Attempting to open::WT9.PDB::
   read CHARMM-pdb format
- SELRPN>    597 atoms have been selected out of 186494
+ SELRPN>    585 atoms have been selected out of 170960
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2567,7 +2343,7 @@
  Parameter: CTR -> "10"
  VOPEN> Attempting to open::WT10.PDB::
   read CHARMM-pdb format
- SELRPN>    393 atoms have been selected out of 186494
+ SELRPN>    393 atoms have been selected out of 170960
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2587,7 +2363,7 @@
  Parameter: CTR -> "11"
  VOPEN> Attempting to open::WT11.PDB::
   read CHARMM-pdb format
- SELRPN>    477 atoms have been selected out of 186494
+ SELRPN>    477 atoms have been selected out of 170960
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2607,7 +2383,7 @@
  Parameter: CTR -> "12"
  VOPEN> Attempting to open::WT12.PDB::
   read CHARMM-pdb format
- SELRPN>    300 atoms have been selected out of 186494
+ SELRPN>    300 atoms have been selected out of 170960
           SPATIAL COORDINATES BEING READ FROM UNIT 90
  INFO: A subset of total atoms will be read.
 
@@ -2624,46 +2400,362 @@
   
  CHARMM>     
   
- CHARMM>    !!
- CHARMM>    !! RENAME WATER SEGMENTS
- CHARMM>    !!
- CHARMM>    !set ctr 1
- CHARMM>    !label loop3
- CHARMM>    !  join WAT1 WT@ctr renumber
- CHARMM>    !  incr ctr 1
- CHARMM>    !if @ctr .le. 12 then goto loop3
+ CHARMM>    read coor pdb resid name ion.pdb sele segid ion end
+ VOPEN> Attempting to open::ION.PDB::
+  read CHARMM-pdb format
+ SELRPN>    306 atoms have been selected out of 170960
+          SPATIAL COORDINATES BEING READ FROM UNIT 90
+ INFO: A subset of total atoms will be read.
+
+ TITLE>  *
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
  CHARMM>    !
- CHARMM>    !rename segid BWAT sele segid WAT1 end
+ CHARMM>    ! RENAME WATER SEGMENTS
+ CHARMM>    !
+ CHARMM>    set ctr 1
+ Parameter: CTR <- "1"
+  
+ CHARMM>    label loop3
+  
+ CHARMM>      join WAT1 WT@ctr renumber
+ Parameter: CTR -> "1"
+ SEGMENTS "WAT1    " AND "WT1     " HAVE BEEN JOINED.
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =       18   Number of residues   =    53330
+         Number of atoms         =   170960   Number of groups     =    56680
+         Number of bonds         =   170853   Number of angles     =    78414
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    53516   Number of HB donors  =   105802
+         Number of NB exclusions =        0   Total charge =   -0.00000
+  
+ CHARMM>      incr ctr 1
+ Parameter: CTR <- "2"
+ **** Warning ****  The following extraneous characters
+ were found while command processing in miscom
+ 1
+  
+ CHARMM>    if @ctr .le. 12 then goto loop3
+ Parameter: CTR -> "2"
+ Comparing "2" and "12".
+ IF test evaluated as true.  Performing command
+  
+ CHARMM>      join WAT1 WT@ctr renumber
+ Parameter: CTR -> "2"
+ SEGMENTS "WAT1    " AND "WT2     " HAVE BEEN JOINED.
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =       17   Number of residues   =    53330
+         Number of atoms         =   170960   Number of groups     =    56680
+         Number of bonds         =   170853   Number of angles     =    78414
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    53516   Number of HB donors  =   105802
+         Number of NB exclusions =        0   Total charge =   -0.00000
+  
+ CHARMM>      incr ctr 1
+ Parameter: CTR <- "3"
+ **** Warning ****  The following extraneous characters
+ were found while command processing in miscom
+ 1
+  
+ CHARMM>    if @ctr .le. 12 then goto loop3
+ Parameter: CTR -> "3"
+ Comparing "3" and "12".
+ IF test evaluated as true.  Performing command
+  
+ CHARMM>      join WAT1 WT@ctr renumber
+ Parameter: CTR -> "3"
+ SEGMENTS "WAT1    " AND "WT3     " HAVE BEEN JOINED.
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =       16   Number of residues   =    53330
+         Number of atoms         =   170960   Number of groups     =    56680
+         Number of bonds         =   170853   Number of angles     =    78414
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    53516   Number of HB donors  =   105802
+         Number of NB exclusions =        0   Total charge =   -0.00000
+  
+ CHARMM>      incr ctr 1
+ Parameter: CTR <- "4"
+ **** Warning ****  The following extraneous characters
+ were found while command processing in miscom
+ 1
+  
+ CHARMM>    if @ctr .le. 12 then goto loop3
+ Parameter: CTR -> "4"
+ Comparing "4" and "12".
+ IF test evaluated as true.  Performing command
+  
+ CHARMM>      join WAT1 WT@ctr renumber
+ Parameter: CTR -> "4"
+ SEGMENTS "WAT1    " AND "WT4     " HAVE BEEN JOINED.
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =       15   Number of residues   =    53330
+         Number of atoms         =   170960   Number of groups     =    56680
+         Number of bonds         =   170853   Number of angles     =    78414
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    53516   Number of HB donors  =   105802
+         Number of NB exclusions =        0   Total charge =   -0.00000
+  
+ CHARMM>      incr ctr 1
+ Parameter: CTR <- "5"
+ **** Warning ****  The following extraneous characters
+ were found while command processing in miscom
+ 1
+  
+ CHARMM>    if @ctr .le. 12 then goto loop3
+ Parameter: CTR -> "5"
+ Comparing "5" and "12".
+ IF test evaluated as true.  Performing command
+  
+ CHARMM>      join WAT1 WT@ctr renumber
+ Parameter: CTR -> "5"
+ SEGMENTS "WAT1    " AND "WT5     " HAVE BEEN JOINED.
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =       14   Number of residues   =    53330
+         Number of atoms         =   170960   Number of groups     =    56680
+         Number of bonds         =   170853   Number of angles     =    78414
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    53516   Number of HB donors  =   105802
+         Number of NB exclusions =        0   Total charge =   -0.00000
+  
+ CHARMM>      incr ctr 1
+ Parameter: CTR <- "6"
+ **** Warning ****  The following extraneous characters
+ were found while command processing in miscom
+ 1
+  
+ CHARMM>    if @ctr .le. 12 then goto loop3
+ Parameter: CTR -> "6"
+ Comparing "6" and "12".
+ IF test evaluated as true.  Performing command
+  
+ CHARMM>      join WAT1 WT@ctr renumber
+ Parameter: CTR -> "6"
+ SEGMENTS "WAT1    " AND "WT6     " HAVE BEEN JOINED.
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =       13   Number of residues   =    53330
+         Number of atoms         =   170960   Number of groups     =    56680
+         Number of bonds         =   170853   Number of angles     =    78414
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    53516   Number of HB donors  =   105802
+         Number of NB exclusions =        0   Total charge =   -0.00000
+  
+ CHARMM>      incr ctr 1
+ Parameter: CTR <- "7"
+ **** Warning ****  The following extraneous characters
+ were found while command processing in miscom
+ 1
+  
+ CHARMM>    if @ctr .le. 12 then goto loop3
+ Parameter: CTR -> "7"
+ Comparing "7" and "12".
+ IF test evaluated as true.  Performing command
+  
+ CHARMM>      join WAT1 WT@ctr renumber
+ Parameter: CTR -> "7"
+ SEGMENTS "WAT1    " AND "WT7     " HAVE BEEN JOINED.
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =       12   Number of residues   =    53330
+         Number of atoms         =   170960   Number of groups     =    56680
+         Number of bonds         =   170853   Number of angles     =    78414
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    53516   Number of HB donors  =   105802
+         Number of NB exclusions =        0   Total charge =   -0.00000
+  
+ CHARMM>      incr ctr 1
+ Parameter: CTR <- "8"
+ **** Warning ****  The following extraneous characters
+ were found while command processing in miscom
+ 1
+  
+ CHARMM>    if @ctr .le. 12 then goto loop3
+ Parameter: CTR -> "8"
+ Comparing "8" and "12".
+ IF test evaluated as true.  Performing command
+  
+ CHARMM>      join WAT1 WT@ctr renumber
+ Parameter: CTR -> "8"
+ SEGMENTS "WAT1    " AND "WT8     " HAVE BEEN JOINED.
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =       11   Number of residues   =    53330
+         Number of atoms         =   170960   Number of groups     =    56680
+         Number of bonds         =   170853   Number of angles     =    78414
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    53516   Number of HB donors  =   105802
+         Number of NB exclusions =        0   Total charge =   -0.00000
+  
+ CHARMM>      incr ctr 1
+ Parameter: CTR <- "9"
+ **** Warning ****  The following extraneous characters
+ were found while command processing in miscom
+ 1
+  
+ CHARMM>    if @ctr .le. 12 then goto loop3
+ Parameter: CTR -> "9"
+ Comparing "9" and "12".
+ IF test evaluated as true.  Performing command
+  
+ CHARMM>      join WAT1 WT@ctr renumber
+ Parameter: CTR -> "9"
+ SEGMENTS "WAT1    " AND "WT9     " HAVE BEEN JOINED.
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =       10   Number of residues   =    53330
+         Number of atoms         =   170960   Number of groups     =    56680
+         Number of bonds         =   170853   Number of angles     =    78414
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    53516   Number of HB donors  =   105802
+         Number of NB exclusions =        0   Total charge =   -0.00000
+  
+ CHARMM>      incr ctr 1
+ Parameter: CTR <- "10"
+ **** Warning ****  The following extraneous characters
+ were found while command processing in miscom
+ 1
+  
+ CHARMM>    if @ctr .le. 12 then goto loop3
+ Parameter: CTR -> "10"
+ Comparing "10" and "12".
+ IF test evaluated as true.  Performing command
+  
+ CHARMM>      join WAT1 WT@ctr renumber
+ Parameter: CTR -> "10"
+ SEGMENTS "WAT1    " AND "WT10    " HAVE BEEN JOINED.
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        9   Number of residues   =    53330
+         Number of atoms         =   170960   Number of groups     =    56680
+         Number of bonds         =   170853   Number of angles     =    78414
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    53516   Number of HB donors  =   105802
+         Number of NB exclusions =        0   Total charge =   -0.00000
+  
+ CHARMM>      incr ctr 1
+ Parameter: CTR <- "11"
+ **** Warning ****  The following extraneous characters
+ were found while command processing in miscom
+ 1
+  
+ CHARMM>    if @ctr .le. 12 then goto loop3
+ Parameter: CTR -> "11"
+ Comparing "11" and "12".
+ IF test evaluated as true.  Performing command
+  
+ CHARMM>      join WAT1 WT@ctr renumber
+ Parameter: CTR -> "11"
+ SEGMENTS "WAT1    " AND "WT11    " HAVE BEEN JOINED.
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        8   Number of residues   =    53330
+         Number of atoms         =   170960   Number of groups     =    56680
+         Number of bonds         =   170853   Number of angles     =    78414
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    53516   Number of HB donors  =   105802
+         Number of NB exclusions =        0   Total charge =   -0.00000
+  
+ CHARMM>      incr ctr 1
+ Parameter: CTR <- "12"
+ **** Warning ****  The following extraneous characters
+ were found while command processing in miscom
+ 1
+  
+ CHARMM>    if @ctr .le. 12 then goto loop3
+ Parameter: CTR -> "12"
+ Comparing "12" and "12".
+ IF test evaluated as true.  Performing command
+  
+ CHARMM>      join WAT1 WT@ctr renumber
+ Parameter: CTR -> "12"
+ SEGMENTS "WAT1    " AND "WT12    " HAVE BEEN JOINED.
+ THE RESIDUE IDENTIFIERS HAVE BEEN RENUMBERED
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        7   Number of residues   =    53330
+         Number of atoms         =   170960   Number of groups     =    56680
+         Number of bonds         =   170853   Number of angles     =    78414
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    53516   Number of HB donors  =   105802
+         Number of NB exclusions =        0   Total charge =   -0.00000
+  
+ CHARMM>      incr ctr 1
+ Parameter: CTR <- "13"
+ **** Warning ****  The following extraneous characters
+ were found while command processing in miscom
+ 1
+  
+ CHARMM>    if @ctr .le. 12 then goto loop3
+ Parameter: CTR -> "13"
+ Comparing "13" and "12".
+ IF test evaluated as false.  Skipping command
+  
  CHARMM>     
   
- CHARMM>    write psf card name 2agy_c36_state0_wb.psf
- VOPEN> Attempting to open::2agy_c36_state0_wb.psf::
- RDTITL> * AADH WATER BOX ADDED VIA VMD, NO IONS
+ CHARMM>    rename segid BWAT sele segid WAT1 end
+ SELRPN> 151698 atoms have been selected out of 170960
+ SEGMENT 'WAT1    ' IS RENAMED TO 'BWAT    '
+  
+ CHARMM>     
+  
+ CHARMM>    write psf card name 2agy_solv_ion.psf
+ VOPEN> Attempting to open::2agy_solv_ion.psf::
+ RDTITL> * AADH WATER BOX ADDED VIA VMD WITH IONS
  RDTITL> *
  VCLOSE: Closing unit   90 with status "KEEP"
   
- CHARMM>    write coor card name 2agy_c36_state0_wb.cor
- VOPEN> Attempting to open::2agy_c36_state0_wb.cor::
- RDTITL> * AADH WATER BOX ADDED VIA VMD, NO IONS
+ CHARMM>    write coor card name 2agy_solv_ion.cor
+ VOPEN> Attempting to open::2agy_solv_ion.cor::
+ RDTITL> * AADH WATER BOX ADDED VIA VMD WITH IONS
  RDTITL> *
  VCLOSE: Closing unit   90 with status "KEEP"
  VCLOSE: Closing unit   90 with status "KEEP"
   
  CHARMM>     
   
- CHARMM>    write coor pdb name 2agy_c36_state0_wb.pdb
- VOPEN> Attempting to open::2agy_c36_state0_wb.pdb::
- RDTITL> * AADH WATER BOX ADDED VIA VMD, NO IONS
+ CHARMM>    write coor pdb name 2agy_solv_ion.pdb
+ VOPEN> Attempting to open::2agy_solv_ion.pdb::
+ RDTITL> * AADH WATER BOX ADDED VIA VMD WITH IONS
  RDTITL> *
   Write CHARMM-pdb format
  VCLOSE: Closing unit   90 with status "KEEP"
   
 $$$$$$  New timer profile $$$$$
- Total time                     18.95 Other:            0.00
+ Total time                     16.01 Other:            0.00
 
                     NORMAL TERMINATION BY END OF FILE
                     MOST SEVERE WARNING WAS AT LEVEL  0
 
                     $$$$$ JOB ACCOUNTING INFORMATION $$$$$
-                     ELAPSED TIME:    18.96  SECONDS 
-                         CPU TIME:    18.72  SECONDS 
+                     ELAPSED TIME:    16.01  SECONDS 
+                         CPU TIME:    15.90  SECONDS 
