@@ -2,7 +2,7 @@
 *
 
 prnlev 5
-set molname 2agy_c36_state0_neut
+set molname 2agy_solv_ion
 set datadir ../common
 stream @datadir/toppar_water_ions_fixed.str
 read rtf card name @datadir/top_all36_prot.rtf append flex
@@ -13,15 +13,10 @@ read para card name @datadir/aadh_parameters.prm append flex
 read psf card name ../common/@molname.psf
 read coord card name ../common/@molname.cor
 
-define heavy_all sele all .and. .not. type H* end
-
+!
+! Some selections
+!
 define protein sele segid AL* .or. segid BT* end
-define heavy_prot sele protein .and. .not. type H* end 
-define light_prot sele protein .and. type H* end 
-
-define backbone_prot sele type n .or. type ca .or. type c .or. type o end
-define residues_prot sele protein .and. .not. backbone_prot end
-
 define water sele segid *WAT end
 define ions sele segid ion end
 
@@ -37,50 +32,80 @@ calc zdim = abs ( ?ZMAX - ?ZMIN )
 coor trans xdir @xdim ydir @ydim zdir @zdim factor 0.5
 
 !
-! Check that reorientation has worked
-!
-coordinate statistics select all end
-
-!
 ! Setup crystal
 !
-calc xcen @xdim/2
-calc ycen @ydim/2
-calc zcen @zdim/2
+calc cen @xdim/2
 
 set cutim 14
 
-CRYSTAL DEFI ORTHS @xdim @ydim @zdim 90.0 90.0 90.0
-CRYSTAL BUILD CUTOFF @cutim NOPER 0
-image byseg xcen @xcen ycen @ycen zcen @zcen  sele segid AL* .or. segid BT* end ! protein
-image byres xcen @xcen ycen @ycen zcen @zcen sele .not. (segid AL* .or. segid BT*) end ! water ions
+crystal defi cubic @xdim @xdim @xdim 90.0 90.0 90.0
+crystal build cutoff @cutim noper 0
+image byseg xcen @cen ycen @cen zcen @cen sele protein end 
+image byres xcen @cen ycen @cen zcen @cen sele water .or. ions end 
 
-! 
-! Write out crystal parameters
+open write card unit 11 name aadh.xtl
+write crystal card unit 11
+
 !
-open write card unit 20 name crystal_params.str
+! Delete extraneous waters
+!
+coor copy comp
+wrnlev 1
+update inbfrq 0
+coor diff
+define sel1 select .byres. (property x .ne. 0.0 .or. property y .ne. 0.0 .or. property z .ne. 0.0) show end
+coor swap
+bomlev -1
+delete atom sele sel1 end
+bomlev 0
 
-write title card unit 20
-* Crystal parameters from Minimization:
-* set xdim @xdim
-* set ydim @ydim
-* set zdim @zdim
-* set xcen @xcen
-* set xcen @ycen
-* set xcen @zcen
-* set cutim @cutim 
-*
+!
+! Define selections
+!
+define heavy_all sele all .and. .not. type H* end
+define protein sele segid AL* .or. segid BT* end
+define heavy_prot sele protein .and. .not. type H* end 
+define light_prot sele protein .and. type H* end 
+define backbone_prot sele type n .or. type ca .or. type c .or. type o end
+define residues_prot sele protein .and. .not. backbone_prot end
+define water sele segid *WAT end
+define ions sele segid ion end
 
-write coord card name @molname-shifted.cor
+!
+! WRITE OUT FINAL PSF and COORDS
+!
+write coord card name 2agy_final.cor
 * Realigned the Crystal structure to be compatible with OpenMM
+* Cubic crystal structure box size: @xdim Ang 
+* Not minimized
 *
+
+write coord pdb name 2agy_final.pdb
+* Realigned the Crystal structure to be compatible with OpenMM
+* Cubic crystal structure box size: @xdim Ang 
+* Not minimized
+*
+
+write psf card name 2agy_final.psf
+* Realigned the Crystal structure to be compatible with OpenMM
+* Cubic crystal structure box size: @xdim Ang 
+* Not minimized
+*
+!
+! Re-setup crystal
+!
+crystal free
+crystal defi cubic @xdim @xdim @xdim 90.0 90.0 90.0
+crystal build cutoff @cutim noper 0
+image byseg xcen @cen ycen @cen zcen @cen sele protein end
+image byres xcen @cen ycen @cen zcen @cen sele water .or. ions end
 
 !
 ! Setup non-bonded forces
 !
 set ftx 144 
-set fty 120
-set ftz 108 
+set fty 144
+set ftz 144 
 NBONDED inbfrq -1 imgfrq -1 nbxmod 5 -                                              ! C36 DEFAULTS
         atom cdiel fshift -                                                         ! use atom based electrostatics, C36 DEFAULTS
         vatom vdistance vfswitch -                                                  ! C36 DEFAULTS
@@ -96,14 +121,8 @@ coor copy comp
 !
 ! Minimization 
 !
-open write card unit 30 name minimization_traj.txt
 
-energy 
 coor rms comp sele heavy_prot end
-
-write title card unit 30
-* Step, Energy, RMSD
-* 0, ?ENER,?RMS
  
 !
 ! Step 1: Minimize H-atoms
@@ -115,13 +134,9 @@ mini sd nstep 100
 mini abnr nstep 3000 nprint 100 tolg 0.01
 
 cons rmsd clear
-energy
 coor rms comp sele heavy_prot end
 
-write title card unit 30
-* 1, ?ENER,?RMS
-
-write coor card name 2agy_solv_min-step-1.cor
+write coor card name 2agy_final_min-step-1.cor
 * 2agy, minimized, neutralized after step 1
 *
 
@@ -135,13 +150,10 @@ mini sd nstep 100
 mini abnr nstep 3000 nprint 100 tolg 0.01
 
 cons rmsd clear
-energy
 coor rms comp sele all end
 
-write title card unit 30
-* 2, ?ENER,?RMS
 
-write coor card name 2agy_solv_min-step-2.cor
+write coor card name 2agy_final_min-step-2.cor
 * 2agy, minimized, neutralized after step 2
 *
 
@@ -154,37 +166,28 @@ mini sd nstep 100
 mini abnr nstep 3000 nprint 100 tolg 0.01
 
 cons rmsd clear
-energy 
 coor rms comp sele heavy_prot end
 
-write title card unit 30
-* 3, ?ENER,?RMS
-
-write coor card name 2agy_solv_min-step-3.cor
+write coor card name 2agy_final_min-step-3.cor
 * 2agy, minimized, neutralized after step 3
 *
 
 !
 ! Step 4: Minimize everything  
 ! 
-
 mini sd nstep 100
 mini abnr nstep 5000 nprint 100 tolg 0.01
 
-energy 
 coor rms comp sele heavy_prot end
 
-write title card unit 30
-* 4, ?ENER,?RMS
-
+!
 ! Write out coordinates
 !
-write coor card name 2agy_solv_min.cor
-* 2agy, minimized, neutralized
-*
+write coor card name 2agy_final_min.cor
+* 2agy, minimized
 
-write coor pdb name 2agy_solv_min.pdb
-* 2agy, minimized, neutralized
+write coor pdb name 2agy_final_min.pdb
+* 2agy, minimized
 *
 
 stop

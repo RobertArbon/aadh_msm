@@ -1,6 +1,0 @@
- STEP, ENERGY, RMSD
- 0, ?ENER,?RMS
- 1, ?ENER,?RMS
- 2, ?ENER,?RMS
- 3, ?ENER,?RMS
- 4, ?ENER,?RMS
