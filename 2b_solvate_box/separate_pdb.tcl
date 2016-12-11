@@ -2,11 +2,16 @@
 set molname ionized 
 mol new ${molname}.psf
 mol addfile ${molname}.pdb
-
-for {set i 1} {$i < 13} {incr i} {
+set ctr 1
+for {set i 1} {$i < 15} {incr i} {
 	set seg [atomselect top [format "segname WT%d" $i]] 
-	$seg writepdb [format "wt%d.pdb" $i] 
+
+        if {[$seg num] > 0} {
+            put [$seg num]
+            $seg set segname [format "WT%d" $ctr]
+	    $seg writepdb [format "wt%d.pdb" $ctr] 
+            incr ctr
 }	
 	set seg [atomselect top "segname ION" ] 
 	$seg writepdb "ion.pdb"  
-
+}

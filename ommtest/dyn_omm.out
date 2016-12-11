@@ -5,7 +5,7 @@
        Copyright(c) 1984-2014  President and Fellows of Harvard College
                               All Rights Reserved
      Current operating system: Linux-2.6.32-220.23.1.el6.x86_64(x86_64)@new     
-                 Created on 10/27/16 at 16:00:08 by user: ra15808     
+                 Created on 12/10/16 at  8:57:26 by user: ra15808     
 
             Maximum number of ATOMS:    360720, and RESidues:      120240
  RDTITL> * HEAT THE HIS DIMER TO 310K
@@ -218,35 +218,85 @@
   
  CHARMM>     
   
- CHARMM>    stream build_crystal.str
- VOPEN> Attempting to open::build_crystal.str::
- OPNLGU> Unit 99 opened for READONLY access to build_crystal.str
+ CHARMM>    coordinate statistics select all end
+ SELRPN>   4266 atoms have been selected out of   4266
+ STATISTICS FOR      4266 SELECTED ATOMS:
+    XMIN =  -19.288124 XMAX =   19.308232 XAVE =   -0.207558
+    YMIN =  -19.273714 YMAX =   19.353217 YAVE =    0.091540
+    ZMIN =  -18.645737 ZMAX =   19.170337 ZAVE =    0.198408
+    WMIN =    0.000000 WMAX =    0.000000 WAVE =    0.000000
+  
+ CHARMM>     
+  
+ CHARMM>    calc xdim = abs ( ?XMAX - ?XMIN )
+ RDCMND substituted energy or value "?XMAX" to "19.3082315"
+ RDCMND substituted energy or value "?XMIN" to "-19.2881245"
+Evaluating: ABS(19.3082315--19.2881245)
+ Parameter: XDIM <- "38.596356"
+  
+ CHARMM>    calc ydim = abs ( ?YMAX - ?YMIN )
+ RDCMND substituted energy or value "?YMAX" to "19.353217"
+ RDCMND substituted energy or value "?YMIN" to "-19.2737145"
+Evaluating: ABS(19.353217--19.2737145)
+ Parameter: YDIM <- "38.6269315"
+  
+ CHARMM>    calc zdim = abs ( ?ZMAX - ?ZMIN )
+ RDCMND substituted energy or value "?ZMAX" to "19.1703374"
+ RDCMND substituted energy or value "?ZMIN" to "-18.645737"
+Evaluating: ABS(19.1703374--18.645737)
+ Parameter: ZDIM <- "37.8160744"
+  
+ CHARMM>     
+  
+ CHARMM>    coor trans xdir @xdim ydir @ydim zdir @zdim factor 0.5
+ Parameter: XDIM -> "38.596356"
+ Parameter: YDIM -> "38.6269315"
+ Parameter: ZDIM -> "37.8160744"
+ TRANSLATION VECTOR    38.596356   38.626931   37.816074
+ SELECTED COORDINATES TRANSLATED IN THE MAIN SET.
 
-                    INPUT STREAM SWITCHING TO UNIT    99
- RDTITL> * STREAM FILE FOR SETTING UP CUBIC CRYSTAL.
- RDTITL> SET LENGTH 35.6263665
- Parameter: IN1 <- "" <empty>
   
- CHARMM>     set length 35.6263665
- Parameter: LENGTH <- "35.6263665"
+ CHARMM>     
   
- CHARMM>     calc cutoff @length/2
- Parameter: LENGTH -> "35.6263665"
-Evaluating: 35.6263665/2
- Parameter: CUTOFF <- "17.8131833"
+ CHARMM>    !
+ CHARMM>    ! Setup crystal
+ CHARMM>    !
+ CHARMM>    coordinate statistics select all end
+ SELRPN>   4266 atoms have been selected out of   4266
+ STATISTICS FOR      4266 SELECTED ATOMS:
+    XMIN =    0.010054 XMAX =   38.606410 XAVE =   19.090620
+    YMIN =    0.039751 YMAX =   38.666683 YAVE =   19.405005
+    ZMIN =    0.262300 ZMAX =   38.078375 ZAVE =   19.106445
+    WMIN =    0.000000 WMAX =    0.000000 WAVE =    0.000000
   
- CHARMM>     CRYSTAL DEFI cubic @length @length @length 90.0 90.0 90.0
- Parameter: LENGTH -> "35.6263665"
- Parameter: LENGTH -> "35.6263665"
- Parameter: LENGTH -> "35.6263665"
+ CHARMM>    calc cen @xdim/2
+ Parameter: XDIM -> "38.596356"
+Evaluating: 38.596356/2
+ Parameter: CEN <- "19.298178"
+  
+ CHARMM>     
+  
+ CHARMM>    set length @xdim
+ Parameter: XDIM -> "38.596356"
+ Parameter: LENGTH <- "38.596356"
+  
+ CHARMM>    calc cutoff @length/2
+ Parameter: LENGTH -> "38.596356"
+Evaluating: 38.596356/2
+ Parameter: CUTOFF <- "19.298178"
+  
+ CHARMM>    CRYSTAL DEFI cubic @length @length @length 90.0 90.0 90.0
+ Parameter: LENGTH -> "38.596356"
+ Parameter: LENGTH -> "38.596356"
+ Parameter: LENGTH -> "38.596356"
  Crystal Parameters : Crystal Type = CUBI
-           A     =   35.62637 B    =   35.62637 C     =   35.62637
+           A     =   38.59636 B    =   38.59636 C     =   38.59636
            Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
   
- CHARMM>     CRYSTAL BUILD cutoff @cutoff noper 0
- Parameter: CUTOFF -> "17.8131833"
+ CHARMM>    CRYSTAL BUILD cutoff @cutoff noper 0
+ Parameter: CUTOFF -> "19.298178"
  XBUILD> Building all transformations with a minimum atom-atom
-         contact distance of less than   17.81 Angstroms.
+         contact distance of less than   19.30 Angstroms.
 
  Range of Grid Search for Transformation     1 :
  Lattice Vector A    -2 TO     2
@@ -259,180 +309,97 @@ Evaluating: 35.6263665/2
 
  Number  Symop   A   B   C   Distance
 
-      1      1  -1  -1  -1     3.4307
-      2      1  -1   0  -1     2.1366
-      3      1  -1   1  -1     4.2400
-      4      1   0  -1  -1     2.0770
-      5      1   0   0  -1     2.3080
-      6      1   0   1  -1     3.5733
-      7      1  -1  -1   0     2.2039
-      8      1  -1   0   0     2.1921
-      9      1  -1   1   0     2.7175
-     10      1   0  -1   0     1.7709
-     11      1   0   1   0     1.7709
-     12      1  -1  -1   1     5.3932
-     13      1  -1   0   1     3.2878
-     14      1  -1   1   1     5.4391
-     15      1   0  -1   1     3.5733
-     16      1   0   0   1     2.3080
-     17      1   0   1   1     2.0770
-     18      1   1   1   1     3.4307
-     19      1   1   0   1     2.1366
-     20      1   1  -1   1     4.2400
-     21      1   1   1   0     2.2039
-     22      1   1   0   0     2.1921
-     23      1   1  -1   0     2.7175
-     24      1   1   1  -1     5.3932
-     25      1   1   0  -1     3.2878
-     26      1   1  -1  -1     5.4391
+      1      1  -1  -1  -1     8.5577
+      2      1  -1   0  -1     4.6822
+      3      1  -1   1  -1     9.3316
+      4      1   0  -1  -1     6.1311
+      5      1   0   0  -1     3.9076
+      6      1   0   1  -1     7.3481
+      7      1  -1  -1   0     5.6053
+      8      1  -1   0   0     3.7334
+      9      1  -1   1   0     6.8401
+     10      1   0  -1   0     4.0303
+     11      1   0   1   0     4.0303
+     12      1  -1  -1   1     9.4612
+     13      1  -1   0   1     7.2684
+     14      1  -1   1   1     9.7298
+     15      1   0  -1   1     7.3481
+     16      1   0   0   1     3.9076
+     17      1   0   1   1     6.1311
+     18      1   1   1   1     8.5577
+     19      1   1   0   1     4.6822
+     20      1   1  -1   1     9.3316
+     21      1   1   1   0     5.6053
+     22      1   1   0   0     3.7334
+     23      1   1  -1   0     6.8401
+     24      1   1   1  -1     9.4612
+     25      1   1   0  -1     7.2684
+     26      1   1  -1  -1     9.7298
                      THERE ARE NO ROTATIONS FOR THIS TRANSFORMATION SET
     26 Transformations have been processed.
 
   
- CHARMM>     IMAGE BYRES SELE SEGID BWAT END
+ CHARMM>    IMAGE BYRES SELE SEGID BWAT END
  SELRPN>   4212 atoms have been selected out of   4266
  IMAGE CENTERING ON FOR SOME ATOMS
   
- VCLOSE: Closing unit   99 with status "KEEP"
-
-                    RETURNING TO INPUT STREAM     5
-  
- CHARMM>    stream images.str
- VOPEN> Attempting to open::images.str::
- OPNLGU> Unit 99 opened for READONLY access to images.str
-
-                    INPUT STREAM SWITCHING TO UNIT    99
- RDTITL> * STREAM FILE FOR ADDITIONAL IMAGE SPECIFICATION
- RDTITL>  
- Parameter: IN1 <- "" <empty>
-  
- CHARMM>     
-  
- CHARMM>    image bysegid sele segid his2 end
+ CHARMM>    image bysegid xcen @cen ycen @cen zcen @cen sele segid his2 end
+ Parameter: CEN -> "19.298178"
+ Parameter: CEN -> "19.298178"
+ Parameter: CEN -> "19.298178"
  SELRPN>     48 atoms have been selected out of   4266
  IMAGE CENTERING ON FOR SOME ATOMS
   
- CHARMM>    image byres sele .not. (segid his2 .or. segid bwat) end
+ CHARMM>    image byres xcen @cen ycen @cen zcen @cen sele .not. (segid his2 .or. segid bwat) end
+ Parameter: CEN -> "19.298178"
+ Parameter: CEN -> "19.298178"
+ Parameter: CEN -> "19.298178"
  SELRPN>      6 atoms have been selected out of   4266
  IMAGE CENTERING ON FOR SOME ATOMS
   
- VCLOSE: Closing unit   99 with status "KEEP"
-
-                    RETURNING TO INPUT STREAM     5
-  
- CHARMM>    stream non_bond_spec.str
- VOPEN> Attempting to open::non_bond_spec.str::
- OPNLGU> Unit 99 opened for READONLY access to non_bond_spec.str
-
-                    INPUT STREAM SWITCHING TO UNIT    99
- RDTITL> * STREAM FILE FOR SPECIFYING NON-BONDED SPECIFICATIONS USING THE STANDARD EWALD SUMMATION
- RDTITL> *
- Parameter: IN1 <- "" <empty>
-  
  CHARMM>     
   
- CHARMM>    set kppa 0.34
- Parameter: KPPA <- "0.34"
+ CHARMM>    set ftx 36
+ Parameter: FTX <- "36"
   
- CHARMM>    calc kmx int( @kppa*@length )
- Parameter: KPPA -> "0.34"
- Parameter: LENGTH -> "35.6263665"
-Evaluating: INT(0.34*35.6263665)
- Parameter: KMX <- "12"
+ CHARMM>    set fty 36
+ Parameter: FTY <- "36"
   
- CHARMM>    calc kmy int( @kppa*@length )
- Parameter: KPPA -> "0.34"
- Parameter: LENGTH -> "35.6263665"
-Evaluating: INT(0.34*35.6263665)
- Parameter: KMY <- "12"
-  
- CHARMM>    calc kmz int( @kppa*@length )
- Parameter: KPPA -> "0.34"
- Parameter: LENGTH -> "35.6263665"
-Evaluating: INT(0.34*35.6263665)
- Parameter: KMZ <- "12"
-  
- CHARMM>     
+ CHARMM>    set ftz 36
+ Parameter: FTZ <- "36"
   
  CHARMM>    NBONDED inbfrq -1 imgfrq -1 nbxmod 5 -                                              ! C36 DEFAULTS
- CHARMM>            atom cdiel -                                                                 ! use atom based electrostatics, C36 DEFAULTS
+ CHARMM>            atom cdiel fshift -                                                         ! use atom based electrostatics, C36 DEFAULTS
  CHARMM>            vatom vdistance vfswitch -                                                  ! C36 DEFAULTS
- CHARMM>            elec ewald kappa @kppa spline nopm kmxx @kmx kmxy @kmy kmxz @kmz   -        ! standard Ewald SUMMATION
+ CHARMM>            elec ewald pmew fftx @ftx ffty @fty fftz @ftz kappa .34 spline order 6 -    ! PME SUMMATION
  CHARMM>            cutnb 14.0 ctofnb 12.0 ctonnb 10.0 -                                        ! C36 DEFAULTS
- CHARMM>            cutim 14.0 -                                                                ! must be same as cutnb
- CHARMM>            eps 1.0 e14fac 1.0 wmin 1.5                                                 ! C36 DEFAULTS
- Parameter: KPPA -> "0.34"
- Parameter: KMX -> "12"
- Parameter: KMY -> "12"
- Parameter: KMZ -> "12"
+ CHARMM>            cutim @cutoff -                                                                ! must be same as cutnb
+ CHARMM>            eps 1.0 e14fac 1.0 wmin 1.5
+ Parameter: FTX -> "36"
+ Parameter: FTY -> "36"
+ Parameter: FTZ -> "36"
+ Parameter: CUTOFF -> "19.298178"
 
- SELECTED IMAGES ATOMS BEING CENTERED ABOUT  0.000000  0.000000  0.000000
- RESIDUE   61 OPERATED ON BY TRANSFORMATION C008
- RESIDUE   87 OPERATED ON BY TRANSFORMATION C022
- RESIDUE  153 OPERATED ON BY TRANSFORMATION C022
- RESIDUE  164 OPERATED ON BY TRANSFORMATION C011
- RESIDUE  165 OPERATED ON BY TRANSFORMATION C011
- RESIDUE  167 OPERATED ON BY TRANSFORMATION C022
- RESIDUE  200 OPERATED ON BY TRANSFORMATION C016
- RESIDUE  208 OPERATED ON BY TRANSFORMATION C016
- RESIDUE  224 OPERATED ON BY TRANSFORMATION C016
- RESIDUE  335 OPERATED ON BY TRANSFORMATION C008
- RESIDUE  406 OPERATED ON BY TRANSFORMATION C008
- RESIDUE  411 OPERATED ON BY TRANSFORMATION C016
- RESIDUE  456 OPERATED ON BY TRANSFORMATION C010
- RESIDUE  486 OPERATED ON BY TRANSFORMATION C022
- RESIDUE  509 OPERATED ON BY TRANSFORMATION C022
- RESIDUE  516 OPERATED ON BY TRANSFORMATION C010
- RESIDUE  630 OPERATED ON BY TRANSFORMATION C010
- RESIDUE  671 OPERATED ON BY TRANSFORMATION C010
- RESIDUE  675 OPERATED ON BY TRANSFORMATION C010
- RESIDUE  683 OPERATED ON BY TRANSFORMATION C008
- RESIDUE  701 OPERATED ON BY TRANSFORMATION C022
- RESIDUE  745 OPERATED ON BY TRANSFORMATION C011
- RESIDUE  751 OPERATED ON BY TRANSFORMATION C005
- RESIDUE  802 OPERATED ON BY TRANSFORMATION C022
- RESIDUE  806 OPERATED ON BY TRANSFORMATION C005
- RESIDUE  808 OPERATED ON BY TRANSFORMATION C005
- RESIDUE  820 OPERATED ON BY TRANSFORMATION C005
- RESIDUE  850 OPERATED ON BY TRANSFORMATION C022
- RESIDUE  860 OPERATED ON BY TRANSFORMATION C022
- RESIDUE  866 OPERATED ON BY TRANSFORMATION C011
- RESIDUE  897 OPERATED ON BY TRANSFORMATION C008
- RESIDUE  985 OPERATED ON BY TRANSFORMATION C005
- RESIDUE 1039 OPERATED ON BY TRANSFORMATION C008
- RESIDUE 1095 OPERATED ON BY TRANSFORMATION C010
- RESIDUE 1118 OPERATED ON BY TRANSFORMATION C005
- RESIDUE 1160 OPERATED ON BY TRANSFORMATION C022
- RESIDUE 1164 OPERATED ON BY TRANSFORMATION C022
- RESIDUE 1166 OPERATED ON BY TRANSFORMATION C005
- RESIDUE 1169 OPERATED ON BY TRANSFORMATION C005
- RESIDUE 1180 OPERATED ON BY TRANSFORMATION C005
- RESIDUE 1184 OPERATED ON BY TRANSFORMATION C005
- RESIDUE 1206 OPERATED ON BY TRANSFORMATION C010
- RESIDUE 1209 OPERATED ON BY TRANSFORMATION C005
- RESIDUE 1227 OPERATED ON BY TRANSFORMATION C005
- RESIDUE 1346 OPERATED ON BY TRANSFORMATION C005
- RESIDUE 1364 OPERATED ON BY TRANSFORMATION C005
- RESIDUE 1382 OPERATED ON BY TRANSFORMATION C008
- RESIDUE 1395 OPERATED ON BY TRANSFORMATION C008
+ SELECTED IMAGES ATOMS BEING CENTERED ABOUT 19.298178 19.298178 19.298178
 
  <MKIMAT2>: updating the image atom lists and remapping
  Transformation   Atoms  Groups  Residues  Min-Distance
-    1  C001 has     127      43      43        0.73
-    2  C002 has     464     156     156        0.00
-    3  C003 has      96      32      32        0.43
-    4  C004 has     478     160     160        0.00
-    5  C005 has    1704     569     569        0.00
-    6  C006 has     468     156     156        0.00
-    7  C007 has     516     174     174        0.04
-    8  C008 has    1685     565     565        0.00
-    9  C009 has     480     160     160        0.07
-   10  C010 has    1741     583     583        0.00
-   12  C012 has      99      33      33        2.13
-   13  C013 has     501     167     167        0.00
-   14  C014 has      87      29      29        3.74
- Total of12712 atoms and 4248 groups and 4239 residues were included
+    1  C001 has     142      48      48        5.44
+    2  C002 has     626     210     210        2.24
+    3  C003 has     102      34      34        3.93
+    4  C004 has     656     220     220        2.27
+    5  C005 has    2027     676     675        0.78
+    6  C006 has     567     189     189        3.07
+    7  C007 has     645     217     217        2.22
+    8  C008 has    2018     675     675        0.00
+    9  C009 has     594     198     198        1.91
+   10  C010 has    2039     683     683        0.00
+   12  C012 has     138      46      46        5.28
+   13  C013 has     640     214     214        3.95
+   14  C014 has     156      52      52        6.51
+ Total of14616 atoms and 4883 groups and 4873 residues were included
 
+ <PME> Total heap storage needed =      279339
  Fill Ewald table: Number of points=     10000 EWXmax=    4.250000
  fill erfc table: linear inter has rms error = 0.979220D-08 maximum error = 0.218740D-07
  fill erfc table: cubic spline has rms error = 0.360331D-11 maximum error = 0.108438D-10
@@ -444,7 +411,8 @@ Evaluating: INT(0.34*35.6263665)
  CGONNB =  0.000 CGOFNB = 10.000
  WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
  NBXMOD =      5
- EWALD OPTIONS: KAPPA  =  0.340 KMAX   =      5 KSQMAX =     27
+ PME EWALD OPTIONS: KAPPA  =  0.340  QCOR =  0.000  Bspline order = 6
+ FFTX=  36  FFTY=  36  FFTZ=  36
                 Using Pub FFT
                 Real-to-Complex FFT
  There are        0 atom  pairs and        0 atom  exclusions.
@@ -457,43 +425,41 @@ Evaluating: INT(0.34*35.6263665)
  == PRIMARY == SPACE FOR  1838783 ATOM PAIRS AND        0 GROUP PAIRS
 
  General atom nonbond list generation found:
-  1435438 ATOM PAIRS WERE FOUND FOR ATOM LIST
-    73244 GROUP PAIRS REQUIRED ATOM SEARCHES
+  1432371 ATOM PAIRS WERE FOUND FOR ATOM LIST
+    73180 GROUP PAIRS REQUIRED ATOM SEARCHES
 
- SPACE FOR  2848866 ATOM PAIRS AND        0 GROUP PAIRS
+ SPACE FOR  1832596 ATOM PAIRS AND        0 GROUP PAIRS
 
  Image nonbond list generation found:
-   871769 ATOM PAIRS WERE FOUND FOR ATOM LIST
+   430816 ATOM PAIRS WERE FOUND FOR ATOM LIST
         0 ATOM PAIRS WERE FOUND FOR ATOM SELF LIST
-    70591 GROUP PAIRS REQUIRED ATOM SEARCHES
+    41032 GROUP PAIRS REQUIRED ATOM SEARCHES
 
   
- VCLOSE: Closing unit   99 with status "KEEP"
-
-                    RETURNING TO INPUT STREAM     5
+ CHARMM>     
   
  CHARMM>     
   
  CHARMM>    energy omm
 
- SELECTED IMAGES ATOMS BEING CENTERED ABOUT  0.000000  0.000000  0.000000
+ SELECTED IMAGES ATOMS BEING CENTERED ABOUT 19.298178 19.298178 19.298178
 
  <MKIMAT2>: updating the image atom lists and remapping
  Transformation   Atoms  Groups  Residues  Min-Distance
-    1  C001 has     127      43      43        0.73
-    2  C002 has     464     156     156        0.00
-    3  C003 has      96      32      32        0.43
-    4  C004 has     478     160     160        0.00
-    5  C005 has    1704     569     569        0.00
-    6  C006 has     468     156     156        0.00
-    7  C007 has     516     174     174        0.04
-    8  C008 has    1685     565     565        0.00
-    9  C009 has     480     160     160        0.07
-   10  C010 has    1741     583     583        0.00
-   12  C012 has      99      33      33        2.13
-   13  C013 has     501     167     167        0.00
-   14  C014 has      87      29      29        3.74
- Total of12712 atoms and 4248 groups and 4239 residues were included
+    1  C001 has     142      48      48        5.44
+    2  C002 has     626     210     210        2.24
+    3  C003 has     102      34      34        3.93
+    4  C004 has     656     220     220        2.27
+    5  C005 has    2027     676     675        0.78
+    6  C006 has     567     189     189        3.07
+    7  C007 has     645     217     217        2.22
+    8  C008 has    2018     675     675        0.00
+    9  C009 has     594     198     198        1.91
+   10  C010 has    2039     683     683        0.00
+   12  C012 has     138      46      46        5.28
+   13  C013 has     640     214     214        3.95
+   14  C014 has     156      52      52        6.51
+ Total of14616 atoms and 4883 groups and 4873 residues were included
 
  <MAKGRP> found      0 image group exclusions.
 
@@ -504,34 +470,38 @@ Evaluating: INT(0.34*35.6263665)
  CGONNB =  0.000 CGOFNB = 10.000
  WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
  NBXMOD =      5
- EWALD OPTIONS: KAPPA  =  0.340 KMAX   =      5 KSQMAX =     27
+ PME EWALD OPTIONS: KAPPA  =  0.340  QCOR =  0.000  Bspline order = 6
+ FFTX=  36  FFTY=  36  FFTZ=  36
                 Using Pub FFT
                 Real-to-Complex FFT
- There are  1435438 atom  pairs and     4453 atom  exclusions.
+ There are  1432371 atom  pairs and     4453 atom  exclusions.
  There are        0 group pairs and       23 group exclusions.
  Generating nonbond list with Exclusion mode = 5
  == PRIMARY == SPACE FOR  1838783 ATOM PAIRS AND        0 GROUP PAIRS
 
  General atom nonbond list generation found:
-  1435438 ATOM PAIRS WERE FOUND FOR ATOM LIST
-    73244 GROUP PAIRS REQUIRED ATOM SEARCHES
+  1432371 ATOM PAIRS WERE FOUND FOR ATOM LIST
+    73180 GROUP PAIRS REQUIRED ATOM SEARCHES
 
- SPACE FOR  2848866 ATOM PAIRS AND        0 GROUP PAIRS
+ SPACE FOR  1832596 ATOM PAIRS AND        0 GROUP PAIRS
 
  Image nonbond list generation found:
-   871769 ATOM PAIRS WERE FOUND FOR ATOM LIST
+   430816 ATOM PAIRS WERE FOUND FOR ATOM LIST
         0 ATOM PAIRS WERE FOUND FOR ATOM SELF LIST
-    70591 GROUP PAIRS REQUIRED ATOM SEARCHES
+    41032 GROUP PAIRS REQUIRED ATOM SEARCHES
 
-Setup Kspace: Number of wave-vectors =        309
 get_PlatformDefaults> Finding default platform values
 get_PlatformDefaults> Default values found: platform=CUDA precision=single deviceid=0
 Setup_OpenMM: Initializing OpenMM context
 CHARMM> Using switching functions for vdW interactions and OpenMM PME/RxnFld for electrostatics
 CHARMM> Using OpenMM nb routines.
+CHARMM> configuring OpenMM PME with
+        alpha     0.3400
+        fft   36   36   36
+
 NBFIxes in effect, using CustomNonbondedForce
 CHARMM> OpenMM switching function selection.
-CHARMM> Electrostatic options: switch=F fswitch=F fshift=F PME/Ewald=F RxnFld=F
+CHARMM> Electrostatic options: switch=F fswitch=F fshift=F PME/Ewald=T RxnFld=F
 CHARMM> van der Waals options: vswitch=F vfswitch=T OpenMM vdW switch=F
 Init_context: Using OpenMM platform CUDA      
        CudaDeviceIndex = 0
@@ -542,10 +512,10 @@ ENER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
 ENER CROSS:           CMAPs        PMF1D        PMF2D        PRIMO
 ENER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
  ----------       ---------    ---------    ---------    ---------    ---------
-ENER>        0 -18554.19615      0.00000      0.17745
-ENER INTERN>      678.79931    402.37667      0.00000     28.84236      0.09032
+ENER>        0 -16485.61004      0.00000      4.38412
+ENER INTERN>      678.79736    402.37614      0.00000     28.84235      0.09032
 ENER CROSS>        -5.44175      0.00000      0.00000      0.00000
-ENER EXTERN>   -19658.86311      0.00000      0.00000      0.00000      0.00000
+ENER EXTERN>   -17590.27448      0.00000      0.00000      0.00000      0.00000
  ----------       ---------    ---------    ---------    ---------    ---------
   
  CHARMM>     
@@ -554,17 +524,6 @@ ENER EXTERN>   -19658.86311      0.00000      0.00000      0.00000      0.00000
   
  CHARMM>    set nsteps = 10
  Parameter: NSTEPS <- "10"
-  
- CHARMM>    set cutoff = 11
- Parameter: CUTOFF <- "11"
-  
- CHARMM>    set ctofnb = 8
- Parameter: CTOFNB <- "8"
-  
- CHARMM>    set ctonnb = 7.5
- Parameter: CTONNB <- "7.5"
-  
- CHARMM>     
   
  CHARMM>     
   
@@ -598,6 +557,87 @@ ENER EXTERN>   -19658.86311      0.00000      0.00000      0.00000      0.00000
   
  CHARMM>     
   
+ CHARMM>    coor copy comp second
+ SELECTED COORDINATES COPIED TO THE COMPARISON SET.
+
+  
+ CHARMM>    coor copy comp
+ SELECTED COORDINATES COPIED TO THE COMPARISON SET.
+
+  
+ CHARMM>     
+  
+ CHARMM>    coordinate statistics select all end
+ SELRPN>   4266 atoms have been selected out of   4266
+ STATISTICS FOR      4266 SELECTED ATOMS:
+    XMIN =    0.010054 XMAX =   38.606410 XAVE =   19.090620
+    YMIN =    0.039751 YMAX =   38.666683 YAVE =   19.405005
+    ZMIN =    0.262300 ZMAX =   38.078375 ZAVE =   19.106445
+    WMIN =    0.000000 WMAX =    0.000000 WAVE =    0.000000
+  
+ CHARMM>    coordinate statistics comp select all end
+ SELRPN>   4266 atoms have been selected out of   4266
+ STATISTICS FOR      4266 SELECTED ATOMS:
+    XMIN =    0.010054 XMAX =   38.606410 XAVE =   19.090620
+    YMIN =    0.039751 YMAX =   38.666683 YAVE =   19.405005
+    ZMIN =    0.262300 ZMAX =   38.078375 ZAVE =   19.106445
+    WMIN =    0.000000 WMAX =    0.000000 WAVE =    0.000000
+  
+ CHARMM>    coordinate statistics comp second select all end
+ SELRPN>   4266 atoms have been selected out of   4266
+ STATISTICS FOR      4266 SELECTED ATOMS:
+    XMIN =    0.010054 XMAX =   38.606410 XAVE =   19.090620
+    YMIN =    0.039751 YMAX =   38.666683 YAVE =   19.405005
+    ZMIN =    0.262300 ZMAX =   38.078375 ZAVE =   19.106445
+    WMIN =    0.000000 WMAX =    0.000000 WAVE =    0.000000
+  
+ CHARMM>     
+  
+ CHARMM>    write coor card name before.cor
+ VOPEN> Attempting to open::before.cor::
+ RDTITL> * BEFORE DYNAMICES
+ RDTITL> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    coor print unit 6 comp second sele ires 3 end
+ SELRPN>      3 atoms have been selected out of   4266
+ NOTE: A SELECTED SUBSET OF ATOMS WILL BE USED
+
+
+          COORDINATE FILE MODULE
+ TITLE>  * BEFORE DYNAMICES
+ TITLE>  *  DATE:    12/10/16      8:57:29      CREATED BY USER: ra15808
+ TITLE>  *
+         3  EXT
+        49         3  TIP3      OH2            13.4062868944       10.5687307164        6.6990617341  BWAT      1               0.0000000000
+        50         3  TIP3      H1             13.0911182530       11.4905132356        6.5441924903  BWAT      1               0.0000000000
+        51         3  TIP3      H2             12.6147975353       10.0757488735        6.4044200928  BWAT      1               0.0000000000
+  
+ CHARMM>    coor print unit 6 sele ires 3 end
+ SELRPN>      3 atoms have been selected out of   4266
+ NOTE: A SELECTED SUBSET OF ATOMS WILL BE USED
+
+
+          COORDINATE FILE MODULE
+ TITLE>  * BEFORE DYNAMICES
+ TITLE>  *  DATE:    12/10/16      8:57:29      CREATED BY USER: ra15808
+ TITLE>  *
+         3  EXT
+        49         3  TIP3      OH2            13.4062868944       10.5687307164        6.6990617341  BWAT      1               0.0000000000
+        50         3  TIP3      H1             13.0911182530       11.4905132356        6.5441924903  BWAT      1               0.0000000000
+        51         3  TIP3      H2             12.6147975353       10.0757488735        6.4044200928  BWAT      1               0.0000000000
+  
+ CHARMM>    coor rms comp second sele ires 3 end
+ SELRPN>      3 atoms have been selected out of   4266
+ TOTAL SQUARE DIFF IS      0.0000  DENOMINATOR IS      3.0000
+       THUS RMS DIFF IS    0.000000
+ RMS FOUND FOR SELECTED COORDINATES WITHOUT ROTATION
+  
+ CHARMM>     
+  
  CHARMM>    ! Run NVE dynamics, write restart file
  CHARMM>    calc nwrite = int ( @nsteps / 10 )
  Parameter: NSTEPS -> "10"
@@ -622,7 +662,7 @@ Evaluating: INT(10/10)
   IUNREA = -1         IUNWRI = 20          IUNOS = -1
   IUNCRD = -1         IUNVEL = -1          KUNIT = -1
 
- SELECTED IMAGES ATOMS BEING CENTERED ABOUT  0.000000  0.000000  0.000000
+ SELECTED IMAGES ATOMS BEING CENTERED ABOUT 19.298178 19.298178 19.298178
 
  NONBOND OPTION FLAGS: 
      ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VFSWIt  
@@ -631,10 +671,11 @@ Evaluating: INT(10/10)
  CGONNB =  0.000 CGOFNB = 10.000
  WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
  NBXMOD =      5
- EWALD OPTIONS: KAPPA  =  0.340 KMAX   =      5 KSQMAX =     27
+ PME EWALD OPTIONS: KAPPA  =  0.340  QCOR =  0.000  Bspline order = 6
+ FFTX=  36  FFTY=  36  FFTZ=  36
                 Using Pub FFT
                 Real-to-Complex FFT
- There are  1435438 atom  pairs and     4453 atom  exclusions.
+ There are  1432371 atom  pairs and     4453 atom  exclusions.
  There are        0 group pairs and       23 group exclusions.
 Using Image CUBE search
 Using Image CUBE search
@@ -653,7 +694,7 @@ Using Image CUBE search
 
   TIME STEP =  4.09097E-02 AKMA       2.00000E-03 PS
 
-  RANDOM NUM. GEN. SEED(S) = 388625472 388625472 388625472 388625472
+  RANDOM NUM. GEN. SEED(S) = 87537938 87537938 87537938 87537938
 
            SHAKE TOLERANCE =     0.10000E-07
  NUMBER OF DEGREES OF FREEDOM =   8560
@@ -661,13 +702,13 @@ Using Image CUBE search
           GAUSSIAN OPTION                  IS            1
           VELOCITIES ASSIGNED AT TEMPERATURE =    372.5000
           SEED FOR RANDOM NUMBER GENERATOR IS:
-          SEEDS> 388625472 388625472 388625472 388625472
+          SEEDS> 87537938 87537938 87537938 87537938
 
      DETAILS ABOUT CENTRE OF MASS
-     POSITION          :  -7.82796174E-02   6.46001223E-02  -5.93012825E-02
-     VELOCITY          :   1.63408099E-03  -3.43902190E-04   4.21019243E-05
-     ANGULAR MOMENTUM  :    672.15122       -2530.1836       -2616.8871    
-     KINETIC ENERGY    :   3.60822911E-02
+     POSITION          :    19.145450        19.452515        19.096899    
+     VELOCITY          :  -1.69148940E-03   7.07888074E-04   1.66582524E-03
+     ANGULAR MOMENTUM  :    54.365985       -119.85450        795.97037    
+     KINETIC ENERGY    :   7.93634448E-02
 OpenMM: Velocities scaled or randomized
 DYNA DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
 DYNA PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
@@ -676,82 +717,82 @@ DYNA CROSS:           CMAPs        PMF1D        PMF2D        PRIMO
 DYNA EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
 DYNA PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
  ----------       ---------    ---------    ---------    ---------    ---------
-DYNA>        0      0.00000 -13877.82082   4676.37486 -18554.19568    549.82684
+DYNA>        0      0.00000 -11679.41579   4806.19424 -16485.61003    565.09041
 DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
-DYNA INTERN>      678.79859    402.37623      0.00000     28.84235      0.09032
+DYNA INTERN>      678.79736    402.37614      0.00000     28.84235      0.09032
 DYNA CROSS>        -5.44175      0.00000      0.00000      0.00000
-DYNA EXTERN>   -19658.86146      0.00000      0.00000      0.00000      0.00000
-DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+DYNA EXTERN>   -17590.27448      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  57496.16929
  ----------       ---------    ---------    ---------    ---------    ---------
-DYNA>        1      0.00200 -13835.94149   4217.55940 -18053.50089    495.88141
+DYNA>        1      0.00200 -11638.07052   4369.81438 -16007.88490    513.78286
 DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
-DYNA INTERN>     1144.03526    443.61945      0.00000     29.01275      0.09739
-DYNA CROSS>        -5.43542      0.00000      0.00000      0.00000
-DYNA EXTERN>   -19664.82327      0.00000      0.00000      0.00000      0.00000
-DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+DYNA INTERN>     1092.27942    461.38759      0.00000     28.98621      0.10558
+DYNA CROSS>        -5.37420      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17585.26948      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  57496.16929
  ----------       ---------    ---------    ---------    ---------    ---------
-DYNA>        2      0.00400 -13767.28987   3402.65911 -17169.94898    400.06915
+DYNA>        2      0.00400 -11570.57133   3593.06782 -15163.63915    422.45654
 DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
-DYNA INTERN>     1876.70805    569.31135      0.00000     29.40696      0.13450
-DYNA CROSS>        -5.42405      0.00000      0.00000      0.00000
-DYNA EXTERN>   -19640.08552      0.00000      0.00000      0.00000      0.00000
-DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+DYNA INTERN>     1758.80887    595.65965      0.00000     29.49666      0.15460
+DYNA CROSS>        -5.30495      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17542.45398      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  57496.16929
  ----------       ---------    ---------    ---------    ---------    ---------
-DYNA>        3      0.00600 -13764.11703   3146.44239 -16910.55942    369.94435
+DYNA>        3      0.00600 -11568.49874   3361.42655 -14929.92529    395.22121
 DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
-DYNA INTERN>     1900.74378    719.79743      0.00000     29.98984      0.19678
-DYNA CROSS>        -5.40525      0.00000      0.00000      0.00000
-DYNA EXTERN>   -19555.88339      0.00000      0.00000      0.00000      0.00000
-DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+DYNA INTERN>     1749.07980    746.06801      0.00000     30.29965      0.23274
+DYNA CROSS>        -5.23477      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17450.37072      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  57496.16929
  ----------       ---------    ---------    ---------    ---------    ---------
-DYNA>        4      0.00800 -13826.31061   3488.95758 -17315.26819    410.21573
+DYNA>        4      0.00800 -11629.23705   3713.76217 -15342.99922    436.64723
 DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
-DYNA INTERN>     1235.83593    826.49671      0.00000     30.70863      0.27711
-DYNA CROSS>        -5.37896      0.00000      0.00000      0.00000
-DYNA EXTERN>   -19403.20765      0.00000      0.00000      0.00000      0.00000
-DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+DYNA INTERN>     1094.19848    844.80141      0.00000     31.28920      0.33141
+DYNA CROSS>        -5.16456      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17308.45515      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  57496.16929
  ----------       ---------    ---------    ---------    ---------    ---------
-DYNA>        5      0.01000 -13861.13969   3626.94239 -17488.08208    426.43935
+DYNA>        5      0.01000 -11662.15919   3870.45140 -15532.61059    455.07003
 DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
-DYNA INTERN>      836.41575    842.97394      0.00000     31.49777      0.36727
-DYNA CROSS>        -5.34775      0.00000      0.00000      0.00000
-DYNA EXTERN>   -19193.98907      0.00000      0.00000      0.00000      0.00000
-DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+DYNA INTERN>      723.43708    846.59075      0.00000     32.35142      0.43820
+DYNA CROSS>        -5.09550      0.00000      0.00000      0.00000
+DYNA EXTERN>   -17130.33256      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  57496.16929
  ----------       ---------    ---------    ---------    ---------    ---------
-DYNA>        6      0.01200 -13818.78107   3122.33772 -16941.11879    367.11024
+DYNA>        6      0.01200 -11619.54716   3405.25126 -15024.79842    400.37392
 DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
-DYNA INTERN>     1220.25759    763.33428      0.00000     32.28508      0.45889
-DYNA CROSS>        -5.31611      0.00000      0.00000      0.00000
-DYNA EXTERN>   -18952.13974      0.00000      0.00000      0.00000      0.00000
-DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+DYNA INTERN>     1132.76731    747.84330      0.00000     33.38420      0.53812
+DYNA CROSS>        -5.02915      0.00000      0.00000      0.00000
+DYNA EXTERN>   -16934.30221      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  57496.16929
  ----------       ---------    ---------    ---------    ---------    ---------
-DYNA>        7      0.01400 -13762.07297   2542.01258 -16304.08555    298.87825
+DYNA>        7      0.01400 -11564.34851   2865.82251 -14430.17102    336.95035
 DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
-DYNA INTERN>     1745.68524    623.39455      0.00000     32.99955      0.54424
-DYNA CROSS>        -5.28892      0.00000      0.00000      0.00000
-DYNA EXTERN>   -18701.41991      0.00000      0.00000      0.00000      0.00000
-DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+DYNA INTERN>     1686.81349    587.31307      0.00000     34.30610      0.61600
+DYNA CROSS>        -4.96763      0.00000      0.00000      0.00000
+DYNA EXTERN>   -16734.25208      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  57496.16929
  ----------       ---------    ---------    ---------    ---------    ---------
-DYNA>        8      0.01600 -13776.89646   2619.51658 -16396.41304    307.99082
+DYNA>        8      0.01600 -11579.08286   2960.15509 -14539.23794    348.04154
 DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
-DYNA INTERN>     1556.15131    486.32137      0.00000     33.58118      0.61633
-DYNA CROSS>        -5.26980      0.00000      0.00000      0.00000
-DYNA EXTERN>   -18467.81264      0.00000      0.00000      0.00000      0.00000
-DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+DYNA INTERN>     1541.44193    430.17334      0.00000     35.05697      0.65987
+DYNA CROSS>        -4.91348      0.00000      0.00000      0.00000
+DYNA EXTERN>   -16541.65658      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  57496.16929
  ----------       ---------    ---------    ---------    ---------    ---------
-DYNA>        9      0.01800 -13845.13459   3153.50682 -16998.64141    370.77496
+DYNA>        9      0.01800 -11646.17271   3490.28560 -15136.45830    410.37187
 DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
-DYNA INTERN>      833.60241    415.00487      0.00000     33.99124      0.66919
-DYNA CROSS>        -5.25978      0.00000      0.00000      0.00000
-DYNA EXTERN>   -18276.64856      0.00000      0.00000      0.00000      0.00000
-DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+DYNA INTERN>      862.47359    340.06548      0.00000     35.59604      0.66419
+DYNA CROSS>        -4.86936      0.00000      0.00000      0.00000
+DYNA EXTERN>   -16370.38822      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  57496.16929
  ----------       ---------    ---------    ---------    ---------    ---------
-DYNA>       10      0.02000 -13871.06215   3241.48404 -17112.54619    381.11892
+DYNA>       10      0.02000 -11671.63158   3582.63664 -15254.26822    421.23009
 DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
-DYNA INTERN>      563.08655    442.48316      0.00000     34.21759      0.69823
-DYNA CROSS>        -5.25715      0.00000      0.00000      0.00000
-DYNA EXTERN>   -18147.77507      0.00000      0.00000      0.00000      0.00000
-DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+DYNA INTERN>      596.50586    351.22084      0.00000     35.89960      0.63092
+DYNA CROSS>        -4.83739      0.00000      0.00000      0.00000
+DYNA EXTERN>   -16233.68805      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      0.00000      0.00000      0.00000  57496.16929
  ----------       ---------    ---------    ---------    ---------    ---------
  DYNAMC> Averages for the last 10 steps:
 AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
@@ -761,49 +802,130 @@ AVER CROSS:           CMAPs        PMF1D        PMF2D        PRIMO
 AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
 AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
  ----------       ---------    ---------    ---------    ---------    ---------
-AVER>       10      0.02000 -13818.77879   3385.25395 -17204.03275    398.02273
+AVER>       10      0.02000 -11620.79413   3638.07888 -15258.87301    427.74873
 AVER PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
-AVER INTERN>     1235.57459    594.10121      0.00000     31.50300      0.37730
-AVER CROSS>        -5.34772      0.00000      0.00000      0.00000
-AVER EXTERN>   -19060.24057      0.00000      0.00000      0.00000      0.00000
-AVER PRESS>         0.00000      0.00000      0.00000      0.00000  45218.33781
+AVER INTERN>     1174.23665    577.59087      0.00000     32.31895      0.40563
+AVER CROSS>        -5.11207      0.00000      0.00000      0.00000
+AVER EXTERN>   -17038.31305      0.00000      0.00000      0.00000      0.00000
+AVER PRESS>         0.00000      0.00000      0.00000      0.00000  57496.16929
  ----------       ---------    ---------    ---------    ---------    ---------
  DYNAMC> RMS fluctuations for the last 10 steps:
-FLUC>       10      0.02000     42.28536    597.50530    625.71526     70.25195
+FLUC>       10      0.02000     41.48436    537.10535    567.25874     63.15040
 FLUC PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
-FLUC INTERN>      458.08373    161.79127      0.00000      1.93825      0.22202
-FLUC CROSS>         0.06948      0.00000      0.00000      0.00000
-FLUC EXTERN>      554.26306      0.00000      0.00000      0.00000      0.00000
-FLUC PRESS>         0.00000      0.00000      0.00000      0.00000      0.00069
+FLUC INTERN>      422.57181    184.67438      0.00000      2.56619      0.22012
+FLUC CROSS>         0.19868      0.00000      0.00000      0.00000
+FLUC EXTERN>      481.72990      0.00000      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000      0.00000      0.00000      0.00000      0.00000
  ----------       ---------    ---------    ---------    ---------    ---------
 
  OpenMM was used to perform energy and force evaluation.
 
 
      DETAILS ABOUT CENTRE OF MASS
-     POSITION          :    17.902701        17.842025        17.637317    
-     VELOCITY          :  -4.58749813E-10  -6.83275784E-10   5.68389342E-10
-     ANGULAR MOMENTUM  :    511.52171        1599.9867        744.47926    
-     KINETIC ENERGY    :   1.29364675E-14
+     POSITION          :    19.145450        19.452514        19.096898    
+     VELOCITY          :  -2.61818921E-07  -3.78843286E-07  -3.94571636E-07
+     ANGULAR MOMENTUM  :    14.514277       -136.90990        841.55056    
+     KINETIC ENERGY    :   4.75566706E-09
  WRIDYN: RESTart file was written at step      10
  VCLOSE: Closing unit   20 with status "KEEP"
 
      DETAILS ABOUT CENTRE OF MASS
-     POSITION          :    17.902701        17.842025        17.637317    
-     VELOCITY          :   9.47829404E-18   1.49386156E-18  -2.06049870E-18
-     ANGULAR MOMENTUM  :    511.52171        1599.9867        744.47926    
-     KINETIC ENERGY    :   1.24550239E-30
+     POSITION          :    19.145450        19.452514        19.096898    
+     VELOCITY          :   6.72774290E-18   5.84881143E-19  -1.16418177E-17
+     ANGULAR MOMENTUM  :    14.514277       -136.90990        841.55056    
+     KINETIC ENERGY    :   2.34236823E-30
   
  CHARMM>     
   
+ CHARMM>     
+  
+ CHARMM>    write coor card name after.cor
+ VOPEN> Attempting to open::after.cor::
+ RDTITL> * AFTER DYNAMICES
+ RDTITL> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    coordinate statistics select all end
+ SELRPN>   4266 atoms have been selected out of   4266
+ STATISTICS FOR      4266 SELECTED ATOMS:
+    XMIN =    0.003405 XMAX =   38.593700 XAVE =   19.090244
+    YMIN =    0.121029 YMAX =   38.701930 YAVE =   19.406561
+    ZMIN =    0.269578 ZMAX =   38.121247 ZAVE =   19.105580
+    WMIN =    0.000000 WMAX =    0.000000 WAVE =    0.000000
+  
+ CHARMM>    coordinate statistics comp select all end
+ SELRPN>   4266 atoms have been selected out of   4266
+ STATISTICS FOR      4266 SELECTED ATOMS:
+    XMIN =   -2.945301 XMAX =    3.189722 XAVE =   -0.002133
+    YMIN =   -2.947128 YMAX =    2.715246 YAVE =    0.014693
+    ZMIN =   -2.621920 ZMAX =    2.581127 ZAVE =   -0.010755
+    WMIN =    0.000000 WMAX =    0.000000 WAVE =    0.000000
+  
+ CHARMM>    coordinate statistics comp second select all end
+ SELRPN>   4266 atoms have been selected out of   4266
+ STATISTICS FOR      4266 SELECTED ATOMS:
+    XMIN =    0.010054 XMAX =   38.606410 XAVE =   19.090620
+    YMIN =    0.039751 YMAX =   38.666683 YAVE =   19.405005
+    ZMIN =    0.262300 ZMAX =   38.078375 ZAVE =   19.106445
+    WMIN =    0.000000 WMAX =    0.000000 WAVE =    0.000000
+  
+ CHARMM>     
+  
+ CHARMM>    coor print unit 6 comp second sele ires 3 end
+ SELRPN>      3 atoms have been selected out of   4266
+ NOTE: A SELECTED SUBSET OF ATOMS WILL BE USED
+
+
+          COORDINATE FILE MODULE
+ TITLE>  * AFTER DYNAMICES
+ TITLE>  *  DATE:    12/10/16      8:57:29      CREATED BY USER: ra15808
+ TITLE>  *
+         3  EXT
+        49         3  TIP3      OH2            13.4062868944       10.5687307164        6.6990617341  BWAT      1               0.0000000000
+        50         3  TIP3      H1             13.0911182530       11.4905132356        6.5441924903  BWAT      1               0.0000000000
+        51         3  TIP3      H2             12.6147975353       10.0757488735        6.4044200928  BWAT      1               0.0000000000
+  
+ CHARMM>    coor print unit 6 sele ires 3 end
+ SELRPN>      3 atoms have been selected out of   4266
+ NOTE: A SELECTED SUBSET OF ATOMS WILL BE USED
+
+
+          COORDINATE FILE MODULE
+ TITLE>  * AFTER DYNAMICES
+ TITLE>  *  DATE:    12/10/16      8:57:29      CREATED BY USER: ra15808
+ TITLE>  *
+         3  EXT
+        49         3  TIP3      OH2            13.3985197544       10.5915021896        6.7230582237  BWAT      1               0.0000000000
+        50         3  TIP3      H1             13.1088030338       11.5308523178        6.6697591543  BWAT      1               0.0000000000
+        51         3  TIP3      H2             12.6251173019       10.1496338844        6.3256341219  BWAT      1               0.0000000000
+  
+ CHARMM>    coor rms comp second sele ires 1 end
+ SELRPN>     24 atoms have been selected out of   4266
+ TOTAL SQUARE DIFF IS      0.3976  DENOMINATOR IS     24.0000
+       THUS RMS DIFF IS    0.128717
+ RMS FOUND FOR SELECTED COORDINATES WITHOUT ROTATION
+  
+ CHARMM>    coor rms comp second sele ires 3 end
+ SELRPN>      3 atoms have been selected out of   4266
+ TOTAL SQUARE DIFF IS      0.0306  DENOMINATOR IS      3.0000
+       THUS RMS DIFF IS    0.101052
+ RMS FOUND FOR SELECTED COORDINATES WITHOUT ROTATION
+  
+ CHARMM>    coor rms comp second sele ires 1412 end
+ SELRPN>      1 atoms have been selected out of   4266
+ TOTAL SQUARE DIFF IS      0.0006  DENOMINATOR IS      1.0000
+       THUS RMS DIFF IS    0.025463
+ RMS FOUND FOR SELECTED COORDINATES WITHOUT ROTATION
+  
 $$$$$$  New timer profile $$$$$
    Shake Setup                     0.00 Other:            0.00
-   First List                      0.17 Other:            0.00
-      dynamc                          0.01 Other:            0.00
-   Dynamics total                  0.06 Other:            0.05
+   First List                      0.14 Other:            0.00
+      dynamc                          0.00 Other:            0.00
+   Dynamics total                  0.05 Other:            0.05
       xdistm setup                    0.00 Other:            0.00
-      xdistm Build list               0.16 Other:            0.00
-   List time                       0.16 Other:            0.00
+      xdistm Build list               0.13 Other:            0.00
+   List time                       0.13 Other:            0.00
             Recip Ewald time                0.00 Other:            0.00
          Ewald time                      0.00 Other:            0.00
       Nonbond force                   0.00 Other:            0.00
@@ -812,16 +934,16 @@ $$$$$$  New timer profile $$$$$
          Dihedral energy                 0.00 Other:            0.00
          Restraints energy               0.00 Other:            0.00
       INTRNL energy                   0.00 Other:            0.00
-   Energy time                     0.85 Other:            0.85
-      load plugins                    0.02 Other:            0.00
+   Energy time                     0.44 Other:            0.44
+      load plugins                    0.03 Other:            0.00
       build system                    0.01 Other:            0.00
-      init context                    0.75 Other:            0.00
-   OpenMM overhead                 0.78 Other:            0.00
- Total time                      5.25 Other:            3.22
+      init context                    1.08 Other:            0.00
+   OpenMM overhead                 1.11 Other:            0.00
+ Total time                      3.75 Other:            1.86
 
                     NORMAL TERMINATION BY END OF FILE
                     MOST SEVERE WARNING WAS AT LEVEL  0
 
                     $$$$$ JOB ACCOUNTING INFORMATION $$$$$
-                     ELAPSED TIME:     5.25  SECONDS 
-                         CPU TIME:     4.01  SECONDS 
+                     ELAPSED TIME:     3.75  SECONDS 
+                         CPU TIME:     3.52  SECONDS 

@@ -9,7 +9,7 @@ calc kmz int( @kppa*@length )
 NBONDED inbfrq -1 imgfrq -1 nbxmod 5 -                                              ! C36 DEFAULTS 
         atom cdiel -                                                                 ! use atom based electrostatics, C36 DEFAULTS
         vatom vdistance vfswitch -                                                  ! C36 DEFAULTS   
-        elec ewald kappa @kppa spline nopm kmxx @kmx kmxy @kmy kmxz @kmz   -        ! standard Ewald SUMMATION
+        elec ewald  kappa @kppa spline nopm kmxx @kmx kmxy @kmy kmxz @kmz   -        ! standard Ewald SUMMATION
         cutnb 14.0 ctofnb 12.0 ctonnb 10.0 -                                        ! C36 DEFAULTS  
         cutim 14.0 -                                                                ! must be same as cutnb
         eps 1.0 e14fac 1.0 wmin 1.5                                                 ! C36 DEFAULTS   

@@ -20,10 +20,10 @@ read coor card name @molname.cor
 !
 set ctr 1
 label loop
-    read sequ pdb  name wt@ctr.pdb
+    read sequ pdb name wt@ctr.pdb
     gene wt@ctr setup first none last none nodihe noangl
     incr ctr by 1
-if @ctr .le. 12 then goto loop
+if @ctr .le. 8 then goto loop
 
 read sequ pdb name ion.pdb
 gene ion setup first none last none nodihe noangl
@@ -35,7 +35,7 @@ set ctr 1
 label loop2
      read coor pdb resid name wt@ctr.pdb sele segid wt@ctr end
      incr ctr by 1
-if @ctr .le. 12 then goto loop2
+if @ctr .le. 8 then goto loop2
 
 read coor pdb resid name ion.pdb sele segid ion end
 
@@ -46,9 +46,12 @@ set ctr 1
 label loop3
   join WAT1 WT@ctr renumber
   incr ctr 1
-if @ctr .le. 12 then goto loop3
+if @ctr .le. 8 then goto loop3
 
 rename segid BWAT sele segid WAT1 end
+
+coor statistics 
+
 
 write psf card name 2agy_solv_ion.psf
 * AADH Water box added via VMD with ions
