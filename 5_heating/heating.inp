@@ -60,7 +60,7 @@ set nsteps 5000
 set nwrite 100
 set gamma 1
 
-coor copy comp 
+coor copy comp second
 !
 ! Heating loop
 !
@@ -72,7 +72,7 @@ set tinc 25
 
 set tcurr @tstart
 
-cons harm absolute expo 2 force 10 sele backbone_prot end mass comp 
+cons harm absolute expo 2 force 10 sele backbone_prot end mass 
 
 label loop
 
@@ -97,8 +97,8 @@ label loop
          ntrfq 100 -
          omm langevin gamma @gamma 
     
-    coor rms copy sele backbone_prot end
-    coor rms copy sele segid BT* .or. segid AL* end    
+    coor rms comp second sele backbone_prot end
+    coor rms comp second sele segid BT* .or. segid AL* end    
 
     write coor card name 2agy-heating-@tcurr.cor
     * 2agy intermediate output.  Heated to @tcurr K
@@ -109,16 +109,4 @@ label loop
     calc tcurr = @tcurr + @tinc
     if @tcurr .le. @tend goto loop
   
-
-!
-! Write out coordinates
-!
-write coor card name 2agy_heated.cor
-* 2agy, minimized, neutralized, heated to 310K
-*
-
-write coor pdb name 2agy_heated.cor
-* 2agy, minimized, neutralized, heated to 310K
-*
-
 stop

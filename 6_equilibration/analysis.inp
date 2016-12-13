@@ -1,0 +1,70 @@
+* Equilibration in stages 
+*
+
+envi OPENMM_PLATFORM  "CUDA"   ! /CUDA/Reference   Use OpenMM platform based on
+envi OPENMM_PRECISION "mixed"   ! /mixed/double    Do calculations in single
+
+prnlev 5
+set datadir ../common
+stream @datadir/toppar_water_ions_fixed.str
+read rtf card name @datadir/top_all36_prot.rtf append flex
+read rtf card name @datadir/aadh_topologies.rtf append flex
+read para card name @datadir/par_all36_prot_mod.prm append flex
+read para card name @datadir/aadh_parameters.prm append flex
+
+read psf card name ../common/2agy_final.psf
+read coord card name ../common/2agy-heating-310.cor
+
+define protein sele segid AL* .or. segid BT* end
+define water sele segid *WAT end
+define ions sele segid ion end
+define backbone_prot sele type n .or. type ca .or. type c .or. type o end
+
+!
+! Setup crystal
+!
+set xdim 132.94535
+calc cen @xdim/2
+set cutim 14
+
+crystal defi cubic @xdim @xdim @xdim 90.0 90.0 90.0
+crystal build cutoff @cutim noper 0
+image byseg xcen @cen ycen @cen zcen @cen sele protein end
+image byres xcen @cen ycen @cen zcen @cen sele water .or. ions end
+
+!
+! Setup non-bonded forces
+!
+set ftx 144
+set fty 144
+set ftz 144
+NBONDED inbfrq -1 imgfrq -1 nbxmod 5 -                                              ! C36 DEFAULTS
+        atom cdiel fshift -                                                         ! use atom based electrostatics, C36 DEFAULTS
+        vatom vdistance vfswitch -                                                  ! C36 DEFAULTS
+        elec ewald pmew fftx @ftx ffty @fty fftz @ftz kappa .34 spline order 6 -    ! PME SUMMATION
+        cutnb 14.0 ctofnb 12.0 ctonnb 10.0 -                                        ! C36 DEFAULTS
+        cutim @cutim -                                                                ! must be same as cutnb
+        eps 1.0 e14fac 1.0 wmin 1.5                                                 ! C36 DEFAULTS
+
+faster on
+shake fast bonh tol 1.0e-8 para
+set echeck = echeck -1
+coor copy comp second 
+
+set curres 10
+set incres 1
+set endres 0
+set ctr 10 
+
+label loop
+ 
+    open read file unit @ctr name 2agy-equil-310-1-res-@curres.dcd
+
+    calc curres = @curres - @incres
+    incr ctr
+    if @curres .ge. @endres goto loop
+
+correl maxtimesteps 1100 maxs 11 
+
+
+stop
