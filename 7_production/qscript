@@ -1,0 +1,13 @@
+#!/bin/bash --noprofile
+
+in_file=$1
+shift
+bn=`basename $in_file`
+bn=${bn/\.inp/}
+bn=${bn:0:15}
+qsub -N $bn -j oe -q gpu -l walltime=25:00:00,nodes=1:ppn=1:gpus=1 $* <<EOF
+umask 2
+cd \$PBS_O_WORKDIR
+charmm -i $in_file > $bn.out
+EOF
+
