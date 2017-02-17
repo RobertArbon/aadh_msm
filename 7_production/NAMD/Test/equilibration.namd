@@ -1,0 +1,92 @@
+# 
+# Script to run production of AADH at 310K and 1atm 
+# 
+
+# Inputs
+coordinates			2agy-heating-310.pdb
+structure   		2agy_final.psf
+parameters  		par_all36_prot_mod.prm 
+parameters  		aadh_parameters.prm
+parameters  		toppar_water_ions_namd.str	
+paratypecharmm 		on 
+outputname 			2agy-equi-restr-310k-1atm
+#restartfreq			100000
+
+# force field parameters
+exclude                 scaled1-4
+1-4scaling              1.0
+cutoff                  12
+switching               On
+switchdist              10 
+pairlistdist            14
+
+# integrator params
+timestep                2.0
+numsteps                500
+nonbondedFreq           1
+PME                     yes
+PMEGridSizeX            144
+PMEGridSizeY            144
+PMEGridSizeZ            144
+PMEInterpOrder			6  # Default is 4, 6 is CHARMM default. 
+# PMEProcessors           ? # Experiment with this to get good performance. 
+# FFTWEstimate			yes # This could improve performance.
+# FFTWUseWisdom			yes # Saves 
+fullElectFrequency      1
+stepspercycle           20  # non-bonded recalculation 
+
+# PBCs
+cellBasisVector1 		132.94535 0 0 
+cellBasisVector2		0 132.94535 0 
+cellBasisVector3		0 0 132.94535
+cellOrigin 				0 0 0 
+XSTfreq					500
+wrapWater				on
+
+# Constraints
+rigidBonds 				all
+
+# Conditions
+temperature				310.0
+langevin 				on
+langevinTemp			310.0
+langevinDamping			1.0
+useGroupPressure		yes
+LangevinPiston			on
+LangevinPistonTarget	1.01325
+LangevinPistonPeriod	200
+LangevinPistonDecay     100
+LangevinPistonTemp		310.0
+
+
+
+
+
+define protein sele segid AL* .or. segid BT* end
+define water sele segid *WAT end
+define ions sele segid ion end
+define backbone_prot sele type n .or. type ca .or. type c .or. type o end
+
+set xdim 132.94535
+calc cen @xdim/2
+set cutim 14
+
+crystal defi cubic @xdim @xdim @xdim 90.0 90.0 90.0
+crystal build cutoff @cutim noper 0
+image byseg xcen @cen ycen @cen zcen @cen sele protein end
+image byres xcen @cen ycen @cen zcen @cen sele water .or. ions end
+
+!
+! Setup non-bonded forces
+!
+set ftx 144
+set fty 144
+set ftz 144
+NBONDED inbfrq -1 imgfrq -1 nbxmod 5 -                                              ! C36 DEFAULTS
+        atom cdiel fshift -                                                         ! use atom based electrostatics, C36 DEFAULTS
+        vatom vdistance vfswitch -                                                  ! C36 DEFAULTS
+        elec ewald pmew fftx @ftx ffty @fty fftz @ftz kappa .34 spline order 6 -    ! PME SUMMATION
+        cutnb 14.0 ctofnb 12.0 ctonnb 10.0 -                                        ! C36 DEFAULTS
+        cutim @cutim -                                                                ! must be same as cutnb
+        eps 1.0 e14fac 1.0 wmin 1.5                                                 ! C36 DEFAULTS
+

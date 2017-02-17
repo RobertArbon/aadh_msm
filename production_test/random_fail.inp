@@ -1,0 +1,14 @@
+* Charmm script to randomly fail
+*
+
+bomlev 5
+
+set num ?rand
+
+if @num .le. 0.9 then
+   read coor card name "something" 
+endif
+
+
+stop
+

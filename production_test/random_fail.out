@@ -1,0 +1,44 @@
+1
+                 Chemistry at HARvard Macromolecular Mechanics
+           (CHARMM) - Developmental Version 41a2   February 15, 2016            
+                             Git commit ID f89d5df                              
+       Copyright(c) 1984-2014  President and Fellows of Harvard College
+                              All Rights Reserved
+     Current operating system: Linux-2.6.32-642.6.2.el6.x86_64(x86_64)@newb     
+                 Created on  2/6/17 at 16:44:20 by user: ra15808     
+
+            Maximum number of ATOMS:    360720, and RESidues:      120240
+ RDTITL> * CHARMM SCRIPT TO RANDOMLY FAIL
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    bomlev 5
+  
+ CHARMM>     
+  
+ CHARMM>    set num ?rand
+ RDCMND substituted energy or value "?RAND" to "0.997895429"
+ Parameter: NUM <- "0.997895429"
+  
+ CHARMM>     
+  
+ CHARMM>    if @num .le. 0.9 then
+ Parameter: NUM -> "0.997895429"
+ Comparing "0.997895429" and "0.9".
+ IF test evaluated as false.  Skip to ELSE or ENDIF
+  
+ CHARMM>     
+  
+ CHARMM>     
+  
+ CHARMM>    stop
+$$$$$$  New timer profile $$$$$
+ Total time                      0.02 Other:            0.00
+
+                    NORMAL TERMINATION BY NORMAL STOP
+                    NO WARNINGS WERE ISSUED
+
+                    $$$$$ JOB ACCOUNTING INFORMATION $$$$$
+                     ELAPSED TIME:     0.02  SECONDS 
+                         CPU TIME:     0.01  SECONDS 

@@ -1,0 +1,29 @@
+* Charmm script to randomly fail
+*
+
+prnlev 5
+bomlev 5
+set cut 0.1
+set num ?rand
+set input 2agy-310k-1atm-prod1.1
+set output 2agy-310k-1atm-prod1.2
+
+if @num .le. @cut then
+   read coor card name "something" 
+endif
+
+if @num .gt. @cut then
+  set datadir /panfs/panasas01/chem/ra15808/aadh/md/common
+  stream @datadir/toppar_water_ions_fixed.str
+  read rtf card name @datadir/top_all36_prot.rtf append flex
+  read rtf card name @datadir/aadh_topologies.rtf append flex
+  read para card name @datadir/par_all36_prot_mod.prm append flex
+  read para card name @datadir/aadh_parameters.prm append flex
+  
+  read psf card name @datadir/2agy_final.psf
+  read coord card name @input.cor
+  write coord card name @output.cor
+endif
+
+stop
+
