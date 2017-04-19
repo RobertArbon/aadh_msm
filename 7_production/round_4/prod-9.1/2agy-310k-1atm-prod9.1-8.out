@@ -1,0 +1,601 @@
+1
+                 Chemistry at HARvard Macromolecular Mechanics
+           (CHARMM) - Developmental Version 41a2   February 15, 2016            
+                             Git commit ID f89d5df                              
+       Copyright(c) 1984-2014  President and Fellows of Harvard College
+                              All Rights Reserved
+     Current operating system: Linux-2.6.32-642.6.2.el6.x86_64(x86_64)@node     
+                 Created on  3/23/17 at 15:16:30 by user: ra15808     
+
+            Maximum number of ATOMS:    360720, and RESidues:      120240
+ RDTITL> * PRODUCTION RUNS
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    envi OPENMM_PLATFORM  "CUDA"   ! /CUDA/Reference   Use OpenMM platform based on
+  
+ CHARMM>    envi OPENMM_PRECISION "mixed"   ! /mixed/double    Do calculations in single
+  
+ CHARMM>    envi OPENMM_DEVICE 0,1 !Two GPUs
+  
+ CHARMM>     
+  
+ CHARMM>    prnlev 5
+  
+ CHARMM>    set datadir /panfs/panasas01/chem/ra15808/aadh/md/common
+ Parameter: DATADIR <- "/PANFS/PANASAS01/CHEM/RA15808/AADH/MD/COMMON"
+  
+ CHARMM>    stream @datadir/toppar_water_ions_fixed.str
+ Parameter: DATADIR -> "/PANFS/PANASAS01/CHEM/RA15808/AADH/MD/COMMON"
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/aadh/md/common/toppar_water_ions_fixed.str::
+ OPNLGU> Unit 99 opened for READONLY access to /panfs/panasas01/chem/ra15808/aadh/md/common/toppar_water_ions_fixed.str
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * TOPLOGY AND PARAMETER INFORMATION FOR WATER AND IONS.
+ RDTITL> *
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    !Testcase
+ CHARMM>    !test_water_ions.inp
+ CHARMM>     
+  
+ CHARMM>    ! IMPORTANT NOTE: this file contains NBFixes between carboxylates and sodium,
+ CHARMM>    ! which will only apply if the main files containing carboxylate atom types
+ CHARMM>    ! have been read in first!
+ CHARMM>     
+  
+ CHARMM>    !references
+ CHARMM>    !
+ CHARMM>    !TIP3P water model
+ CHARMM>    !
+ CHARMM>    !W.L. Jorgensen; J.Chandrasekhar; J.D. Madura; R.W. Impey;
+ CHARMM>    !M.L. Klein; "Comparison of simple potential functions for
+ CHARMM>    !simulating liquid water", J. Chem. Phys. 79 926-935 (1983).
+ CHARMM>    !
+ CHARMM>    !IONS
+ CHARMM>    !
+ CHARMM>    !Ions from Roux and coworkers
+ CHARMM>    !
+ CHARMM>    !Beglov, D. and Roux, B., Finite Representation of an Infinite
+ CHARMM>    !Bulk System: Solvent Boundary Potential for Computer Simulations,
+ CHARMM>    !Journal of Chemical Physics, 1994, 100: 9050-9063
+ CHARMM>    !
+ CHARMM>    !ZINC
+ CHARMM>    !
+ CHARMM>    !Stote, R.H. and Karplus, M. Zinc Binding in Proteins and
+ CHARMM>    !Solution: A Simple but Accurate Nonbonded Representation, PROTEINS:
+ CHARMM>    !Structure, Function, and Genetics 23:12-31 (1995)
+ CHARMM>     
+  
+ CHARMM>    !test "append" to determine if previous toppar files have been read and
+ CHARMM>    !add append to "read rtf card" if true
+ CHARMM>    set nat ?NATC
+ RDCMND: can not substitute energy "?NATC"
+ Parameter: NAT <- "?NATC"
+  
+ CHARMM>    set app
+ Parameter: APP <- "" <empty>
+  
+ CHARMM>    !We're exploiting what is arguably a bug in the parser. On the left hand side,
+ CHARMM>    !the quotes have priority, so NAT is correctly substituted. On the right hand
+ CHARMM>    !side, the ? has priority and NATC" (sic) is not a valid substitution...
+ CHARMM>    if "@NAT" ne "?NATC" if @nat ne 0 set app append
+ Parameter: NAT -> "?NATC"
+ Parameter: NAT -> "?NATC"
+ RDCMND: can not substitute energy "?NATC""
+ Comparing ""?NATC"" and ""?NATC"".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>     
+  
+ CHARMM>    read rtf card  !REA 26/07/2013 - deleted @app - always stream this first and everything else must be appended)
+ MAINIO> Residue topology file being read from unit  99.
+ RDTITL> * TOPOLOGY FOR WATER AND IONS
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    read para card flex  !REA - deleted @app
+
+          PARAMETER FILE BEING READ FROM UNIT 99
+ RDTITL> * PARAMETERS FOR WATER AND IONS
+ RDTITL> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>     
+  
+ CHARMM>    ! The following section contains NBFixes for sodium interacting with
+ CHARMM>    ! carboxylate oxygens of various CHARMM force fields. It will generate
+ CHARMM>    ! level -1 warnings whenever any of these force fields have not been
+ CHARMM>    ! read prior to the current stream file. Since we don't want to force
+ CHARMM>    ! the user to always read all the force fields, we're suppressing the
+ CHARMM>    ! warnings. The only side effect is that you will have "most severe
+ CHARMM>    ! warning was at level 0" at the end of your output. Also note that
+ CHARMM>    ! the user is responsible for reading the current file last if they
+ CHARMM>    ! want the NBFixes to apply. A more elegant solution would require new
+ CHARMM>    ! features to be added to CHARMM.
+ CHARMM>    ! parallel fix, to avoid duplicated messages in the log
+ CHARMM>    set para
+ Parameter: PARA <- "" <empty>
+  
+ CHARMM>    if ?NUMNODE gt 1 set para node 0
+ RDCMND substituted energy or value "?NUMNODE" to "1"
+ Comparing "1" and "1".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>     
+  
+ CHARMM>    set wrn ?WRNLEV
+ RDCMND substituted energy or value "?WRNLEV" to "5"
+ Parameter: WRN <- "5"
+  
+ CHARMM>    ! Some versions of CHARMM don't seem to initialize wrnlev...
+ CHARMM>    if "@WRN" eq "?WRNLEV" set wrn 5
+ Parameter: WRN -> "5"
+ RDCMND: can not substitute energy "?WRNLEV""
+ Comparing ""5"" and ""?WRNLEV"".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>    set bom ?bomlev
+ RDCMND substituted energy or value "?BOMLEV" to "0"
+ Parameter: BOM <- "0"
+  
+ CHARMM>    WRNLEV -1 @PARA
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    BOMLEV -1 @PARA
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    read para card flex append
+
+          PARAMETER FILE BEING READ FROM UNIT 99
+ RDTITL> * NBFIX BETWEEN CARBOXYLATE AND SODIUM
+ RDTITL> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>    BOMLEV @bom @PARA
+ Parameter: BOM -> "0"
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    WRNLEV @wrn @PARA
+ Parameter: WRN -> "5"
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    return
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>    read rtf card name @datadir/top_all36_prot.rtf append flex
+ Parameter: DATADIR -> "/PANFS/PANASAS01/CHEM/RA15808/AADH/MD/COMMON"
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/aadh/md/common/top_all36_prot.rtf::
+ MAINIO> Residue topology file being read from unit  90.
+ TITLE> *>>>>>>>>CHARMM36 ALL-HYDROGEN TOPOLOGY FILE FOR PROTEINS <<<<<<
+ TITLE> *>>>>> INCLUDES PHI, PSI CROSS TERM MAP (CMAP) CORRECTION <<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>>>>> MAY 2011 <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> * ALL COMMENTS TO THE CHARMM WEB SITE: WWW.CHARMM.ORG
+ TITLE> *             PARAMETER SET DISCUSSION FORUM
+ TITLE> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read rtf card name @datadir/aadh_topologies.rtf append flex
+ Parameter: DATADIR -> "/PANFS/PANASAS01/CHEM/RA15808/AADH/MD/COMMON"
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/aadh/md/common/aadh_topologies.rtf::
+ MAINIO> Residue topology file being read from unit  90.
+ TITLE> * RESIDUES AND PATCHES FOR CREATING AADH REACTANT AND PRODUCTS
+ TITLE> * ATOM DEFINITIONS IS TAKEN FROM TOP_ALL36_PROT.RTF
+ TITLE> * PREAMLE IS TAKEN FROM TOP_TTW.INP
+ TITLE> * >>>>>
+ TITLE> * RESI TTW - /DATA/KR/TOP_TTW.INP
+ TITLE> * RESI TTW2 - /DATA/KR/TOP_TTW.INP - I DON'T THINK THIS IS USED SO THIS WON'T BE ADJUSTED.
+ TITLE> * PRES TRPM - /DATA/NEW_MD/TRPM.RTF
+ TITLE> * PRES TTWP - /DATA/KR/TTW_PROD.RTF
+ TITLE> * PRES ASP1/2 - /DATA/KR/TTW_PROD.RTF
+ TITLE> * PRES TTQ_TRP - /DATA/NEW_MD/TTW_TOP.INP
+ TITLE> * THE ORIGINAL PATCHES AND RESIDUES WERE SPECIFIED IN THE CHARM22 FF
+ TITLE> * 23/07/2016 - THE PRODUCT PATCHES WILL HAVE TO CHANGE (TO GET RID OF DELE STATEMENT)
+ TITLE> *               AND TO PRESERVE THE ATOMS LABELLING CHANGES.
+ TITLE> *
+ WARNING from DECODI -- Zero length string being converted to 0
+ RTFRDR> WARNING: Version number is NOT specified.
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read para card name @datadir/par_all36_prot_mod.prm append flex
+ Parameter: DATADIR -> "/PANFS/PANASAS01/CHEM/RA15808/AADH/MD/COMMON"
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/aadh/md/common/par_all36_prot_mod.prm::
+
+          PARAMETER FILE BEING READ FROM UNIT 90
+ TITLE> *>>>> CHARMM36 ALL-HYDROGEN PARAMETER FILE FOR PROTEINS <<<<<<<<<<
+ TITLE> *>>>>> INCLUDES PHI, PSI CROSS TERM MAP (CMAP) CORRECTION <<<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>>>>> JAN. 2016 <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> * ALL COMMENTS TO THE CHARMM WEB SITE: WWW.CHARMM.ORG
+ TITLE> *             PARAMETER SET DISCUSSION FORUM
+ TITLE> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read para card name @datadir/aadh_parameters.prm append flex
+ Parameter: DATADIR -> "/PANFS/PANASAS01/CHEM/RA15808/AADH/MD/COMMON"
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/aadh/md/common/aadh_parameters.prm::
+
+          PARAMETER FILE BEING READ FROM UNIT 90
+ TITLE> * PARAMETERS SPECIFIC TO AADH.  TO BE USED IN CONJUNCTION WITH AADH_TOPOLOGIES.RTF
+ TITLE> * THESE WERE TAKEN FROM EACH SECTION IN /DATA/KR/PAR_TTW.INP
+ TITLE> *   AND ADDITIONALLY FROM /DATA/NEW_MD/PAR_TTW.INP
+ TITLE> * THERE'S NO ANGLE PARAMETERS FOR HA ONLY HA1/2/3 SO CHANGE THE HAS IN THE AADH_TOPOLOGIES
+ TITLE> * ADDED NBFIX
+ TITLE>  
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    set input 2agy-310k-1atm-prod9.1-8
+ Parameter: INPUT <- "2AGY-310K-1ATM-PROD9.1-8"
+  
+ CHARMM>    set output 2agy-310k-1atm-prod9.1-9
+ Parameter: OUTPUT <- "2AGY-310K-1ATM-PROD9.1-9"
+  
+ CHARMM>    read psf card name @datadir/2agy_final.psf
+ Parameter: DATADIR -> "/PANFS/PANASAS01/CHEM/RA15808/AADH/MD/COMMON"
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/aadh/md/common/2agy_final.psf::
+ MAINIO> Protein structure file being read from unit  90.
+ PSFRD2> Reading PSF in the expanded format.
+ TITLE>  * REALIGNED THE CRYSTAL STRUCTURE TO BE COMPATIBLE WITH OPENMM
+ TITLE>  * CUBIC CRYSTAL STRUCTURE BOX SIZE: 132.94535 ANG
+ TITLE>  * NOT MINIMIZED
+ TITLE>  *  DATE:    12/10/16      7:27:19      CREATED BY USER: ra15808
+ TITLE>  *
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        7   Number of residues   =    73137
+         Number of atoms         =   230161   Number of groups     =    76487
+         Number of bonds         =   229944   Number of angles     =    98111
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    73213   Number of HB donors  =   145196
+         Number of NB exclusions =        0   Total charge =   -0.00000
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read coord card name @input.cor
+ Parameter: INPUT -> "2AGY-310K-1ATM-PROD9.1-8"
+ VOPEN> Attempting to open::2agy-310k-1atm-prod9.1-8.cor::
+          SPATIAL COORDINATES BEING READ FROM UNIT 90
+ TITLE> * AADH 310K 1ATM PRODUCTION
+ TITLE> *  DATE:     2/22/17      9:12:35      CREATED BY USER: RA15808
+ TITLE> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    !
+ CHARMM>    ! Setup crystal
+ CHARMM>    !
+ CHARMM>     
+  
+ CHARMM>    define protein sele segid AL* .or. segid BT* end
+ SELRPN>  14420 atoms have been selected out of 230161
+  
+ CHARMM>    define water sele segid *WAT end
+ SELRPN> 215325 atoms have been selected out of 230161
+  
+ CHARMM>    define ions sele segid ion end
+ SELRPN>    416 atoms have been selected out of 230161
+  
+ CHARMM>    define backbone_prot sele type n .or. type ca .or. type c .or. type o end
+ SELRPN>   3780 atoms have been selected out of 230161
+  
+ CHARMM>     
+  
+ CHARMM>    set xdim 132.94535
+ Parameter: XDIM <- "132.94535"
+  
+ CHARMM>    calc cen @xdim/2
+ Parameter: XDIM -> "132.94535"
+Evaluating: 132.94535/2
+ Parameter: CEN <- "66.472675"
+  
+ CHARMM>    set cutim 14
+ Parameter: CUTIM <- "14"
+  
+ CHARMM>     
+  
+ CHARMM>    crystal defi cubic @xdim @xdim @xdim 90.0 90.0 90.0
+ Parameter: XDIM -> "132.94535"
+ Parameter: XDIM -> "132.94535"
+ Parameter: XDIM -> "132.94535"
+ Crystal Parameters : Crystal Type = CUBI
+           A     =  132.94535 B    =  132.94535 C     =  132.94535
+           Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+  
+ CHARMM>    crystal build cutoff @cutim noper 0
+ Parameter: CUTIM -> "14"
+ XBUILD> Building all transformations with a minimum atom-atom
+         contact distance of less than   14.00 Angstroms.
+
+ Range of Grid Search for Transformation     1 :
+ Lattice Vector A    -2 TO     2
+ Lattice Vector B    -2 TO     2
+ Lattice Vector C    -2 TO     2
+
+
+ The number of transformations generated =    26
+
+
+ Number  Symop   A   B   C   Distance
+
+      1      1  -1  -1  -1     6.4598
+      2      1  -1   0  -1     6.4182
+      3      1  -1   1  -1     7.1674
+      4      1   0  -1  -1     4.1140
+      5      1   0   0  -1     2.7864
+      6      1   0   1  -1     3.3593
+      7      1  -1  -1   0     3.3122
+      8      1  -1   0   0     2.5435
+      9      1  -1   1   0     5.2001
+     10      1   0  -1   0     2.6957
+     11      1   0   1   0     2.6957
+     12      1  -1  -1   1     6.3968
+     13      1  -1   0   1     3.4684
+     14      1  -1   1   1     7.2743
+     15      1   0  -1   1     3.3593
+     16      1   0   0   1     2.7864
+     17      1   0   1   1     4.1140
+     18      1   1   1   1     6.4598
+     19      1   1   0   1     6.4182
+     20      1   1  -1   1     7.1674
+     21      1   1   1   0     3.3122
+     22      1   1   0   0     2.5435
+     23      1   1  -1   0     5.2001
+     24      1   1   1  -1     6.3968
+     25      1   1   0  -1     3.4684
+     26      1   1  -1  -1     7.2743
+                     THERE ARE NO ROTATIONS FOR THIS TRANSFORMATION SET
+    26 Transformations have been processed.
+
+  
+ CHARMM>    image byseg xcen @cen ycen @cen zcen @cen sele protein end
+ Parameter: CEN -> "66.472675"
+ Parameter: CEN -> "66.472675"
+ Parameter: CEN -> "66.472675"
+ SELRPN>  14420 atoms have been selected out of 230161
+ IMAGE CENTERING ON FOR SOME ATOMS
+  
+ CHARMM>    image byres xcen @cen ycen @cen zcen @cen sele water .or. ions end
+ Parameter: CEN -> "66.472675"
+ Parameter: CEN -> "66.472675"
+ Parameter: CEN -> "66.472675"
+ SELRPN> 215741 atoms have been selected out of 230161
+ IMAGE CENTERING ON FOR SOME ATOMS
+  
+ CHARMM>     
+  
+ CHARMM>    !
+ CHARMM>    ! Setup non-bonded forces
+ CHARMM>    !
+ CHARMM>    set ftx 144
+ Parameter: FTX <- "144"
+  
+ CHARMM>    set fty 144
+ Parameter: FTY <- "144"
+  
+ CHARMM>    set ftz 144
+ Parameter: FTZ <- "144"
+  
+ CHARMM>    NBONDED inbfrq -1 imgfrq -1 nbxmod 5 -                                              ! C36 DEFAULTS
+ CHARMM>            atom cdiel fshift -                                                         ! use atom based electrostatics, C36 DEFAULTS
+ CHARMM>            vatom vdistance vfswitch -                                                  ! C36 DEFAULTS
+ CHARMM>            elec ewald pmew fftx @ftx ffty @fty fftz @ftz kappa .34 spline order 6 -    ! PME SUMMATION
+ CHARMM>            cutnb 14.0 ctofnb 12.0 ctonnb 10.0 -                                        ! C36 DEFAULTS
+ CHARMM>            cutim @cutim -                                                                ! must be same as cutnb
+ CHARMM>            eps 1.0 e14fac 1.0 wmin 1.5                                                 ! C36 DEFAULTS
+ Parameter: FTX -> "144"
+ Parameter: FTY -> "144"
+ Parameter: FTZ -> "144"
+ Parameter: CUTIM -> "14"
+
+ SELECTED IMAGES ATOMS BEING CENTERED ABOUT 66.472675 66.472675 66.472675
+ RESIDUE 1274 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE 1765 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE 3767 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE 8024 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE10079 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE11396 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE11926 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE13256 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE14513 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE17697 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE21354 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE29292 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE31091 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE37853 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE38753 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE40233 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE41702 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE43685 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE45856 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE47907 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE51543 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE55471 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE56944 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE59714 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE60373 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE61508 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE61885 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE62445 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE62758 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE64806 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE65476 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE65955 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE68708 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE70709 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE71431 OPERATED ON BY TRANSFORMATION C011
+
+ <MKIMAT2>: updating the image atom lists and remapping
+ Transformation   Atoms  Groups  Residues  Min-Distance
+    1  C001 has      84      28      28        2.08
+    2  C002 has    1578     530     530        0.68
+    3  C003 has      69      23      23        4.09
+    4  C004 has    1588     532     532        0.83
+    5  C005 has   22931    7681    7681        0.00
+    6  C006 has    1544     516     516        0.18
+    7  C007 has    1528     510     510        0.47
+    8  C008 has   22917    7667    7658        0.00
+    9  C009 has    1582     528     528        0.00
+   10  C010 has   22981    7691    7691        0.00
+   12  C012 has      63      21      21        4.84
+   13  C013 has    1554     520     520        0.34
+   14  C014 has      66      22      22        3.06
+ Total of    308646 atoms and    102756 groups and     99397 residues were included
+
+ <PME> Total heap storage needed =    15410875
+ Fill Ewald table: Number of points=     10000 EWXmax=    4.250000
+ fill erfc table: linear inter has rms error = 0.979220D-08 maximum error = 0.218740D-07
+ fill erfc table: cubic spline has rms error = 0.360331D-11 maximum error = 0.108438D-10
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VFSWIt  
+     BYGRoup  NOEXtnd  EWALd   
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 10.000 CTOFNB = 12.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ PME EWALD OPTIONS: KAPPA  =  0.340  QCOR =  0.000  Bspline order = 6
+ FFTX= 144  FFTY= 144  FFTZ= 144
+                Using Pub FFT
+                Real-to-Complex FFT
+ There are        0 atom  pairs and        0 atom  exclusions.
+ There are        0 group pairs and        0 group exclusions.
+ <MAKINB> with mode   5 found 256284 exclusions and  37937 interactions(1-4)
+ <MAKGRP> found  12527 group exclusions.
+ <MAKGRP> found      0 image group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR 66137147 ATOM PAIRS AND        0 GROUP PAIRS
+ == PRIMARY == SPACE FOR 99205744 ATOM PAIRS AND        0 GROUP PAIRS
+ == PRIMARY == SPACE FOR148808624 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+117445239 ATOM PAIRS WERE FOUND FOR ATOM LIST
+  6964513 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+ SPACE FOR 40059116 ATOM PAIRS AND        0 GROUP PAIRS
+
+ Image nonbond list generation found:
+ 12030605 ATOM PAIRS WERE FOUND FOR ATOM LIST
+        0 ATOM PAIRS WERE FOUND FOR ATOM SELF LIST
+  1046200 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+  
+ CHARMM>     
+  
+ CHARMM>    faster on
+ MISCOM> FAST option: EXPANDED (limited fast routines)
+  
+ CHARMM>    omm on
+Energy and dynamics calculations will use OpenMM.
+  
+ CHARMM>    shake fast bonh tol 1.0e-8 para
+ SHKCOM> SHAKE parameters: TOL =   0.1000D-07 MXITer =    500
+
+          222377 constraints will held by SHAKE.
+ FSSHKINI: Fast shake initialized with    7052 bond contraints and    71775 water constraints (3-center).
+ FSSHKINI:     7052 constraints are in groups of:    71775
+ FSSHKINI:   2728 2-body (CH),   1346 3-body(CH2),    544 4-body(CH3),      0 >4-body. 
+ FSSHKINI: Fast shake initialized with    7052 bond contraints and    71775 water constraints (3-center).
+ FSSHKINI:     7052 constraints are in groups of:    71775
+ FSSHKINI:   2728 2-body (CH),   1346 3-body(CH2),    544 4-body(CH3),      0 >4-body. 
+  
+ CHARMM>    set echeck = echeck -1
+ Parameter: ECHECK <- "ECHECK -1"
+  
+ CHARMM>    !
+ CHARMM>    ! DYNAMICS PARAMETERS
+ CHARMM>    !
+ CHARMM>    set length 1     						! traj length in ns
+ Parameter: LENGTH <- "1"
+  
+ CHARMM>    set tstep 0.002   						! timestep in ps
+ Parameter: TSTEP <- "0.002"
+  
+ CHARMM>    calc nsteps = @length * 1000 / @tstep
+ Parameter: LENGTH -> "1"
+ Parameter: TSTEP -> "0.002"
+Evaluating: 1*1000/0.002
+ Parameter: NSTEPS <- "500000"
+  
+ CHARMM>    set writestep 1 						! write every x ps
+ Parameter: WRITESTEP <- "1"
+  
+ CHARMM>    calc nwrite = @writestep / @tstep    	! Write out every 1ps
+ Parameter: WRITESTEP -> "1"
+ Parameter: TSTEP -> "0.002"
+Evaluating: 1/0.002
+ Parameter: NWRITE <- "500"
+  
+ CHARMM>     
+  
+ CHARMM>    open read card unit 10 name  @input.res
+ Parameter: INPUT -> "2AGY-310K-1ATM-PROD9.1-8"
+ VOPEN> Attempting to open::2agy-310k-1atm-prod9.1-8.res::
+ OPNLGU> Unit 10 opened for READONLY access to 2agy-310k-1atm-prod9.1-8.res
+  
+ CHARMM>    open write card unit 11 name @output.res
+ Parameter: OUTPUT -> "2AGY-310K-1ATM-PROD9.1-9"
+ VOPEN> Attempting to open::2agy-310k-1atm-prod9.1-9.res::
+ OPNLGU> Unit 11 opened for WRITE access to 2agy-310k-1atm-prod9.1-9.res
+  
+ CHARMM>    open write file unit 12 name @output.dcd
+ Parameter: OUTPUT -> "2AGY-310K-1ATM-PROD9.1-9"
+ VOPEN> Attempting to open::2agy-310k-1atm-prod9.1-9.dcd::
+ OPNLGU> Unit 12 opened for WRITE access to 2agy-310k-1atm-prod9.1-9.dcd
+  
+ CHARMM>     
+  
+ CHARMM>    dynamics leap restart timestep @tstep  -
+ CHARMM>         nstep @nsteps nprint @nwrite iprfrq @nwrite iunwri 11 iunread 10 -
+ CHARMM>         firstt 310 finalt 310  -
+ CHARMM>         iuncrd 12 nsavc @nwrite -
+ CHARMM>         ichecw 0 ihtfrq 0 ieqfrq 0 -
+ CHARMM>         iasors 1 iasvel 1 iscvel 0  -
+ CHARMM>         ilbfrq 0 inbfrq -1 imgfrq -1 @echeck bycb -
+ CHARMM>         ntrfq 100 -
+ CHARMM>         omm langevin gamma 1 prmc pref 1.0 iprsfrq 25
+ Parameter: TSTEP -> "0.002"
+ Parameter: NSTEPS -> "500000"
+ Parameter: NWRITE -> "500"
+ Parameter: NWRITE -> "500"
+ Parameter: NWRITE -> "500"
+ Parameter: ECHECK -> "ECHECK -1"
+  IUNREA = 10         IUNWRI = 11          IUNOS = -1
+  IUNCRD = 12         IUNVEL = -1          KUNIT = -1
+ TITLE>  * PRODUCTION RUNS
+ TITLE>  *  DATE:     2/22/17      9:12:32      CREATED BY USER: ra15808
+ TITLE>  *
+ READYN> dynamics restart file was read. Current step= 4775000
+ NSTEP  =500000  JHSTRT =     0
+
+ SELECTED IMAGES ATOMS BEING CENTERED ABOUT 66.472675 66.472675 66.472675
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VFSWIt  
+     BYCB     NOEXtnd  EWALd   
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 10.000 CTOFNB = 12.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ PME EWALD OPTIONS: KAPPA  =  0.340  QCOR =  0.000  Bspline order = 6
+ FFTX= 144  FFTY= 144  FFTZ= 144
+                Using Pub FFT
+                Real-to-Complex FFT
+ There are117445239 atom  pairs and   294221 atom  exclusions.
+ There are        0 group pairs and    12527 group exclusions.
+Using Image CUBE search
+Using Image CUBE search
+ PRNHBD: CUToff Hydrogen Bond  distance =    0.5000   Angle =   90.0000
+         CuT switching ON HB dist. =     3.5000  OFf HB dist. =    4.0000
+         CuT switching ON Hb Angle =    50.0000  OFf Hb Angle =   70.0000

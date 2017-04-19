@@ -1,0 +1,86 @@
+* Production runs 
+*
+
+envi OPENMM_PLATFORM  "CUDA"   ! /CUDA/Reference   Use OpenMM platform based on
+envi OPENMM_PRECISION "mixed"   ! /mixed/double    Do calculations in single
+envi OPENMM_DEVICE 0,1 !Two GPUs
+
+prnlev 5
+set datadir /panfs/panasas01/chem/ra15808/aadh/md/common
+stream @datadir/toppar_water_ions_fixed.str
+read rtf card name @datadir/top_all36_prot.rtf append flex
+read rtf card name @datadir/aadh_topologies.rtf append flex
+read para card name @datadir/par_all36_prot_mod.prm append flex
+read para card name @datadir/aadh_parameters.prm append flex
+
+set input 2agy-310k-1atm-prod5.1-7
+set output 2agy-310k-1atm-prod5.1-8
+read psf card name @datadir/2agy_final.psf
+read coord card name @input.cor
+
+!
+! Setup crystal
+!
+
+define protein sele segid AL* .or. segid BT* end
+define water sele segid *WAT end
+define ions sele segid ion end
+define backbone_prot sele type n .or. type ca .or. type c .or. type o end
+
+set xdim 132.94535
+calc cen @xdim/2
+set cutim 14
+
+crystal defi cubic @xdim @xdim @xdim 90.0 90.0 90.0
+crystal build cutoff @cutim noper 0
+image byseg xcen @cen ycen @cen zcen @cen sele protein end
+image byres xcen @cen ycen @cen zcen @cen sele water .or. ions end
+
+!
+! Setup non-bonded forces
+!
+set ftx 144
+set fty 144
+set ftz 144
+NBONDED inbfrq -1 imgfrq -1 nbxmod 5 -                                              ! C36 DEFAULTS
+        atom cdiel fshift -                                                         ! use atom based electrostatics, C36 DEFAULTS
+        vatom vdistance vfswitch -                                                  ! C36 DEFAULTS
+        elec ewald pmew fftx @ftx ffty @fty fftz @ftz kappa .34 spline order 6 -    ! PME SUMMATION
+        cutnb 14.0 ctofnb 12.0 ctonnb 10.0 -                                        ! C36 DEFAULTS
+        cutim @cutim -                                                                ! must be same as cutnb
+        eps 1.0 e14fac 1.0 wmin 1.5                                                 ! C36 DEFAULTS
+
+faster on
+omm on
+shake fast bonh tol 1.0e-8 para
+set echeck = echeck -1
+!
+! DYNAMICS PARAMETERS
+!
+set length 1     						! traj length in ns
+set tstep 0.002   						! timestep in ps
+calc nsteps = @length * 1000 / @tstep 
+set writestep 1 						! write every x ps
+calc nwrite = @writestep / @tstep    	! Write out every 1ps 
+
+open read card unit 10 name  @input.res
+open write card unit 11 name @output.res
+open write file unit 12 name @output.dcd
+
+dynamics leap restart timestep @tstep  -
+     nstep @nsteps nprint @nwrite iprfrq @nwrite iunwri 11 iunread 10 -
+     firstt 310 finalt 310  -
+     iuncrd 12 nsavc @nwrite - 
+     ichecw 0 ihtfrq 0 ieqfrq 0 -
+     iasors 1 iasvel 1 iscvel 0  -
+     ilbfrq 0 inbfrq -1 imgfrq -1 @echeck bycb -
+     ntrfq 100 -
+     omm langevin gamma 1 prmc pref 1.0 iprsfrq 25
+
+
+write coor card name @output.cor
+* AADH 310k 1atm production 
+*
+
+
+stop

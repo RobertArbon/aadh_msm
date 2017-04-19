@@ -13,8 +13,8 @@ read rtf card name @datadir/aadh_topologies.rtf append flex
 read para card name @datadir/par_all36_prot_mod.prm append flex
 read para card name @datadir/aadh_parameters.prm append flex
 
-set input 2agy-310k-1atm-prod9.1.3
-set output 2agy-310k-1atm-prod9.1.4
+set input 2agy-310k-1atm-prod9.1.4
+set output 2agy-310k-1atm-prod9.1.5
 read psf card name @datadir/2agy_final.psf
 read coord card name @input.cor
 

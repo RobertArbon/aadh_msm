@@ -1,0 +1,2526 @@
+1
+                 Chemistry at HARvard Macromolecular Mechanics
+           (CHARMM) - Developmental Version 41a2   February 15, 2016            
+                             Git commit ID f89d5df                              
+       Copyright(c) 1984-2014  President and Fellows of Harvard College
+                              All Rights Reserved
+     Current operating system: Linux-2.6.32-642.6.2.el6.x86_64(x86_64)@node     
+                 Created on  3/9/17 at 14:59:04 by user: ra15808     
+
+            Maximum number of ATOMS:    360720, and RESidues:      120240
+ RDTITL> * PRODUCTION RUNS
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    envi OPENMM_PLATFORM  "CUDA"   ! /CUDA/Reference   Use OpenMM platform based on
+  
+ CHARMM>    envi OPENMM_PRECISION "mixed"   ! /mixed/double    Do calculations in single
+  
+ CHARMM>    envi OPENMM_DEVICE 0,1 !Two GPUs
+  
+ CHARMM>     
+  
+ CHARMM>    prnlev 5
+  
+ CHARMM>    set datadir /panfs/panasas01/chem/ra15808/aadh/md/common
+ Parameter: DATADIR <- "/PANFS/PANASAS01/CHEM/RA15808/AADH/MD/COMMON"
+  
+ CHARMM>    stream @datadir/toppar_water_ions_fixed.str
+ Parameter: DATADIR -> "/PANFS/PANASAS01/CHEM/RA15808/AADH/MD/COMMON"
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/aadh/md/common/toppar_water_ions_fixed.str::
+ OPNLGU> Unit 99 opened for READONLY access to /panfs/panasas01/chem/ra15808/aadh/md/common/toppar_water_ions_fixed.str
+
+                    INPUT STREAM SWITCHING TO UNIT    99
+ RDTITL> * TOPLOGY AND PARAMETER INFORMATION FOR WATER AND IONS.
+ RDTITL> *
+ Parameter: IN1 <- "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    !Testcase
+ CHARMM>    !test_water_ions.inp
+ CHARMM>     
+  
+ CHARMM>    ! IMPORTANT NOTE: this file contains NBFixes between carboxylates and sodium,
+ CHARMM>    ! which will only apply if the main files containing carboxylate atom types
+ CHARMM>    ! have been read in first!
+ CHARMM>     
+  
+ CHARMM>    !references
+ CHARMM>    !
+ CHARMM>    !TIP3P water model
+ CHARMM>    !
+ CHARMM>    !W.L. Jorgensen; J.Chandrasekhar; J.D. Madura; R.W. Impey;
+ CHARMM>    !M.L. Klein; "Comparison of simple potential functions for
+ CHARMM>    !simulating liquid water", J. Chem. Phys. 79 926-935 (1983).
+ CHARMM>    !
+ CHARMM>    !IONS
+ CHARMM>    !
+ CHARMM>    !Ions from Roux and coworkers
+ CHARMM>    !
+ CHARMM>    !Beglov, D. and Roux, B., Finite Representation of an Infinite
+ CHARMM>    !Bulk System: Solvent Boundary Potential for Computer Simulations,
+ CHARMM>    !Journal of Chemical Physics, 1994, 100: 9050-9063
+ CHARMM>    !
+ CHARMM>    !ZINC
+ CHARMM>    !
+ CHARMM>    !Stote, R.H. and Karplus, M. Zinc Binding in Proteins and
+ CHARMM>    !Solution: A Simple but Accurate Nonbonded Representation, PROTEINS:
+ CHARMM>    !Structure, Function, and Genetics 23:12-31 (1995)
+ CHARMM>     
+  
+ CHARMM>    !test "append" to determine if previous toppar files have been read and
+ CHARMM>    !add append to "read rtf card" if true
+ CHARMM>    set nat ?NATC
+ RDCMND: can not substitute energy "?NATC"
+ Parameter: NAT <- "?NATC"
+  
+ CHARMM>    set app
+ Parameter: APP <- "" <empty>
+  
+ CHARMM>    !We're exploiting what is arguably a bug in the parser. On the left hand side,
+ CHARMM>    !the quotes have priority, so NAT is correctly substituted. On the right hand
+ CHARMM>    !side, the ? has priority and NATC" (sic) is not a valid substitution...
+ CHARMM>    if "@NAT" ne "?NATC" if @nat ne 0 set app append
+ Parameter: NAT -> "?NATC"
+ Parameter: NAT -> "?NATC"
+ RDCMND: can not substitute energy "?NATC""
+ Comparing ""?NATC"" and ""?NATC"".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>     
+  
+ CHARMM>    read rtf card  !REA 26/07/2013 - deleted @app - always stream this first and everything else must be appended)
+ MAINIO> Residue topology file being read from unit  99.
+ RDTITL> * TOPOLOGY FOR WATER AND IONS
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    read para card flex  !REA - deleted @app
+
+          PARAMETER FILE BEING READ FROM UNIT 99
+ RDTITL> * PARAMETERS FOR WATER AND IONS
+ RDTITL> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>     
+  
+ CHARMM>    ! The following section contains NBFixes for sodium interacting with
+ CHARMM>    ! carboxylate oxygens of various CHARMM force fields. It will generate
+ CHARMM>    ! level -1 warnings whenever any of these force fields have not been
+ CHARMM>    ! read prior to the current stream file. Since we don't want to force
+ CHARMM>    ! the user to always read all the force fields, we're suppressing the
+ CHARMM>    ! warnings. The only side effect is that you will have "most severe
+ CHARMM>    ! warning was at level 0" at the end of your output. Also note that
+ CHARMM>    ! the user is responsible for reading the current file last if they
+ CHARMM>    ! want the NBFixes to apply. A more elegant solution would require new
+ CHARMM>    ! features to be added to CHARMM.
+ CHARMM>    ! parallel fix, to avoid duplicated messages in the log
+ CHARMM>    set para
+ Parameter: PARA <- "" <empty>
+  
+ CHARMM>    if ?NUMNODE gt 1 set para node 0
+ RDCMND substituted energy or value "?NUMNODE" to "1"
+ Comparing "1" and "1".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>     
+  
+ CHARMM>    set wrn ?WRNLEV
+ RDCMND substituted energy or value "?WRNLEV" to "5"
+ Parameter: WRN <- "5"
+  
+ CHARMM>    ! Some versions of CHARMM don't seem to initialize wrnlev...
+ CHARMM>    if "@WRN" eq "?WRNLEV" set wrn 5
+ Parameter: WRN -> "5"
+ RDCMND: can not substitute energy "?WRNLEV""
+ Comparing ""5"" and ""?WRNLEV"".
+ IF test evaluated as false.  Skipping command
+  
+ CHARMM>    set bom ?bomlev
+ RDCMND substituted energy or value "?BOMLEV" to "0"
+ Parameter: BOM <- "0"
+  
+ CHARMM>    WRNLEV -1 @PARA
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    BOMLEV -1 @PARA
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    read para card flex append
+
+          PARAMETER FILE BEING READ FROM UNIT 99
+ RDTITL> * NBFIX BETWEEN CARBOXYLATE AND SODIUM
+ RDTITL> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>    BOMLEV @bom @PARA
+ Parameter: BOM -> "0"
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>    WRNLEV @wrn @PARA
+ Parameter: WRN -> "5"
+ Parameter: PARA -> "" <empty>
+  
+ CHARMM>     
+  
+ CHARMM>    return
+ VCLOSE: Closing unit   99 with status "KEEP"
+
+                    RETURNING TO INPUT STREAM     5
+  
+ CHARMM>    read rtf card name @datadir/top_all36_prot.rtf append flex
+ Parameter: DATADIR -> "/PANFS/PANASAS01/CHEM/RA15808/AADH/MD/COMMON"
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/aadh/md/common/top_all36_prot.rtf::
+ MAINIO> Residue topology file being read from unit  90.
+ TITLE> *>>>>>>>>CHARMM36 ALL-HYDROGEN TOPOLOGY FILE FOR PROTEINS <<<<<<
+ TITLE> *>>>>> INCLUDES PHI, PSI CROSS TERM MAP (CMAP) CORRECTION <<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>>>>> MAY 2011 <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> * ALL COMMENTS TO THE CHARMM WEB SITE: WWW.CHARMM.ORG
+ TITLE> *             PARAMETER SET DISCUSSION FORUM
+ TITLE> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read rtf card name @datadir/aadh_topologies.rtf append flex
+ Parameter: DATADIR -> "/PANFS/PANASAS01/CHEM/RA15808/AADH/MD/COMMON"
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/aadh/md/common/aadh_topologies.rtf::
+ MAINIO> Residue topology file being read from unit  90.
+ TITLE> * RESIDUES AND PATCHES FOR CREATING AADH REACTANT AND PRODUCTS
+ TITLE> * ATOM DEFINITIONS IS TAKEN FROM TOP_ALL36_PROT.RTF
+ TITLE> * PREAMLE IS TAKEN FROM TOP_TTW.INP
+ TITLE> * >>>>>
+ TITLE> * RESI TTW - /DATA/KR/TOP_TTW.INP
+ TITLE> * RESI TTW2 - /DATA/KR/TOP_TTW.INP - I DON'T THINK THIS IS USED SO THIS WON'T BE ADJUSTED.
+ TITLE> * PRES TRPM - /DATA/NEW_MD/TRPM.RTF
+ TITLE> * PRES TTWP - /DATA/KR/TTW_PROD.RTF
+ TITLE> * PRES ASP1/2 - /DATA/KR/TTW_PROD.RTF
+ TITLE> * PRES TTQ_TRP - /DATA/NEW_MD/TTW_TOP.INP
+ TITLE> * THE ORIGINAL PATCHES AND RESIDUES WERE SPECIFIED IN THE CHARM22 FF
+ TITLE> * 23/07/2016 - THE PRODUCT PATCHES WILL HAVE TO CHANGE (TO GET RID OF DELE STATEMENT)
+ TITLE> *               AND TO PRESERVE THE ATOMS LABELLING CHANGES.
+ TITLE> *
+ WARNING from DECODI -- Zero length string being converted to 0
+ RTFRDR> WARNING: Version number is NOT specified.
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read para card name @datadir/par_all36_prot_mod.prm append flex
+ Parameter: DATADIR -> "/PANFS/PANASAS01/CHEM/RA15808/AADH/MD/COMMON"
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/aadh/md/common/par_all36_prot_mod.prm::
+
+          PARAMETER FILE BEING READ FROM UNIT 90
+ TITLE> *>>>> CHARMM36 ALL-HYDROGEN PARAMETER FILE FOR PROTEINS <<<<<<<<<<
+ TITLE> *>>>>> INCLUDES PHI, PSI CROSS TERM MAP (CMAP) CORRECTION <<<<<<<<
+ TITLE> *>>>>>>>>>>>>>>>>>>>>>>>>>> JAN. 2016 <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ TITLE> * ALL COMMENTS TO THE CHARMM WEB SITE: WWW.CHARMM.ORG
+ TITLE> *             PARAMETER SET DISCUSSION FORUM
+ TITLE> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read para card name @datadir/aadh_parameters.prm append flex
+ Parameter: DATADIR -> "/PANFS/PANASAS01/CHEM/RA15808/AADH/MD/COMMON"
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/aadh/md/common/aadh_parameters.prm::
+
+          PARAMETER FILE BEING READ FROM UNIT 90
+ TITLE> * PARAMETERS SPECIFIC TO AADH.  TO BE USED IN CONJUNCTION WITH AADH_TOPOLOGIES.RTF
+ TITLE> * THESE WERE TAKEN FROM EACH SECTION IN /DATA/KR/PAR_TTW.INP
+ TITLE> *   AND ADDITIONALLY FROM /DATA/NEW_MD/PAR_TTW.INP
+ TITLE> * THERE'S NO ANGLE PARAMETERS FOR HA ONLY HA1/2/3 SO CHANGE THE HAS IN THE AADH_TOPOLOGIES
+ TITLE> * ADDED NBFIX
+ TITLE>  
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    set input 2agy-310k-1atm-prod1.2-3
+ Parameter: INPUT <- "2AGY-310K-1ATM-PROD1.2-3"
+  
+ CHARMM>    set output 2agy-310k-1atm-prod1.2-4
+ Parameter: OUTPUT <- "2AGY-310K-1ATM-PROD1.2-4"
+  
+ CHARMM>    read psf card name @datadir/2agy_final.psf
+ Parameter: DATADIR -> "/PANFS/PANASAS01/CHEM/RA15808/AADH/MD/COMMON"
+ VOPEN> Attempting to open::/panfs/panasas01/chem/ra15808/aadh/md/common/2agy_final.psf::
+ MAINIO> Protein structure file being read from unit  90.
+ PSFRD2> Reading PSF in the expanded format.
+ TITLE>  * REALIGNED THE CRYSTAL STRUCTURE TO BE COMPATIBLE WITH OPENMM
+ TITLE>  * CUBIC CRYSTAL STRUCTURE BOX SIZE: 132.94535 ANG
+ TITLE>  * NOT MINIMIZED
+ TITLE>  *  DATE:    12/10/16      7:27:19      CREATED BY USER: ra15808
+ TITLE>  *
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        7   Number of residues   =    73137
+         Number of atoms         =   230161   Number of groups     =    76487
+         Number of bonds         =   229944   Number of angles     =    98111
+         Number of dihedrals     =    38677   Number of impropers  =     2624
+         Number of cross-terms   =      936
+         Number of HB acceptors  =    73213   Number of HB donors  =   145196
+         Number of NB exclusions =        0   Total charge =   -0.00000
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>    read coord card name @input.cor
+ Parameter: INPUT -> "2AGY-310K-1ATM-PROD1.2-3"
+ VOPEN> Attempting to open::2agy-310k-1atm-prod1.2-3.cor::
+          SPATIAL COORDINATES BEING READ FROM UNIT 90
+ TITLE> * AADH 310K 1ATM PRODUCTION
+ TITLE> *  DATE:     2/23/17     11:44:22      CREATED BY USER: RA15808
+ TITLE> *
+ VCLOSE: Closing unit   90 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    !
+ CHARMM>    ! Setup crystal
+ CHARMM>    !
+ CHARMM>     
+  
+ CHARMM>    define protein sele segid AL* .or. segid BT* end
+ SELRPN>  14420 atoms have been selected out of 230161
+  
+ CHARMM>    define water sele segid *WAT end
+ SELRPN> 215325 atoms have been selected out of 230161
+  
+ CHARMM>    define ions sele segid ion end
+ SELRPN>    416 atoms have been selected out of 230161
+  
+ CHARMM>    define backbone_prot sele type n .or. type ca .or. type c .or. type o end
+ SELRPN>   3780 atoms have been selected out of 230161
+  
+ CHARMM>     
+  
+ CHARMM>    set xdim 132.94535
+ Parameter: XDIM <- "132.94535"
+  
+ CHARMM>    calc cen @xdim/2
+ Parameter: XDIM -> "132.94535"
+Evaluating: 132.94535/2
+ Parameter: CEN <- "66.472675"
+  
+ CHARMM>    set cutim 14
+ Parameter: CUTIM <- "14"
+  
+ CHARMM>     
+  
+ CHARMM>    crystal defi cubic @xdim @xdim @xdim 90.0 90.0 90.0
+ Parameter: XDIM -> "132.94535"
+ Parameter: XDIM -> "132.94535"
+ Parameter: XDIM -> "132.94535"
+ Crystal Parameters : Crystal Type = CUBI
+           A     =  132.94535 B    =  132.94535 C     =  132.94535
+           Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+  
+ CHARMM>    crystal build cutoff @cutim noper 0
+ Parameter: CUTIM -> "14"
+ XBUILD> Building all transformations with a minimum atom-atom
+         contact distance of less than   14.00 Angstroms.
+
+ Range of Grid Search for Transformation     1 :
+ Lattice Vector A    -2 TO     2
+ Lattice Vector B    -2 TO     2
+ Lattice Vector C    -2 TO     2
+
+
+ The number of transformations generated =    26
+
+
+ Number  Symop   A   B   C   Distance
+
+      1      1  -1  -1  -1    10.2625
+      2      1  -1   0  -1     3.5775
+      3      1  -1   1  -1     7.0101
+      4      1   0  -1  -1     5.8004
+      5      1   0   0  -1     2.8233
+      6      1   0   1  -1     5.3474
+      7      1  -1  -1   0     7.0624
+      8      1  -1   0   0     3.5056
+      9      1  -1   1   0     3.6659
+     10      1   0  -1   0     2.9351
+     11      1   0   1   0     2.9351
+     12      1  -1  -1   1     6.4099
+     13      1  -1   0   1     3.4745
+     14      1  -1   1   1     4.9222
+     15      1   0  -1   1     5.3474
+     16      1   0   0   1     2.8233
+     17      1   0   1   1     5.8004
+     18      1   1   1   1    10.2625
+     19      1   1   0   1     3.5775
+     20      1   1  -1   1     7.0101
+     21      1   1   1   0     7.0624
+     22      1   1   0   0     3.5056
+     23      1   1  -1   0     3.6659
+     24      1   1   1  -1     6.4099
+     25      1   1   0  -1     3.4745
+     26      1   1  -1  -1     4.9222
+                     THERE ARE NO ROTATIONS FOR THIS TRANSFORMATION SET
+    26 Transformations have been processed.
+
+  
+ CHARMM>    image byseg xcen @cen ycen @cen zcen @cen sele protein end
+ Parameter: CEN -> "66.472675"
+ Parameter: CEN -> "66.472675"
+ Parameter: CEN -> "66.472675"
+ SELRPN>  14420 atoms have been selected out of 230161
+ IMAGE CENTERING ON FOR SOME ATOMS
+  
+ CHARMM>    image byres xcen @cen ycen @cen zcen @cen sele water .or. ions end
+ Parameter: CEN -> "66.472675"
+ Parameter: CEN -> "66.472675"
+ Parameter: CEN -> "66.472675"
+ SELRPN> 215741 atoms have been selected out of 230161
+ IMAGE CENTERING ON FOR SOME ATOMS
+  
+ CHARMM>     
+  
+ CHARMM>    !
+ CHARMM>    ! Setup non-bonded forces
+ CHARMM>    !
+ CHARMM>    set ftx 144
+ Parameter: FTX <- "144"
+  
+ CHARMM>    set fty 144
+ Parameter: FTY <- "144"
+  
+ CHARMM>    set ftz 144
+ Parameter: FTZ <- "144"
+  
+ CHARMM>    NBONDED inbfrq -1 imgfrq -1 nbxmod 5 -                                              ! C36 DEFAULTS
+ CHARMM>            atom cdiel fshift -                                                         ! use atom based electrostatics, C36 DEFAULTS
+ CHARMM>            vatom vdistance vfswitch -                                                  ! C36 DEFAULTS
+ CHARMM>            elec ewald pmew fftx @ftx ffty @fty fftz @ftz kappa .34 spline order 6 -    ! PME SUMMATION
+ CHARMM>            cutnb 14.0 ctofnb 12.0 ctonnb 10.0 -                                        ! C36 DEFAULTS
+ CHARMM>            cutim @cutim -                                                                ! must be same as cutnb
+ CHARMM>            eps 1.0 e14fac 1.0 wmin 1.5                                                 ! C36 DEFAULTS
+ Parameter: FTX -> "144"
+ Parameter: FTY -> "144"
+ Parameter: FTZ -> "144"
+ Parameter: CUTIM -> "14"
+
+ SELECTED IMAGES ATOMS BEING CENTERED ABOUT 66.472675 66.472675 66.472675
+ RESIDUE 1539 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE 2440 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE 3559 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE 4963 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE 6051 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE 6450 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE11247 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE13737 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE14435 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE17565 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE17786 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE18479 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE18757 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE19521 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE19874 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE22557 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE22707 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE23203 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE26815 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE28539 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE29883 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE29904 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE31105 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE33186 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE34089 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE34104 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE36065 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE36792 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE37277 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE38466 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE40376 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE41437 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE45035 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE45903 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE49381 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE52137 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE53959 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE56260 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE58322 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE59607 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE60844 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE61288 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE61610 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE62154 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE63617 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE64303 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE65241 OPERATED ON BY TRANSFORMATION C016
+ RESIDUE65671 OPERATED ON BY TRANSFORMATION C011
+ RESIDUE66127 OPERATED ON BY TRANSFORMATION C022
+ RESIDUE69281 OPERATED ON BY TRANSFORMATION C011
+
+ <MKIMAT2>: updating the image atom lists and remapping
+ Transformation   Atoms  Groups  Residues  Min-Distance
+    1  C001 has      54      18      18        4.08
+    2  C002 has    1557     521     521        0.45
+    3  C003 has      67      23      23        2.88
+    4  C004 has    1524     508     508        1.08
+    5  C005 has   22812    7628    7628        0.00
+    6  C006 has    1562     524     524        0.00
+    7  C007 has    1547     517     517        1.30
+    8  C008 has   22891    7658    7642        0.00
+    9  C009 has    1489     499     499        0.75
+   10  C010 has   22673    7587    7587        0.00
+   12  C012 has      93      31      31        2.97
+   13  C013 has    1529     511     511        0.24
+   14  C014 has      69      23      23        0.75
+ Total of    308028 atoms and    102535 groups and     99169 residues were included
+
+ <PME> Total heap storage needed =    15410875
+ Fill Ewald table: Number of points=     10000 EWXmax=    4.250000
+ fill erfc table: linear inter has rms error = 0.979220D-08 maximum error = 0.218740D-07
+ fill erfc table: cubic spline has rms error = 0.360331D-11 maximum error = 0.108438D-10
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VFSWIt  
+     BYGRoup  NOEXtnd  EWALd   
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 10.000 CTOFNB = 12.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ PME EWALD OPTIONS: KAPPA  =  0.340  QCOR =  0.000  Bspline order = 6
+ FFTX= 144  FFTY= 144  FFTZ= 144
+                Using Pub FFT
+                Real-to-Complex FFT
+ There are        0 atom  pairs and        0 atom  exclusions.
+ There are        0 group pairs and        0 group exclusions.
+ <MAKINB> with mode   5 found 256284 exclusions and  37937 interactions(1-4)
+ <MAKGRP> found  12527 group exclusions.
+ <MAKGRP> found      0 image group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR 66137147 ATOM PAIRS AND        0 GROUP PAIRS
+ == PRIMARY == SPACE FOR 99205744 ATOM PAIRS AND        0 GROUP PAIRS
+ == PRIMARY == SPACE FOR148808624 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+117775938 ATOM PAIRS WERE FOUND FOR ATOM LIST
+  6981024 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+ SPACE FOR 39855676 ATOM PAIRS AND        0 GROUP PAIRS
+
+ Image nonbond list generation found:
+ 11743579 ATOM PAIRS WERE FOUND FOR ATOM LIST
+        0 ATOM PAIRS WERE FOUND FOR ATOM SELF LIST
+  1028036 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+  
+ CHARMM>     
+  
+ CHARMM>    faster on
+ MISCOM> FAST option: EXPANDED (limited fast routines)
+  
+ CHARMM>    omm on
+Energy and dynamics calculations will use OpenMM.
+  
+ CHARMM>    shake fast bonh tol 1.0e-8 para
+ SHKCOM> SHAKE parameters: TOL =   0.1000D-07 MXITer =    500
+
+          222377 constraints will held by SHAKE.
+ FSSHKINI: Fast shake initialized with    7052 bond contraints and    71775 water constraints (3-center).
+ FSSHKINI:     7052 constraints are in groups of:    71775
+ FSSHKINI:   2728 2-body (CH),   1346 3-body(CH2),    544 4-body(CH3),      0 >4-body. 
+ FSSHKINI: Fast shake initialized with    7052 bond contraints and    71775 water constraints (3-center).
+ FSSHKINI:     7052 constraints are in groups of:    71775
+ FSSHKINI:   2728 2-body (CH),   1346 3-body(CH2),    544 4-body(CH3),      0 >4-body. 
+  
+ CHARMM>    set echeck = echeck -1
+ Parameter: ECHECK <- "ECHECK -1"
+  
+ CHARMM>    !
+ CHARMM>    ! DYNAMICS PARAMETERS
+ CHARMM>    !
+ CHARMM>    set length 1     						! traj length in ns
+ Parameter: LENGTH <- "1"
+  
+ CHARMM>    set tstep 0.002   						! timestep in ps
+ Parameter: TSTEP <- "0.002"
+  
+ CHARMM>    calc nsteps = @length * 1000 / @tstep
+ Parameter: LENGTH -> "1"
+ Parameter: TSTEP -> "0.002"
+Evaluating: 1*1000/0.002
+ Parameter: NSTEPS <- "500000"
+  
+ CHARMM>    set writestep 1 						! write every x ps
+ Parameter: WRITESTEP <- "1"
+  
+ CHARMM>    calc nwrite = @writestep / @tstep    	! Write out every 1ps
+ Parameter: WRITESTEP -> "1"
+ Parameter: TSTEP -> "0.002"
+Evaluating: 1/0.002
+ Parameter: NWRITE <- "500"
+  
+ CHARMM>     
+  
+ CHARMM>    open read card unit 10 name  @input.res
+ Parameter: INPUT -> "2AGY-310K-1ATM-PROD1.2-3"
+ VOPEN> Attempting to open::2agy-310k-1atm-prod1.2-3.res::
+ OPNLGU> Unit 10 opened for READONLY access to 2agy-310k-1atm-prod1.2-3.res
+  
+ CHARMM>    open write card unit 11 name @output.res
+ Parameter: OUTPUT -> "2AGY-310K-1ATM-PROD1.2-4"
+ VOPEN> Attempting to open::2agy-310k-1atm-prod1.2-4.res::
+ OPNLGU> Unit 11 opened for WRITE access to 2agy-310k-1atm-prod1.2-4.res
+  
+ CHARMM>    open write file unit 12 name @output.dcd
+ Parameter: OUTPUT -> "2AGY-310K-1ATM-PROD1.2-4"
+ VOPEN> Attempting to open::2agy-310k-1atm-prod1.2-4.dcd::
+ OPNLGU> Unit 12 opened for WRITE access to 2agy-310k-1atm-prod1.2-4.dcd
+  
+ CHARMM>     
+  
+ CHARMM>    dynamics leap restart timestep @tstep  -
+ CHARMM>         nstep @nsteps nprint @nwrite iprfrq @nwrite iunwri 11 iunread 10 -
+ CHARMM>         firstt 310 finalt 310  -
+ CHARMM>         iuncrd 12 nsavc @nwrite -
+ CHARMM>         ichecw 0 ihtfrq 0 ieqfrq 0 -
+ CHARMM>         iasors 1 iasvel 1 iscvel 0  -
+ CHARMM>         ilbfrq 0 inbfrq -1 imgfrq -1 @echeck bycb -
+ CHARMM>         ntrfq 100 -
+ CHARMM>         omm langevin gamma 1 prmc pref 1.0 iprsfrq 25
+ Parameter: TSTEP -> "0.002"
+ Parameter: NSTEPS -> "500000"
+ Parameter: NWRITE -> "500"
+ Parameter: NWRITE -> "500"
+ Parameter: NWRITE -> "500"
+ Parameter: ECHECK -> "ECHECK -1"
+  IUNREA = 10         IUNWRI = 11          IUNOS = -1
+  IUNCRD = 12         IUNVEL = -1          KUNIT = -1
+ TITLE>  * PRODUCTION RUNS
+ TITLE>  *  DATE:     2/23/17     11:44:19      CREATED BY USER: ra15808
+ TITLE>  *
+ READYN> dynamics restart file was read. Current step= 2275000
+ NSTEP  =500000  JHSTRT =     0
+
+ SELECTED IMAGES ATOMS BEING CENTERED ABOUT 66.472675 66.472675 66.472675
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    CDIElec  FSHIft   VATOm    VFSWIt  
+     BYCB     NOEXtnd  EWALd   
+ CUTNB  = 14.000 CTEXNB =999.000 CTONNB = 10.000 CTOFNB = 12.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  1.000 EPS    =  1.000
+ NBXMOD =      5
+ PME EWALD OPTIONS: KAPPA  =  0.340  QCOR =  0.000  Bspline order = 6
+ FFTX= 144  FFTY= 144  FFTZ= 144
+                Using Pub FFT
+                Real-to-Complex FFT
+ There are117775938 atom  pairs and   294221 atom  exclusions.
+ There are        0 group pairs and    12527 group exclusions.
+Using Image CUBE search
+Using Image CUBE search
+ PRNHBD: CUToff Hydrogen Bond  distance =    0.5000   Angle =   90.0000
+         CuT switching ON HB dist. =     3.5000  OFf HB dist. =    4.0000
+         CuT switching ON Hb Angle =    50.0000  OFf Hb Angle =   70.0000
+         ACCEptor antecedents included
+         All hydrogen bonds for each hydrogen will be found
+         Hydrogen bonds between excluded atoms will be kept
+
+ DCNTRL> Langevin integration requested.
+ DCNTRL>  OpenMM interface requested for energy and dynamics calculations.
+ DCNTRL>  Constant temperature w/ OpenMM using Langevin heatbath requested.
+ DCNTRL>  Reference heatbath temperature is   310.000K
+ DCNTRL>  Using friction coefficient value of     1.000  ps^-1
+ DCNTRL>  CPT dynamics through OpenMM interface requested using Langevin heatbath.
+ DCNTRL>  MC barostat coupled to reference pressure    1.00  atmospheres.
+ DCNTRL>  MC barostat using reference temperature  310.00  K.
+ DCNTRL>  MC barostat volume move attempted every     25  timesteps.
+   NSTEP =   500000    NSAVC =      500    NSAVV =       10
+  ISCALE =        0   ISCVEL =        0   IASORS =        1
+  IASVEL =        1   ICHECW =        0   NTRFRQ =      100
+  IHTFRQ =        0   IEQFRQ =        0   NPRINT =      500
+  INBFRQ =       -1   IHBFRQ =        0   IPRFRQ =   500000
+  ILBFRQ =        0   IMGFRQ =       -1
+  ISVFRQ =        0   NCYCLE =   500000    NSNOS =       10
+  FIRSTT =   310.000  TEMINC =     5.000  TSTRUC =  -999.000
+  FINALT =   310.000  TWINDH =    10.000  TWINDL =   -10.000
+
+  TIME STEP =  4.09097E-02 AKMA       2.00000E-03 PS
+
+  RANDOM NUM. GEN. SEED(S) = 1978958702 1032649352 2145596648 984352247
+
+           SHAKE TOLERANCE =     0.10000E-07
+ NUMBER OF DEGREES OF FREEDOM = 468106
+get_PlatformDefaults> Finding default platform values
+get_PlatformDefaults> Default values found: platform=CUDA precision=mixed deviceid=0,1
+Setup_OpenMM: Initializing OpenMM context
+CHARMM> Using switching functions for vdW interactions and OpenMM PME/RxnFld for electrostatics
+CHARMM> Using OpenMM nb routines.
+CHARMM> configuring OpenMM PME with
+        alpha     0.3400
+        fft  144  144  144
+
+NBFIxes in effect, using CustomNonbondedForce
+CHARMM> OpenMM switching function selection.
+CHARMM> Electrostatic options: switch=F fswitch=F fshift=F PME/Ewald=T RxnFld=F
+CHARMM> van der Waals options: vswitch=F vfswitch=T OpenMM vdW switch=F
+ Available OpenMM platform 0: Reference 
+ Available OpenMM platform 1: CPU       
+ Available OpenMM platform 2: CUDA      
+ Available OpenMM platform 3: OpenCL    
+Init_context: Using OpenMM platform CUDA      
+       CudaDeviceIndex = 0,1
+       CudaCompiler = /usr/local/cuda/bin/nvcc
+       CudaPrecision = mixed
+DYNA DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+DYNA PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+DYNA INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+DYNA CROSS:           CMAPs        PMF1D        PMF2D        PRIMO
+DYNA EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+DYNA PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>        0   4550.00000-602685.94371 144851.51106-747537.45477    311.43628
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4011.47743   7583.07374      0.00000   9436.49800    493.81546
+DYNA CROSS>      -469.47087      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768592.84864      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2284730.4207
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.70785 B    =  131.70785 C     =  131.70785
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>      500   4551.00000-603920.32906 144196.59259-748116.92165    310.02818
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4015.36609   7464.22069      0.00000   9466.33262    496.62569
+DYNA CROSS>      -471.28937      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769088.17504      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2281808.9164
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.65169 B    =  131.65169 C     =  131.65169
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>     1000   4552.00000-603442.78798 144395.64147-747838.42946    310.45615
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4027.13899   7471.59495      0.00000   9435.34131    523.76224
+DYNA CROSS>      -464.23792      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768832.02470      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2283793.9625
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.68985 B    =  131.68985 C     =  131.68985
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>     1500   4553.00000-603596.43223 143839.51318-747435.94541    309.26045
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3935.99072   7502.52659      0.00000   9432.66938    544.39855
+DYNA CROSS>      -451.06462      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768400.46662      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2284015.8178
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.69412 B    =  131.69412 C     =  131.69412
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>     2000   4554.00000-603671.92203 144234.63556-747906.55759    310.10998
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3908.39130   7541.75727      0.00000   9485.02277    511.49678
+DYNA CROSS>      -496.35086      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768856.88137      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2283499.0982
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.68418 B    =  131.68418 C     =  131.68418
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>     2500   4555.00000-603672.93002 144137.53010-747810.46012    309.90120
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4010.00740   7498.63290      0.00000   9469.82702    518.73641
+DYNA CROSS>      -455.80707      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768851.86201      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2284029.7598
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.69438 B    =  131.69438 C     =  131.69438
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>     3000   4556.00000-603927.05369 144365.33070-748292.38439    310.39098
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3901.75887   7474.49171      0.00000   9506.11365    516.84653
+DYNA CROSS>      -467.70556      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769223.88574      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288973.8290
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.78934 B    =  131.78934 C     =  131.78934
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>     3500   4557.00000-604543.03473 143917.90729-748460.94202    309.42900
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4039.44780   7380.98118      0.00000   9472.49904    495.62714
+DYNA CROSS>      -486.27814      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769363.21825      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288102.4443
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.77261 B    =  131.77261 C     =  131.77261
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>     4000   4558.00000-603821.29970 143771.17363-747592.47333    309.11352
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4039.47840   7485.88726      0.00000   9522.63460    519.46337
+DYNA CROSS>      -504.64198      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768655.29920      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289535.6417
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.80012 B    =  131.80012 C     =  131.80012
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>     4500   4559.00000-603172.34805 144049.00869-747221.35674    309.71087
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3990.75360   7436.97191      0.00000   9493.26485    510.26158
+DYNA CROSS>      -501.06023      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768151.54888      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2290434.6622
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.81737 B    =  131.81737 C     =  131.81737
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>     5000   4560.00000-603610.32652 143996.12969-747606.45621    309.59718
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4022.62857   7454.64690      0.00000   9462.30640    526.77547
+DYNA CROSS>      -475.61319      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768597.20288      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289290.7490
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.79542 B    =  131.79542 C     =  131.79542
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>     5500   4561.00000-603551.23186 144286.13501-747837.36687    310.22070
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3958.21169   7511.14517      0.00000   9492.80182    518.05940
+DYNA CROSS>      -495.14721      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768822.43126      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288498.8201
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.78022 B    =  131.78022 C     =  131.78022
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>     6000   4562.00000-604097.17565 144113.47480-748210.65045    309.84948
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3998.20655   7527.14558      0.00000   9531.55857    539.85820
+DYNA CROSS>      -483.10502      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769324.31395      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2287436.4516
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.75983 B    =  131.75983 C     =  131.75983
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>     6500   4563.00000-603939.58129 144229.78698-748169.36828    310.09955
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3922.90000   7430.60900      0.00000   9453.39803    495.82587
+DYNA CROSS>      -516.30091      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768955.80298      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288015.2102
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.77094 B    =  131.77094 C     =  131.77094
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>     7000   4564.00000-603676.09905 143636.74898-747312.84803    308.82450
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4071.66867   7426.64422      0.00000   9509.90043    519.13552
+DYNA CROSS>      -500.49318      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768339.70094      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289555.7000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.80050 B    =  131.80050 C     =  131.80050
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>     7500   4565.00000-603285.01480 144066.08877-747351.10358    309.74759
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4073.63009   7435.55955      0.00000   9468.95309    512.40693
+DYNA CROSS>      -506.08073      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768335.57262      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2294392.1063
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.89324 B    =  131.89324 C     =  131.89324
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>     8000   4566.00000-603198.49211 143919.12578-747117.61789    309.43162
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3938.17373   7444.46159      0.00000   9469.74039    513.72160
+DYNA CROSS>      -498.66439      0.00000      0.00000      0.00000
+DYNA EXTERN>  -767985.05644      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2290640.2046
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.82131 B    =  131.82131 C     =  131.82131
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>     8500   4567.00000-603480.25284 143815.82397-747296.07681    309.20952
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4039.42946   7436.46179      0.00000   9465.47218    529.06365
+DYNA CROSS>      -517.70795      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768248.79729      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2291575.4350
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.83925 B    =  131.83925 C     =  131.83925
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>     9000   4568.00000-602563.22219 144692.75971-747255.98190    311.09496
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4070.62448   7469.01426      0.00000   9515.10556    542.36784
+DYNA CROSS>      -484.55407      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768368.54757      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289202.7951
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.79373 B    =  131.79373 C     =  131.79373
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>     9500   4569.00000-603364.92092 143767.18209-747132.10301    309.10493
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4011.23601   7400.29909      0.00000   9443.12962    485.27216
+DYNA CROSS>      -458.65877      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768013.37900      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2294079.9037
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.88726 B    =  131.88726 C     =  131.88726
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    10000   4570.00000-603742.73049 143859.13650-747601.86699    309.30264
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3930.86725   7488.77693      0.00000   9491.52865    501.40831
+DYNA CROSS>      -489.27951      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768525.17510      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2290988.2201
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.82799 B    =  131.82799 C     =  131.82799
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    10500   4571.00000-603805.20480 144060.02074-747865.22554    309.73455
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3955.94927   7466.25959      0.00000   9511.66810    532.95839
+DYNA CROSS>      -495.03045      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768837.02709      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2287830.6136
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.76739 B    =  131.76739 C     =  131.76739
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    11000   4572.00000-603429.66275 144338.27164-747767.93439    310.33280
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3916.43437   7340.84505      0.00000   9456.67395    518.88585
+DYNA CROSS>      -486.67063      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768514.10429      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2290002.8835
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.80908 B    =  131.80908 C     =  131.80908
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    11500   4573.00000-604123.30540 144094.19529-748217.50069    309.80802
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3993.74599   7454.82248      0.00000   9462.37651    538.98698
+DYNA CROSS>      -470.85113      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769196.58496      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2287114.1825
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.75364 B    =  131.75364 C     =  131.75364
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    12000   4574.00000-603869.83140 144376.47904-748246.31044    310.41495
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3949.05116   7500.94917      0.00000   9432.46511    491.08991
+DYNA CROSS>      -492.37436      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769127.48541      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289606.8761
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.80149 B    =  131.80149 C     =  131.80149
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    12500   4575.00000-603307.98075 144220.14965-747528.13040    310.07883
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3941.10722   7489.93404      0.00000   9448.06060    529.40539
+DYNA CROSS>      -491.96877      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768444.66837      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288751.4350
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.78507 B    =  131.78507 C     =  131.78507
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    13000   4576.00000-603096.50613 144548.46396-747644.97010    310.78472
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3915.77389   7363.08544      0.00000   9533.74197    518.34068
+DYNA CROSS>      -496.84374      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768479.06459      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288295.3403
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.77631 B    =  131.77631 C     =  131.77631
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    13500   4577.00000-603712.96867 144100.14685-747813.11552    309.82082
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3888.22084   7492.50758      0.00000   9408.26022    531.33119
+DYNA CROSS>      -451.49975      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768681.93630      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2287293.4780
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.75708 B    =  131.75708 C     =  131.75708
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    14000   4578.00000-603711.60348 144023.72266-747735.32615    309.65651
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4061.53348   7428.25256      0.00000   9506.58371    537.13097
+DYNA CROSS>      -490.43768      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768778.38742      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288332.4988
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.77703 B    =  131.77703 C     =  131.77703
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    14500   4579.00000-603403.29009 143964.10650-747367.39659    309.52833
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3933.35476   7516.29508      0.00000   9491.73822    531.50466
+DYNA CROSS>      -494.00451      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768346.28286      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2285990.6828
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.73206 B    =  131.73206 C     =  131.73206
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    15000   4580.00000-603080.73746 144221.46586-747302.20332    310.08166
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3939.27591   7474.49480      0.00000   9519.68137    529.51631
+DYNA CROSS>      -499.60385      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768265.56919      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2290125.9455
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.81145 B    =  131.81145 C     =  131.81145
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    15500   4581.00000-603331.32043 144213.28875-747544.60918    310.06408
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4019.60600   7556.96477      0.00000   9463.31531    500.57451
+DYNA CROSS>      -452.63287      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768632.43594      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289546.9689
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.80034 B    =  131.80034 C     =  131.80034
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    16000   4582.00000-602677.70882 144067.11348-746744.82230    309.74980
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4006.82073   7440.43863      0.00000   9411.24449    506.38987
+DYNA CROSS>      -480.55559      0.00000      0.00000      0.00000
+DYNA EXTERN>  -767629.16042      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2290451.7031
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.81769 B    =  131.81769 C     =  131.81769
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    16500   4583.00000-602869.31628 144217.66728-747086.98356    310.07349
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4022.53563   7261.48930      0.00000   9489.77823    521.58015
+DYNA CROSS>      -492.06540      0.00000      0.00000      0.00000
+DYNA EXTERN>  -767890.30048      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2292386.8404
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.85481 B    =  131.85481 C     =  131.85481
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    17000   4584.00000-603348.12032 144108.68746-747456.80777    309.83918
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3950.21135   7424.18664      0.00000   9460.15265    510.56153
+DYNA CROSS>      -505.81610      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768296.10453      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2287628.1678
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.76351 B    =  131.76351 C     =  131.76351
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    17500   4585.00000-603160.71948 144360.90792-747521.62740    310.38147
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3993.64319   7394.53410      0.00000   9527.14441    533.71236
+DYNA CROSS>      -513.04197      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768457.61989      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288001.2946
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.77067 B    =  131.77067 C     =  131.77067
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    18000   4586.00000-603764.04602 144147.55156-747911.59759    309.92274
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3949.57372   7580.26776      0.00000   9481.81330    535.32616
+DYNA CROSS>      -496.47113      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768962.10289      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2287235.6646
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.75597 B    =  131.75597 C     =  131.75597
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    18500   4587.00000-604584.23914 143842.97269-748427.21183    309.26789
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3946.21243   7364.76146      0.00000   9457.04673    512.82330
+DYNA CROSS>      -515.60323      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769192.44772      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2285061.4244
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.71421 B    =  131.71421 C     =  131.71421
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    19000   4588.00000-603828.81367 144488.40811-748317.22178    310.65560
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3903.23209   7522.23123      0.00000   9434.15921    522.86913
+DYNA CROSS>      -492.22574      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769207.48599      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288544.5953
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.78110 B    =  131.78110 C     =  131.78110
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    19500   4589.00000-603725.11306 143872.06466-747597.17772    309.33044
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4004.32757   7438.25396      0.00000   9455.73634    508.93469
+DYNA CROSS>      -493.01445      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768511.41167      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2290616.5735
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.82086 B    =  131.82086 C     =  131.82086
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    20000   4590.00000-603619.55283 144266.81630-747886.36913    310.17917
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4016.27071   7523.51656      0.00000   9507.59153    517.06657
+DYNA CROSS>      -526.26353      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768924.54828      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2291955.2644
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.84653 B    =  131.84653 C     =  131.84653
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    20500   4591.00000-603934.95510 143880.43931-747815.39441    309.34844
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3925.33077   7397.24088      0.00000   9511.66896    546.28583
+DYNA CROSS>      -478.98748      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768716.93433      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2292615.4680
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.85919 B    =  131.85919 C     =  131.85919
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    21000   4592.00000-604049.99396 143847.06232-747897.05628    309.27668
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3990.69251   7454.58320      0.00000   9518.36884    537.67611
+DYNA CROSS>      -493.12532      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768905.24585      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289237.3319
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.79439 B    =  131.79439 C     =  131.79439
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    21500   4593.00000-602799.34718 143905.74041-746705.08759    309.40284
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3977.50256   7606.90570      0.00000   9494.20736    510.12427
+DYNA CROSS>      -497.38318      0.00000      0.00000      0.00000
+DYNA EXTERN>  -767796.44861      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2292617.9895
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.85924 B    =  131.85924 C     =  131.85924
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    22000   4594.00000-602375.23462 144073.87688-746449.11150    309.76434
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4052.78153   7438.09436      0.00000   9489.82891    544.71686
+DYNA CROSS>      -533.57105      0.00000      0.00000      0.00000
+DYNA EXTERN>  -767440.95807      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2290632.0174
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.82115 B    =  131.82115 C     =  131.82115
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    22500   4595.00000-602293.45607 144647.70619-746941.16226    310.99809
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4011.50384   7382.45077      0.00000   9464.23416    523.76423
+DYNA CROSS>      -509.72124      0.00000      0.00000      0.00000
+DYNA EXTERN>  -767813.39380      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2293332.9160
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.87294 B    =  131.87294 C     =  131.87294
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    23000   4596.00000-602664.46231 144466.54491-747131.00722    310.60859
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3955.41257   7349.19193      0.00000   9507.37231    518.85998
+DYNA CROSS>      -470.27875      0.00000      0.00000      0.00000
+DYNA EXTERN>  -767991.56232      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288684.5970
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.78379 B    =  131.78379 C     =  131.78379
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    23500   4597.00000-603511.89196 143668.82715-747180.71911    308.89347
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3983.75603   7448.45003      0.00000   9490.91695    519.99881
+DYNA CROSS>      -475.03737      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768148.80760      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289746.3246
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.80416 B    =  131.80416 C     =  131.80416
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    24000   4598.00000-603760.06782 143808.54625-747568.61407    309.19387
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4042.40738   7559.46295      0.00000   9482.28596    514.22368
+DYNA CROSS>      -493.73168      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768673.26553      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289126.8612
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.79227 B    =  131.79227 C     =  131.79227
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    24500   4599.00000-604217.23410 143595.14747-747812.38157    308.73505
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4075.96805   7504.00835      0.00000   9485.59876    496.18937
+DYNA CROSS>      -459.74320      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768914.40391      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288300.4561
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.77641 B    =  131.77641 C     =  131.77641
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    25000   4600.00000-603944.01541 144232.09099-748176.10640    310.10451
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3976.85351   7523.69218      0.00000   9428.29569    535.71147
+DYNA CROSS>      -472.35863      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769168.30731      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288475.8357
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.77978 B    =  131.77978 C     =  131.77978
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    25500   4601.00000-603554.46285 144377.45248-747931.91533    310.41704
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3919.65903   7394.55076      0.00000   9493.23623    521.53786
+DYNA CROSS>      -499.41352      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768761.48458      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2287724.8223
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.76536 B    =  131.76536 C     =  131.76536
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    26000   4602.00000-602776.35110 144451.83705-747228.18815    310.57697
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3989.87944   7532.04407      0.00000   9465.39712    502.84941
+DYNA CROSS>      -496.71821      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768221.63962      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289772.8997
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.80467 B    =  131.80467 C     =  131.80467
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    26500   4603.00000-603492.76680 144441.65130-747934.41810    310.55507
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3875.16332   7471.73645      0.00000   9413.94780    498.78954
+DYNA CROSS>      -496.52607      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768697.52371      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288109.4681
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.77275 B    =  131.77275 C     =  131.77275
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    27000   4604.00000-603542.13327 144005.97561-747548.10888    309.61835
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3979.50259   7462.59750      0.00000   9460.46727    557.37116
+DYNA CROSS>      -495.62863      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768512.41781      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288438.6151
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.77907 B    =  131.77907 C     =  131.77907
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    27500   4605.00000-603178.60381 143904.87934-747083.48315    309.40099
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3964.49285   7392.74075      0.00000   9490.17928    542.91408
+DYNA CROSS>      -529.01278      0.00000      0.00000      0.00000
+DYNA EXTERN>  -767944.80688      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2290917.1938
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.82662 B    =  131.82662 C     =  131.82662
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    28000   4606.00000-602916.50173 144236.64113-747153.14286    310.11429
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3917.05595   7411.92317      0.00000   9515.01460    535.43735
+DYNA CROSS>      -520.68325      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768011.89180      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2291201.3746
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.83207 B    =  131.83207 C     =  131.83207
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    28500   4607.00000-603239.03736 144057.05326-747296.09062    309.72817
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3994.10254   7474.16230      0.00000   9495.63822    541.88429
+DYNA CROSS>      -489.61233      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768312.26003      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2291680.9936
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.84127 B    =  131.84127 C     =  131.84127
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    29000   4608.00000-603952.80285 144512.34902-748465.15187    310.70707
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4006.31945   7416.04721      0.00000   9479.78891    519.70366
+DYNA CROSS>      -503.91881      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769383.08632      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288183.4971
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.77417 B    =  131.77417 C     =  131.77417
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    29500   4609.00000-604190.13083 144004.64416-748194.77499    309.61549
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3924.88003   7506.86841      0.00000   9538.84597    526.96224
+DYNA CROSS>      -507.71026      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769184.61958      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289325.3637
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.79608 B    =  131.79608 C     =  131.79608
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    30000   4610.00000-603806.44880 144260.85175-748067.30056    310.16634
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3917.49976   7317.47494      0.00000   9476.94147    495.93989
+DYNA CROSS>      -501.64565      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768773.50802      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2286857.3562
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.74871 B    =  131.74871 C     =  131.74871
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    30500   4611.00000-603441.38539 144110.41323-747551.79862    309.84289
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4013.87827   7394.08319      0.00000   9490.96235    519.48540
+DYNA CROSS>      -480.98984      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768489.21575      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288210.3221
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.77468 B    =  131.77468 C     =  131.77468
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    31000   4612.00000-603630.79988 144093.30869-747724.10857    309.80612
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4012.15251   7565.26197      0.00000   9441.60809    534.24132
+DYNA CROSS>      -500.64628      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768776.73049      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2290566.2727
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.81989 B    =  131.81989 C     =  131.81989
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    31500   4613.00000-603882.91834 143825.95611-747708.87446    309.23130
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4023.31305   7393.00354      0.00000   9470.16649    516.17834
+DYNA CROSS>      -481.27589      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768630.25552      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2287590.7938
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.76279 B    =  131.76279 C     =  131.76279
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    32000   4614.00000-603078.03817 144322.75836-747400.79653    310.29944
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4000.12672   7470.79101      0.00000   9453.04394    521.75723
+DYNA CROSS>      -528.58899      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768317.92580      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2291102.4197
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.83018 B    =  131.83018 C     =  131.83018
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    32500   4615.00000-604027.53731 143562.13771-747589.67502    308.66408
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3982.99623   7515.79513      0.00000   9504.10271    510.70045
+DYNA CROSS>      -475.17679      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768628.09454      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289577.4400
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.80092 B    =  131.80092 C     =  131.80092
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    33000   4616.00000-603673.68442 144117.98003-747791.66445    309.85916
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4018.27103   7379.83996      0.00000   9507.76833    529.24743
+DYNA CROSS>      -527.75732      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768699.02862      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2292572.9242
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.85838 B    =  131.85838 C     =  131.85838
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    33500   4617.00000-603050.07020 144033.40494-747083.47515    309.67732
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3925.70573   7520.42850      0.00000   9454.06301    509.76890
+DYNA CROSS>      -538.79862      0.00000      0.00000      0.00000
+DYNA EXTERN>  -767954.63432      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2291301.6346
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.83400 B    =  131.83400 C     =  131.83400
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    34000   4618.00000-602721.22768 144586.99354-747308.22122    310.86756
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4047.97695   7403.10564      0.00000   9457.83033    522.02938
+DYNA CROSS>      -499.28449      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768239.87854      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2292703.7209
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.86088 B    =  131.86088 C     =  131.86088
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    34500   4619.00000-603014.53307 144399.98255-747414.51562    310.46548
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4024.91244   7445.47573      0.00000   9428.22682    488.24256
+DYNA CROSS>      -517.17221      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768284.19736      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2295090.8665
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.90663 B    =  131.90663 C     =  131.90663
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    35000   4620.00000-603671.43895 143991.29920-747662.73815    309.58679
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3939.69302   7552.25740      0.00000   9481.49794    523.01619
+DYNA CROSS>      -535.55104      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768623.65115      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2290062.2433
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.81022 B    =  131.81022 C     =  131.81022
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    35500   4621.00000-603747.18440 144148.16859-747895.35299    309.92407
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4003.65627   7549.75851      0.00000   9472.84878    513.27554
+DYNA CROSS>      -496.96031      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768937.93614      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2290134.7350
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.81161 B    =  131.81161 C     =  131.81161
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    36000   4622.00000-603857.32323 144077.38224-747934.70547    309.77188
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4013.79046   7384.68387      0.00000   9494.18367    546.29764
+DYNA CROSS>      -471.79089      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768901.86963      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289283.1682
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.79527 B    =  131.79527 C     =  131.79527
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    36500   4623.00000-604459.11456 143672.43263-748131.54718    308.90122
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3940.82964   7492.13715      0.00000   9503.60077    510.14044
+DYNA CROSS>      -525.40905      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769052.84646      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2286429.5908
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.74049 B    =  131.74049 C     =  131.74049
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    37000   4624.00000-603998.53450 143970.44485-747968.97935    309.54196
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4019.61472   7549.78401      0.00000   9527.99167    500.85764
+DYNA CROSS>      -510.09938      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769057.12559      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2285509.5990
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.72282 B    =  131.72282 C     =  131.72282
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    37500   4625.00000-603675.59017 144088.55605-747764.14622    309.79590
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3970.92503   7402.75538      0.00000   9494.51017    496.15577
+DYNA CROSS>      -496.12014      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768601.77456      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2287708.5670
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.76505 B    =  131.76505 C     =  131.76505
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    38000   4626.00000-603579.18035 144047.40705-747626.58740    309.70743
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4052.60579   7518.77971      0.00000   9428.29962    535.42537
+DYNA CROSS>      -485.36728      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768676.33277      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2286663.3174
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.74498 B    =  131.74498 C     =  131.74498
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    38500   4627.00000-603070.22561 144278.70997-747348.93558    310.20474
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3971.52440   7583.79344      0.00000   9509.84582    546.84612
+DYNA CROSS>      -493.38686      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768467.56180      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289722.3886
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.80370 B    =  131.80370 C     =  131.80370
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    39000   4628.00000-603074.61992 144655.84828-747730.46820    311.01560
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4022.83238   7435.37777      0.00000   9488.77145    552.56424
+DYNA CROSS>      -489.97151      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768740.04818      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289565.1991
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.80069 B    =  131.80069 C     =  131.80069
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    39500   4629.00000-604098.42873 143971.94019-748070.36892    309.54517
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4082.91803   7434.96536      0.00000   9465.67869    517.45680
+DYNA CROSS>      -484.45671      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769086.92541      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289392.9047
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.79738 B    =  131.79738 C     =  131.79738
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    40000   4630.00000-604265.08826 143876.95230-748142.04056    309.34094
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4049.63962   7528.73460      0.00000   9497.05748    544.11953
+DYNA CROSS>      -510.69121      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769250.89896      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2290901.8552
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.82633 B    =  131.82633 C     =  131.82633
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    40500   4631.00000-604358.47972 143692.76980-748051.24951    308.94494
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3992.69745   7323.52391      0.00000   9515.06356    520.00608
+DYNA CROSS>      -486.43145      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768916.11013      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2286875.3092
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.74905 B    =  131.74905 C     =  131.74905
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    41000   4632.00000-604428.26487 143904.43535-748332.70022    309.40003
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4025.44966   7419.44583      0.00000   9508.48138    535.38321
+DYNA CROSS>      -507.84743      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769313.61304      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2282941.6425
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.67347 B    =  131.67347 C     =  131.67347
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    41500   4633.00000-603646.88179 143939.58954-747586.47133    309.47562
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4065.44215   7494.48044      0.00000   9514.37164    536.86312
+DYNA CROSS>      -508.19093      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768689.43598      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2284755.9876
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.70834 B    =  131.70834 C     =  131.70834
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    42000   4634.00000-603084.02853 144461.52928-747545.55781    310.59781
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3993.29075   7551.76201      0.00000   9431.29396    517.84560
+DYNA CROSS>      -497.32530      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768542.42798      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2286420.8245
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.74032 B    =  131.74032 C     =  131.74032
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    42500   4635.00000-603128.01281 143961.11610-747089.12891    309.52190
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4026.08417   7491.80835      0.00000   9509.27174    514.87869
+DYNA CROSS>      -525.67244      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768105.50073      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2290559.2083
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.81976 B    =  131.81976 C     =  131.81976
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    43000   4636.00000-603661.85646 143927.75610-747589.61256    309.45017
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3969.19062   7462.90239      0.00000   9475.60350    520.46922
+DYNA CROSS>      -512.14632      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768505.63099      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2291372.3867
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.83535 B    =  131.83535 C     =  131.83535
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    43500   4637.00000-603728.72858 144134.89839-747863.62697    309.89554
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3895.61339   7493.86543      0.00000   9548.14770    516.20178
+DYNA CROSS>      -495.54470      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768821.90535      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2292071.9548
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.84877 B    =  131.84877 C     =  131.84877
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    44000   4638.00000-603657.60494 144310.07510-747967.68004    310.27217
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4024.84591   7421.24806      0.00000   9496.90032    501.41224
+DYNA CROSS>      -522.34597      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768889.74328      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288249.0289
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.77543 B    =  131.77543 C     =  131.77543
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    44500   4639.00000-603222.34172 144575.26260-747797.60432    310.84234
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3973.89533   7536.95435      0.00000   9516.29800    507.51318
+DYNA CROSS>      -510.33329      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768821.92984      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2287919.5920
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.76910 B    =  131.76910 C     =  131.76910
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    45000   4640.00000-603677.70279 143767.96831-747445.67109    309.10662
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4011.92798   7494.48650      0.00000   9514.98076    522.37130
+DYNA CROSS>      -532.75319      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768456.68374      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288332.4952
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.77703 B    =  131.77703 C     =  131.77703
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    45500   4641.00000-604118.43306 144050.12510-748168.55816    309.71327
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4039.41571   7432.75065      0.00000   9448.59963    515.81984
+DYNA CROSS>      -498.85433      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769106.28564      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2287999.7980
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.77064 B    =  131.77064 C     =  131.77064
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    46000   4642.00000-604404.43235 144155.12566-748559.55801    309.93903
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3873.72457   7504.81291      0.00000   9446.33773    528.15422
+DYNA CROSS>      -480.37134      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769432.21729      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2287083.0361
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.75304 B    =  131.75304 C     =  131.75304
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    46500   4643.00000-603874.02937 143627.57867-747501.60804    308.80478
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4003.92977   7493.09777      0.00000   9491.09539    512.60150
+DYNA CROSS>      -499.68590      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768502.64757      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2286665.6151
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.74502 B    =  131.74502 C     =  131.74502
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    47000   4644.00000-603934.50143 143871.25433-747805.75576    309.32869
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4026.06313   7530.03819      0.00000   9519.12727    567.38846
+DYNA CROSS>      -476.80764      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768971.56378      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2287963.7626
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.76995 B    =  131.76995 C     =  131.76995
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    47500   4645.00000-604094.31136 143726.90562-747821.21697    309.01834
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3969.65156   7500.24814      0.00000   9463.01404    525.74488
+DYNA CROSS>      -500.03402      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768779.84064      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2285686.8634
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.72622 B    =  131.72622 C     =  131.72622
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    48000   4646.00000-604517.47154 144048.32992-748565.80146    309.70941
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3899.47444   7435.57856      0.00000   9467.30544    524.60341
+DYNA CROSS>      -466.16508      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769426.60077      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2285986.5325
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.73198 B    =  131.73198 C     =  131.73198
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    48500   4647.00000-604322.53614 143586.21349-747908.74963    308.71584
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4002.19955   7543.36679      0.00000   9521.45269    535.83425
+DYNA CROSS>      -511.30821      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769000.28895      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288923.2744
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.78837 B    =  131.78837 C     =  131.78837
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    49000   4648.00000-604125.98499 143811.47228-747937.45727    309.20016
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4042.80174   7357.21590      0.00000   9440.06926    504.23372
+DYNA CROSS>      -471.23133      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768810.54650      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2290126.0575
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.81145 B    =  131.81145 C     =  131.81145
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    49500   4649.00000-604320.40055 143616.73605-747937.13660    308.78147
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4000.50472   7478.38847      0.00000   9485.24430    533.24230
+DYNA CROSS>      -481.07302      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768953.44088      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289261.2153
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.79485 B    =  131.79485 C     =  131.79485
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    50000   4650.00000-603983.50848 143597.66383-747581.17232    308.74046
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4025.03118   7564.51837      0.00000   9468.13800    538.95298
+DYNA CROSS>      -479.52460      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768707.78534      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289523.7879
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.79989 B    =  131.79989 C     =  131.79989
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    50500   4651.00000-604334.49533 143573.04709-747907.54241    308.68754
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3888.10487   7547.79925      0.00000   9425.89331    512.97503
+DYNA CROSS>      -472.68709      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768809.63251      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2286977.9727
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.75102 B    =  131.75102 C     =  131.75102
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    51000   4652.00000-603192.51386 144023.40946-747215.92332    309.65583
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4030.18324   7464.27299      0.00000   9422.84343    534.85850
+DYNA CROSS>      -481.23984      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768186.84082      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288396.1279
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.77825 B    =  131.77825 C     =  131.77825
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    51500   4653.00000-603927.23703 144239.42084-748166.65787    310.12026
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4068.68423   7522.40788      0.00000   9438.40778    536.66359
+DYNA CROSS>      -473.38417      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769259.43854      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2286954.5464
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.75057 B    =  131.75057 C     =  131.75057
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    52000   4654.00000-603390.42596 144343.96477-747734.39073    310.34504
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4038.41124   7464.10457      0.00000   9452.88489    520.59202
+DYNA CROSS>      -476.28323      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768734.10576      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2285935.2357
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.73100 B    =  131.73100 C     =  131.73100
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    52500   4655.00000-603034.01371 144286.22287-747320.23658    310.22089
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3900.24458   7476.10437      0.00000   9473.99614    563.07561
+DYNA CROSS>      -461.10495      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768272.55660      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2287084.4385
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.75307 B    =  131.75307 C     =  131.75307
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    53000   4656.00000-602921.37329 144091.54490-747012.91818    309.80233
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4000.28510   7496.37269      0.00000   9508.06495    531.61372
+DYNA CROSS>      -484.14833      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768065.10062      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2288671.7268
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.78354 B    =  131.78354 C     =  131.78354
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    53500   4657.00000-602927.05640 144473.57773-747400.63413    310.62371
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4017.15918   7503.24499      0.00000   9459.11102    507.74076
+DYNA CROSS>      -501.04433      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768386.84523      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2290273.7175
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.81428 B    =  131.81428 C     =  131.81428
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    54000   4658.00000-603918.85614 144177.70112-748096.55726    309.98757
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3987.86011   7426.86850      0.00000   9496.15566    546.12922
+DYNA CROSS>      -498.43997      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769055.13033      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2287040.8511
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.75223 B    =  131.75223 C     =  131.75223
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    54500   4659.00000-603720.19439 144123.28506-747843.47945    309.87057
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4021.02293   7508.97761      0.00000   9394.34157    523.10701
+DYNA CROSS>      -492.48838      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768798.43931      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2283744.4608
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.68890 B    =  131.68890 C     =  131.68890
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    55000   4660.00000-604192.69016 144097.21595-748289.90611    309.81452
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3944.71534   7511.21695      0.00000   9494.45654    508.50663
+DYNA CROSS>      -498.99514      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769249.80496      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2283390.9101
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.68210 B    =  131.68210 C     =  131.68210
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    55500   4661.00000-604306.50901 143833.56601-748140.07502    309.24766
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3989.81573   7473.49111      0.00000   9446.47050    524.57742
+DYNA CROSS>      -458.94827      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769115.48242      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2282645.7954
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.66778 B    =  131.66778 C     =  131.66778
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    56000   4662.00000-603962.32646 144161.75653-748124.08299    309.95328
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3907.92147   7372.23485      0.00000   9504.28785    522.41651
+DYNA CROSS>      -469.70850      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768961.23548      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289580.7651
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.80099 B    =  131.80099 C     =  131.80099
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    56500   4663.00000-603527.40633 144181.05375-747708.46008    309.99477
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3996.11285   7558.85632      0.00000   9432.85209    491.75585
+DYNA CROSS>      -507.95740      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768680.07975      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2290501.8469
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.81866 B    =  131.81866 C     =  131.81866
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    57000   4664.00000-603591.96906 143918.52441-747510.49348    309.43033
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4066.42774   7527.66621      0.00000   9433.00743    507.45637
+DYNA CROSS>      -464.67710      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768580.37142      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2287298.6626
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.75718 B    =  131.75718 C     =  131.75718
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    57500   4665.00000-602757.79513 144304.13104-747061.92617    310.25939
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4057.04358   7372.52474      0.00000   9441.66991    505.53720
+DYNA CROSS>      -461.43639      0.00000      0.00000      0.00000
+DYNA EXTERN>  -767977.26901      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289399.8545
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.79751 B    =  131.79751 C     =  131.79751
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    58000   4666.00000-602857.90517 144461.57349-747319.47866    310.59790
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3995.50998   7433.02456      0.00000   9408.10119    521.06801
+DYNA CROSS>      -473.68796      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768203.49212      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2286119.2086
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.73453 B    =  131.73453 C     =  131.73453
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    58500   4667.00000-603000.31102 144365.20727-747365.51829    310.39071
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4077.32223   7571.93323      0.00000   9387.08033    535.39146
+DYNA CROSS>      -496.03553      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768441.20836      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289676.7786
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.80283 B    =  131.80283 C     =  131.80283
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    59000   4668.00000-602928.89371 143816.28510-746745.17881    309.21051
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4078.57202   7426.71894      0.00000   9494.69554    488.97916
+DYNA CROSS>      -483.39766      0.00000      0.00000      0.00000
+DYNA EXTERN>  -767750.74753      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289263.1689
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.79489 B    =  131.79489 C     =  131.79489
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    59500   4669.00000-602387.26904 144449.31588-746836.58492    310.57155
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3940.01488   7641.83977      0.00000   9492.19428    547.02229
+DYNA CROSS>      -490.86480      0.00000      0.00000      0.00000
+DYNA EXTERN>  -767966.79327      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2290043.9587
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.80987 B    =  131.80987 C     =  131.80987
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    60000   4670.00000-603267.40755 143716.37763-746983.78518    308.99570
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3992.20675   7449.73802      0.00000   9483.75329    552.86718
+DYNA CROSS>      -501.17726      0.00000      0.00000      0.00000
+DYNA EXTERN>  -767961.17545      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289440.1993
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.79829 B    =  131.79829 C     =  131.79829
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    60500   4671.00000-603533.50981 144524.75889-748058.26870    310.73375
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4001.69082   7454.07661      0.00000   9448.05620    543.30356
+DYNA CROSS>      -522.65447      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768982.74072      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2286211.1773
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.73630 B    =  131.73630 C     =  131.73630
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    61000   4672.00000-603501.61006 144256.31788-747757.92794    310.15659
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3901.66629   7346.46793      0.00000   9510.89382    513.19840
+DYNA CROSS>      -448.24275      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768581.91138      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2286369.6959
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.73934 B    =  131.73934 C     =  131.73934
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    61500   4673.00000-603828.43524 144117.30857-747945.74381    309.85772
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3949.02153   7484.20236      0.00000   9491.16324    526.23685
+DYNA CROSS>      -478.10114      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768918.26281      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2287760.5156
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.76605 B    =  131.76605 C     =  131.76605
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    62000   4674.00000-603678.62556 143869.07463-747547.70018    309.32401
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3966.25346   7413.69446      0.00000   9483.35623    537.59685
+DYNA CROSS>      -476.67542      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768471.92460      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2283713.4183
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.68830 B    =  131.68830 C     =  131.68830
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    62500   4675.00000-603674.05202 144252.23137-747926.28339    310.14781
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3917.20616   7415.20815      0.00000   9459.18427    548.91931
+DYNA CROSS>      -458.21071      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768808.59212      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2287593.8155
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.76285 B    =  131.76285 C     =  131.76285
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    63000   4676.00000-603955.21747 143691.82963-747647.04710    308.94292
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4018.98558   7430.49208      0.00000   9467.91570    543.14566
+DYNA CROSS>      -482.56311      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768625.02665      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289555.1675
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.80049 B    =  131.80049 C     =  131.80049
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    63500   4677.00000-603327.32134 144393.53423-747720.85557    310.45161
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3960.84722   7414.88649      0.00000   9516.57498    513.49936
+DYNA CROSS>      -493.10617      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768633.55729      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2286927.1954
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.75005 B    =  131.75005 C     =  131.75005
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    64000   4678.00000-603524.50999 144260.06469-747784.57468    310.16465
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4068.89196   7353.60525      0.00000   9472.51099    532.48179
+DYNA CROSS>      -455.47596      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768756.58782      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2287751.9264
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.76588 B    =  131.76588 C     =  131.76588
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    64500   4679.00000-603422.88020 144426.27086-747849.15105    310.52200
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4023.39188   7362.25834      0.00000   9478.41981    513.65342
+DYNA CROSS>      -491.46727      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768735.41376      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2289666.9594
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.80264 B    =  131.80264 C     =  131.80264
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    65000   4680.00000-603862.75397 143927.13599-747789.88996    309.44884
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3920.73508   7536.11559      0.00000   9525.85982    517.22031
+DYNA CROSS>      -496.12930      0.00000      0.00000      0.00000
+DYNA EXTERN>  -768793.68723      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2287770.4490
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.76624 B    =  131.76624 C     =  131.76624
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    65500   4681.00000-604021.39027 144300.50936-748321.89962    310.25161
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     4000.10505   7273.71983      0.00000   9466.35354    517.14760
+DYNA CROSS>      -470.89200      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769108.33192      0.00000      0.00000      0.00000      0.00000
+DYNA PRESS>          0.0000       0.0000       0.0000       0.0000 2285356.9678
+ ----------       ---------    ---------    ---------    ---------    ---------
+ Crystal Parameters : Crystal Type = CUBI
+      DYNA A     =  131.71989 B    =  131.71989 C     =  131.71989
+      DYNA Alpha =   90.00000 Beta =   90.00000 Gamma =   90.00000
+      DYNA PIXX =        0.00 PIYY =       0.00 PIZZ =       0.00
+      DYNA PIXY =        0.00 PIXZ =       0.00 PIYZ =       0.00
+      DYNA Gradient Norm =    0.00000
+
+DYNA>    66000   4682.00000-603525.23809 144609.23834-748134.47643    310.91539
+DYNA PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+DYNA INTERN>     3980.42311   7450.17256      0.00000   9451.47796    530.47822
+DYNA CROSS>      -456.21833      0.00000      0.00000      0.00000
+DYNA EXTERN>  -769090.81364      0.00000      0.00000      0.00000      0.00000
